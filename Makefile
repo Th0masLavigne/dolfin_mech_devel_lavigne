@@ -18,8 +18,6 @@ help:
 	@echo "  clean     Remove temporary files and build artifacts"
 install:
 	pip install -e '.[dev,docs]'
-	# pre-commit install
-	pre-commit uninstall
 	git config core.editor "nano"
 
 linter:
