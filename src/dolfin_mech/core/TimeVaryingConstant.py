@@ -8,7 +8,7 @@
 ###                                                                          ###
 ################################################################################
 
-"""summary"""
+"""Utility for time-dependent FEniCS constants."""
 
 import dolfin
 import numpy
