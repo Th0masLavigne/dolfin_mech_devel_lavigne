@@ -423,11 +423,11 @@ def material_factory(kinematics, model, parameters):
 	    >>> mat = material_factory(kin, "NH", {"E": 10.0, "nu": 0.3})
 	"""
 	if model in ("hooke", "Hooke", "H"):
-		material = materials.HookeElasticMaterial(kinematics=kinematics, parameters=parameters)
+		material = materials.elastic.Hooke(kinematics=kinematics, parameters=parameters)
 	elif model in ("hooke_dev", "Hooke_dev", "H_dev"):
-		material = materials.HookeDevElasticMaterial(kinematics=kinematics, parameters=parameters)
+		material = materials.elastic.HookeDev(kinematics=kinematics, parameters=parameters)
 	elif model in ("hooke_bulk", "Hooke_bulk", "H_bulk"):
-		material = materials.HookeBulkElasticMaterial(kinematics=kinematics, parameters=parameters)
+		material = materials.elastic.HookeBulk(kinematics=kinematics, parameters=parameters)
 	elif model in ("saintvenantkirchhoff", "SaintVenantKirchhoff", "kirchhoff", "Kirchhoff", "SVK"):
 		material = materials.KirchhoffElasticMaterial(kinematics=kinematics, parameters=parameters)
 	elif model in ("saintvenantkirchhoff_dev", "SaintVenantKirchhoff_dev", "kirchhoff_dev", "Kirchhoff_dev", "SVK_dev"):

@@ -183,7 +183,7 @@ def generate_simple_toc(app):
 			with idx_path.open("w", encoding="utf-8") as f:
 				f.write(f"{title}\n" + "=" * len(title) + "\n\n")
 				f.write(".. contents::\n   :local:\n\n")
-				f.write(".. toctree::\n   :maxdepth: 2\n   :titlesonly:\n\n")
+				f.write(".. toctree::\n   :maxdepth: 3\n   :titlesonly:\n\n")
 				for child in sorted(set(children)):
 					f.write(f"   {child}\n")
 
