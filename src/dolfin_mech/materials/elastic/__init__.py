@@ -11,6 +11,7 @@ from .Lung_Wskel import WskelLung
 from .MooneyRivlin import MooneyRivlin
 from .NeoHookean import NeoHookean
 from .NeoHookeanMooneyRivlin import NeoHookeanMooneyRivlin
+from .OgdenCiarletGeymonat import OgdenCiarletGeymonat
 
 __all__ = [
 	"ExponentialNeoHookean",
@@ -28,4 +29,5 @@ __all__ = [
 	"MooneyRivlin",
 	"NeoHookean",
 	"NeoHookeanMooneyRivlin",
+	"OgdenCiarletGeymonat",
 ]
