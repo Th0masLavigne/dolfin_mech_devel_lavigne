@@ -12,6 +12,7 @@ Core
    Foi <FOI/index>
    Mesh2Ugrid <mesh2ugrid/index>
    Qoi <QOI/index>
+   Timeintegrator <TimeIntegrator/index>
    Timevaryingconstant <TimeVaryingConstant/index>
    Write Vtu File <write_VTU_file/index>
    Xdmffile <XDMFFile/index>

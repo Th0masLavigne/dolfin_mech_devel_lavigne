@@ -16,7 +16,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=3ae79941"></script>
+      <script src="_static/documentation_options.js?v=6a85720a"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -54,6 +54,7 @@
 <li class="toctree-l4"><a class="reference internal" href="api/dolfin_mech/core/FOI/index.html">Foi</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/dolfin_mech/core/QOI/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/dolfin_mech/core/TimeIntegrator/index.html">Timeintegrator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/dolfin_mech/core/TimeVaryingConstant/index.html">Timevaryingconstant</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/dolfin_mech/core/write_VTU_file/index.html">Write Vtu File</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/dolfin_mech/core/XDMFFile/index.html">Xdmffile</a></li>
@@ -142,8 +143,12 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/dolfin_mech/core/XDMFFile/index.html#dolfin_mech.core.XDMFFile.XDMFFile.close">close() (dolfin_mech.core.XDMFFile.XDMFFile method)</a>
+      <li><a href="api/dolfin_mech/core/TimeIntegrator/index.html#dolfin_mech.core.TimeIntegrator.TimeIntegrator.close">close() (dolfin_mech.core.TimeIntegrator.TimeIntegrator method)</a>
+
+      <ul>
+        <li><a href="api/dolfin_mech/core/XDMFFile/index.html#dolfin_mech.core.XDMFFile.XDMFFile.close">(dolfin_mech.core.XDMFFile.XDMFFile method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/dolfin_mech/core/compute_error/index.html#dolfin_mech.core.compute_error.compute_error">compute_error() (in module dolfin_mech.core.compute_error)</a>
@@ -180,6 +185,13 @@
 
       <ul>
         <li><a href="api/dolfin_mech/core/QOI/index.html#module-dolfin_mech.core.QOI">module</a>
+</li>
+      </ul></li>
+      <li>
+    dolfin_mech.core.TimeIntegrator
+
+      <ul>
+        <li><a href="api/dolfin_mech/core/TimeIntegrator/index.html#module-dolfin_mech.core.TimeIntegrator">module</a>
 </li>
       </ul></li>
       <li>
@@ -245,6 +257,8 @@
         <li><a href="api/dolfin_mech/materials/elastic/ExponentialOgdenCiarletGeymonat/index.html#module-dolfin_mech.materials.elastic.ExponentialOgdenCiarletGeymonat">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     dolfin_mech.materials.elastic.Hooke
 
@@ -252,8 +266,6 @@
         <li><a href="api/dolfin_mech/materials/elastic/Hooke/index.html#module-dolfin_mech.materials.elastic.Hooke">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     dolfin_mech.materials.elastic.Kirchhoff
 
@@ -419,6 +431,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/dolfin_mech/core/TimeIntegrator/index.html#dolfin_mech.core.TimeIntegrator.TimeIntegrator.integrate">integrate() (dolfin_mech.core.TimeIntegrator.TimeIntegrator method)</a>
+</li>
       <li><a href="api/dolfin_mech/kinematics/InverseKinematics/index.html#dolfin_mech.kinematics.InverseKinematics.InverseKinematics">InverseKinematics (class in dolfin_mech.kinematics.InverseKinematics)</a>
 </li>
   </ul></td>
@@ -468,6 +482,8 @@
         <li><a href="api/dolfin_mech/core/mesh2ugrid/index.html#module-dolfin_mech.core.mesh2ugrid">dolfin_mech.core.mesh2ugrid</a>
 </li>
         <li><a href="api/dolfin_mech/core/QOI/index.html#module-dolfin_mech.core.QOI">dolfin_mech.core.QOI</a>
+</li>
+        <li><a href="api/dolfin_mech/core/TimeIntegrator/index.html#module-dolfin_mech.core.TimeIntegrator">dolfin_mech.core.TimeIntegrator</a>
 </li>
         <li><a href="api/dolfin_mech/core/TimeVaryingConstant/index.html#module-dolfin_mech.core.TimeVaryingConstant">dolfin_mech.core.TimeVaryingConstant</a>
 </li>
@@ -591,6 +607,10 @@
 
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/dolfin_mech/core/TimeIntegrator/index.html#dolfin_mech.core.TimeIntegrator.TimeIntegrator">TimeIntegrator (class in dolfin_mech.core.TimeIntegrator)</a>
+</li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/dolfin_mech/core/TimeVaryingConstant/index.html#dolfin_mech.core.TimeVaryingConstant.TimeVaryingConstant">TimeVaryingConstant (class in dolfin_mech.core.TimeVaryingConstant)</a>
 </li>
