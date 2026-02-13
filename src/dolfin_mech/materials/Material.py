@@ -23,9 +23,10 @@ Crucial Material Factory Identifiers
 ------------------------------------
 
 The ``material_factory`` function supports an exhaustive list of aliases.
-These are categorized below by their underlying constitutive logic:
+These are categorized below by their underlying constitutive logic as depicted in the next table.
+Otherwise, you can use the Material name in lowercase.
 
-.. list-table:: Material Aliases
+.. list-table:: Main Material Aliases
    :widths: 30 35 35
    :header-rows: 1
 
@@ -510,6 +511,8 @@ def material_factory(kinematics, model, parameters):
 		)
 	elif model in ("exponentialneoHookean"):
 		material = materials.elastic.ExponentialNeoHookean(kinematics=kinematics, parameters=parameters)
+	elif model in ("exponentialogdenciarletgeymonat"):
+		material = materials.elastic.ExponentialOgdenCiarletGeymonat(kinematics=kinematics, parameters=parameters)
 	else:
 		assert 0, 'Material model ("' + model + '") not recognized. Aborting.'
 	return material
