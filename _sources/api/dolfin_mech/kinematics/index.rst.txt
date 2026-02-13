@@ -1,0 +1,13 @@
+Kinematics
+==========
+
+.. contents::
+   :local:
+
+.. toctree::
+   :maxdepth: 3
+   :titlesonly:
+
+   Inversekinematics <InverseKinematics/index>
+   Kinematics <Kinematics/index>
+   Linearizedkinematics <LinearizedKinematics/index>

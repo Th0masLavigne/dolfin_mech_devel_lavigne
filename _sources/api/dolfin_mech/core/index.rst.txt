@@ -1,0 +1,12 @@
+Core
+====
+
+.. contents::
+   :local:
+
+.. toctree::
+   :maxdepth: 3
+   :titlesonly:
+
+   Foi <FOI/index>
+   Qoi <QOI/index>

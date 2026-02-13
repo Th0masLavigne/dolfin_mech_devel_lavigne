@@ -1,7 +1,0 @@
-dolfin\_mech.run\_RivlinCube\_PoroHyperelasticity
-========================================================
-
-.. automodule:: dolfin_mech.run_RivlinCube_PoroHyperelasticity
-   :members:
-   :undoc-members:
-   :show-inheritance:

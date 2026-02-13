@@ -1,7 +1,0 @@
-dolfin\_mech.run\_HeartSlice\_Mesh
-=========================================
-
-.. automodule:: dolfin_mech.run_HeartSlice_Mesh
-   :members:
-   :undoc-members:
-   :show-inheritance:

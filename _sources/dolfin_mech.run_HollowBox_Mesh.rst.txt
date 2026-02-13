@@ -1,7 +1,0 @@
-dolfin\_mech.run\_HollowBox\_Mesh
-========================================
-
-.. automodule:: dolfin_mech.run_HollowBox_Mesh
-   :members:
-   :undoc-members:
-   :show-inheritance:

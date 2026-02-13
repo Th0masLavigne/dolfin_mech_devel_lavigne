@@ -1,7 +1,0 @@
-dolfin\_mech.TimeIntegrator
-==================================
-
-.. automodule:: dolfin_mech.TimeIntegrator
-   :members:
-   :undoc-members:
-   :show-inheritance:

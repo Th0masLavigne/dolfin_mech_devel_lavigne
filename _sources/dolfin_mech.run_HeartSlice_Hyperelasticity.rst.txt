@@ -1,7 +1,0 @@
-dolfin\_mech.run\_HeartSlice\_Hyperelasticity
-====================================================
-
-.. automodule:: dolfin_mech.run_HeartSlice_Hyperelasticity
-   :members:
-   :undoc-members:
-   :show-inheritance:

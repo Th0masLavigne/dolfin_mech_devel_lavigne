@@ -1,7 +1,0 @@
-dolfin\_mech.Material\_Elastic
-=====================================
-
-.. automodule:: dolfin_mech.Material_Elastic
-   :members:
-   :undoc-members:
-   :show-inheritance:

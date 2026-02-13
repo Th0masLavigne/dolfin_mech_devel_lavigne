@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.materials.elastic.OgdenCiarletGeymonat &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../../_static/documentation_options.js?v=75eac6bd"></script>
+      <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="dolfin_mech.materials.elastic.OgdenCiarletGeymonatNeoHookean" href="../OgdenCiarletGeymonatNeoHookean/index.html" />
+    <link rel="prev" title="dolfin_mech.materials.elastic.NeoHookeanMooneyRivlin" href="../NeoHookeanMooneyRivlin/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../api_toc.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../index.html">Core Package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/FOI/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/QOI/index.html">Qoi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../kinematics/InverseKinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../kinematics/Kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../kinematics/LinearizedKinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html">Materials</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Material/index.html">Material</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../../api_toc.html">API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Core Package</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Materials</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Elastic</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.materials.elastic.OgdenCiarletGeymonat</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/api/dolfin_mech/materials/elastic/OgdenCiarletGeymonat/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-dolfin_mech.materials.elastic.OgdenCiarletGeymonat">
+<span id="dolfin-mech-materials-elastic-ogdenciarletgeymonat"></span><h1>dolfin_mech.materials.elastic.OgdenCiarletGeymonat<a class="headerlink" href="#module-dolfin_mech.materials.elastic.OgdenCiarletGeymonat" title="Link to this heading"></a></h1>
+<p>Ciarlet-Geymonat volumetric elastic material implementation.</p>
+<p>This module provides a strictly convex volumetric potential used to penalize
+volume changes and prevent numerical inversion in hyperelastic formulations.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dolfin_mech.materials.elastic.OgdenCiarletGeymonat.OgdenCiarletGeymonat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.OgdenCiarletGeymonat.</span></span><span class="sig-name descname"><span class="pre">OgdenCiarletGeymonat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decoup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.elastic.OgdenCiarletGeymonat.OgdenCiarletGeymonat" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../Elastic/index.html#dolfin_mech.materials.elastic.Elastic.ElasticMaterial" title="dolfin_mech.materials.elastic.Elastic.ElasticMaterial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin_mech.materials.elastic.Elastic.ElasticMaterial</span></code></a></p>
+<p>Class representing the Ciarlet-Geymonat volumetric elastic material model.</p>
+<p>This model provides a strictly convex volumetric strain energy density
+functional. It is often used as the compressible part of a hyperelastic
+formulation to penalize volume changes and prevent element inversion.</p>
+<p>The strain energy density <span class="math notranslate nohighlight">\(\Psi\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\Psi = C_0 (J^2 - 1 - 2\ln(J))\]</div>
+<dl class="simple">
+<dt>Where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(J = \det(\mathbf{F})\)</span> is the volume ratio (Jacobian).</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_0\)</span> is a material parameter related to the bulk modulus.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The second Piola-Kirchhoff stress <span class="math notranslate nohighlight">\(\mathbf{\Sigma}\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\Sigma} = 2 C_0 (J^2 - 1) \mathbf{C}^{-1}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kinematics</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Kinematics</span></code>) – Object containing kinematic variables (J, C_inv, etc.).</p></li>
+<li><p><strong>C0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – Material constant scaling the volumetric response.</p></li>
+<li><p><strong>Psi</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">UFL</span> <span class="pre">expression</span></code>) – Volumetric strain energy density.</p></li>
+<li><p><strong>Sigma</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">UFL</span> <span class="pre">expression</span></code>) – Second Piola-Kirchhoff stress tensor.</p></li>
+<li><p><strong>P</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">UFL</span> <span class="pre">expression</span></code>) – First Piola-Kirchhoff stress tensor.</p></li>
+<li><p><strong>sigma</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">UFL</span> <span class="pre">expression</span></code>) – Cauchy stress tensor.</p></li>
+<li><p><strong>checkJ</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – If True, adds a conditional check to ensure <span class="math notranslate nohighlight">\(J &gt; 0\)</span> during stress evaluation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../NeoHookeanMooneyRivlin/index.html" class="btn btn-neutral float-left" title="dolfin_mech.materials.elastic.NeoHookeanMooneyRivlin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../OgdenCiarletGeymonatNeoHookean/index.html" class="btn btn-neutral float-right" title="dolfin_mech.materials.elastic.OgdenCiarletGeymonatNeoHookean" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

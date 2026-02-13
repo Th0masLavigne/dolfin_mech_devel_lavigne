@@ -1,7 +1,0 @@
-dolfin\_mech.Operator\_Inertia
-=====================================
-
-.. automodule:: dolfin_mech.Operator_Inertia
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,7 +1,0 @@
-dolfin\_mech.Material\_Elastic\_Kirchhoff
-================================================
-
-.. automodule:: dolfin_mech.Material_Elastic_Kirchhoff
-   :members:
-   :undoc-members:
-   :show-inheritance:

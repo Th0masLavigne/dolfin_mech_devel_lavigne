@@ -1,0 +1,13 @@
+Core Package
+============
+
+.. contents::
+   :local:
+
+.. toctree::
+   :maxdepth: 3
+   :titlesonly:
+
+   Core <core/index>
+   Kinematics <kinematics/index>
+   Materials <materials/index>

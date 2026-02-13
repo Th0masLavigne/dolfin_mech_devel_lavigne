@@ -1,0 +1,77 @@
+dolfin_mech.core.QOI
+====================
+
+.. py:module:: dolfin_mech.core.QOI
+
+.. autoapi-nested-parse::
+
+   Quantity of Interest (QOI) management module.
+
+   This module provides the QOI class to handle scalar value extraction from
+   finite element simulations, supporting both global integration and point-wise
+   evaluation.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: QOI(name, expr=None, expr_lst=None, norm=1.0, constant=0.0, divide_by_dt=False, form_compiler_parameters={}, point=None, update_type='assembly')
+
+   Class representing a Quantity of Interest (QOI).
+
+   A QOI is a scalar value computed at the end of each time/load step. It is
+   used for post-processing and analysis, often representing global aggregates
+   (integrals) or specific point values.
+
+   Common examples include:
+       - **Global Integrals:** Total volume, total strain energy, homogenized stress.
+       - **Surface Integrals:** Reaction forces, fluxes.
+       - **Point Values:** Displacement at a specific node, pressure at a sensor.
+
+   The class handles the calculation method (assembly vs. direct evaluation)
+   and optional normalization or time-derivative scaling.
+
+   :Parameters: * **name** (:py:class:`str`) -- The identifier for the QOI (e.g., "vol", "sigma_XX").
+                * **expr** (:py:class:`ufl.core.expr.Expr, optional`) -- The UFL form or expression to evaluate.
+                * **expr_lst** (:py:class:`list, optional`) -- A list of UFL forms, one for each load step.
+                * **norm** (:py:class:`float, optional`) -- A scaling factor to divide the result by.
+                  Defaults to 1.0.
+                * **constant** (:py:class:`float, optional`) -- A constant offset added to the result.
+                  Defaults to 0.0.
+                * **divide_by_dt** (:py:class:`bool, optional`) -- If True, divides the result by the time
+                  step ``dt``. Defaults to False.
+                * **form_compiler_parameters** (:py:class:`dict, optional`) -- Compiler options for the
+                  FEniCS assembler. Defaults to {}.
+                * **point** (:py:class:`tuple or list, optional`) -- The spatial coordinate for point-wise
+                  evaluation. Required if ``update_type="direct"``.
+                * **update_type** (:py:class:`str, optional`) -- The evaluation strategy. Options are:
+
+                  * ``"assembly"``: Performs a global FEM integration (default).
+                  * ``"direct"``: Evaluates a function at a specific point.
+
+
+   .. py:method:: update_assembly(dt=None, k_step=None, expr=None)
+
+      Computes the QOI value by assembling (integrating) over the mesh.
+
+      :Parameters: * **dt** (:py:class:`float, optional`) -- Time step size (required if ``divide_by_dt`` is True).
+                   * **k_step** (:py:class:`int, optional`) -- Current step index (used to select from ``expr_lst``).
+                   * **expr** (:py:class:`ufl.core.expr.Expr, optional`) -- Optional override for the expression.
+
+
+
+   .. py:method:: update_direct(dt=None, k_step=None)
+
+      Computes the QOI value by evaluating at a specific point.
+
+      This is a MPI-safe version of point evaluation. An error is raised if
+      the point is outside the domain.
+
+      :Parameters: * **dt** (:py:class:`float, optional`) -- Time step size (required if ``divide_by_dt`` is True).
+                   * **k_step** (:py:class:`int, optional`) -- Current step index.
+
+
+

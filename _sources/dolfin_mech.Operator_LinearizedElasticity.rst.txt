@@ -1,7 +1,0 @@
-dolfin\_mech.Operator\_LinearizedElasticity
-==================================================
-
-.. automodule:: dolfin_mech.Operator_LinearizedElasticity
-   :members:
-   :undoc-members:
-   :show-inheritance:

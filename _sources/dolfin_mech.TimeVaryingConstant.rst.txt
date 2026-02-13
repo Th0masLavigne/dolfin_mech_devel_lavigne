@@ -1,7 +1,0 @@
-dolfin\_mech.TimeVaryingConstant
-=======================================
-
-.. automodule:: dolfin_mech.TimeVaryingConstant
-   :members:
-   :undoc-members:
-   :show-inheritance:

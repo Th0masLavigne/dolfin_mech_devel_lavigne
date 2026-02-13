@@ -1,7 +1,0 @@
-dolfin\_mech.Problem
-===========================
-
-.. automodule:: dolfin_mech.Problem
-   :members:
-   :undoc-members:
-   :show-inheritance:

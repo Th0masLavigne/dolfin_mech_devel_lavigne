@@ -1,7 +1,0 @@
-dolfin\_mech.Operator\_Penalty\_DirectionalDisplacement
-==============================================================
-
-.. automodule:: dolfin_mech.Operator_Penalty_DirectionalDisplacement
-   :members:
-   :undoc-members:
-   :show-inheritance:

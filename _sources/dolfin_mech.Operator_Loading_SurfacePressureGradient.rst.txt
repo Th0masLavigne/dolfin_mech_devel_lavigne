@@ -1,7 +1,0 @@
-dolfin\_mech.Operator\_Loading\_SurfacePressureGradient
-==============================================================
-
-.. automodule:: dolfin_mech.Operator_Loading_SurfacePressureGradient
-   :members:
-   :undoc-members:
-   :show-inheritance:

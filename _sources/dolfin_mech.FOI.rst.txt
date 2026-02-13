@@ -1,7 +1,0 @@
-dolfin\_mech.FOI
-=======================
-
-.. automodule:: dolfin_mech.FOI
-   :members:
-   :undoc-members:
-   :show-inheritance:

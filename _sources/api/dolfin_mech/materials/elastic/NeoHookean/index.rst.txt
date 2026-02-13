@@ -1,0 +1,65 @@
+dolfin_mech.materials.elastic.NeoHookean
+========================================
+
+.. py:module:: dolfin_mech.materials.elastic.NeoHookean
+
+.. autoapi-nested-parse::
+
+   Neo-Hookean hyperelastic material implementation.
+
+   This module provides the Neo-Hookean model with support for both standard
+   compressible and isochoric-volumetric decoupled formulations.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: NeoHookean(kinematics, parameters, decoup=False)
+
+   Bases: :py:obj:`Elastic.ElasticMaterial`
+
+
+   Class representing a Neo-Hookean hyperelastic material model.
+
+   The Neo-Hookean model is an extension of Hooke's law for large deformations.
+   It is physically based on the statistical thermodynamics of polymer chains
+   and is suitable for modeling rubber-like materials or biological tissues.
+
+   The strain energy density :math:`\Psi` depends on the formulation:
+
+   **Standard Coupled Formulation (decoup=False):**
+
+   This is a compressible Neo-Hookean model where the volumetric part is
+   handled via a logarithmic term.
+
+   .. math::
+       \Psi_{3D} = C_1 (I_C - 3 - 2\ln(J))
+
+   .. math::
+       \Psi_{2D} = C_1 (I_C - 2 - 2\ln(J))
+
+   **Decoupled Formulation (decoup=True):**
+
+   Uses the isochoric (deviatoric) first invariant :math:`\bar{I}_C = J^{-2/3} I_C`:
+
+   .. math::
+       \Psi_{3D} = C_1 (\bar{I}_C - 3)
+
+   :ivar kinematics: Kinematic variables (tensors and invariants).
+   :vartype kinematics: :py:class:`Kinematics`
+   :ivar C1: Material constant (often :math:`\mu/2`).
+   :vartype C1: :py:class:`float`
+   :ivar Psi: Strain energy density.
+   :vartype Psi: :py:class:`UFL expression`
+   :ivar Sigma: Second Piola-Kirchhoff stress tensor.
+   :vartype Sigma: :py:class:`UFL expression`
+   :ivar P: First Piola-Kirchhoff stress tensor.
+   :vartype P: :py:class:`UFL expression`
+   :ivar sigma: Cauchy stress tensor.
+
+   :vartype sigma: :py:class:`UFL expression`
+
+
