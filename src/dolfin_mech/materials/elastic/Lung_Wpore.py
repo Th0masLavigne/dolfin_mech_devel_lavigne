@@ -1,0 +1,97 @@
+# coding=utf8
+
+################################################################################
+###                                                                          ###
+### Created by Martin Genet, 2018-2025                                       ###
+###                                                                          ###
+### École Polytechnique, Palaiseau, France                                   ###
+###                                                                          ###
+###                                                                          ###
+### And Cécile Patte, 2019-2021                                              ###
+###                                                                          ###
+### INRIA, Palaiseau, France                                                 ###
+###                                                                          ###
+###                                                                          ###
+### And Colin Laville, 2021-2022                                             ###
+###                                                                          ###
+### École Polytechnique, Palaiseau, France                                   ###
+###                                                                          ###
+################################################################################
+
+"""Pore-level lung tissue elasticity implementation.
+
+This module provides energy potentials representing alveolar resistance to
+extreme compression (collapse) and extension (distension).
+"""
+
+import dolfin
+
+from .Elastic import ElasticMaterial
+
+################################################################################
+
+
+class WporeLung(ElasticMaterial):
+	r"""Class representing the pore-level elastic energy of lung tissue.
+
+	Typically modeling the resistance of alveoli to collapse (atelectasis) and over-distension.
+
+    This material model defines a potential based on the ratio of the current
+    fluid volume fraction :math:`\Phi_f` to the reference fraction :math:`\Phi_{f0}`
+    The energy is zero within a "physiological range" and grows according to a
+    power law beyond specific upper and lower thresholds.
+
+    The strain energy density :math:`\Psi` is defined using a triple conditional:
+
+    .. math::
+        \Psi = \eta \cdot
+        \begin{cases}
+        (r_{inf}/r - 1)^{n+1} & \text{if } r < r_{inf} \\
+        (r/r_{sup} - 1)^{n+1} & \text{if } r > r_{sup} \\
+        0 & \text{otherwise}
+        \end{cases}
+
+    Where:
+        - :math:`r = \Phi_f / \Phi_{f0}` is the volume fraction ratio.
+        - :math:`r_{inf} = \Phi_{f0}^{p-1}` is the lower activation threshold.
+        - :math:`r_{sup} = \Phi_{f0}^{1/q-1}` is the upper activation threshold.
+        - :math:`\eta` is the stiffness scaling parameter.
+        - :math:`n, p, q` are shape and threshold parameters.
+
+	Attributes:
+        eta (dolfin.Constant): Stiffness parameter for the pore energy.
+        n, p, q (dolfin.Constant): Power-law and threshold exponents.
+        Psi (UFL expression): The calculated conditional strain energy density.
+        dWporedPhif (UFL expression): Derivative of the energy with respect to the fluid volume fraction.
+
+	"""
+
+	def __init__(self, Phif, Phif0, parameters):
+		"""Initializes the WporeLungElasticMaterial.
+
+		Args:
+		    Phif: Current fluid volume fraction (e.g., air/porosity).
+		    Phif0: Reference fluid volume fraction.
+		    parameters: Dictionary containing 'eta' (required), and optionally 'n', 'p', 'q'.
+		"""
+		assert "eta" in parameters
+		self.eta = dolfin.Constant(parameters["eta"])
+
+		self.n = dolfin.Constant(parameters.get("n", 1))
+		self.p = dolfin.Constant(parameters.get("p", 1))
+		self.q = dolfin.Constant(parameters.get("q", 1))
+
+		Phif = dolfin.variable(Phif)
+		r = Phif / Phif0
+		r_inf = Phif0 ** (self.p - 1)
+		r_sup = Phif0 ** (1 / self.q - 1)
+		self.Psi = self.eta * dolfin.conditional(
+			dolfin.lt(r, 0.0),
+			r / dolfin.Constant(0.0),
+			dolfin.conditional(
+				dolfin.lt(r, r_inf),
+				(r_inf / r - 1) ** (self.n + 1),
+				dolfin.conditional(dolfin.gt(r, r_sup), (r / r_sup - 1) ** (self.n + 1), 0.0),
+			),
+		)
+		self.dWporedPhif = dolfin.diff(self.Psi, Phif)

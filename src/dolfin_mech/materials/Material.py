@@ -14,8 +14,8 @@ This module provides a unified framework for defining and instantiating material
 constitutive laws within the ``dolfin_mech`` ecosystem. It serves two primary roles:
 
 1. **Parameter Normalization**: A base ``Material`` class provides automated
-   conversion between engineering constants (e.g., $E, \nu$) and theoretical
-   parameters (e.g., $\lambda, \mu$).
+   conversion between engineering constants (e.g., :math:`E, \nu`) and theoretical
+   parameters (e.g., :math:`\lambda, \mu`).
 2. **The Material Factory**: A robust dispatcher function that maps string
    identifiers to specific elastic material classes.
 
@@ -59,7 +59,7 @@ Key Features
   vs. Plane Strain/3D conditions when calculating $\lambda$ from Young's
   Modulus and Poisson's ratio.
 * **Hyperelastic Coefficients**: Built-in logic to derive hyperelastic constants
-  ($C_{10}, C_{01}$) from shear moduli if they are not explicitly provided.
+  (:math:`C_{10}, C_{01}`) from shear moduli if they are not explicitly provided.
 * **Decoupled Formulations**: The ``_bar`` suffix in the factory triggers
   the ``decoup=True`` flag, essential for nearly-incompressible materials
   where volumetric and isochoric responses are separated.
