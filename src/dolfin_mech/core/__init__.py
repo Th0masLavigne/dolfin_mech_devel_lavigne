@@ -3,5 +3,6 @@
 from .compute_error import compute_error
 from .FOI import FOI
 from .QOI import QOI
+from .TimeVaryingConstant import TimeVaryingConstant
 
-__all__ = ["FOI", "QOI", "compute_error"]
+__all__ = ["FOI", "QOI", "compute_error", "TimeVaryingConstant"]
