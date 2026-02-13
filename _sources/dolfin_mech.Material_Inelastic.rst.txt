@@ -1,0 +1,7 @@
+dolfin\_mech.Material\_Inelastic
+=======================================
+
+.. automodule:: dolfin_mech.Material_Inelastic
+   :members:
+   :undoc-members:
+   :show-inheritance:

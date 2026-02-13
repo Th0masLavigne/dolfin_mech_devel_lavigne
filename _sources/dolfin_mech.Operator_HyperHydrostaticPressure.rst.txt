@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_HyperHydrostaticPressure
+======================================================
+
+.. automodule:: dolfin_mech.Operator_HyperHydrostaticPressure
+   :members:
+   :undoc-members:
+   :show-inheritance:

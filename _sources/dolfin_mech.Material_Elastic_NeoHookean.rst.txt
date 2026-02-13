@@ -1,0 +1,7 @@
+dolfin\_mech.Material\_Elastic\_NeoHookean
+=================================================
+
+.. automodule:: dolfin_mech.Material_Elastic_NeoHookean
+   :members:
+   :undoc-members:
+   :show-inheritance:

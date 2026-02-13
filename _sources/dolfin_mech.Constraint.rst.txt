@@ -1,0 +1,7 @@
+dolfin\_mech.Constraint
+==============================
+
+.. automodule:: dolfin_mech.Constraint
+   :members:
+   :undoc-members:
+   :show-inheritance:

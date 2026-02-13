@@ -1,0 +1,7 @@
+dolfin\_mech.Material\_Elastic\_Hooke
+============================================
+
+.. automodule:: dolfin_mech.Material_Elastic_Hooke
+   :members:
+   :undoc-members:
+   :show-inheritance:

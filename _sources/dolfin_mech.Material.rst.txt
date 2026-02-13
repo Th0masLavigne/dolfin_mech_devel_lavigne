@@ -1,0 +1,7 @@
+dolfin\_mech.Material
+============================
+
+.. automodule:: dolfin_mech.Material
+   :members:
+   :undoc-members:
+   :show-inheritance:

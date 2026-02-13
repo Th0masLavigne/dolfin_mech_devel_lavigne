@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_MicroPoro\_DeformedFluidVolume
+============================================================
+
+.. automodule:: dolfin_mech.Operator_MicroPoro_DeformedFluidVolume
+   :members:
+   :undoc-members:
+   :show-inheritance:

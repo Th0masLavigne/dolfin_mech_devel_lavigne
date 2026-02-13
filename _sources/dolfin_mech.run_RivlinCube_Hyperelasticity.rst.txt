@@ -1,0 +1,7 @@
+dolfin\_mech.run\_RivlinCube\_Hyperelasticity
+====================================================
+
+.. automodule:: dolfin_mech.run_RivlinCube_Hyperelasticity
+   :members:
+   :undoc-members:
+   :show-inheritance:

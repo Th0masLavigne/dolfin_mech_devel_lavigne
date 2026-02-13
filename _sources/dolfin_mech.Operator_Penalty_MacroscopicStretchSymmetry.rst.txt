@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_Penalty\_MacroscopicStretchSymmetry
+=================================================================
+
+.. automodule:: dolfin_mech.Operator_Penalty_MacroscopicStretchSymmetry
+   :members:
+   :undoc-members:
+   :show-inheritance:

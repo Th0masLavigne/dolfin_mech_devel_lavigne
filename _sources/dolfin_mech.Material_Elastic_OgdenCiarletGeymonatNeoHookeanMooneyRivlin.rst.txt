@@ -1,0 +1,7 @@
+dolfin\_mech.Material\_Elastic\_OgdenCiarletGeymonatNeoHookeanMooneyRivlin
+=================================================================================
+
+.. automodule:: dolfin_mech.Material_Elastic_OgdenCiarletGeymonatNeoHookeanMooneyRivlin
+   :members:
+   :undoc-members:
+   :show-inheritance:

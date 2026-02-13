@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_Penalty\_NormalDisplacement
+=========================================================
+
+.. automodule:: dolfin_mech.Operator_Penalty_NormalDisplacement
+   :members:
+   :undoc-members:
+   :show-inheritance:

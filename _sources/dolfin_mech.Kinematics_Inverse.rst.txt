@@ -1,0 +1,7 @@
+dolfin\_mech.Kinematics\_Inverse
+=======================================
+
+.. automodule:: dolfin_mech.Kinematics_Inverse
+   :members:
+   :undoc-members:
+   :show-inheritance:

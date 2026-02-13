@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_HyperIncompressibility
+====================================================
+
+.. automodule:: dolfin_mech.Operator_HyperIncompressibility
+   :members:
+   :undoc-members:
+   :show-inheritance:

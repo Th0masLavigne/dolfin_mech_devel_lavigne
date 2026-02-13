@@ -1,0 +1,7 @@
+dolfin\_mech.Operator
+============================
+
+.. automodule:: dolfin_mech.Operator
+   :members:
+   :undoc-members:
+   :show-inheritance:

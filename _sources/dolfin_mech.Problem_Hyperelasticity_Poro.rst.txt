@@ -1,0 +1,7 @@
+dolfin\_mech.Problem\_Hyperelasticity\_Poro
+==================================================
+
+.. automodule:: dolfin_mech.Problem_Hyperelasticity_Poro
+   :members:
+   :undoc-members:
+   :show-inheritance:

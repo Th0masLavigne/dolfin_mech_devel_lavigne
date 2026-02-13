@@ -1,0 +1,7 @@
+dolfin\_mech.QOI
+=======================
+
+.. automodule:: dolfin_mech.QOI
+   :members:
+   :undoc-members:
+   :show-inheritance:

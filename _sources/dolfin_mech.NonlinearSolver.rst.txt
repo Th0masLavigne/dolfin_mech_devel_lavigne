@@ -1,0 +1,7 @@
+dolfin\_mech.NonlinearSolver
+===================================
+
+.. automodule:: dolfin_mech.NonlinearSolver
+   :members:
+   :undoc-members:
+   :show-inheritance:

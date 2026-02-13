@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_Loading\_SurfaceTension
+=====================================================
+
+.. automodule:: dolfin_mech.Operator_Loading_SurfaceTension
+   :members:
+   :undoc-members:
+   :show-inheritance:

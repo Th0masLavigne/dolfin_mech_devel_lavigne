@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_DarcyFlow
+=======================================
+
+.. automodule:: dolfin_mech.Operator_DarcyFlow
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+dolfin\_mech.Problem\_Hyperelasticity
+============================================
+
+.. automodule:: dolfin_mech.Problem_Hyperelasticity
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+dolfin\_mech.Loading
+===========================
+
+.. automodule:: dolfin_mech.Loading
+   :members:
+   :undoc-members:
+   :show-inheritance:

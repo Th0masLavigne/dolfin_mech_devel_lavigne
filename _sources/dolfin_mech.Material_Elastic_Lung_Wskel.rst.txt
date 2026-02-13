@@ -1,0 +1,7 @@
+dolfin\_mech.Material\_Elastic\_Lung\_Wskel
+==================================================
+
+.. automodule:: dolfin_mech.Material_Elastic_Lung_Wskel
+   :members:
+   :undoc-members:
+   :show-inheritance:

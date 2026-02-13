@@ -1,0 +1,7 @@
+dolfin\_mech.SubDomain\_Pinpoint
+=======================================
+
+.. automodule:: dolfin_mech.SubDomain_Pinpoint
+   :members:
+   :undoc-members:
+   :show-inheritance:

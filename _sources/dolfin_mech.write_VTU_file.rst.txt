@@ -1,0 +1,7 @@
+dolfin\_mech.write\_VTU\_file
+====================================
+
+.. automodule:: dolfin_mech.write_VTU_file
+   :members:
+   :undoc-members:
+   :show-inheritance:

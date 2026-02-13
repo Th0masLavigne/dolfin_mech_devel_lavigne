@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_Poro\_Wpore
+=========================================
+
+.. automodule:: dolfin_mech.Operator_Poro_Wpore
+   :members:
+   :undoc-members:
+   :show-inheritance:

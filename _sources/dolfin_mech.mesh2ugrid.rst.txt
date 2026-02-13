@@ -1,0 +1,7 @@
+dolfin\_mech.mesh2ugrid
+==============================
+
+.. automodule:: dolfin_mech.mesh2ugrid
+   :members:
+   :undoc-members:
+   :show-inheritance:

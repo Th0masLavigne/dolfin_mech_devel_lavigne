@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_Constraint\_MacroscopicStressComponent
+====================================================================
+
+.. automodule:: dolfin_mech.Operator_Constraint_MacroscopicStressComponent
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+dolfin\_mech.XDMFFile
+============================
+
+.. automodule:: dolfin_mech.XDMFFile
+   :members:
+   :undoc-members:
+   :show-inheritance:

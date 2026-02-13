@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_Penalty\_MacroscopicStressComponent
+=================================================================
+
+.. automodule:: dolfin_mech.Operator_Penalty_MacroscopicStressComponent
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+dolfin\_mech.Kinematics\_Linearized
+==========================================
+
+.. automodule:: dolfin_mech.Kinematics_Linearized
+   :members:
+   :undoc-members:
+   :show-inheritance:

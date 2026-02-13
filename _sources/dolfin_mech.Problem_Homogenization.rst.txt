@@ -1,0 +1,7 @@
+dolfin\_mech.Problem\_Homogenization
+===========================================
+
+.. automodule:: dolfin_mech.Problem_Homogenization
+   :members:
+   :undoc-members:
+   :show-inheritance:

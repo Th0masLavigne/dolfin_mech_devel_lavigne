@@ -1,0 +1,7 @@
+dolfin\_mech.run\_Disc\_Hyperelasticity
+==============================================
+
+.. automodule:: dolfin_mech.run_Disc_Hyperelasticity
+   :members:
+   :undoc-members:
+   :show-inheritance:

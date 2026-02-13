@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_HyperElasticity
+=============================================
+
+.. automodule:: dolfin_mech.Operator_HyperElasticity
+   :members:
+   :undoc-members:
+   :show-inheritance:

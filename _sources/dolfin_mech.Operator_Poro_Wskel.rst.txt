@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_Poro\_Wskel
+=========================================
+
+.. automodule:: dolfin_mech.Operator_Poro_Wskel
+   :members:
+   :undoc-members:
+   :show-inheritance:

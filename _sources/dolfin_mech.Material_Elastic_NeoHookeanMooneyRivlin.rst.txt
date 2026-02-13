@@ -1,0 +1,7 @@
+dolfin\_mech.Material\_Elastic\_NeoHookeanMooneyRivlin
+=============================================================
+
+.. automodule:: dolfin_mech.Material_Elastic_NeoHookeanMooneyRivlin
+   :members:
+   :undoc-members:
+   :show-inheritance:

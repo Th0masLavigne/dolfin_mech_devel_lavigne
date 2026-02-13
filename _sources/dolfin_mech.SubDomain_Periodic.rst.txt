@@ -1,0 +1,7 @@
+dolfin\_mech.SubDomain\_Periodic
+=======================================
+
+.. automodule:: dolfin_mech.SubDomain_Periodic
+   :members:
+   :undoc-members:
+   :show-inheritance:

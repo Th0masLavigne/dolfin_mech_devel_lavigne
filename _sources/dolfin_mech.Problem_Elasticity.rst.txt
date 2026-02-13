@@ -1,0 +1,7 @@
+dolfin\_mech.Problem\_Elasticity
+=======================================
+
+.. automodule:: dolfin_mech.Problem_Elasticity
+   :members:
+   :undoc-members:
+   :show-inheritance:

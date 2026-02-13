@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_Penalty\_LagrangeMultiplierComponent
+==================================================================
+
+.. automodule:: dolfin_mech.Operator_Penalty_LagrangeMultiplierComponent
+   :members:
+   :undoc-members:
+   :show-inheritance:

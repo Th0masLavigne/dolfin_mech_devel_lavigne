@@ -1,0 +1,7 @@
+dolfin\_mech.SubSol
+==========================
+
+.. automodule:: dolfin_mech.SubSol
+   :members:
+   :undoc-members:
+   :show-inheritance:

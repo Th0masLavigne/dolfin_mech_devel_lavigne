@@ -1,0 +1,7 @@
+dolfin\_mech.Kinematics
+==============================
+
+.. automodule:: dolfin_mech.Kinematics
+   :members:
+   :undoc-members:
+   :show-inheritance:

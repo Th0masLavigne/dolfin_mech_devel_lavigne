@@ -1,0 +1,7 @@
+dolfin\_mech.Operator\_LinearizedIncompressibility
+=========================================================
+
+.. automodule:: dolfin_mech.Operator_LinearizedIncompressibility
+   :members:
+   :undoc-members:
+   :show-inheritance:

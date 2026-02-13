@@ -1,0 +1,7 @@
+dolfin\_mech.compute\_error
+==================================
+
+.. automodule:: dolfin_mech.compute_error
+   :members:
+   :undoc-members:
+   :show-inheritance:
