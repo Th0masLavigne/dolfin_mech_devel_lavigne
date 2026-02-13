@@ -12,6 +12,7 @@ from .MooneyRivlin import MooneyRivlin
 from .NeoHookean import NeoHookean
 from .NeoHookeanMooneyRivlin import NeoHookeanMooneyRivlin
 from .OgdenCiarletGeymonat import OgdenCiarletGeymonat
+from .OgdenCiarletGeymonatNeoHookean import OgdenCiarletGeymonatNeoHookean
 
 __all__ = [
 	"ExponentialNeoHookean",
@@ -30,4 +31,5 @@ __all__ = [
 	"NeoHookean",
 	"NeoHookeanMooneyRivlin",
 	"OgdenCiarletGeymonat",
+	"OgdenCiarletGeymonatNeoHookean",
 ]
