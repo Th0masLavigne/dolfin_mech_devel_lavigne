@@ -26,6 +26,13 @@ class Kinematics:
 	isochoric (bar) versions based on the displacement field :math:`\mathbf{U}`.
 	It also supports time-stepping (old states) and local frame transformations.
 
+	Args:
+		U (dolfin.Function): Current displacement field.
+		U_old (dolfin.Function, optional): Displacement field from the previous
+		        time step. Defaults to None.
+		Q_expr (dolfin.Expression, optional): Rotation matrix for local
+		        coordinate systems. Defaults to None.
+
 	Attributes:
 	    U (dolfin.Function): The current displacement field.
 	    dim (int): Spatial dimension.
