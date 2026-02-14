@@ -11,6 +11,7 @@
 [![PyPi Version](https://img.shields.io/pypi/v/dolfin-mech.svg?style=flat-square)](https://pypi.org/project/dolfin-mech)
 [![PyPI Downloads](https://static.pepy.tech/badge/dolfin-mech)](https://pepy.tech/projects/dolfin-mech)
 [![Docs](https://img.shields.io/badge/docs-orange)](https://mgenet.github.io/dolfin_mech)
+[![Docs_restructure_lavigne](https://img.shields.io/badge/docs_restructure-orange)](https://th0maslavigne.github.io/dolfin_mech_devel_lavigne)
 
 ---
 
@@ -179,6 +180,7 @@ sphinx-build -d html docs/src/ ../docs/build_docs/
 This framework has been validated and utilized in numerous peer-reviewed studies across biomechanics and materials science:
 
 <sub>
+
 * [[Genet (2019). A relaxed growth modeling framework for controlling growth-induced residual stresses. Clinical Biomechanics.](https://doi.org/10.1016/j.clinbiomech.2019.08.015)]
 * [[Álvarez-Barrientos, Hurtado & Genet (2021). Pressure-driven micro-poro-mechanics: A variational framework for modeling the response of porous materials. International Journal of Engineering Science.](https://doi.org/10.1016/j.ijengsci.2021.103586)]
 * [[Patte, Genet & Chapelle (2022). A quasi-static poromechanical model of the lungs. Biomechanics and Modeling in Mechanobiology.](https://doi.org/10.1007/s10237-021-01547-0)]
@@ -190,4 +192,5 @@ This framework has been validated and utilized in numerous peer-reviewed studies
 * [[Manoochehrtayebi, Bel-Brunon & Genet (2025). Finite strain micro-poro-mechanics: Formulation and compared analysis with macro-poro-mechanics. International Journal of Solids and Structures.](https://doi.org/10.1016/j.ijsolstr.2025.113354)]
 * [[Peyraut & Genet (2025). Inverse Uncertainty Quantification for Personalized Biomechanical Modeling: Application to Pulmonary Poromechanical Digital Twins. Journal of Biomechanical Engineering.](https://doi.org/10.1115/1.4068578)]
 * [[Manoochehrtayebi, Genet & Bel-Brunon (2025). Micro-poro-mechanical modeling of lung parenchyma: Theoretical modeling and parameters identification. Journal of Biomechanical Engineering.](https://doi.org/10.1115/1.4070036)]
+
 </sub>
