@@ -7,6 +7,7 @@ current_dir = Path(__file__).parent.resolve()
 project_root = current_dir.parent.parent
 sys.path.insert(0, str(project_root))
 sys.path.insert(0, str(project_root/ "src"))
+src_path = project_root / "src"
 # -----------------------------------------------------------------------------
 # Project information
 # -----------------------------------------------------------------------------
@@ -79,8 +80,8 @@ napoleon_use_rtype = True
 # -----------------------------------------------------------------------------
 autoapi_type = "python"
 autoapi_dirs = [
-	"../../src/dolfin_mech",
-	"../../Tests"
+	str(src_path / "dolfin_mech"),
+	str(project_root / "Tests")
 ]
 autoapi_ignore = [
 	"*LEGACY_resources/*"
