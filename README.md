@@ -119,7 +119,7 @@ docker build -t dolfin_mech:latest -f docker/dolfin_mech/Dockerfile .
 ```
 **Run the container:**
 Assuming the following folder organization:
-```terminal
+```bash
 project
 ├── outputs
 └── source
