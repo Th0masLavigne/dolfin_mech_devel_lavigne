@@ -10,9 +10,16 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/scientificcomputing/fenics-gmsh:2024-05-30
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      
+      - name: Install system dependencies for Gmsh and Docs
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libglu1-mesa libgl1-mesa-dri libglx-mesa0 xvfb mesa-utils
 
       - name: Set up Python
         uses: actions/setup-python@v5
