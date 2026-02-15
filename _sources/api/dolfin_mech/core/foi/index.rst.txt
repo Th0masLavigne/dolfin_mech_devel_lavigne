@@ -1,0 +1,82 @@
+dolfin_mech.core.foi
+====================
+
+.. py:module:: dolfin_mech.core.foi
+
+.. autoapi-nested-parse::
+
+   Field of Interest (FOI) management module.
+
+   This module provides the FOI class to handle the projection and interpolation
+   of mathematical expressions onto FEniCS function spaces.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: FOI(expr=None, fs=None, func=None, name=None, form_compiler_parameters={}, update_type='local_solver')
+
+   Class to manage Field of Interest (FOI) calculations and updates.
+
+   An FOI represents a spatial field (like stress, strain, or porosity) derived
+   from a UFL expression. This class handles the mapping of that expression
+   onto a FEniCS Function Space using various projection or interpolation methods.
+
+   :Parameters: * **expr** (:py:class:`ufl.core.expr.Expr, optional`) -- The mathematical expression to
+                  be evaluated.
+                * **fs** (:py:class:`dolfin.FunctionSpace, optional`) -- The space onto which the
+                  expression is mapped.
+                * **func** (:py:class:`dolfin.Function, optional`) -- An existing function to use
+                  for storage.
+                * **name** (:py:class:`str, optional`) -- Name of the field (used for XDMF export).
+                * **form_compiler_parameters** (:py:class:`dict, optional`) -- Parameters passed to the
+                  FEniCS form compiler.
+                * **update_type** (:py:class:`str, optional`) -- The numerical method for updating the
+                  field. Options are:
+
+                  * ``"local_solver"``: Efficient cell-wise projection (default).
+                  * ``"project"``: Global L2 projection.
+                  * ``"interpolate"``: Pointwise interpolation.
+
+   :ivar func: The actual FEniCS function storing the field data.
+   :vartype func: :py:class:`dolfin.Function`
+   :ivar expr: The UFL expression used to compute the field.
+   :vartype expr: :py:class:`ufl.core.expr.Expr`
+   :ivar fs: The function space where the field is defined.
+   :vartype fs: :py:class:`dolfin.FunctionSpace`
+   :ivar update: Method used to refresh the field values (e.g.,
+                 :py:meth:`update_local_solver`).
+
+   :vartype update: :py:class:`callable`
+
+
+   .. py:method:: update_local_solver()
+
+      Update the field using a local solver (cell-wise L2 projection).
+
+      This is typically the fastest method for Quadrature spaces or
+      Discontinuous Lagrange spaces where cells are independent.
+
+
+
+   .. py:method:: update_project()
+
+      Update the field using global L2 projection via ``dolfin.project``.
+
+
+
+   .. py:method:: update_interpolate()
+
+      Update the field using pointwise interpolation via ``dolfin.Function.interpolate``.
+
+
+
+   .. py:method:: update_none()
+
+      Dummy update method for fields that do not require re-calculation.
+
+
+

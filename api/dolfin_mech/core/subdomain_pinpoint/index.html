@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.core.subdomain_pinpoint &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=8e4cdb55"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="dolfin_mech.core.subsol" href="../subsol/index.html" />
+    <link rel="prev" title="dolfin_mech.core.subdomain_periodic" href="../subdomain_periodic/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../api_toc.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Core Package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Core</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/operator/index.html">Operator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../api_toc.html">API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Core Package</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Core</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.core.subdomain_pinpoint</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/api/dolfin_mech/core/subdomain_pinpoint/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-dolfin_mech.core.subdomain_pinpoint">
+<span id="dolfin-mech-core-subdomain-pinpoint"></span><h1>dolfin_mech.core.subdomain_pinpoint<a class="headerlink" href="#module-dolfin_mech.core.subdomain_pinpoint" title="Link to this heading"></a></h1>
+<p>Defines the PinpointSubDomain class.</p>
+<p>A utility for isolating specific
+coordinates within a mesh to apply point-wise constraints, concentrated
+loads, or local tracking sensors.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.core.subdomain_pinpoint.</span></span><span class="sig-name descname"><span class="pre">PinpointSubDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin.SubDomain</span></code></p>
+<p>SubDomain subclass for identifying a specific point in the mesh.</p>
+<p>This class selects a node (or nodes) that fall within a specified tolerance
+of a target coordinate. It is commonly used for:</p>
+<ol class="arabic simple">
+<li><p><strong>Point Constraints</strong>: Preventing rigid body translations/rotations by pinning specific nodes.</p></li>
+<li><p><strong>Point Loads</strong>: Applying concentrated forces at specific locations.</p></li>
+<li><p><strong>Sensors</strong>: Identifying nodes for point-wise data extraction.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coords</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em> or </em><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>) – The target spatial coordinates <span class="math notranslate nohighlight">\((x, y, z)\)</span>.</p></li>
+<li><p><strong>tol</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – The search radius tolerance (default: 1e-3). Nodes within this distance are selected.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.move">
+<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.move" title="Link to this definition"></a></dt>
+<dd><p>Updates the target coordinates.</p>
+<p>This allows the subdomain definition to move over time, which can be useful
+in dynamic simulations or when tracking a moving feature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>coords</strong> – The new target coordinates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.inside">
+<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_boundary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.inside" title="Link to this definition"></a></dt>
+<dd><p>Checks if a point <code class="docutils literal notranslate"><span class="pre">x</span></code> is inside the subdomain.</p>
+<p>Returns True if the Euclidean distance between <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">self.coords</span></code>
+is less than <code class="docutils literal notranslate"><span class="pre">self.tol</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – The point to check.</p></li>
+<li><p><strong>on_boundary</strong> – Flag indicating if the point is on the global boundary (unused here).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.check_inside">
+<span class="sig-name descname"><span class="pre">check_inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.check_inside" title="Link to this definition"></a></dt>
+<dd><p>Debugging utility to find which mesh nodes actually match the criteria.</p>
+<p>Iterates through all mesh coordinates and returns a list of those that
+satisfy the <code class="docutils literal notranslate"><span class="pre">inside</span></code> condition. This is useful for verifying that the
+tolerance is sufficient to catch exactly one node (or the intended nodes).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mesh</strong> – The dolfin Mesh object to search.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of coordinate arrays for matching nodes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../subdomain_periodic/index.html" class="btn btn-neutral float-left" title="dolfin_mech.core.subdomain_periodic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../subsol/index.html" class="btn btn-neutral float-right" title="dolfin_mech.core.subsol" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -8,18 +8,18 @@ Elastic
    :maxdepth: 3
    :titlesonly:
 
-   Elastic <Elastic/index>
-   Exponentialneohookean <ExponentialNeoHookean/index>
-   Exponentialogdenciarletgeymonat <ExponentialOgdenCiarletGeymonat/index>
-   Hooke <Hooke/index>
-   Kirchhoff <Kirchhoff/index>
-   Lung Wbulk <Lung_Wbulk/index>
-   Lung Wpore <Lung_Wpore/index>
-   Lung Wskel <Lung_Wskel/index>
-   Mooneyrivlin <MooneyRivlin/index>
-   Neohookean <NeoHookean/index>
-   Neohookeanmooneyrivlin <NeoHookeanMooneyRivlin/index>
-   Ogdenciarletgeymonat <OgdenCiarletGeymonat/index>
-   Ogdenciarletgeymonatneohookean <OgdenCiarletGeymonatNeoHookean/index>
-   Ogdenciarletgeymonatneohookeanmooneyrivlin <OgdenCiarletGeymonatNeoHookeanMooneyRivlin/index>
-   Porous <Porous/index>
+   Elastic <elastic/index>
+   Exponentialneohookean <exponentialneohookean/index>
+   Exponentialogdenciarletgeymonat <exponentialogdenciarletgeymonat/index>
+   Hooke <hooke/index>
+   Kirchhoff <kirchhoff/index>
+   Lung Wbulk <lung_wbulk/index>
+   Lung Wpore <lung_wpore/index>
+   Lung Wskel <lung_wskel/index>
+   Mooneyrivlin <mooneyrivlin/index>
+   Neohookean <neohookean/index>
+   Neohookeanmooneyrivlin <neohookeanmooneyrivlin/index>
+   Ogdenciarletgeymonat <ogdenciarletgeymonat/index>
+   Ogdenciarletgeymonatneohookean <ogdenciarletgeymonatneohookean/index>
+   Ogdenciarletgeymonatneohookeanmooneyrivlin <ogdenciarletgeymonatneohookeanmooneyrivlin/index>
+   Porous <porous/index>

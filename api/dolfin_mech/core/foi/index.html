@@ -1,0 +1,232 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.core.foi &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=8e4cdb55"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="dolfin_mech.core.loading" href="../loading/index.html" />
+    <link rel="prev" title="dolfin_mech.core.expression_meshfunction_cpp" href="../expression_meshfunction_cpp/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../api_toc.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Core Package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Core</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/operator/index.html">Operator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../api_toc.html">API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Core Package</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Core</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.core.foi</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/api/dolfin_mech/core/foi/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-dolfin_mech.core.foi">
+<span id="dolfin-mech-core-foi"></span><h1>dolfin_mech.core.foi<a class="headerlink" href="#module-dolfin_mech.core.foi" title="Link to this heading"></a></h1>
+<p>Field of Interest (FOI) management module.</p>
+<p>This module provides the FOI class to handle the projection and interpolation
+of mathematical expressions onto FEniCS function spaces.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dolfin_mech.core.foi.FOI">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.core.foi.</span></span><span class="sig-name descname"><span class="pre">FOI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">form_compiler_parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'local_solver'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.foi.FOI" title="Link to this definition"></a></dt>
+<dd><p>Class to manage Field of Interest (FOI) calculations and updates.</p>
+<p>An FOI represents a spatial field (like stress, strain, or porosity) derived
+from a UFL expression. This class handles the mapping of that expression
+onto a FEniCS Function Space using various projection or interpolation methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufl.core.expr.Expr,</span> <span class="pre">optional</span></code>) – The mathematical expression to
+be evaluated.</p></li>
+<li><p><strong>fs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dolfin.FunctionSpace,</span> <span class="pre">optional</span></code>) – The space onto which the
+expression is mapped.</p></li>
+<li><p><strong>func</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dolfin.Function,</span> <span class="pre">optional</span></code>) – An existing function to use
+for storage.</p></li>
+<li><p><strong>name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str,</span> <span class="pre">optional</span></code>) – Name of the field (used for XDMF export).</p></li>
+<li><p><strong>form_compiler_parameters</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict,</span> <span class="pre">optional</span></code>) – Parameters passed to the
+FEniCS form compiler.</p></li>
+<li><p><strong>update_type</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str,</span> <span class="pre">optional</span></code>) – The numerical method for updating the
+field. Options are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;local_solver&quot;</span></code>: Efficient cell-wise projection (default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;project&quot;</span></code>: Global L2 projection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;interpolate&quot;</span></code>: Pointwise interpolation.</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>func</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dolfin.Function</span></code>) – The actual FEniCS function storing the field data.</p></li>
+<li><p><strong>expr</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufl.core.expr.Expr</span></code>) – The UFL expression used to compute the field.</p></li>
+<li><p><strong>fs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dolfin.FunctionSpace</span></code>) – The function space where the field is defined.</p></li>
+<li><p><strong>update</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">callable</span></code>) – Method used to refresh the field values (e.g.,
+<a class="reference internal" href="#dolfin_mech.core.foi.FOI.update_local_solver" title="dolfin_mech.core.foi.FOI.update_local_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_local_solver()</span></code></a>).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.core.foi.FOI.update_local_solver">
+<span class="sig-name descname"><span class="pre">update_local_solver</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.foi.FOI.update_local_solver" title="Link to this definition"></a></dt>
+<dd><p>Update the field using a local solver (cell-wise L2 projection).</p>
+<p>This is typically the fastest method for Quadrature spaces or
+Discontinuous Lagrange spaces where cells are independent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.core.foi.FOI.update_project">
+<span class="sig-name descname"><span class="pre">update_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.foi.FOI.update_project" title="Link to this definition"></a></dt>
+<dd><p>Update the field using global L2 projection via <code class="docutils literal notranslate"><span class="pre">dolfin.project</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.core.foi.FOI.update_interpolate">
+<span class="sig-name descname"><span class="pre">update_interpolate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.foi.FOI.update_interpolate" title="Link to this definition"></a></dt>
+<dd><p>Update the field using pointwise interpolation via <code class="docutils literal notranslate"><span class="pre">dolfin.Function.interpolate</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.core.foi.FOI.update_none">
+<span class="sig-name descname"><span class="pre">update_none</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.foi.FOI.update_none" title="Link to this definition"></a></dt>
+<dd><p>Dummy update method for fields that do not require re-calculation.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../expression_meshfunction_cpp/index.html" class="btn btn-neutral float-left" title="dolfin_mech.core.expression_meshfunction_cpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../loading/index.html" class="btn btn-neutral float-right" title="dolfin_mech.core.loading" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

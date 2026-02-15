@@ -1,0 +1,57 @@
+dolfin_mech.materials.elastic.neohookeanmooneyrivlin
+====================================================
+
+.. py:module:: dolfin_mech.materials.elastic.neohookeanmooneyrivlin
+
+.. autoapi-nested-parse::
+
+   Composite Neo-Hookean/Mooney-Rivlin hyperelastic material.
+
+   This module provides a combined material model that sums the strain energy
+   densities of the Neo-Hookean and Mooney-Rivlin models.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: NeoHookeanMooneyRivlin(kinematics, parameters, decoup=False)
+
+   Bases: :py:obj:`dolfin_mech.materials.elastic.elastic.ElasticMaterial`
+
+
+   Class representing a composite Neo-Hookean/Mooney-Rivlin hyperelastic material.
+
+   This model combines the strain energy densities of both the Neo-Hookean and
+   Mooney-Rivlin models. By summing these potentials, the material response
+   can be tuned using both the first invariant :math:`I_C` (via Neo-Hookean)
+   and the second invariant :math:`II_C` (via Mooney-Rivlin).
+
+   The total strain energy density is defined as:
+
+   .. math::
+       \Psi_{total} = \Psi_{NH}(C_1) + \Psi_{MR}(C_2)
+
+   Where:
+       - :math:`\Psi_{NH}` is the energy from :class:`NeoHookeanElasticMaterial`.
+       - :math:`\Psi_{MR}` is the energy from :class:`MooneyRivlinElasticMaterial`.
+
+   :ivar kinematics: Object containing kinematic variables and invariants.
+   :vartype kinematics: :py:class:`Kinematics`
+   :ivar nh: The Neo-Hookean component of the model.
+   :vartype nh: :py:class:`NeoHookeanElasticMaterial`
+   :ivar mr: The Mooney-Rivlin component of the model.
+   :vartype mr: :py:class:`MooneyRivlinElasticMaterial`
+   :ivar Psi: Total strain energy density.
+   :vartype Psi: :py:class:`UFL expression`
+   :ivar Sigma: Total Second Piola-Kirchhoff stress tensor.
+   :vartype Sigma: :py:class:`UFL expression`
+   :ivar P: Total First Piola-Kirchhoff stress tensor.
+   :vartype P: :py:class:`UFL expression`
+   :ivar sigma: Total Cauchy stress tensor.
+
+   :vartype sigma: :py:class:`UFL expression`
+
+

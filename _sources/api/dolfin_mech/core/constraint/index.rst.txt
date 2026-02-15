@@ -1,0 +1,76 @@
+dolfin_mech.core.constraint
+===========================
+
+.. py:module:: dolfin_mech.core.constraint
+
+.. autoapi-nested-parse::
+
+   Defines the Constraint class.
+
+   Integrates FEniCS Dirichlet boundary
+   conditions with time-varying magnitudes to enable dynamic prescription
+   of displacements, pressures, or other field variables.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: Constraint(V, sub_domain=None, sub_domains=None, sub_domain_id=None, val=None, val_ini=None, val_fin=None, method=None)
+
+   Class to manage Dirichlet boundary conditions with time-varying values.
+
+   This class wraps the ``dolfin.DirichletBC`` object and associates it with a
+   :py:class:`dolfin_mech.TimeVaryingConstant`. This allows for easy updates
+   of the boundary condition values during time-stepping simulations.
+
+   :Parameters: * **V** (:py:class:`dolfin.FunctionSpace`) -- The function space on which the BC is applied.
+                * **sub_domain** (:py:class:`dolfin.SubDomain, optional`) -- A FEniCS SubDomain object
+                  defining the boundary. Defaults to None.
+                * **sub_domains** (:py:class:`dolfin.MeshFunction, optional`) -- A mesh function
+                  defining sub-regions. Defaults to None.
+                * **sub_domain_id** (:py:class:`int, optional`) -- The ID within ``sub_domains`` to
+                  apply the BC to. Defaults to None.
+                * **val** (:py:class:`float, optional`) -- A constant value for the entire simulation.
+                * **val_ini** (:py:class:`float, optional`) -- Initial value for time-varying BC.
+                * **val_fin** (:py:class:`float, optional`) -- Final value for time-varying BC.
+                * **method** (:py:class:`str, optional`) -- FEniCS BC method (e.g., 'topological',
+                  'geometric', 'pointwise'). Defaults to None.
+
+   .. rubric:: Notes
+
+   You must provide either (``val``) OR (``val_ini`` and ``val_fin``).
+   Similarly, you must provide either (``sub_domain``) OR
+   (``sub_domains`` and ``sub_domain_id``).
+
+   :ivar tv_val: Manager for the constant value
+                 applied to the boundary.
+   :vartype tv_val: :py:class:`dolfin_mech.TimeVaryingConstant`
+   :ivar bc: The underlying FEniCS Dirichlet boundary
+             condition object.
+
+   :vartype bc: :py:class:`dolfin.DirichletBC`
+
+
+   .. py:method:: set_value_at_t_step(t_step)
+
+      Update the boundary condition value for a specific time step.
+
+      :Parameters: **t_step** (:py:class:`float`) -- The current time step/progress (typically between 0 and 1).
+
+
+
+   .. py:method:: restore_old_value()
+
+      Restore the value of the constant to its previous state.
+
+
+
+   .. py:method:: homogenize()
+
+      Set the boundary condition value to zero (homogeneous).
+
+
+

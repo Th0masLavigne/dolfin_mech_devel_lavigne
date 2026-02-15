@@ -1,0 +1,154 @@
+dolfin_mech.core.nonlinearsolver
+================================
+
+.. py:module:: dolfin_mech.core.nonlinearsolver
+
+.. autoapi-nested-parse::
+
+   Defines the NonlinearSolver class.
+
+   Provides an iterative Newton-Raphson
+   framework for solving nonlinear problems with support for advanced
+   linear backends (PETSc/MUMPS), adaptive relaxation techniques,
+   and modal analysis via eigenvalue solving.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: NonlinearSolver(problem, parameters, relax_type='constant', relax_parameters={}, print_out=True, write_iter=False)
+
+   Class for solving nonlinear systems of equations using iterative methods.
+
+   This solver implements a Newton-Raphson scheme with support for various
+   linear backends (PETSc/MUMPS) and relaxation (line-search) techniques
+   to improve convergence for highly nonlinear problems.
+
+   :param problem: The mechanical problem instance.
+   :type problem: dolfin_mech.problem.Problem
+   :param parameters: Solver parameters including 'linear_solver_type', 'sol_tol', and 'n_iter_max'.
+   :type parameters: dict
+   :param relax_type: Type of relaxation/line-search, defaults to "constant".
+   :type relax_type: str, optional
+   :param relax_parameters: Specific parameters for the chosen relaxation method.
+   :type relax_parameters: dict, optional
+   :param print_out: Output destination ('stdout', 'argv', or a filename), defaults to True.
+   :type print_out: bool or str, optional
+   :param write_iter: If True, writes solution files for every Newton iteration, defaults to False.
+   :type write_iter: bool, optional
+
+   :ivar problem: The nonlinear problem to be solved.
+   :vartype problem: :py:class:`Problem`
+   :ivar linear_solver_type: The backend used for linear solves ('petsc' or 'dolfin').
+   :vartype linear_solver_type: :py:class:`str`
+   :ivar relax_type: The relaxation strategy ('constant', 'aitken', 'gss', 'backtracking').
+   :vartype relax_type: :py:class:`str`
+   :ivar sol_tol: Convergence tolerances for each sub-solution.
+   :vartype sol_tol: :py:class:`list`
+   :ivar n_iter_max: Maximum number of Newton iterations allowed.
+   :vartype n_iter_max: :py:class:`int`
+   :ivar success: Whether the solver converged in the last solve call.
+   :vartype success: :py:class:`bool`
+   :ivar k_iter: Current Newton iteration counter.
+
+   :vartype k_iter: :py:class:`int`
+
+
+   .. py:method:: solve(k_step=None, k_t=None, dt=None, t=None)
+
+      Executes the nonlinear solve for a given time step.
+
+      Iteratively assembles the linear system, solves for the increment,
+      updates the solution, and tests for convergence.
+
+      :param k_step: Current load step index.
+      :param k_t: Current time step index.
+      :param dt: Time increment size.
+      :param t: Current total time.
+      :return: (success, k_iter)
+      :rtype: tuple(bool, int)
+
+
+
+   .. py:method:: linear_solve(k_step=None, k_t=None)
+
+      Assembles and solves the linear tangent problem :math:`\mathbf{K} \delta \mathbf{u} = -\mathbf{R}`.
+
+      :return: True if the linear solve was successful.
+      :rtype: bool
+
+
+
+   .. py:method:: assemble_linear_system()
+
+      Assembles the residual vector and Jacobian matrix.
+
+      This method handles standard integrals and special vertex-based integrals
+      separately to accommodate specific dolfin constraints.
+
+
+
+   .. py:method:: eigen_solve()
+
+      Solves the eigenproblem for the Jacobian matrix to identify modal shapes.
+
+
+
+   .. py:method:: compute_dsol_norm()
+
+      Computes and prints the L2 norm of the solution increment.
+
+
+
+   .. py:method:: compute_relax_constant()
+
+      Sets a constant relaxation factor :math:`\omega`.
+
+
+
+   .. py:method:: compute_relax_aitken()
+
+      Computes the relaxation factor using the Aitken dynamic method.
+
+
+
+   .. py:method:: compute_relax_gss()
+
+      Computes the optimal relaxation using a Golden Section Search on the potential energy.
+
+
+
+   .. py:method:: compute_relax_backtracking()
+
+      Computes relaxation using a backtracking line-search until residual is finite.
+
+
+
+   .. py:method:: update_sol()
+
+      Updates the solution vector by adding the relaxed increment.
+
+
+
+   .. py:method:: compute_sol_norm()
+
+      Computes and prints L2 norms for the current and previous solutions.
+
+
+
+   .. py:method:: compute_sol_err()
+
+      Computes the relative error between current and old solution norms.
+
+
+
+   .. py:method:: exit_test()
+
+      Checks if the solution error is below the tolerance for all sub-solutions.
+      Sets ``self.success`` accordingly.
+
+
+

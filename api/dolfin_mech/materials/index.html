@@ -17,7 +17,7 @@
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=afa5c62c"></script>
+      <script src="../../../_static/documentation_options.js?v=8e4cdb55"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Elastic" href="elastic/index.html" />
-    <link rel="prev" title="dolfin_mech.kinematics.LinearizedKinematics" href="../kinematics/LinearizedKinematics/index.html" /> 
+    <link rel="prev" title="dolfin_mech.kinematics.linearizedkinematics" href="../kinematics/linearizedkinematics/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,25 +56,38 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Core Package</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../core/index.html">Core</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../core/compute_error/index.html">Compute Error</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../core/FOI/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/loading/index.html">Loading</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../core/QOI/index.html">Qoi</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../core/TimeIntegrator/index.html">Timeintegrator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../core/TimeVaryingConstant/index.html">Timevaryingconstant</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../core/write_VTU_file/index.html">Write Vtu File</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../core/XDMFFile/index.html">Xdmffile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/xdmffile/index.html">Xdmffile</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../kinematics/index.html">Kinematics</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../kinematics/InverseKinematics/index.html">Inversekinematics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../kinematics/Kinematics/index.html">Kinematics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../kinematics/LinearizedKinematics/index.html">Linearizedkinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Materials</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="elastic/index.html">Elastic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="inelastic/index.html">Inelastic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Material/index.html">Material</a></li>
+<li class="toctree-l4"><a class="reference internal" href="material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../operators/operator/index.html">Operator</a></li>
 </ul>
 </li>
 </ul>
@@ -114,28 +127,28 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="elastic/index.html">Elastic</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="elastic/Elastic/index.html">Elastic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/ExponentialNeoHookean/index.html">Exponentialneohookean</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/ExponentialOgdenCiarletGeymonat/index.html">Exponentialogdenciarletgeymonat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/Hooke/index.html">Hooke</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/Kirchhoff/index.html">Kirchhoff</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/Lung_Wbulk/index.html">Lung Wbulk</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/Lung_Wpore/index.html">Lung Wpore</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/Lung_Wskel/index.html">Lung Wskel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/MooneyRivlin/index.html">Mooneyrivlin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/NeoHookean/index.html">Neohookean</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/NeoHookeanMooneyRivlin/index.html">Neohookeanmooneyrivlin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/OgdenCiarletGeymonat/index.html">Ogdenciarletgeymonat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/OgdenCiarletGeymonatNeoHookean/index.html">Ogdenciarletgeymonatneohookean</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/OgdenCiarletGeymonatNeoHookeanMooneyRivlin/index.html">Ogdenciarletgeymonatneohookeanmooneyrivlin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elastic/Porous/index.html">Porous</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/elastic/index.html">Elastic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/exponentialneohookean/index.html">Exponentialneohookean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/exponentialogdenciarletgeymonat/index.html">Exponentialogdenciarletgeymonat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/hooke/index.html">Hooke</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/kirchhoff/index.html">Kirchhoff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/lung_wbulk/index.html">Lung Wbulk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/lung_wpore/index.html">Lung Wpore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/lung_wskel/index.html">Lung Wskel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/mooneyrivlin/index.html">Mooneyrivlin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/neohookean/index.html">Neohookean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/neohookeanmooneyrivlin/index.html">Neohookeanmooneyrivlin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/ogdenciarletgeymonat/index.html">Ogdenciarletgeymonat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/ogdenciarletgeymonatneohookean/index.html">Ogdenciarletgeymonatneohookean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/ogdenciarletgeymonatneohookeanmooneyrivlin/index.html">Ogdenciarletgeymonatneohookeanmooneyrivlin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic/porous/index.html">Porous</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inelastic/index.html">Inelastic</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inelastic/Inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inelastic/inelastic/index.html">Inelastic</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Material/index.html">Material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material/index.html">Material</a></li>
 </ul>
 </div>
 </section>
@@ -144,7 +157,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../kinematics/LinearizedKinematics/index.html" class="btn btn-neutral float-left" title="dolfin_mech.kinematics.LinearizedKinematics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../kinematics/linearizedkinematics/index.html" class="btn btn-neutral float-left" title="dolfin_mech.kinematics.linearizedkinematics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="elastic/index.html" class="btn btn-neutral float-right" title="Elastic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

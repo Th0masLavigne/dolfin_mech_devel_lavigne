@@ -1,0 +1,66 @@
+dolfin_mech.core.loading
+========================
+
+.. py:module:: dolfin_mech.core.loading
+
+.. autoapi-nested-parse::
+
+   Defines the Loading base class.
+
+   Couples FEniCS integration measures
+   with time-varying scalar magnitudes to handle evolving boundary tractions,
+   pressures, or body forces.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: Loading(measure, val=None, val_ini=None, val_fin=None, xyz_ini=None, N=None)
+
+   Base class for managing time-dependent mechanical loads.
+
+   This class serves as a container for loading parameters (such as pressure,
+   traction, or body forces) that vary during a simulation. It associates
+   a FEniCS measure with a :py:class:`dolfin_mech.TimeVaryingConstant`.
+
+   :Parameters: * **measure** (:py:class:`dolfin.Measure`) -- FEniCS integration measure.
+                * **val** (:py:class:`float, optional`) -- A constant value for the entire simulation.
+                * **val_ini** (:py:class:`float, optional`) -- Initial value for time-varying loading.
+                * **val_fin** (:py:class:`float, optional`) -- Final value for time-varying loading.
+                * **xyz_ini** (:py:class:`numpy.ndarray or list, optional`) -- Initial position vector.
+                * **N** (:py:class:`numpy.ndarray or list, optional`) -- Directional vector (e.g., surface normal).
+
+   .. rubric:: Notes
+
+   You must provide either (``val``) OR (``val_ini`` and ``val_fin``).
+   The magnitude is stored internally within a
+   :py:class:`dolfin_mech.TimeVaryingConstant`.
+
+   :ivar measure: The FEniCS measure (e.g., ``dx``, ``ds``)
+                  defining the integration domain for the load.
+   :vartype measure: :py:class:`dolfin.Measure`
+   :ivar tv_val: Manager for the scalar load magnitude.
+   :vartype tv_val: :py:class:`dolfin_mech.TimeVaryingConstant`
+   :ivar val: The current value of the load magnitude,
+              linked to the underlying FEniCS constant.
+   :vartype val: :py:class:`dolfin.Constant`
+   :ivar N: Normal vector or direction associated with the load.
+   :vartype N: :py:class:`dolfin.Constant, optional`
+   :ivar xyz_ini: Initial coordinates, often used for
+                  position-dependent loading in the reference configuration.
+
+   :vartype xyz_ini: :py:class:`dolfin.Constant, optional`
+
+
+   .. py:method:: set_value_at_t_step(t_step)
+
+      Update the load magnitude for the given time step.
+
+      :Parameters: **t_step** (:py:class:`float`) -- The current simulation progress (typically
+                   normalized between 0 and 1).
+
+
+

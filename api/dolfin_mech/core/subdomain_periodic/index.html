@@ -1,0 +1,231 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.core.subdomain_periodic &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=8e4cdb55"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="dolfin_mech.core.subdomain_pinpoint" href="../subdomain_pinpoint/index.html" />
+    <link rel="prev" title="dolfin_mech.core.step" href="../step/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../api_toc.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Core Package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Core</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../step/index.html">Step</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/operator/index.html">Operator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../api_toc.html">API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Core Package</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Core</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.core.subdomain_periodic</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/api/dolfin_mech/core/subdomain_periodic/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-dolfin_mech.core.subdomain_periodic">
+<span id="dolfin-mech-core-subdomain-periodic"></span><h1>dolfin_mech.core.subdomain_periodic<a class="headerlink" href="#module-dolfin_mech.core.subdomain_periodic" title="Link to this heading"></a></h1>
+<p>Defines the PeriodicSubDomain class.</p>
+<p>Implements periodic boundary
+conditions for 2D and 3D unit cells, supporting both orthogonal (boxes)
+and non-orthogonal (parallelograms) geometries via master-slave node mapping.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dolfin_mech.core.subdomain_periodic.PeriodicSubDomain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.core.subdomain_periodic.</span></span><span class="sig-name descname"><span class="pre">PeriodicSubDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin.SubDomain</span></code></p>
+<p>SubDomain subclass for enforcing Periodic Boundary Conditions (PBCs).</p>
+<p>This class identifies the “slave” boundaries of a domain (typically the
+Top, Right, and Front faces of a box) and defines the mapping to their
+corresponding “master” boundaries (Bottom, Left, and Back).</p>
+<p>It supports both 2D and 3D domains, including non-orthogonal unit cells
+(parallelograms/parallelepipeds) if vertices are provided.</p>
+<p><strong>Mapping Logic:</strong>
+For a point <span class="math notranslate nohighlight">\(x\)</span> on a slave boundary, the <code class="docutils literal notranslate"><span class="pre">map</span></code> function computes its
+corresponding location <span class="math notranslate nohighlight">\(y\)</span> on the master boundary.</p>
+<div class="math notranslate nohighlight">
+\[y = x - \sum_i P_i \mathbf{a}_i\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{a}_i\)</span> are the periodicity vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Spatial dimension (2 or 3).</p></li>
+<li><p><strong>bbox</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a>) – Bounding box coordinates <code class="docutils literal notranslate"><span class="pre">[xmin,</span> <span class="pre">xmax,</span> <span class="pre">ymin,</span> <span class="pre">ymax,</span> <span class="pre">(zmin,</span> <span class="pre">zmax)]</span></code>.</p></li>
+<li><p><strong>vertices</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>) – (Optional) Array of RVE vertices for non-rectangular domains.</p></li>
+<li><p><strong>tol</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Geometric tolerance for boundary detection.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.inside_2D">
+<span class="sig-name descname"><span class="pre">inside_2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_boundary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.inside_2D" title="Link to this definition"></a></dt>
+<dd><p>Defines the “Master” boundary in 2D.</p>
+<p>Typically returns True for the Left and Bottom boundaries.
+It explicitly excludes corners that map to other master corners to avoid conflicts.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.inside_3D">
+<span class="sig-name descname"><span class="pre">inside_3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_boundary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.inside_3D" title="Link to this definition"></a></dt>
+<dd><p>Defines the “Master” boundary in 3D.</p>
+<p>Returns True if the point is on the Back (zmin), Bottom (ymin), or Left (xmin) faces,
+excluding the corresponding Slave faces (Front, Top, Right).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.map_2D">
+<span class="sig-name descname"><span class="pre">map_2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.map_2D" title="Link to this definition"></a></dt>
+<dd><p>Maps a point <cite>x</cite> on a Slave boundary to its image <cite>y</cite> on the Master boundary in 2D.</p>
+<p>Handles:
+- <strong>Corner</strong>: Top-Right -&gt; Bottom-Left.
+- <strong>Right Edge</strong>: -&gt; Left Edge.
+- <strong>Top Edge</strong>: -&gt; Bottom Edge.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.map_3D">
+<span class="sig-name descname"><span class="pre">map_3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.map_3D" title="Link to this definition"></a></dt>
+<dd><p>Maps a point <cite>x</cite> on a Slave boundary to its image <cite>y</cite> on the Master boundary in 3D.</p>
+<p>Handles vertices, edges, and faces for a rectangular box domain.
+It systematically checks if <cite>x</cite> is on a max-boundary (Right, Top, Front)
+and subtracts the corresponding dimension’s length to map it to min (Left, Bottom, Back).</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../step/index.html" class="btn btn-neutral float-left" title="dolfin_mech.core.step" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../subdomain_pinpoint/index.html" class="btn btn-neutral float-right" title="dolfin_mech.core.subdomain_pinpoint" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

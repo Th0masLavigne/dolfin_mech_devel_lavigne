@@ -1,0 +1,57 @@
+dolfin_mech.materials.elastic.porous
+====================================
+
+.. py:module:: dolfin_mech.materials.elastic.porous
+
+.. autoapi-nested-parse::
+
+   Porous elastic material scaling implementation.
+
+   This module provides a wrapper for elastic materials to scale their energy
+   and stress properties based on solid volume fractions, common in porous
+   media mechanics.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: Porous(solid_material, scaling='no', Phis0=None)
+
+   Bases: :py:obj:`dolfin_mech.materials.elastic.elastic.ElasticMaterial`
+
+
+   Class representing a porous elastic material.
+
+   Properties are scaled based on the solid volume fraction.
+   In porous media mechanics, the apparent strain energy density and stresses of
+   a representative elementary volume (REV) are often scaled versions of the
+   underlying solid constituent's properties. This class facilitates that
+   scaling, specifically supporting linear scaling by the initial solid
+   fraction :math:`\Phi_{s0}`.
+
+   The total energy and stress are computed as:
+
+   .. math::
+       \Psi_{porous} = \omega \cdot \Psi_{solid}
+
+   .. math::
+       \mathbf{\Sigma}_{porous} = \omega \cdot \mathbf{\Sigma}_{solid}
+
+   Where :math:`\omega` is the scaling factor:
+
+   - For ``scaling="no"``: :math:`\omega = 1`.
+   - For ``scaling="linear"``: :math:`\omega = \Phi_{s0}`.
+
+   Attributes:
+   solid_material (ElasticMaterial): The base elastic material representing the solid phase.
+   Psi (UFL expression): Scaled strain energy density.
+   Sigma (UFL expression): Scaled Second Piola-Kirchhoff stress tensor.
+   P (UFL expression): Scaled First Piola-Kirchhoff stress tensor.
+   sigma (UFL expression): Scaled Cauchy stress tensor.
+   dWbulkdPhis (UFL expression, optional): Scaled derivative of bulk energy with respect to solid fraction.
+   dWporedPhif (UFL expression, optional): Scaled derivative of pore energy with respect to fluid fraction.
+
+

@@ -1,0 +1,55 @@
+dolfin_mech.kinematics.inversekinematics
+========================================
+
+.. py:module:: dolfin_mech.kinematics.inversekinematics
+
+.. autoapi-nested-parse::
+
+   Inverse kinematics implementation for non-linear solid mechanics.
+
+   This module provides the InverseKinematics class, which computes deformation
+   quantities based on a displacement field defined on the deformed configuration.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: InverseKinematics(u, u_old=None)
+
+   Class to compute and store kinematic quantities for inverse non-linear solid mechanics.
+
+   In the inverse formulation, the displacement field :math:`\mathbf{u}` is defined
+   on the deformed (spatial) configuration. The deformation gradient :math:`\mathbf{F}`
+   is computed as the inverse of the mapping from the reference to the deformed
+   configuration: :math:`\mathbf{F} = (\mathbf{I} + \nabla \mathbf{u})^{-1}`.
+
+   :Parameters: * **u** (:py:class:`dolfin.Function`) -- Current displacement field defined on the spatial mesh.
+                * **u_old** (:py:class:`dolfin.Function, optional`) -- Displacement field from the previous
+                  time step. Defaults to None.
+
+   :ivar u: The current displacement field in the spatial configuration.
+   :vartype u: :py:class:`dolfin.Function`
+   :ivar dim: Spatial dimension.
+   :vartype dim: :py:class:`int`
+   :ivar I: Identity tensor of dimension ``dim``.
+   :vartype I: :py:class:`dolfin.Identity`
+   :ivar f: Spatial displacement gradient :math:`\mathbf{f} = \mathbf{I} + \nabla \mathbf{u}`.
+   :vartype f: :py:class:`ufl.Form`
+   :ivar F: Deformation gradient tensor :math:`\mathbf{F} = \mathbf{f}^{-1}`.
+   :vartype F: :py:class:`ufl.Form`
+   :ivar J: Determinant of the deformation gradient :math:`J = \det(\mathbf{F})`.
+   :vartype J: :py:class:`ufl.Form`
+   :ivar C: Right Cauchy-Green deformation tensor :math:`\mathbf{C} = \mathbf{F}^T \mathbf{F}`.
+   :vartype C: :py:class:`ufl.Form`
+   :ivar E: Green-Lagrange strain tensor :math:`\mathbf{E} = \frac{1}{2}(\mathbf{C} - \mathbf{I})`.
+   :vartype E: :py:class:`ufl.Form`
+   :ivar F_bar: Isochoric deformation gradient :math:`\bar{\mathbf{F}} = J^{-1/d} \mathbf{F}`.
+   :vartype F_bar: :py:class:`ufl.Form`
+   :ivar C_bar: Isochoric Right Cauchy-Green tensor :math:`\bar{\mathbf{C}} = \bar{\mathbf{F}}^T \bar{\mathbf{F}}`.
+
+   :vartype C_bar: :py:class:`ufl.Form`
+
+

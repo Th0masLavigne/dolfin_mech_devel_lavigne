@@ -1,0 +1,58 @@
+dolfin_mech.materials.elastic.lung_wskel
+========================================
+
+.. py:module:: dolfin_mech.materials.elastic.lung_wskel
+
+.. autoapi-nested-parse::
+
+   Lung skeletal tissue elasticity implementation.
+
+   This module provides a composite hyperelastic model for lung parenchyma,
+   combining Exponential-Ogden bulk and Neo-Hookean deviatoric components.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: WskelLung(kinematics, parameters)
+
+   Bases: :py:obj:`dolfin_mech.materials.elastic.elastic.ElasticMaterial`
+
+
+   Class representing the skeletal (solid phase) elastic energy of the lung parenchyma.
+
+   This model is a composite hyperelastic material that splits the strain energy
+   density into a volumetric (bulk) part and a deviatoric (shear) part to
+   capture the complex non-linear response of lung tissue.
+
+   The total strain energy density is defined as:
+
+   .. math::
+       \Psi_{total} = \Psi_{bulk} + \Psi_{dev}
+
+   Where:
+       - :math:`\Psi_{bulk}` is modeled using an
+         :class:`ExponentialOgdenCiarletGeymonatElasticMaterial`.
+       - :math:`\Psi_{dev}` is modeled using a
+         :class:`NeoHookeanMooneyRivlinElasticMaterial`.
+
+   :ivar kinematics: Kinematic variables associated with the deformation.
+   :vartype kinematics: :py:class:`Kinematics`
+   :ivar bulk: The volumetric component of the lung skeleton elasticity.
+   :vartype bulk: :py:class:`ElasticMaterial`
+   :ivar dev: The deviatoric component of the lung skeleton elasticity.
+   :vartype dev: :py:class:`ElasticMaterial`
+   :ivar Psi: Total strain energy density.
+   :vartype Psi: :py:class:`UFL expression`
+   :ivar Sigma: Total Second Piola-Kirchhoff stress tensor.
+   :vartype Sigma: :py:class:`UFL expression`
+   :ivar P: Total First Piola-Kirchhoff stress tensor.
+   :vartype P: :py:class:`UFL expression`
+   :ivar sigma: Total Cauchy stress tensor.
+
+   :vartype sigma: :py:class:`UFL expression`
+
+

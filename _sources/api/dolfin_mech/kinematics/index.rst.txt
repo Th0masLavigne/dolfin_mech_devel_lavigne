@@ -8,6 +8,6 @@ Kinematics
    :maxdepth: 3
    :titlesonly:
 
-   Inversekinematics <InverseKinematics/index>
-   Kinematics <Kinematics/index>
-   Linearizedkinematics <LinearizedKinematics/index>
+   Inversekinematics <inversekinematics/index>
+   Kinematics <kinematics/index>
+   Linearizedkinematics <linearizedkinematics/index>

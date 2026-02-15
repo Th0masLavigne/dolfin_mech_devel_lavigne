@@ -1,0 +1,87 @@
+dolfin_mech.operators.constraint_macroscopicstresscomponent
+===========================================================
+
+.. py:module:: dolfin_mech.operators.constraint_macroscopicstresscomponent
+
+.. autoapi-nested-parse::
+
+   Defines the MacroscopicStressComponentConstraint class.
+
+   Enforces
+   specific macroscopic stress components on a Representative Elementary
+   Volume (REV) while accounting for microscopic pore pressure and
+   volumetric changes.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: MacroscopicStressComponentConstraint(U_bar, U_bar_test, kinematics, material, V0, Vs0, i, j, measure, N, sigma_bar_ij_val=None, sigma_bar_ij_ini=None, sigma_bar_ij_fin=None, pf_val=None, pf_ini=None, pf_fin=None)
+
+   Bases: :py:obj:`dolfin_mech.operators.operator.Operator`
+
+
+   Operator to enforce a constraint on a single component of the macroscopic stress tensor.
+
+   In multiscale mechanics, this operator is used to prescribe the macroscopic stress
+   component :math:`\bar{\sigma}_{ij}` on a Representative Elementary Volume (REV).
+   It relates the microscopic state (stresses and volume changes) to the
+   desired macroscopic loading.
+
+   The residual contribution follows the volume-averaged equilibrium:
+
+   .. math::
+       \mathcal{R} = \delta\bar{U}_{ij} \int_{\Omega_0} \left( \tilde{\sigma}_{ij} - \frac{v}{V_{s0}} \bar{\sigma}_{ij} \right) d\Omega_0
+
+   Where:
+       - :math:`\tilde{\sigma}` is the corrected microscopic stress accounting for pore pressure.
+       - :math:`v` is the current volume of the REV.
+       - :math:`V_{s0}` is the initial solid volume.
+       - :math:`\bar{\sigma}_{ij}` is the target macroscopic stress component.
+
+   :param U_bar: Macroscopic displacement gradient tensor.
+   :type U_bar: dolfin.Coefficient
+   :param U_bar_test: Test function associated with the macroscopic displacement gradient.
+   :type U_bar_test: dolfin.Argument
+   :param kinematics: Microscopic kinematics object.
+   :param material: Microscopic material object providing the stress tensor.
+   :param V0: Initial total volume of the REV.
+   :param Vs0: Initial solid volume of the REV.
+   :param i: Row index of the stress component to constrain.
+   :param j: Column index of the stress component to constrain.
+   :param measure: Dolfin measure for integration.
+   :param N: Normal vector (if applicable for surface constraints).
+   :param sigma_bar_ij_val: Static value for target macroscopic stress.
+   :param sigma_bar_ij_ini: Initial value for time-varying macroscopic stress.
+   :param sigma_bar_ij_fin: Final value for time-varying macroscopic stress.
+   :param pf_val: Static value for pore pressure.
+   :param pf_ini: Initial value for time-varying pore pressure.
+   :param pf_fin: Final value for time-varying pore pressure.
+
+   :ivar kinematics: Microscopic kinematic variables.
+   :vartype kinematics: :py:class:`Kinematics`
+   :ivar material: Microscopic material law.
+   :vartype material: :py:class:`Material`
+   :ivar measure: Integration measure (typically ``dx``).
+   :vartype measure: :py:class:`dolfin.Measure`
+   :ivar tv_pf: Time-varying pore pressure :math:`p_f`.
+   :vartype tv_pf: :py:class:`TimeVaryingConstant`
+   :ivar tv_sigma_bar_ij: Time-varying target macroscopic stress :math:`\bar{\sigma}_{ij}`.
+   :vartype tv_sigma_bar_ij: :py:class:`TimeVaryingConstant`
+   :ivar res_form: The resulting residual variational form.
+
+   :vartype res_form: :py:class:`UFL Form`
+
+
+   .. py:method:: set_value_at_t_step(t_step)
+
+      Updates the target macroscopic stress and pore pressure constants for the current time step.
+
+      :param t_step: Current time step (0.0 to 1.0).
+      :type t_step: float
+
+
+

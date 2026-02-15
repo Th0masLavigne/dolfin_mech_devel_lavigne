@@ -10,4 +10,4 @@ Materials
 
    Elastic <elastic/index>
    Inelastic <inelastic/index>
-   Material <Material/index>
+   Material <material/index>

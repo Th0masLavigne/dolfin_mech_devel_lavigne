@@ -1,0 +1,94 @@
+dolfin_mech.core.subdomain_periodic
+===================================
+
+.. py:module:: dolfin_mech.core.subdomain_periodic
+
+.. autoapi-nested-parse::
+
+   Defines the PeriodicSubDomain class.
+
+   Implements periodic boundary
+   conditions for 2D and 3D unit cells, supporting both orthogonal (boxes)
+   and non-orthogonal (parallelograms) geometries via master-slave node mapping.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: PeriodicSubDomain(dim, bbox, vertices=None, tol=None)
+
+   Bases: :py:obj:`dolfin.SubDomain`
+
+
+   SubDomain subclass for enforcing Periodic Boundary Conditions (PBCs).
+
+   This class identifies the "slave" boundaries of a domain (typically the
+   Top, Right, and Front faces of a box) and defines the mapping to their
+   corresponding "master" boundaries (Bottom, Left, and Back).
+
+
+
+   It supports both 2D and 3D domains, including non-orthogonal unit cells
+   (parallelograms/parallelepipeds) if vertices are provided.
+
+   **Mapping Logic:**
+   For a point :math:`x` on a slave boundary, the ``map`` function computes its
+   corresponding location :math:`y` on the master boundary.
+
+   .. math::
+       y = x - \sum_i P_i \mathbf{a}_i
+
+   where :math:`\mathbf{a}_i` are the periodicity vectors.
+
+   :param dim: Spatial dimension (2 or 3).
+   :type dim: int
+   :param bbox: Bounding box coordinates ``[xmin, xmax, ymin, ymax, (zmin, zmax)]``.
+   :type bbox: list
+   :param vertices: (Optional) Array of RVE vertices for non-rectangular domains.
+   :type vertices: numpy.ndarray
+   :param tol: Geometric tolerance for boundary detection.
+   :type tol: float
+
+
+   .. py:method:: inside_2D(x, on_boundary)
+
+      Defines the "Master" boundary in 2D.
+
+      Typically returns True for the Left and Bottom boundaries.
+      It explicitly excludes corners that map to other master corners to avoid conflicts.
+
+
+
+   .. py:method:: inside_3D(x, on_boundary)
+
+      Defines the "Master" boundary in 3D.
+
+      Returns True if the point is on the Back (zmin), Bottom (ymin), or Left (xmin) faces,
+      excluding the corresponding Slave faces (Front, Top, Right).
+
+
+
+   .. py:method:: map_2D(x, y)
+
+      Maps a point `x` on a Slave boundary to its image `y` on the Master boundary in 2D.
+
+      Handles:
+      - **Corner**: Top-Right -> Bottom-Left.
+      - **Right Edge**: -> Left Edge.
+      - **Top Edge**: -> Bottom Edge.
+
+
+
+   .. py:method:: map_3D(x, y)
+
+      Maps a point `x` on a Slave boundary to its image `y` on the Master boundary in 3D.
+
+      Handles vertices, edges, and faces for a rectangular box domain.
+      It systematically checks if `x` is on a max-boundary (Right, Top, Front)
+      and subtracts the corresponding dimension's length to map it to min (Left, Bottom, Back).
+
+
+

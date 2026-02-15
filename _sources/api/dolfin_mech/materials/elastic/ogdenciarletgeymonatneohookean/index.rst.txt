@@ -1,0 +1,58 @@
+dolfin_mech.materials.elastic.ogdenciarletgeymonatneohookean
+============================================================
+
+.. py:module:: dolfin_mech.materials.elastic.ogdenciarletgeymonatneohookean
+
+.. autoapi-nested-parse::
+
+   Composite Ciarlet-Geymonat and Neo-Hookean material model.
+
+   This module implements a hyperelastic model that additively decomposes
+   the strain energy density into volumetric (bulk) and shear (deviatoric) parts.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: OgdenCiarletGeymonatNeoHookean(kinematics, parameters, decoup=False)
+
+   Bases: :py:obj:`dolfin_mech.materials.elastic.elastic.ElasticMaterial`
+
+
+   Class representing a composite hyperelastic material combining the Ciarlet-Geymonat and Neo-Hookean models.
+
+   This model provides a robust description of compressible hyperelasticity by
+   additive decomposition of the strain energy density:
+
+   .. math::
+       \Psi_{total} = \Psi_{bulk}(J) + \Psi_{dev}(\mathbf{C})
+
+   Where:
+       - :math:`\Psi_{bulk}` is the Ciarlet-Geymonat potential (penalizing volume change).
+       - :math:`\Psi_{dev}` is the Neo-Hookean potential (governing shear response).
+
+   Beyond standard stress tensors, this class computes the hydrostatic pressure
+   and the Von Mises equivalent of the Second Piola-Kirchhoff stress.
+
+   :ivar kinematics: Kinematic variables and deformation tensors.
+   :vartype kinematics: :py:class:`Kinematics`
+   :ivar bulk: The volumetric component.
+   :vartype bulk: :py:class:`OgdenCiarletGeymonatElasticMaterial`
+   :ivar dev: The deviatoric/shear component.
+   :vartype dev: :py:class:`NeoHookeanElasticMaterial`
+   :ivar Psi: Total strain energy density.
+   :vartype Psi: :py:class:`UFL expression`
+   :ivar Sigma: Total Second Piola-Kirchhoff stress tensor.
+   :vartype Sigma: :py:class:`UFL expression`
+   :ivar p_hydro: Hydrostatic pressure calculated as :math:`p = -\frac{1}{3J} tr(\mathbf{\Sigma} \mathbf{C})`.
+   :vartype p_hydro: :py:class:`UFL expression`
+   :ivar Sigma_dev: Deviatoric part of the Second Piola-Kirchhoff stress.
+   :vartype Sigma_dev: :py:class:`UFL expression`
+   :ivar Sigma_VM: Von Mises equivalent stress.
+
+   :vartype Sigma_VM: :py:class:`UFL expression`
+
+
