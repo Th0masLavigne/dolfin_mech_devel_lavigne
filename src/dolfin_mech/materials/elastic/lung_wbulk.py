@@ -21,7 +21,7 @@ lung parenchymal tissue modeling.
 
 import dolfin
 
-from dolfin_mech.materials.elastic import ElasticMaterial
+from .elastic import ElasticMaterial
 
 ################################################################################
 

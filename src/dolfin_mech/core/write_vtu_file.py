@@ -16,7 +16,7 @@ import shutil
 import dolfin
 import myVTKPythonLibrary as myvtk
 
-from dolfin_mech.core import add_function_to_ugrid, mesh2ugrid
+from .mesh2ugrid import add_function_to_ugrid, mesh2ugrid
 
 ################################################################################
 

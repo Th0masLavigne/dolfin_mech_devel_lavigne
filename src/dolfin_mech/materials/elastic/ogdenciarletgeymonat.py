@@ -16,7 +16,7 @@ volume changes and prevent numerical inversion in hyperelastic formulations.
 
 import dolfin
 
-from dolfin_mech.materials.elastic import ElasticMaterial
+from .elastic import ElasticMaterial
 
 ################################################################################
 

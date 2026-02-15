@@ -71,8 +71,6 @@ Note:
 
 import dolfin
 
-import dolfin_mech.materials as materials
-
 ################################################################################
 
 
@@ -422,16 +420,18 @@ def material_factory(kinematics, model, parameters):
 	Example:
 	    >>> mat = material_factory(kin, "NH", {"E": 10.0, "nu": 0.3})
 	"""
+	from .elastic import *
+
 	if model in ("hooke", "Hooke", "H"):
-		material = materials.elastic.Hooke(kinematics=kinematics, parameters=parameters)
+		material = Hooke(kinematics=kinematics, parameters=parameters)
 	elif model in ("hooke_dev", "Hooke_dev", "H_dev"):
-		material = materials.elastic.HookeDev(kinematics=kinematics, parameters=parameters)
+		material = HookeDev(kinematics=kinematics, parameters=parameters)
 	elif model in ("hooke_bulk", "Hooke_bulk", "H_bulk"):
-		material = materials.elastic.HookeBulk(kinematics=kinematics, parameters=parameters)
+		material = HookeBulk(kinematics=kinematics, parameters=parameters)
 	elif model in ("saintvenantkirchhoff", "SaintVenantKirchhoff", "kirchhoff", "Kirchhoff", "SVK"):
-		material = materials.elastic.Kirchhoff(kinematics=kinematics, parameters=parameters)
+		material = Kirchhoff(kinematics=kinematics, parameters=parameters)
 	elif model in ("saintvenantkirchhoff_dev", "SaintVenantKirchhoff_dev", "kirchhoff_dev", "Kirchhoff_dev", "SVK_dev"):
-		material = materials.elastic.KirchhoffDev(kinematics=kinematics, parameters=parameters)
+		material = KirchhoffDev(kinematics=kinematics, parameters=parameters)
 	elif model in (
 		"saintvenantkirchhoff_bulk",
 		"SaintVenantKirchhoff_bulk",
@@ -439,21 +439,21 @@ def material_factory(kinematics, model, parameters):
 		"Kirchhoff_bulk",
 		"SVK_bulk",
 	):
-		material = materials.elastic.KirchhoffBulk(kinematics=kinematics, parameters=parameters)
+		material = KirchhoffBulk(kinematics=kinematics, parameters=parameters)
 	elif model in ("neohookean", "NeoHookean", "NH"):
-		material = materials.elastic.NeoHookean(kinematics=kinematics, parameters=parameters)
+		material = NeoHookean(kinematics=kinematics, parameters=parameters)
 	elif model in ("neohookean_bar", "NeoHookean_bar", "NH_bar"):
-		material = materials.elastic.NeoHookean(kinematics=kinematics, parameters=parameters, decoup=True)
+		material = NeoHookean(kinematics=kinematics, parameters=parameters, decoup=True)
 	elif model in ("mooneyrivlin", "MooneyRivlin", "MR"):
-		material = materials.elastic.MooneyRivlin(kinematics=kinematics, parameters=parameters)
+		material = MooneyRivlin(kinematics=kinematics, parameters=parameters)
 	elif model in ("mooneyrivlin_bar", "MooneyRivlin_bar", "MR_bar"):
-		material = materials.elastic.MooneyRivlin(kinematics=kinematics, parameters=parameters, decoup=True)
+		material = MooneyRivlin(kinematics=kinematics, parameters=parameters, decoup=True)
 	elif model in ("neohookeanmooneyrivlin", "NeoHookeanMooneyRivlin", "NHMR"):
-		material = materials.elastic.NeoHookeanMooneyRivlin(kinematics=kinematics, parameters=parameters)
+		material = NeoHookeanMooneyRivlin(kinematics=kinematics, parameters=parameters)
 	elif model in ("neohookeanmooneyrivlin_bar", "NeoHookeanMooneyRivlin_bar", "NHMR_bar"):
-		material = materials.elastic.NeoHookeanMooneyRivlin(kinematics=kinematics, parameters=parameters, decoup=True)
+		material = NeoHookeanMooneyRivlin(kinematics=kinematics, parameters=parameters, decoup=True)
 	elif model in ("ogdenciarletgeymonat", "OgdenCiarletGeymonat", "OCG", "ciarletgeymonat", "CiarletGeymonat", "CG"):
-		material = materials.elastic.OgdenCiarletGeymonat(kinematics=kinematics, parameters=parameters)
+		material = OgdenCiarletGeymonat(kinematics=kinematics, parameters=parameters)
 	elif model in (
 		"ogdenciarletgeymonat_bar",
 		"OgdenCiarletGeymonat_bar",
@@ -462,7 +462,7 @@ def material_factory(kinematics, model, parameters):
 		"CiarletGeymonat_bar",
 		"CG_bar",
 	):
-		material = materials.elastic.OgdenCiarletGeymonat(kinematics=kinematics, parameters=parameters, decoup=True)
+		material = OgdenCiarletGeymonat(kinematics=kinematics, parameters=parameters, decoup=True)
 	elif model in (
 		"ogdenciarletgeymonatneohookean",
 		"OgdenCiarletGeymonatNeoHookean",
@@ -471,7 +471,7 @@ def material_factory(kinematics, model, parameters):
 		"CiarletGeymonatNeoHookean",
 		"CGNH",
 	):
-		material = materials.elastic.OgdenCiarletGeymonatNeoHookean(kinematics=kinematics, parameters=parameters)
+		material = OgdenCiarletGeymonatNeoHookean(kinematics=kinematics, parameters=parameters)
 	elif model in (
 		"ogdenciarletgeymonatneohookean_bar",
 		"OgdenCiarletGeymonatNeoHookean_bar",
@@ -480,9 +480,7 @@ def material_factory(kinematics, model, parameters):
 		"CiarletGeymonatNeoHookean_bar",
 		"CGNH_bar",
 	):
-		material = materials.elastic.OgdenCiarletGeymonatNeoHookean(
-			kinematics=kinematics, parameters=parameters, decoup=True
-		)
+		material = OgdenCiarletGeymonatNeoHookean(kinematics=kinematics, parameters=parameters, decoup=True)
 	elif model in (
 		"ogdenciarletgeymonatneohookeanmooneyrivlin",
 		"OgdenCiarletGeymonatNeoHookeanMooneyRivlin",
@@ -491,9 +489,7 @@ def material_factory(kinematics, model, parameters):
 		"CiarletGeymonatNeoHookeanMooneyRivlin",
 		"CGNHMR",
 	):
-		material = materials.elastic.OgdenCiarletGeymonatNeoHookeanMooneyRivlin(
-			kinematics=kinematics, parameters=parameters
-		)
+		material = OgdenCiarletGeymonatNeoHookeanMooneyRivlin(kinematics=kinematics, parameters=parameters)
 	elif model in (
 		"ogdenciarletgeymonatneohookeanmooneyrivlin_bar",
 		"OgdenCiarletGeymonatNeoHookeanMooneyRivlin_bar",
@@ -502,13 +498,11 @@ def material_factory(kinematics, model, parameters):
 		"CiarletGeymonatNeoHookeanMooneyRivlin_bar",
 		"CGNHMR_bar",
 	):
-		material = materials.elastic.OgdenCiarletGeymonatNeoHookeanMooneyRivlin(
-			kinematics=kinematics, parameters=parameters, decoup=True
-		)
+		material = OgdenCiarletGeymonatNeoHookeanMooneyRivlin(kinematics=kinematics, parameters=parameters, decoup=True)
 	elif model in ("exponentialneoHookean"):
-		material = materials.elastic.ExponentialNeoHookean(kinematics=kinematics, parameters=parameters)
+		material = ExponentialNeoHookean(kinematics=kinematics, parameters=parameters)
 	elif model in ("exponentialogdenciarletgeymonat"):
-		material = materials.elastic.ExponentialOgdenCiarletGeymonat(kinematics=kinematics, parameters=parameters)
+		material = ExponentialOgdenCiarletGeymonat(kinematics=kinematics, parameters=parameters)
 	else:
 		assert 0, 'Material model ("' + model + '") not recognized. Aborting.'
 	return material

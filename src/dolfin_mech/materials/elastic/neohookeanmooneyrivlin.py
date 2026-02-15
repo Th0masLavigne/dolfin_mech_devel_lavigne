@@ -14,7 +14,9 @@ This module provides a combined material model that sums the strain energy
 densities of the Neo-Hookean and Mooney-Rivlin models.
 """
 
-from dolfin_mech.materials.elastic import ElasticMaterial, MooneyRivlin, NeoHookean
+from .elastic import ElasticMaterial
+from .mooneyrivlin import MooneyRivlin
+from .neohookean import NeoHookean
 
 ################################################################################
 

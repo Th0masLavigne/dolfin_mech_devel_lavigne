@@ -17,7 +17,7 @@ of displacements, pressures, or other field variables.
 
 import dolfin
 
-from dolfin_mech.core import TimeVaryingConstant
+from .timevaryingconstant import TimeVaryingConstant
 
 ################################################################################
 

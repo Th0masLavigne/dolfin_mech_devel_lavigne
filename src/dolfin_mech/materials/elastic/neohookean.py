@@ -16,7 +16,7 @@ compressible and isochoric-volumetric decoupled formulations.
 
 import dolfin
 
-from dolfin_mech.materials.elastic import ElasticMaterial
+from .elastic import ElasticMaterial
 
 ################################################################################
 

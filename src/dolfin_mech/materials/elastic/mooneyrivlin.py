@@ -16,7 +16,7 @@ and isochoric-volumetric decoupled formulations in 2D and 3D.
 
 import dolfin
 
-from dolfin_mech.materials.elastic import ElasticMaterial
+from .elastic import ElasticMaterial
 
 ################################################################################
 

@@ -29,7 +29,8 @@ import numpy
 import petsc4py
 import petsc4py.PETSc
 
-from dolfin_mech.core import XDMFFile, compute_error
+from .compute_error import compute_error
+from .xdmffile import XDMFFile
 
 ################################################################################
 

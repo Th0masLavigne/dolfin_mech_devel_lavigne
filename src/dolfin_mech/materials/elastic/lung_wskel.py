@@ -15,7 +15,8 @@ combining Exponential-Ogden bulk and Neo-Hookean deviatoric components.
 """
 
 import dolfin_mech.materials as materials
-from dolfin_mech.materials.elastic import ElasticMaterial
+
+from .elastic import ElasticMaterial
 
 ################################################################################
 

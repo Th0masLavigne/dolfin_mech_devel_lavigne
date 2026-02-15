@@ -4,7 +4,7 @@ This sub-package provides the material law/stresses of dolfin_mech as well as th
 """
 
 from . import elastic, inelastic
-from .Material import (
+from .material import (
 	Material,
 	material_factory,
 )

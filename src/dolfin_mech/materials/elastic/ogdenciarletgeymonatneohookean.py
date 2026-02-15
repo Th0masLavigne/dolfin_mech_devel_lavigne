@@ -21,7 +21,9 @@ the strain energy density into volumetric (bulk) and shear (deviatoric) parts.
 
 import dolfin
 
-from dolfin_mech.materials.elastic import ElasticMaterial, NeoHookean, OgdenCiarletGeymonat
+from .elastic import ElasticMaterial
+from .neohookean import NeoHookean
+from .ogdenciarletgeymonat import OgdenCiarletGeymonat
 
 ################################################################################
 

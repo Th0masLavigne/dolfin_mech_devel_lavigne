@@ -22,7 +22,9 @@ and second invariants.
 
 import dolfin
 
-from dolfin_mech.materials.elastic import ElasticMaterial, NeoHookeanMooneyRivlin, OgdenCiarletGeymonat
+from .elastic import ElasticMaterial
+from .neohookeanmooneyrivlin import NeoHookeanMooneyRivlin
+from .ogdenciarletgeymonat import OgdenCiarletGeymonat
 
 ################################################################################
 

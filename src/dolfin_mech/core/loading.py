@@ -17,7 +17,7 @@ pressures, or body forces.
 
 import dolfin
 
-from dolfin_mech.core import TimeVaryingConstant
+from .timevaryingconstant import TimeVaryingConstant
 
 ################################################################################
 

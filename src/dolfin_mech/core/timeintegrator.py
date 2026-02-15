@@ -15,7 +15,8 @@ import sys
 import dolfin
 import myPythonLibrary as mypy
 
-from dolfin_mech.core import XDMFFile, write_VTU_file
+from .write_vtu_file import write_VTU_file
+from .xdmffile import XDMFFile
 
 ################################################################################
 
