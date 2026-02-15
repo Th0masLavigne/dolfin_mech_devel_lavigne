@@ -1,0 +1,733 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.runs.rivlincube_porohyperelasticity &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5283314f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_toc.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dolfin_mech/index.html">Core Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/problems/index.html">Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.runs.rivlincube_porohyperelasticity</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dolfin_mech.runs.rivlincube_porohyperelasticity</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf8</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### Created by Martin Genet, 2018-2025                                       ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                   ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;Defines the RivlinCube_PoroHyperelasticity driver.</span>
+
+<span class="sd">High-level manager for</span>
+<span class="sd">biphasic finite strain simulations. It orchestrates forward and inverse poro-</span>
+<span class="sd">hyperelastic problems on structured domains, coupling solid skeleton mechanics</span>
+<span class="sd">with fluid volume fraction evolution and pressure-balancing gravity loads for</span>
+<span class="sd">biomechanical validation.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">dolfin</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">problems</span>
+<span class="kn">from</span> <span class="nn">.rivlincube_mesh</span> <span class="kn">import</span> <span class="n">RivlinCube_Mesh</span>
+
+<span class="c1">################################################################################</span>
+
+
+<div class="viewcode-block" id="RivlinCube_PoroHyperelasticity">
+<a class="viewcode-back" href="../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html#dolfin_mech.runs.rivlincube_porohyperelasticity.RivlinCube_PoroHyperelasticity">[docs]</a>
+<span class="k">def</span> <span class="nf">RivlinCube_PoroHyperelasticity</span><span class="p">(</span>
+	<span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+	<span class="n">inverse</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+	<span class="n">cube_params</span><span class="o">=</span><span class="p">{},</span>
+	<span class="n">porosity_params</span><span class="o">=</span><span class="p">{},</span>
+	<span class="n">move_params</span><span class="o">=</span><span class="p">{},</span>
+	<span class="n">mat_params</span><span class="o">=</span><span class="p">{},</span>
+	<span class="n">step_params</span><span class="o">=</span><span class="p">{},</span>
+	<span class="n">load_params</span><span class="o">=</span><span class="p">{},</span>
+	<span class="n">inertia_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;applied&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+	<span class="n">res_basename</span><span class="o">=</span><span class="s2">&quot;run_RivlinCube_PoroHyperelasticity&quot;</span><span class="p">,</span>
+	<span class="n">plot_curves</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+	<span class="n">get_results</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+	<span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">	</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Runs the Rivlin Cube benchmark for Poro-Hyperelasticity (Forward or Inverse).</span>
+
+<span class="sd">	This function simulates a porous unit cube (or square) undergoing large</span>
+<span class="sd">	deformations. It validates the coupled mechanics of the solid skeleton and</span>
+<span class="sd">	the pore fluid.</span>
+
+
+
+<span class="sd">	**Problem Types:**</span>
+
+<span class="sd">	- **Forward (`inverse=0`)**: Given initial porosity :math:`\Phi_{s0}` and loads,</span>
+<span class="sd">	  solve for displacement :math:`\mathbf{u}` and current porosity :math:`\phi_s`.</span>
+<span class="sd">	- **Inverse (`inverse=1`)**: Given current porosity :math:`\phi_s` and loads,</span>
+<span class="sd">	  solve for the reference configuration (displacement :math:`\mathbf{u}`) and</span>
+<span class="sd">	  reference porosity :math:`\Phi_{s0}`.</span>
+
+<span class="sd">	**Loading Scenarios (`load_params[&quot;type&quot;]`):**</span>
+
+<span class="sd">	- ``&quot;internal&quot;``: Applies internal pore pressure :math:`p_f`.</span>
+<span class="sd">	- ``&quot;external&quot;``: Applies external traction :math:`P` to specific boundaries.</span>
+<span class="sd">	- ``&quot;p_boundary_condition&quot;``: Applies a pressure-balancing gravity load, often used for lung/organ mechanics validation.</span>
+
+<span class="sd">	**Porosity Initialization (`porosity_params`):**</span>
+<span class="sd">	Can be initialized as a constant, from a file, or via random generation using</span>
+<span class="sd">	various keys like ``&quot;constant&quot;``, ``&quot;from_file&quot;``, ``&quot;mesh_function_xml&quot;``, etc.</span>
+
+<span class="sd">	:param dim: Spatial dimension (2 or 3).</span>
+<span class="sd">	:param inverse: If 1, solves the inverse problem; else forward.</span>
+<span class="sd">	:param cube_params: Mesh generation parameters (or path to existing mesh).</span>
+<span class="sd">	:param porosity_params: Configuration for the initial porosity field.</span>
+<span class="sd">	:param move_params: Parameters for ALE mesh movement before solving.</span>
+<span class="sd">	:param mat_params: Material parameters for skeleton, bulk, and pore behavior.</span>
+<span class="sd">	:param step_params: Time-stepping parameters (``Deltat``, ``dt_ini``).</span>
+<span class="sd">	:param load_params: Loading configuration (type and magnitude).</span>
+<span class="sd">	:param inertia_params: Dynamic simulation parameters (density ``rho``).</span>
+<span class="sd">	:param res_basename: Output filename prefix.</span>
+<span class="sd">	:param plot_curves: If True, generates Matplotlib plots of QOIs vs. time/pressure.</span>
+<span class="sd">	:param get_results: If True, returns displacement and porosity fields.</span>
+<span class="sd">	:param verbose: Verbosity level.</span>
+<span class="sd">	:return: (Optional) Tuple ``(displacement_func, porosity_array, measure)``.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="c1">################################################################### Mesh ###</span>
+
+	<span class="k">if</span> <span class="s2">&quot;path_and_file_name&quot;</span> <span class="ow">in</span> <span class="n">cube_params</span><span class="p">:</span>
+		<span class="n">mesh</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Mesh</span><span class="p">()</span>
+		<span class="n">mesh_filename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cube_params</span><span class="p">[</span><span class="s2">&quot;path_and_file_name&quot;</span><span class="p">])</span>
+		<span class="n">dolfin</span><span class="o">.</span><span class="n">XDMFFile</span><span class="p">(</span><span class="n">mesh_filename</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">cube_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;refine&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+			<span class="n">mesh</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">refine</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+		<span class="n">boundaries_mf</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MeshFunction</span><span class="p">(</span>
+			<span class="s2">&quot;size_t&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="p">()</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+		<span class="p">)</span>  <span class="c1"># MG20180418: size_t looks like unsigned int, but more robust wrt architecture and os</span>
+		<span class="n">boundaries_mf</span><span class="o">.</span><span class="n">set_all</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="n">mesh</span><span class="p">,</span> <span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">xmin_id</span><span class="p">,</span> <span class="n">xmax_id</span><span class="p">,</span> <span class="n">ymin_id</span><span class="p">,</span> <span class="n">ymax_id</span> <span class="o">=</span> <span class="n">RivlinCube_Mesh</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">cube_params</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">mesh</span><span class="p">,</span> <span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">xmin_id</span><span class="p">,</span> <span class="n">xmax_id</span><span class="p">,</span> <span class="n">ymin_id</span><span class="p">,</span> <span class="n">ymax_id</span><span class="p">,</span> <span class="n">zmin_id</span><span class="p">,</span> <span class="n">zmax_id</span> <span class="o">=</span> <span class="n">RivlinCube_Mesh</span><span class="p">(</span>
+				<span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">cube_params</span>
+			<span class="p">)</span>
+
+	<span class="n">domains_mf</span> <span class="o">=</span> <span class="kc">None</span>
+	<span class="k">if</span> <span class="n">cube_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;generic_zones&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mat_params</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="n">ymin</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+			<span class="n">ymax</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+			<span class="n">delta_y</span> <span class="o">=</span> <span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span>
+			<span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-14</span>
+			<span class="n">number_zones</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mat_params</span><span class="p">)</span>
+			<span class="n">length_zone</span> <span class="o">=</span> <span class="n">delta_y</span> <span class="o">/</span> <span class="n">number_zones</span>
+			<span class="n">domains_mf</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MeshFunction</span><span class="p">(</span><span class="s2">&quot;size_t&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="p">()</span><span class="o">.</span><span class="n">dim</span><span class="p">())</span>
+			<span class="n">domains_mf</span><span class="o">.</span><span class="n">set_all</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+			<span class="n">subdomain_lst</span> <span class="o">=</span> <span class="p">[]</span>
+			<span class="k">for</span> <span class="n">mat_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_zones</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+				<span class="n">subdomain_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+					<span class="n">dolfin</span><span class="o">.</span><span class="n">CompiledSubDomain</span><span class="p">(</span>
+						<span class="s2">&quot;x[1] &lt;= y1 - tol&quot;</span><span class="p">,</span> <span class="n">y1</span><span class="o">=</span><span class="n">ymax</span> <span class="o">-</span> <span class="n">length_zone</span> <span class="o">*</span> <span class="p">(</span><span class="n">number_zones</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">mat_id</span><span class="p">),</span> <span class="n">tol</span><span class="o">=</span><span class="n">tol</span>
+					<span class="p">)</span>
+				<span class="p">)</span>
+				<span class="n">subdomain_lst</span><span class="p">[</span><span class="n">number_zones</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">mat_id</span><span class="p">]</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">domains_mf</span><span class="p">,</span> <span class="n">mat_id</span><span class="p">)</span>
+				<span class="n">mat_params</span><span class="p">[</span><span class="n">mat_id</span><span class="p">][</span><span class="s2">&quot;subdomain_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat_id</span>
+
+	<span class="k">if</span> <span class="n">move_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;move&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+		<span class="n">U</span> <span class="o">=</span> <span class="n">move_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+		<span class="n">dolfin</span><span class="o">.</span><span class="n">ALE</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+
+	<span class="c1">################################################################ Porosity ###</span>
+
+	<span class="n">porosity_known</span> <span class="o">=</span> <span class="n">porosity_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;known&quot;</span><span class="p">,</span> <span class="s2">&quot;phis&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="n">inverse</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;Phis0&quot;</span><span class="p">)</span>
+	<span class="n">porosity_type</span> <span class="o">=</span> <span class="n">porosity_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;constant&quot;</span><span class="p">)</span>
+	<span class="n">porosity_val</span> <span class="o">=</span> <span class="n">porosity_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;val&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">porosity_type</span> <span class="o">==</span> <span class="s2">&quot;constant&quot;</span><span class="p">:</span>
+		<span class="n">porosity_fun</span> <span class="o">=</span> <span class="kc">None</span>
+	<span class="k">elif</span> <span class="n">porosity_type</span> <span class="o">==</span> <span class="s2">&quot;from_file&quot;</span><span class="p">:</span>
+		<span class="n">porosity_filename</span> <span class="o">=</span> <span class="n">porosity_val</span>
+		<span class="n">porosity_mf</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MeshFunction</span><span class="p">(</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">porosity_filename</span><span class="p">)</span>
+		<span class="n">porosity_expr</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">CompiledExpression</span><span class="p">(</span>
+			<span class="nb">getattr</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">compile_cpp_code</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">get_ExprMeshFunction_cpp_pybind</span><span class="p">()),</span> <span class="s2">&quot;MeshExpr&quot;</span><span class="p">)(),</span>
+			<span class="n">mf</span><span class="o">=</span><span class="n">porosity_mf</span><span class="p">,</span>
+			<span class="n">degree</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="n">porosity_fs</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s2">&quot;DG&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="n">porosity_fun</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">porosity_expr</span><span class="p">,</span> <span class="n">porosity_fs</span><span class="p">)</span>
+		<span class="n">porosity_val</span> <span class="o">=</span> <span class="kc">None</span>
+	<span class="k">elif</span> <span class="n">porosity_type</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;mesh_function&quot;</span><span class="p">):</span>
+		<span class="k">if</span> <span class="n">porosity_type</span> <span class="o">==</span> <span class="s2">&quot;mesh_function_constant&quot;</span><span class="p">:</span>
+			<span class="n">porosity_mf</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MeshFunction</span><span class="p">(</span><span class="n">value_type</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">porosity_val</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="n">porosity_type</span> <span class="o">==</span> <span class="s2">&quot;mesh_function_xml&quot;</span><span class="p">:</span>
+			<span class="n">porosity_filename</span> <span class="o">=</span> <span class="n">res_basename</span> <span class="o">+</span> <span class="s2">&quot;-poro.xml&quot;</span>
+			<span class="n">n_cells</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">cells</span><span class="p">())</span>
+			<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">porosity_filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;dolfin xmlns:dolfin=&quot;http://fenicsproject.org&quot;&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;  &lt;mesh_function type=&quot;double&quot; dim=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot; size=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_cells</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="k">for</span> <span class="n">k_cell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cells</span><span class="p">):</span>
+					<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    &lt;entity index=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k_cell</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot; value=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">porosity_val</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;/&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;  &lt;/mesh_function&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&lt;/dolfin&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+			<span class="n">porosity_mf</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MeshFunction</span><span class="p">(</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">porosity_filename</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="n">porosity_type</span> <span class="o">==</span> <span class="s2">&quot;mesh_function_random_xml&quot;</span><span class="p">:</span>
+			<span class="c1"># print(&quot;mesh_function xml&quot;)</span>
+			<span class="n">porosity_filename</span> <span class="o">=</span> <span class="n">res_basename</span> <span class="o">+</span> <span class="s2">&quot;-poro.xml&quot;</span>
+			<span class="n">n_cells</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">cells</span><span class="p">())</span>
+			<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">porosity_filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;dolfin xmlns:dolfin=&quot;http://fenicsproject.org&quot;&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;  &lt;mesh_function type=&quot;double&quot; dim=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot; size=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_cells</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="k">for</span> <span class="n">k_cell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cells</span><span class="p">):</span>
+					<span class="n">value</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+					<span class="c1"># positive_value = True</span>
+					<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    &lt;entity index=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k_cell</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot; value=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;/&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;  &lt;/mesh_function&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&lt;/dolfin&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+			<span class="n">porosity_mf</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MeshFunction</span><span class="p">(</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">porosity_filename</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="n">porosity_type</span> <span class="o">==</span> <span class="s2">&quot;mesh_function_from_xml&quot;</span><span class="p">:</span>
+			<span class="n">porosity_filename</span> <span class="o">=</span> <span class="n">porosity_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;porosity_filename&quot;</span><span class="p">)</span>
+			<span class="n">porosity_mf</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MeshFunction</span><span class="p">(</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">porosity_filename</span><span class="p">)</span>
+		<span class="n">porosity_expr</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">CompiledExpression</span><span class="p">(</span>
+			<span class="nb">getattr</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">compile_cpp_code</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">get_ExprMeshFunction_cpp_pybind</span><span class="p">()),</span> <span class="s2">&quot;MeshExpr&quot;</span><span class="p">)(),</span>
+			<span class="n">mf</span><span class="o">=</span><span class="n">porosity_mf</span><span class="p">,</span>
+			<span class="n">degree</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="n">porosity_fs</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s2">&quot;DG&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="n">porosity_fun</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">porosity_expr</span><span class="p">,</span> <span class="n">porosity_fs</span><span class="p">)</span>
+		<span class="n">porosity_val</span> <span class="o">=</span> <span class="kc">None</span>
+	<span class="k">elif</span> <span class="n">porosity_type</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;function&quot;</span><span class="p">):</span>
+		<span class="n">porosity_fs</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s2">&quot;DG&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">porosity_type</span> <span class="o">==</span> <span class="s2">&quot;function_constant&quot;</span><span class="p">:</span>
+			<span class="n">porosity_fun</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">porosity_fs</span><span class="p">)</span>
+			<span class="n">porosity_fun</span><span class="o">.</span><span class="n">vector</span><span class="p">()[:]</span> <span class="o">=</span> <span class="n">porosity_val</span>
+		<span class="k">elif</span> <span class="n">porosity_type</span> <span class="o">==</span> <span class="s2">&quot;function_xml&quot;</span><span class="p">:</span>
+			<span class="n">porosity_filename</span> <span class="o">=</span> <span class="n">res_basename</span> <span class="o">+</span> <span class="s2">&quot;-poro.xml&quot;</span>
+			<span class="n">n_cells</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">cells</span><span class="p">())</span>
+			<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">porosity_filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;dolfin xmlns:dolfin=&quot;http://fenicsproject.org&quot;&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;  &lt;function_data size=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_cells</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="k">for</span> <span class="n">k_cell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cells</span><span class="p">):</span>
+					<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+						<span class="s1">&#39;    &lt;dof index=&quot;&#39;</span>
+						<span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k_cell</span><span class="p">)</span>
+						<span class="o">+</span> <span class="s1">&#39;&quot; value=&quot;&#39;</span>
+						<span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">porosity_val</span><span class="p">)</span>
+						<span class="o">+</span> <span class="s1">&#39;&quot; cell_index=&quot;&#39;</span>
+						<span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k_cell</span><span class="p">)</span>
+						<span class="o">+</span> <span class="s1">&#39;&quot; cell_dof_index=&quot;0&quot;/&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+					<span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;  &lt;/function_data&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&lt;/dolfin&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+			<span class="n">porosity_fun</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">porosity_fs</span><span class="p">,</span> <span class="n">porosity_filename</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="n">porosity_type</span> <span class="o">==</span> <span class="s2">&quot;function_xml_from_array&quot;</span><span class="p">:</span>
+			<span class="c1"># print(&quot;function xml&quot;)</span>
+			<span class="n">porosity_filename</span> <span class="o">=</span> <span class="n">res_basename</span> <span class="o">+</span> <span class="s2">&quot;-poro.xml&quot;</span>
+			<span class="c1"># print(&quot;porosity_filename=&quot;, porosity_filename)</span>
+			<span class="n">n_cells</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">cells</span><span class="p">())</span>
+			<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">porosity_filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;dolfin xmlns:dolfin=&quot;http://fenicsproject.org&quot;&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;  &lt;function_data size=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_cells</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+				<span class="k">for</span> <span class="n">k_cell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cells</span><span class="p">):</span>
+					<span class="c1"># print(&quot;kcell=&quot;, k_cell)</span>
+					<span class="c1"># print(&quot;porosity for kcell&quot;, porosity_val[k_cell])</span>
+					<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+						<span class="s1">&#39;    &lt;dof index=&quot;&#39;</span>
+						<span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k_cell</span><span class="p">)</span>
+						<span class="o">+</span> <span class="s1">&#39;&quot; value=&quot;&#39;</span>
+						<span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">porosity_val</span><span class="p">[</span><span class="n">k_cell</span><span class="p">])</span>
+						<span class="o">+</span> <span class="s1">&#39;&quot; cell_index=&quot;&#39;</span>
+						<span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k_cell</span><span class="p">)</span>
+						<span class="o">+</span> <span class="s1">&#39;&quot; cell_dof_index=&quot;0&quot;/&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+					<span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;  &lt;/function_data&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&lt;/dolfin&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+				<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+			<span class="n">porosity_fun</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">porosity_fs</span><span class="p">,</span> <span class="n">porosity_filename</span><span class="p">)</span>
+		<span class="n">porosity_val</span> <span class="o">=</span> <span class="kc">None</span>
+
+	<span class="c1">################################################################ Problem ###</span>
+
+	<span class="n">load_type</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;internal&quot;</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">load_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;p_boundary_condition0&quot;</span><span class="p">,</span> <span class="s2">&quot;p_boundary_condition&quot;</span><span class="p">):</span>
+		<span class="n">w_pressure_balancing_gravity</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">w_pressure_balancing_gravity</span> <span class="o">=</span> <span class="mi">0</span>
+
+	<span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">mat_params</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+		<span class="n">skel_behavior</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="n">skel_behaviors</span> <span class="o">=</span> <span class="n">mat_params</span>
+		<span class="n">bulk_behavior</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="n">bulk_behaviors</span> <span class="o">=</span> <span class="n">mat_params</span>
+		<span class="n">pore_behavior</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="n">pore_behaviors</span> <span class="o">=</span> <span class="n">mat_params</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">skel_behavior</span> <span class="o">=</span> <span class="n">mat_params</span>
+		<span class="n">skel_behaviors</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="n">bulk_behavior</span> <span class="o">=</span> <span class="n">mat_params</span>
+		<span class="n">bulk_behaviors</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="n">pore_behavior</span> <span class="o">=</span> <span class="n">mat_params</span>
+		<span class="n">pore_behaviors</span> <span class="o">=</span> <span class="p">[]</span>
+
+	<span class="k">if</span> <span class="n">inverse</span><span class="p">:</span>
+		<span class="n">problem</span> <span class="o">=</span> <span class="n">problems</span><span class="o">.</span><span class="n">InversePoroHyperelasticity</span><span class="p">(</span>
+			<span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span>
+			<span class="n">define_facet_normals</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+			<span class="n">boundaries_mf</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span>
+			<span class="n">domains_mf</span><span class="o">=</span><span class="n">domains_mf</span><span class="p">,</span>
+			<span class="n">displacement_degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+			<span class="n">quadrature_degree</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>  <span class="c1"># MG20250905: Why?! Otherwise 2k integration points in 3D…</span>
+			<span class="n">porosity_known</span><span class="o">=</span><span class="n">porosity_known</span><span class="p">,</span>
+			<span class="n">porosity_init_val</span><span class="o">=</span><span class="n">porosity_val</span><span class="p">,</span>
+			<span class="n">porosity_init_fun</span><span class="o">=</span><span class="n">porosity_fun</span><span class="p">,</span>
+			<span class="n">skel_behavior</span><span class="o">=</span><span class="n">skel_behavior</span><span class="p">,</span>
+			<span class="n">skel_behaviors</span><span class="o">=</span><span class="n">skel_behaviors</span><span class="p">,</span>
+			<span class="n">bulk_behavior</span><span class="o">=</span><span class="n">bulk_behavior</span><span class="p">,</span>
+			<span class="n">bulk_behaviors</span><span class="o">=</span><span class="n">bulk_behaviors</span><span class="p">,</span>
+			<span class="n">pore_behavior</span><span class="o">=</span><span class="n">pore_behavior</span><span class="p">,</span>
+			<span class="n">pore_behaviors</span><span class="o">=</span><span class="n">pore_behaviors</span><span class="p">,</span>
+			<span class="n">w_pressure_balancing_gravity</span><span class="o">=</span><span class="n">w_pressure_balancing_gravity</span><span class="p">,</span>
+		<span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">problem</span> <span class="o">=</span> <span class="n">problems</span><span class="o">.</span><span class="n">PoroHyperelasticity</span><span class="p">(</span>
+			<span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span>
+			<span class="n">define_facet_normals</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+			<span class="n">boundaries_mf</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span>
+			<span class="n">domains_mf</span><span class="o">=</span><span class="n">domains_mf</span><span class="p">,</span>
+			<span class="n">displacement_degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+			<span class="n">quadrature_degree</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>  <span class="c1"># MG20250905: Why?! Otherwise 2k integration points in 3D…</span>
+			<span class="n">porosity_known</span><span class="o">=</span><span class="n">porosity_known</span><span class="p">,</span>
+			<span class="n">porosity_init_val</span><span class="o">=</span><span class="n">porosity_val</span><span class="p">,</span>
+			<span class="n">porosity_init_fun</span><span class="o">=</span><span class="n">porosity_fun</span><span class="p">,</span>
+			<span class="n">skel_behavior</span><span class="o">=</span><span class="n">skel_behavior</span><span class="p">,</span>
+			<span class="n">skel_behaviors</span><span class="o">=</span><span class="n">skel_behaviors</span><span class="p">,</span>
+			<span class="n">bulk_behavior</span><span class="o">=</span><span class="n">bulk_behavior</span><span class="p">,</span>
+			<span class="n">bulk_behaviors</span><span class="o">=</span><span class="n">bulk_behaviors</span><span class="p">,</span>
+			<span class="n">pore_behavior</span><span class="o">=</span><span class="n">pore_behavior</span><span class="p">,</span>
+			<span class="n">pore_behaviors</span><span class="o">=</span><span class="n">pore_behaviors</span><span class="p">,</span>
+			<span class="n">w_pressure_balancing_gravity</span><span class="o">=</span><span class="n">w_pressure_balancing_gravity</span><span class="p">,</span>
+		<span class="p">)</span>
+
+	<span class="c1">########################################## Boundary conditions &amp; Loading ###</span>
+
+	<span class="n">n_steps</span> <span class="o">=</span> <span class="n">step_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;n_steps&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="n">Deltat_lst</span> <span class="o">=</span> <span class="n">step_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Deltat_lst&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">step_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Deltat&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_steps</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_steps</span><span class="p">)</span>
+	<span class="n">dt_ini_lst</span> <span class="o">=</span> <span class="n">step_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt_ini_lst&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">step_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt_ini&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_steps</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_steps</span><span class="p">)</span>
+	<span class="n">dt_min_lst</span> <span class="o">=</span> <span class="n">step_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt_min_lst&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">step_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt_min&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_steps</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_steps</span><span class="p">)</span>
+
+	<span class="n">load_type</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;internal&quot;</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">load_type</span> <span class="o">==</span> <span class="s2">&quot;internal&quot;</span><span class="p">:</span>
+		<span class="n">pf_lst</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+			<span class="s2">&quot;pf_lst&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="n">k_step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pf&quot;</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_steps</span> <span class="k">for</span> <span class="n">k_step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)]</span>
+		<span class="p">)</span>
+	<span class="k">elif</span> <span class="n">load_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;external0&quot;</span><span class="p">,</span> <span class="s2">&quot;external&quot;</span><span class="p">):</span>
+		<span class="n">P_lst</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+			<span class="s2">&quot;P_lst&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="n">k_step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_steps</span> <span class="k">for</span> <span class="n">k_step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)]</span>
+		<span class="p">)</span>
+	<span class="k">elif</span> <span class="n">load_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;p_boundary_condition0&quot;</span><span class="p">,</span> <span class="s2">&quot;p_boundary_condition&quot;</span><span class="p">):</span>
+		<span class="n">f_lst</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+			<span class="s2">&quot;f_lst&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="n">k_step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_steps</span> <span class="k">for</span> <span class="n">k_step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)]</span>
+		<span class="p">)</span>
+		<span class="n">P0_lst</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+			<span class="s2">&quot;P0_lst&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="n">k_step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;P0&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.50</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_steps</span> <span class="k">for</span> <span class="n">k_step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)]</span>
+		<span class="p">)</span>
+
+	<span class="k">for</span> <span class="n">k_step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+		<span class="n">Deltat</span> <span class="o">=</span> <span class="n">Deltat_lst</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span>
+		<span class="n">dt_ini</span> <span class="o">=</span> <span class="n">dt_ini_lst</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span>
+		<span class="n">dt_min</span> <span class="o">=</span> <span class="n">dt_min_lst</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span>
+
+		<span class="n">k_step</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">add_step</span><span class="p">(</span><span class="n">Deltat</span><span class="o">=</span><span class="n">Deltat</span><span class="p">,</span> <span class="n">dt_ini</span><span class="o">=</span><span class="n">dt_ini</span><span class="p">,</span> <span class="n">dt_min</span><span class="o">=</span><span class="n">dt_min</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">load_type</span> <span class="o">==</span> <span class="s2">&quot;internal&quot;</span><span class="p">:</span>
+			<span class="n">pf</span> <span class="o">=</span> <span class="n">pf_lst</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span>
+			<span class="n">pf_old</span> <span class="o">=</span> <span class="n">pf_lst</span><span class="p">[</span><span class="n">k_step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">k_step</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span>
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_pf_operator</span><span class="p">(</span><span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span> <span class="n">pf_ini</span><span class="o">=</span><span class="n">pf_old</span><span class="p">,</span> <span class="n">pf_fin</span><span class="o">=</span><span class="n">pf</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="n">load_type</span> <span class="o">==</span> <span class="s2">&quot;external&quot;</span><span class="p">:</span>
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_pf_operator</span><span class="p">(</span><span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span> <span class="n">pf_ini</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">pf_fin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span>
+			<span class="n">P</span> <span class="o">=</span> <span class="n">P_lst</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span>
+			<span class="n">P_old</span> <span class="o">=</span> <span class="n">P_lst</span><span class="p">[</span><span class="n">k_step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">k_step</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span>
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_surface_pressure_loading_operator</span><span class="p">(</span>
+				<span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dS</span><span class="p">(</span><span class="n">xmax_id</span><span class="p">),</span> <span class="n">P_ini</span><span class="o">=</span><span class="n">P_old</span><span class="p">,</span> <span class="n">P_fin</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span>
+			<span class="p">)</span>
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_surface_pressure_loading_operator</span><span class="p">(</span>
+				<span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dS</span><span class="p">(</span><span class="n">ymax_id</span><span class="p">),</span> <span class="n">P_ini</span><span class="o">=</span><span class="n">P_old</span><span class="p">,</span> <span class="n">P_fin</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span>
+			<span class="p">)</span>
+			<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="n">problem</span><span class="o">.</span><span class="n">add_surface_pressure_loading_operator</span><span class="p">(</span>
+					<span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dS</span><span class="p">(</span><span class="n">zmax_id</span><span class="p">),</span> <span class="n">P_ini</span><span class="o">=</span><span class="n">P_old</span><span class="p">,</span> <span class="n">P_fin</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span>
+				<span class="p">)</span>
+		<span class="k">elif</span> <span class="n">load_type</span> <span class="o">==</span> <span class="s2">&quot;external0&quot;</span><span class="p">:</span>
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_pf_operator</span><span class="p">(</span><span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span> <span class="n">pf_ini</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">pf_fin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span>
+			<span class="n">P</span> <span class="o">=</span> <span class="n">P_lst</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span>
+			<span class="n">P_old</span> <span class="o">=</span> <span class="n">P_lst</span><span class="p">[</span><span class="n">k_step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">k_step</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span>
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_surface_pressure0_loading_operator</span><span class="p">(</span>
+				<span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dS</span><span class="p">(</span><span class="n">xmax_id</span><span class="p">),</span> <span class="n">P_ini</span><span class="o">=</span><span class="n">P_old</span><span class="p">,</span> <span class="n">P_fin</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span>
+			<span class="p">)</span>
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_surface_pressure0_loading_operator</span><span class="p">(</span>
+				<span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dS</span><span class="p">(</span><span class="n">ymax_id</span><span class="p">),</span> <span class="n">P_ini</span><span class="o">=</span><span class="n">P_old</span><span class="p">,</span> <span class="n">P_fin</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span>
+			<span class="p">)</span>
+			<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="n">problem</span><span class="o">.</span><span class="n">add_surface_pressure0_loading_operator</span><span class="p">(</span>
+					<span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dS</span><span class="p">(</span><span class="n">zmax_id</span><span class="p">),</span> <span class="n">P_ini</span><span class="o">=</span><span class="n">P_old</span><span class="p">,</span> <span class="n">P_fin</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span>
+				<span class="p">)</span>
+		<span class="k">elif</span> <span class="n">load_type</span> <span class="o">==</span> <span class="s2">&quot;p_boundary_condition&quot;</span><span class="p">:</span>
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_pf_operator</span><span class="p">(</span><span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span> <span class="n">pf_ini</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">pf_fin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span>
+			<span class="n">f</span> <span class="o">=</span> <span class="n">f_lst</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span>
+			<span class="n">f_old</span> <span class="o">=</span> <span class="n">f_lst</span><span class="p">[</span><span class="n">k_step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">k_step</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span>
+			<span class="n">P0</span> <span class="o">=</span> <span class="n">P0_lst</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span>
+			<span class="n">P0_old</span> <span class="o">=</span> <span class="n">P0_lst</span><span class="p">[</span><span class="n">k_step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">k_step</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span>
+			<span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">mat_params</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+				<span class="n">rho_solid</span> <span class="o">=</span> <span class="n">mat_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parameters&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;rho_solid&quot;</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="n">rho_solid</span> <span class="o">=</span> <span class="n">mat_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parameters&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;rho_solid&quot;</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
+
+			<span class="n">f_direction</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;f_direction&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">)</span>
+			<span class="k">if</span> <span class="n">f_direction</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span>
+				<span class="n">f_ini</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_old</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+				<span class="n">f_fin</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+
+			<span class="k">elif</span> <span class="n">f_direction</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
+				<span class="n">f_ini</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">f_old</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+				<span class="n">f_fin</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+
+			<span class="k">elif</span> <span class="n">f_direction</span> <span class="o">==</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span>
+				<span class="n">f_ini</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">f_old</span><span class="p">]</span>
+				<span class="n">f_fin</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">f</span><span class="p">]</span>
+
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_pressure_balancing_gravity_loading_operator</span><span class="p">(</span>
+				<span class="n">dV</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span>
+				<span class="n">dS</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dS</span><span class="p">,</span>
+				<span class="n">f_ini</span><span class="o">=</span><span class="n">f_ini</span><span class="p">,</span>
+				<span class="n">f_fin</span><span class="o">=</span><span class="n">f_fin</span><span class="p">,</span>
+				<span class="n">rho_solid</span><span class="o">=</span><span class="n">rho_solid</span><span class="p">,</span>
+				<span class="n">P0_ini</span><span class="o">=</span><span class="n">P0_old</span><span class="p">,</span>
+				<span class="n">P0_fin</span><span class="o">=</span><span class="n">P0</span><span class="p">,</span>
+				<span class="n">breathing_constant</span><span class="o">=</span><span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+				<span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">,</span>
+			<span class="p">)</span>
+		<span class="k">elif</span> <span class="n">load_type</span> <span class="o">==</span> <span class="s2">&quot;p_boundary_condition0&quot;</span><span class="p">:</span>
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_pf_operator</span><span class="p">(</span><span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span> <span class="n">pf_ini</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">pf_fin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span>
+			<span class="n">f</span> <span class="o">=</span> <span class="n">f_lst</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span>
+			<span class="n">f_old</span> <span class="o">=</span> <span class="n">f_lst</span><span class="p">[</span><span class="n">k_step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">k_step</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span>
+			<span class="n">P0</span> <span class="o">=</span> <span class="n">P0_lst</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span>
+			<span class="n">P0_old</span> <span class="o">=</span> <span class="n">P0_lst</span><span class="p">[</span><span class="n">k_step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">k_step</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span>
+			<span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">mat_params</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+				<span class="n">rho_solid</span> <span class="o">=</span> <span class="n">mat_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parameters&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;rho_solid&quot;</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="n">rho_solid</span> <span class="o">=</span> <span class="n">mat_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parameters&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;rho_solid&quot;</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
+
+			<span class="n">f_direction</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;f_direction&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">)</span>
+			<span class="k">if</span> <span class="n">f_direction</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span>
+				<span class="n">f_ini</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_old</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+				<span class="n">f_fin</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+
+			<span class="k">elif</span> <span class="n">f_direction</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
+				<span class="n">f_ini</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">f_old</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+				<span class="n">f_fin</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+
+			<span class="k">elif</span> <span class="n">f_direction</span> <span class="o">==</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span>
+				<span class="n">f_ini</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">f_old</span><span class="p">]</span>
+				<span class="n">f_fin</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">f</span><span class="p">]</span>
+
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_pressure_balancing_gravity0_loading_operator</span><span class="p">(</span>
+				<span class="n">dV</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span>
+				<span class="n">dS</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dS</span><span class="p">,</span>
+				<span class="n">f_ini</span><span class="o">=</span><span class="n">f_ini</span><span class="p">,</span>
+				<span class="n">f_fin</span><span class="o">=</span><span class="n">f_fin</span><span class="p">,</span>
+				<span class="n">rho_solid</span><span class="o">=</span><span class="n">rho_solid</span><span class="p">,</span>
+				<span class="n">phis</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">phis</span><span class="p">,</span>
+				<span class="n">P0_ini</span><span class="o">=</span><span class="n">P0_old</span><span class="p">,</span>
+				<span class="n">P0_fin</span><span class="o">=</span><span class="n">P0</span><span class="p">,</span>
+				<span class="n">breathing_constant</span><span class="o">=</span><span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+				<span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">,</span>
+			<span class="p">)</span>
+
+		<span class="k">if</span> <span class="ow">not</span> <span class="n">inertia_params</span><span class="p">[</span><span class="s2">&quot;applied&quot;</span><span class="p">]:</span>
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+				<span class="n">V</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">sub_domains</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">sub_domain_id</span><span class="o">=</span><span class="n">xmin_id</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">0.0</span>
+			<span class="p">)</span>
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+				<span class="n">V</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">sub_domains</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">sub_domain_id</span><span class="o">=</span><span class="n">ymin_id</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">0.0</span>
+			<span class="p">)</span>
+			<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="n">problem</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+					<span class="n">V</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">sub_domains</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">sub_domain_id</span><span class="o">=</span><span class="n">zmin_id</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">0.0</span>
+				<span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">rho_val</span> <span class="o">=</span> <span class="n">inertia_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;rho_val&quot;</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
+			<span class="n">problem</span><span class="o">.</span><span class="n">add_inertia_operator</span><span class="p">(</span><span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span> <span class="n">rho_val</span><span class="o">=</span><span class="n">rho_val</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span>
+
+	<span class="c1">################################################# Quantities of Interest ###</span>
+
+	<span class="n">problem</span><span class="o">.</span><span class="n">add_deformed_volume_qoi</span><span class="p">()</span>
+	<span class="n">problem</span><span class="o">.</span><span class="n">add_global_strain_qois</span><span class="p">()</span>
+	<span class="n">problem</span><span class="o">.</span><span class="n">add_global_stress_qois</span><span class="p">()</span>
+	<span class="n">problem</span><span class="o">.</span><span class="n">add_global_porosity_qois</span><span class="p">()</span>
+	<span class="n">problem</span><span class="o">.</span><span class="n">add_global_fluid_pressure_qoi</span><span class="p">()</span>
+
+	<span class="c1">################################################################# Solver ###</span>
+
+	<span class="n">solver</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">NonlinearSolver</span><span class="p">(</span>
+		<span class="n">problem</span><span class="o">=</span><span class="n">problem</span><span class="p">,</span>
+		<span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sol_tol&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-6</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">),</span> <span class="s2">&quot;n_iter_max&quot;</span><span class="p">:</span> <span class="mi">32</span><span class="p">},</span>
+		<span class="n">relax_type</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+		<span class="n">write_iter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+	<span class="p">)</span>
+
+	<span class="n">integrator</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">TimeIntegrator</span><span class="p">(</span>
+		<span class="n">problem</span><span class="o">=</span><span class="n">problem</span><span class="p">,</span>
+		<span class="n">solver</span><span class="o">=</span><span class="n">solver</span><span class="p">,</span>
+		<span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;n_iter_for_accel&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;n_iter_for_decel&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">&quot;accel_coeff&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;decel_coeff&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+		<span class="n">print_out</span><span class="o">=</span><span class="n">res_basename</span> <span class="o">*</span> <span class="n">verbose</span><span class="p">,</span>
+		<span class="n">print_sta</span><span class="o">=</span><span class="n">res_basename</span> <span class="o">*</span> <span class="n">verbose</span><span class="p">,</span>
+		<span class="n">write_qois</span><span class="o">=</span><span class="n">res_basename</span> <span class="o">+</span> <span class="s2">&quot;-qois&quot;</span><span class="p">,</span>
+		<span class="n">write_qois_limited_precision</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+		<span class="n">write_sol</span><span class="o">=</span><span class="n">res_basename</span> <span class="o">*</span> <span class="n">verbose</span><span class="p">,</span>
+	<span class="p">)</span>
+
+	<span class="n">success</span> <span class="o">=</span> <span class="n">integrator</span><span class="o">.</span><span class="n">integrate</span><span class="p">()</span>
+	<span class="k">assert</span> <span class="n">success</span><span class="p">,</span> <span class="s2">&quot;Integration failed. Aborting.&quot;</span>
+
+	<span class="n">integrator</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+	<span class="c1">################################################################## Plots ###</span>
+
+	<span class="k">if</span> <span class="n">plot_curves</span><span class="p">:</span>
+		<span class="n">qois_data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+			<span class="n">res_basename</span> <span class="o">+</span> <span class="s2">&quot;-qois.dat&quot;</span><span class="p">,</span>
+			<span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+			<span class="n">comment</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span>
+			<span class="n">names</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">res_basename</span> <span class="o">+</span> <span class="s2">&quot;-qois.dat&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readline</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span>
+		<span class="p">)</span>
+
+		<span class="n">qois_fig</span><span class="p">,</span> <span class="n">qois_axes</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+		<span class="n">all_strains</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;E_XX&quot;</span><span class="p">,</span> <span class="s2">&quot;E_YY&quot;</span><span class="p">]</span>
+		<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">all_strains</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;E_ZZ&quot;</span><span class="p">]</span>
+		<span class="n">all_strains</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;E_XY&quot;</span><span class="p">]</span>
+		<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">all_strains</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;E_YZ&quot;</span><span class="p">,</span> <span class="s2">&quot;E_ZX&quot;</span><span class="p">]</span>
+		<span class="n">qois_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">all_strains</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">qois_axes</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Green-Lagrange strain&quot;</span><span class="p">)</span>
+		<span class="n">qois_fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">res_basename</span> <span class="o">+</span> <span class="s2">&quot;-strains-vs-time.pdf&quot;</span><span class="p">)</span>
+
+		<span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;skel&quot;</span><span class="p">,</span> <span class="s2">&quot;bulk&quot;</span><span class="p">,</span> <span class="s2">&quot;tot&quot;</span><span class="p">]:</span>
+			<span class="n">qois_fig</span><span class="p">,</span> <span class="n">qois_axes</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+			<span class="n">all_stresses</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;s_&quot;</span> <span class="o">+</span> <span class="n">comp</span> <span class="o">+</span> <span class="s2">&quot;_XX&quot;</span><span class="p">,</span> <span class="s2">&quot;s_&quot;</span> <span class="o">+</span> <span class="n">comp</span> <span class="o">+</span> <span class="s2">&quot;_YY&quot;</span><span class="p">]</span>
+			<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="n">all_stresses</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;s_&quot;</span> <span class="o">+</span> <span class="n">comp</span> <span class="o">+</span> <span class="s2">&quot;_ZZ&quot;</span><span class="p">]</span>
+			<span class="n">all_stresses</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;s_&quot;</span> <span class="o">+</span> <span class="n">comp</span> <span class="o">+</span> <span class="s2">&quot;_XY&quot;</span><span class="p">]</span>
+			<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="n">all_stresses</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;s_&quot;</span> <span class="o">+</span> <span class="n">comp</span> <span class="o">+</span> <span class="s2">&quot;_YZ&quot;</span><span class="p">,</span> <span class="s2">&quot;s_&quot;</span> <span class="o">+</span> <span class="n">comp</span> <span class="o">+</span> <span class="s2">&quot;_ZX&quot;</span><span class="p">]</span>
+			<span class="n">qois_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">all_stresses</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">qois_axes</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Cauchy stress&quot;</span><span class="p">)</span>
+			<span class="n">qois_fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">res_basename</span> <span class="o">+</span> <span class="s2">&quot;-stresses-&quot;</span> <span class="o">+</span> <span class="n">comp</span> <span class="o">+</span> <span class="s2">&quot;-vs-time.pdf&quot;</span><span class="p">)</span>
+
+		<span class="n">qois_fig</span><span class="p">,</span> <span class="n">qois_axes</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+		<span class="n">all_porosities</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="k">if</span> <span class="n">inverse</span><span class="p">:</span>
+			<span class="n">all_porosities</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;phis0&quot;</span><span class="p">,</span> <span class="s2">&quot;phif0&quot;</span><span class="p">,</span> <span class="s2">&quot;Phis0&quot;</span><span class="p">,</span> <span class="s2">&quot;Phif0&quot;</span><span class="p">]</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">all_porosities</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;Phis&quot;</span><span class="p">,</span> <span class="s2">&quot;Phif&quot;</span><span class="p">,</span> <span class="s2">&quot;phis&quot;</span><span class="p">,</span> <span class="s2">&quot;phif&quot;</span><span class="p">]</span>
+		<span class="n">qois_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">all_porosities</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">qois_axes</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;porosity&quot;</span><span class="p">)</span>
+		<span class="n">qois_fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">res_basename</span> <span class="o">+</span> <span class="s2">&quot;-porosities-vs-time.pdf&quot;</span><span class="p">)</span>
+
+		<span class="n">qois_fig</span><span class="p">,</span> <span class="n">qois_axes</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+		<span class="n">qois_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;pf&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">all_porosities</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">qois_axes</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;porosity&quot;</span><span class="p">)</span>
+		<span class="n">qois_fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">res_basename</span> <span class="o">+</span> <span class="s2">&quot;-porosities-vs-pressure.pdf&quot;</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">get_results</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">porosity_known</span> <span class="o">==</span> <span class="s2">&quot;Phis0&quot;</span><span class="p">:</span>
+			<span class="n">phi</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">get_foi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;phis&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">get_local</span><span class="p">()</span>
+		<span class="k">elif</span> <span class="n">porosity_known</span> <span class="o">==</span> <span class="s2">&quot;phis&quot;</span><span class="p">:</span>
+			<span class="n">phi</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">get_foi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Phis0&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">get_local</span><span class="p">()</span>
+
+		<span class="k">return</span> <span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="s2">&quot;dx&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">mesh</span><span class="p">))</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

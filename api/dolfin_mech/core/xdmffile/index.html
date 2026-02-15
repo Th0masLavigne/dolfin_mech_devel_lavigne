@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dolfin_mech.core.xdmffile &mdash; dolfin_mech</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
@@ -17,7 +17,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=da73159d"></script>
+      <script src="../../../../_static/documentation_options.js?v=5283314f"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -166,7 +166,7 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.core.xdmffile.XDMFFile">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.core.xdmffile.</span></span><span class="sig-name descname"><span class="pre">XDMFFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.xdmffile.XDMFFile" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.core.xdmffile.</span></span><span class="sig-name descname"><span class="pre">XDMFFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/xdmffile.html#XDMFFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.xdmffile.XDMFFile" title="Link to this definition"></a></dt>
 <dd><p>Wrapper for dolfin.XDMFFile to manage multi-field output.</p>
 <p>This class simplifies the process of writing multiple FEniCS functions to
 a single XDMF file at each time step. It configures standard settings for
@@ -184,13 +184,13 @@ performance and file size optimization.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.xdmffile.XDMFFile.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.xdmffile.XDMFFile.close" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/xdmffile.html#XDMFFile.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.xdmffile.XDMFFile.close" title="Link to this definition"></a></dt>
 <dd><p>Closes the underlying XDMF file handle.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.xdmffile.XDMFFile.write">
-<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.xdmffile.XDMFFile.write" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/xdmffile.html#XDMFFile.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.xdmffile.XDMFFile.write" title="Link to this definition"></a></dt>
 <dd><p>Writes the current state of all registered functions to the file.</p>
 <p>Iterates through the list of functions provided at initialization and
 appends their current values to the XDMF file, associated with the

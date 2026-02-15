@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dolfin_mech.materials.elastic.hooke &mdash; dolfin_mech</title>
-      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
@@ -17,7 +17,7 @@
   
       <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../../_static/documentation_options.js?v=da73159d"></script>
+      <script src="../../../../../_static/documentation_options.js?v=5283314f"></script>
       <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -172,7 +172,7 @@ These models are designed for use with linearized kinematics.</p>
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.materials.elastic.hooke.Hooke">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.hooke.</span></span><span class="sig-name descname"><span class="pre">Hooke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.elastic.hooke.Hooke" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.hooke.</span></span><span class="sig-name descname"><span class="pre">Hooke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/dolfin_mech/materials/elastic/hooke.html#Hooke"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.elastic.hooke.Hooke" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../elastic/index.html#dolfin_mech.materials.elastic.elastic.ElasticMaterial" title="dolfin_mech.materials.elastic.elastic.ElasticMaterial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin_mech.materials.elastic.elastic.ElasticMaterial</span></code></a></p>
 <p>Class implementing the classical isotropic linear elastic Hooke material model.</p>
 <p>This model relates the Cauchy stress <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> to the
@@ -199,7 +199,7 @@ boldsymbol{\varepsilon}) \mathbf{I} + 2\mu\boldsymbol{\varepsilon}\)</span>.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.materials.elastic.hooke.HookeBulk">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.hooke.</span></span><span class="sig-name descname"><span class="pre">HookeBulk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.elastic.hooke.HookeBulk" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.hooke.</span></span><span class="sig-name descname"><span class="pre">HookeBulk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/dolfin_mech/materials/elastic/hooke.html#HookeBulk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.elastic.hooke.HookeBulk" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../elastic/index.html#dolfin_mech.materials.elastic.elastic.ElasticMaterial" title="dolfin_mech.materials.elastic.elastic.ElasticMaterial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin_mech.materials.elastic.elastic.ElasticMaterial</span></code></a></p>
 <p>Class implementing the spherical (bulk) part of the Hooke material model.</p>
 <p>This model captures only the volumetric response, relating the pressure
@@ -212,7 +212,7 @@ to the trace of the strain tensor.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.materials.elastic.hooke.HookeDev">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.hooke.</span></span><span class="sig-name descname"><span class="pre">HookeDev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.elastic.hooke.HookeDev" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.hooke.</span></span><span class="sig-name descname"><span class="pre">HookeDev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/dolfin_mech/materials/elastic/hooke.html#HookeDev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.elastic.hooke.HookeDev" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../elastic/index.html#dolfin_mech.materials.elastic.elastic.ElasticMaterial" title="dolfin_mech.materials.elastic.elastic.ElasticMaterial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin_mech.materials.elastic.elastic.ElasticMaterial</span></code></a></p>
 <p>Class implementing the deviatoric (shear) part of the Hooke material model.</p>
 <p>This model captures the shape-changing response at constant volume,

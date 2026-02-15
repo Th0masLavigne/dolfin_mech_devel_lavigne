@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.materials.elastic.exponentialneohookean &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=5283314f"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_toc.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/dolfin_mech/index.html">Core Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/dolfin_mech/core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/dolfin_mech/kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/dolfin_mech/materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/dolfin_mech/operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/dolfin_mech/problems/index.html">Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/problems/problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/problems/problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/problems/problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/problems/problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/problems/problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/problems/problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/dolfin_mech/runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.materials.elastic.exponentialneohookean</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dolfin_mech.materials.elastic.exponentialneohookean</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf8</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### Created by Mahdi Manoochehrtayebi, 2020-2024                             ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                   ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">################################################################################</span>
+
+
+<span class="sd">&quot;&quot;&quot;Exponential Neo-Hookean Material Module.</span>
+
+<span class="sd">This module defines the exponential-based Neo-Hookean hyperelastic model,</span>
+<span class="sd">characterized by its non-linear stiffening under finite strains.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">dolfin</span>
+
+<span class="kn">from</span> <span class="nn">.elastic</span> <span class="kn">import</span> <span class="n">ElasticMaterial</span>
+
+<span class="c1">################################################################################</span>
+
+
+<div class="viewcode-block" id="ExponentialNeoHookean">
+<a class="viewcode-back" href="../../../../api/dolfin_mech/materials/elastic/exponentialneohookean/index.html#dolfin_mech.materials.elastic.exponentialneohookean.ExponentialNeoHookean">[docs]</a>
+<span class="k">class</span> <span class="nc">ExponentialNeoHookean</span><span class="p">(</span><span class="n">ElasticMaterial</span><span class="p">):</span>
+<span class="w">	</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Class implementing an exponential-based Neo-Hookean elastic material model.</span>
+
+<span class="sd">	This constitutive model is designed for finite strain elasticity and</span>
+<span class="sd">	features an exponential strain energy density function. It is often used</span>
+<span class="sd">	to capture the non-linear stiffening behavior of soft materials.</span>
+
+<span class="sd">	The strain energy density :math:`\Psi` is defined as:</span>
+
+<span class="sd">	.. math::</span>
+
+<span class="sd">	    \Psi = \frac{\beta_1}{2\beta_2\alpha} \left( e^{\beta_2 (I_C - d - 2\ln J)^\alpha} - 1 \right) + \beta_3</span>
+<span class="sd">	    (I_C - d - 2\ln J) + \beta_4 (J^2 - 1 - 2\ln J)</span>
+
+<span class="sd">	where :math:`d` is the spatial dimension.</span>
+
+<span class="sd">	Attributes:</span>
+<span class="sd">	    kinematics (Kinematics): Kinematic quantities (F, J, C, etc.).</span>
+<span class="sd">	    beta1, beta2, beta3, beta4, alpha (dolfin.Constant): Material parameters.</span>
+<span class="sd">	    Psi (ufl.Form): Strain energy density function.</span>
+<span class="sd">	    Sigma (ufl.Form): Second Piola-Kirchhoff stress tensor :math:`\mathbf{S}`.</span>
+<span class="sd">	    P (ufl.Form): First Piola-Kirchhoff stress tensor :math:`\mathbf{P} = \mathbf{F}\mathbf{S}`.</span>
+<span class="sd">	    sigma (ufl.Form): Cauchy stress tensor :math:`\boldsymbol{\sigma} = J^{-1} \mathbf{P}\mathbf{F}^T`.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Initialize the Exponential Neo-Hookean material model.</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">		    kinematics (Kinematics): Kinematic object providing deformation tensors</span>
+<span class="sd">		        and invariants.</span>
+<span class="sd">		    parameters (dict): Dictionary containing the material constants:</span>
+<span class="sd">		        ``&quot;beta1&quot;``, ``&quot;beta2&quot;``, ``&quot;beta3&quot;``, ``&quot;beta4&quot;``, and ``&quot;alpha&quot;``.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span> <span class="o">=</span> <span class="n">kinematics</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">beta1</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;beta1&quot;</span><span class="p">])</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">beta2</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;beta2&quot;</span><span class="p">])</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">beta3</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;beta3&quot;</span><span class="p">])</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">beta4</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;beta4&quot;</span><span class="p">])</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;alpha&quot;</span><span class="p">])</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Psi</span> <span class="o">=</span> <span class="p">(</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">beta1</span>
+				<span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span>
+				<span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span>
+				<span class="o">/</span> <span class="mi">2</span>
+				<span class="o">*</span> <span class="p">(</span>
+					<span class="n">dolfin</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta2</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">IC</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">))</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
+					<span class="o">-</span> <span class="mi">1</span>
+				<span class="p">)</span>
+				<span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta3</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">IC</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">))</span>
+				<span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta4</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">))</span>
+			<span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Sigma</span> <span class="o">=</span> <span class="p">(</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">beta1</span>
+				<span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">I</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">C_inv</span><span class="p">)</span>
+				<span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">IC</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">))</span> <span class="o">**</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+				<span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta2</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">IC</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">))</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
+				<span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta3</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">I</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">C_inv</span><span class="p">)</span>
+				<span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta4</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">C_inv</span>
+			<span class="p">)</span>
+
+		<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Psi</span> <span class="o">=</span> <span class="p">(</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">beta1</span>
+				<span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span>
+				<span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span>
+				<span class="o">/</span> <span class="mi">2</span>
+				<span class="o">*</span> <span class="p">(</span>
+					<span class="n">dolfin</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta2</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">IC</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">))</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
+					<span class="o">-</span> <span class="mi">1</span>
+				<span class="p">)</span>
+				<span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta3</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">IC</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">))</span>
+				<span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta4</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">))</span>
+			<span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Sigma</span> <span class="o">=</span> <span class="p">(</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">beta1</span>
+				<span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">I</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">C_inv</span><span class="p">)</span>
+				<span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">IC</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">))</span> <span class="o">**</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+				<span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta2</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">IC</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">))</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
+				<span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta3</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">I</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">C_inv</span><span class="p">)</span>
+				<span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta4</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">C_inv</span>
+			<span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">P</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">F</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Sigma</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">P</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">T</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

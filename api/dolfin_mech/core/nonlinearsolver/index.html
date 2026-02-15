@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dolfin_mech.core.nonlinearsolver &mdash; dolfin_mech</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
@@ -17,7 +17,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=da73159d"></script>
+      <script src="../../../../_static/documentation_options.js?v=5283314f"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -172,7 +172,7 @@ and modal analysis via eigenvalue solving.</p>
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.core.nonlinearsolver.</span></span><span class="sig-name descname"><span class="pre">NonlinearSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relax_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'constant'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relax_parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.core.nonlinearsolver.</span></span><span class="sig-name descname"><span class="pre">NonlinearSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relax_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'constant'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relax_parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver" title="Link to this definition"></a></dt>
 <dd><p>Class for solving nonlinear systems of equations using iterative methods.</p>
 <p>This solver implements a Newton-Raphson scheme with support for various
 linear backends (PETSc/MUMPS) and relaxation (line-search) techniques
@@ -202,7 +202,7 @@ to improve convergence for highly nonlinear problems.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.solve">
-<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.solve" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.solve" title="Link to this definition"></a></dt>
 <dd><p>Executes the nonlinear solve for a given time step.</p>
 <p>Iteratively assembles the linear system, solves for the increment,
 updates the solution, and tests for convergence.</p>
@@ -226,7 +226,7 @@ updates the solution, and tests for convergence.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.linear_solve">
-<span class="sig-name descname"><span class="pre">linear_solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.linear_solve" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">linear_solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.linear_solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.linear_solve" title="Link to this definition"></a></dt>
 <dd><p>Assembles and solves the linear tangent problem <span class="math notranslate nohighlight">\(\mathbf{K} \delta \mathbf{u} = -\mathbf{R}\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -240,7 +240,7 @@ updates the solution, and tests for convergence.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.assemble_linear_system">
-<span class="sig-name descname"><span class="pre">assemble_linear_system</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.assemble_linear_system" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">assemble_linear_system</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.assemble_linear_system"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.assemble_linear_system" title="Link to this definition"></a></dt>
 <dd><p>Assembles the residual vector and Jacobian matrix.</p>
 <p>This method handles standard integrals and special vertex-based integrals
 separately to accommodate specific dolfin constraints.</p>
@@ -248,61 +248,61 @@ separately to accommodate specific dolfin constraints.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.eigen_solve">
-<span class="sig-name descname"><span class="pre">eigen_solve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.eigen_solve" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">eigen_solve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.eigen_solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.eigen_solve" title="Link to this definition"></a></dt>
 <dd><p>Solves the eigenproblem for the Jacobian matrix to identify modal shapes.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_dsol_norm">
-<span class="sig-name descname"><span class="pre">compute_dsol_norm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_dsol_norm" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">compute_dsol_norm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.compute_dsol_norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_dsol_norm" title="Link to this definition"></a></dt>
 <dd><p>Computes and prints the L2 norm of the solution increment.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_constant">
-<span class="sig-name descname"><span class="pre">compute_relax_constant</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_constant" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">compute_relax_constant</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.compute_relax_constant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_constant" title="Link to this definition"></a></dt>
 <dd><p>Sets a constant relaxation factor <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_aitken">
-<span class="sig-name descname"><span class="pre">compute_relax_aitken</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_aitken" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">compute_relax_aitken</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.compute_relax_aitken"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_aitken" title="Link to this definition"></a></dt>
 <dd><p>Computes the relaxation factor using the Aitken dynamic method.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_gss">
-<span class="sig-name descname"><span class="pre">compute_relax_gss</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_gss" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">compute_relax_gss</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.compute_relax_gss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_gss" title="Link to this definition"></a></dt>
 <dd><p>Computes the optimal relaxation using a Golden Section Search on the potential energy.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_backtracking">
-<span class="sig-name descname"><span class="pre">compute_relax_backtracking</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_backtracking" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">compute_relax_backtracking</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.compute_relax_backtracking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_backtracking" title="Link to this definition"></a></dt>
 <dd><p>Computes relaxation using a backtracking line-search until residual is finite.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.update_sol">
-<span class="sig-name descname"><span class="pre">update_sol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.update_sol" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">update_sol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.update_sol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.update_sol" title="Link to this definition"></a></dt>
 <dd><p>Updates the solution vector by adding the relaxed increment.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_sol_norm">
-<span class="sig-name descname"><span class="pre">compute_sol_norm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_sol_norm" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">compute_sol_norm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.compute_sol_norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_sol_norm" title="Link to this definition"></a></dt>
 <dd><p>Computes and prints L2 norms for the current and previous solutions.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_sol_err">
-<span class="sig-name descname"><span class="pre">compute_sol_err</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_sol_err" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">compute_sol_err</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.compute_sol_err"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_sol_err" title="Link to this definition"></a></dt>
 <dd><p>Computes the relative error between current and old solution norms.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.nonlinearsolver.NonlinearSolver.exit_test">
-<span class="sig-name descname"><span class="pre">exit_test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.exit_test" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">exit_test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/nonlinearsolver.html#NonlinearSolver.exit_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.nonlinearsolver.NonlinearSolver.exit_test" title="Link to this definition"></a></dt>
 <dd><p>Checks if the solution error is below the tolerance for all sub-solutions.
 Sets <code class="docutils literal notranslate"><span class="pre">self.success</span></code> accordingly.</p>
 </dd></dl>

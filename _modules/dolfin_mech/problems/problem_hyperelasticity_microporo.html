@@ -1,0 +1,1465 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.problems.problem_hyperelasticity_microporo &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5283314f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_toc.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dolfin_mech/index.html">Core Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/problems/index.html">Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.problems.problem_hyperelasticity_microporo</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dolfin_mech.problems.problem_hyperelasticity_microporo</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf8</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### Created by Martin Genet, 2018-2025                                       ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                   ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### And Mahdi Manoochehrtayebi, 2020-2024                                    ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                   ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;Defines the MicroPoroHyperelasticity class.</span>
+
+<span class="sd">Multiscale solver for</span>
+<span class="sd">poro-hyperelastic microstructures. It implements a displacement decomposition</span>
+<span class="sd">framework that couples global macroscopic stretching with local periodic</span>
+<span class="sd">fluctuations to model the nonlinear response of pressurized porous skeletons.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">dolfin</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">kinematics</span><span class="p">,</span> <span class="n">operators</span>
+<span class="kn">from</span> <span class="nn">.problem</span> <span class="kn">import</span> <span class="n">Problem</span>
+<span class="kn">from</span> <span class="nn">.problem_hyperelasticity</span> <span class="kn">import</span> <span class="n">Hyperelasticity</span>
+
+<span class="c1">################################################################################</span>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity">[docs]</a>
+<span class="k">class</span> <span class="nc">MicroPoroHyperelasticity</span><span class="p">(</span><span class="n">Hyperelasticity</span><span class="p">):</span>
+<span class="w">	</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Problem class for multi-scale micro-poro-hyperelasticity.</span>
+
+<span class="sd">	This class models the mechanical response of a porous microstructure (the</span>
+<span class="sd">	micro-scale) subjected to macroscopic deformations. It uses a</span>
+<span class="sd">	**displacement decomposition** approach:</span>
+
+<span class="sd">	.. math::</span>
+<span class="sd">	    \mathbf{U}_{tot}(\mathbf{X}) = \mathbf{U}_{bar}(\mathbf{X}) + \mathbf{U}_{tilde}(\mathbf{X})</span>
+
+<span class="sd">	where:</span>
+<span class="sd">	    - :math:`\mathbf{U}_{bar}` is the macroscopic displacement (linear mapping).</span>
+<span class="sd">	    - :math:`\mathbf{U}_{tilde}` is the periodic or local fluctuation (perturbation).</span>
+
+
+
+<span class="sd">	Attributes:</span>
+<span class="sd">	    V0 (float): Initial total volume of the unit cell (bounding box volume).</span>
+<span class="sd">	    Vs0 (float): Initial solid volume (volume of the mesh).</span>
+<span class="sd">	    Vf0 (float): Initial fluid/pore volume.</span>
+<span class="sd">	    kinematics (Kinematics): Finite strain kinematics based on total displacement.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+		<span class="bp">self</span><span class="p">,</span>
+		<span class="n">w_solid_incompressibility</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+		<span class="n">mesh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">mesh_bbox</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">vertices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">domains_mf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">boundaries_mf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">points_mf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">displacement_perturbation_degree</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">solid_pressure_degree</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">quadrature_degree</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">foi_degree</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+		<span class="n">solid_behavior</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">bcs</span><span class="o">=</span><span class="s2">&quot;kubc&quot;</span><span class="p">,</span>
+	<span class="p">):</span>  <span class="c1"># &quot;kubc&quot; or &quot;pbc&quot;</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Initializes the MicroPoroHyperelasticityProblem.</span>
+
+<span class="sd">		:param w_solid_incompressibility: If True, uses a mixed u-p formulation for the solid phase.</span>
+<span class="sd">		:param mesh_bbox: Bounding box [xmin, xmax, ymin, ymax, ...] defining the unit cell.</span>
+<span class="sd">		:param vertices: Vertices for periodic point mapping.</span>
+<span class="sd">		:param bcs: Boundary condition type: &quot;kubc&quot; (Kinematic Uniform) or &quot;pbc&quot; (Periodic).</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">Problem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">w_solid_incompressibility</span> <span class="o">=</span> <span class="n">w_solid_incompressibility</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="o">=</span> <span class="n">vertices</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span> <span class="n">define_spatial_coordinates</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">define_facet_normals</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">compute_bbox</span><span class="o">=</span><span class="p">(</span><span class="n">mesh_bbox</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">))</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">X_0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span>
+		<span class="k">for</span> <span class="n">k_dim</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">X_0</span><span class="p">[</span><span class="n">k_dim</span><span class="p">]</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="n">k_dim</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh_V0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">X_0</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_0</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">mesh_bbox</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">mesh_bbox</span> <span class="o">=</span> <span class="n">mesh_bbox</span>
+		<span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span>
+		<span class="k">for</span> <span class="n">k_dim</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">):</span>
+			<span class="n">d</span><span class="p">[</span><span class="n">k_dim</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh_bbox</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k_dim</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh_bbox</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k_dim</span> <span class="o">+</span> <span class="mi">0</span><span class="p">]</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">V0</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">Vs0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh_V0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">Vf0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vs0</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_measures</span><span class="p">(</span><span class="n">domains</span><span class="o">=</span><span class="n">domains_mf</span><span class="p">,</span> <span class="n">boundaries</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="n">points_mf</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_subsols</span><span class="p">(</span>
+			<span class="n">displacement_perturbation_degree</span><span class="o">=</span><span class="n">displacement_perturbation_degree</span><span class="p">,</span>
+			<span class="n">solid_pressure_degree</span><span class="o">=</span><span class="n">solid_pressure_degree</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_solution_finite_element</span><span class="p">()</span>
+		<span class="k">if</span> <span class="n">bcs</span> <span class="o">==</span> <span class="s2">&quot;pbc&quot;</span><span class="p">:</span>
+			<span class="n">periodic_sd</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">PeriodicSubDomain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh_bbox</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">set_solution_function_space</span><span class="p">(</span><span class="n">constrained_domain</span><span class="o">=</span><span class="n">periodic_sd</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">set_solution_function_space</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_solution_functions</span><span class="p">()</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">U_bar</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_0</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">U_bar_old</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">func_old</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_0</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">U_bar_test</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_0</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">U_tot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">U_bar</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">subfunc</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">U_tot_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">U_bar_old</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">func_old</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">U_tot_test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">U_bar_test</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">dsubtest</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_quadrature_degree</span><span class="p">(</span><span class="n">quadrature_degree</span><span class="o">=</span><span class="n">quadrature_degree</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_foi_finite_elements_DG</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">foi_degree</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_foi_function_spaces</span><span class="p">()</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span>
+			<span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">U_bar</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">collapse</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;U_bar&quot;</span><span class="p">,</span> <span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;project&quot;</span>
+		<span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span>
+			<span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">U_tot</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">collapse</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;U_tot&quot;</span><span class="p">,</span> <span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;project&quot;</span>
+		<span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_kinematics</span><span class="p">()</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_elasticity_operator</span><span class="p">(</span>
+			<span class="n">solid_behavior_model</span><span class="o">=</span><span class="n">solid_behavior</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">],</span> <span class="n">solid_behavior_parameters</span><span class="o">=</span><span class="n">solid_behavior</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span>
+		<span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_solid_incompressibility</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_hydrostatic_pressure_operator</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_incompressibility_operator</span><span class="p">()</span>
+
+		<span class="c1"># self.add_macroscopic_stretch_symmetry_operator()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_macroscopic_stretch_symmetry_penalty_operator</span><span class="p">(</span><span class="n">pen_val</span><span class="o">=</span><span class="mf">1e6</span><span class="p">)</span>
+
+		<span class="c1"># self.add_deformed_total_volume_operator()</span>
+		<span class="c1"># self.add_deformed_solid_volume_operator()</span>
+		<span class="c1"># self.add_deformed_fluid_volume_operator()</span>
+
+		<span class="k">if</span> <span class="n">bcs</span> <span class="o">==</span> <span class="s2">&quot;kubc&quot;</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_kubc</span><span class="p">()</span>
+		<span class="k">elif</span> <span class="n">bcs</span> <span class="o">==</span> <span class="s2">&quot;pbc&quot;</span><span class="p">:</span>
+			<span class="n">pinpoint_sd</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">PinpointSubDomain</span><span class="p">(</span><span class="n">coords</span><span class="o">=</span><span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+				<span class="n">V</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span>
+				<span class="n">val</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
+				<span class="n">sub_domain</span><span class="o">=</span><span class="n">pinpoint_sd</span><span class="p">,</span>
+				<span class="n">method</span><span class="o">=</span><span class="s2">&quot;pointwise&quot;</span><span class="p">,</span>
+			<span class="p">)</span>
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_macroscopic_stretch_subsol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stretch_subsol">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_macroscopic_stretch_subsol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">symmetry</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds the macroscopic stretch (gradient) as a global Real (R) sub-solution.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_tensor_subsol</span><span class="p">(</span>
+			<span class="n">name</span><span class="o">=</span><span class="s2">&quot;U_bar&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">symmetry</span><span class="o">=</span><span class="n">symmetry</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="n">init_val</span>
+		<span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_displacement_perturbation_subsol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_displacement_perturbation_subsol">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_displacement_perturbation_subsol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds the local displacement perturbation field :math:`\mathbf{U}_{tilde}`.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_degree</span> <span class="o">=</span> <span class="n">degree</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_vector_subsol</span><span class="p">(</span>
+			<span class="n">name</span><span class="o">=</span><span class="s2">&quot;U_tilde&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;CG&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_degree</span>
+		<span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_deformed_total_volume_subsol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_total_volume_subsol">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_deformed_total_volume_subsol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a global scalar sub-solution to track the total volume of the unit cell.</span>
+
+<span class="sd">		The total volume :math:`v` is defined using the **Real (R)** element family,</span>
+<span class="sd">		meaning it is a single global scalar unknown across the entire domain.</span>
+<span class="sd">		This variable is typically used in homogenization problems to couple</span>
+<span class="sd">		the macroscopic stretch with the volume change of the unit cell.</span>
+
+
+
+<span class="sd">		The initial value is set to :math:`V_0`, which represents the volume</span>
+<span class="sd">		of the bounding box defining the unit cell in the reference configuration.</span>
+
+<span class="sd">		:return: The added scalar sub-solution container.</span>
+<span class="sd">		:rtype: SubSolution</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">deformed_total_volume_subsol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_scalar_subsol</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">V0</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_deformed_solid_volume_subsol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_solid_volume_subsol">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_deformed_solid_volume_subsol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds a global scalar sub-solution to track the volume of the solid phase.</span>
+
+<span class="sd">		In the context of poro-hyperelasticity, this sub-solution tracks the</span>
+<span class="sd">		current volume :math:`v_s` of the solid skeleton as it deforms. It is</span>
+<span class="sd">		defined using a **Real (R)** element family, representing a single</span>
+<span class="sd">		global degree of freedom for the unit cell.</span>
+
+
+
+<span class="sd">		The value :math:`v_s` is typically computed by integrating the local</span>
+<span class="sd">		Jacobian :math:`J` over the solid domain :math:`\Omega_s`:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    v_s = \int_{\Omega_s} J \, d\Omega_0</span>
+
+<span class="sd">		The initial value is set to :math:`V_{s0}` (the volume of the reference</span>
+<span class="sd">		mesh), ensuring the problem starts from a state of zero deformation.</span>
+
+<span class="sd">		:return: The added scalar sub-solution container.</span>
+<span class="sd">		:rtype: SubSolution</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">deformed_solid_volume_subsol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_scalar_subsol</span><span class="p">(</span>
+			<span class="n">name</span><span class="o">=</span><span class="s2">&quot;v_s&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_V0</span>
+		<span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_deformed_fluid_volume_subsol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_fluid_volume_subsol">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_deformed_fluid_volume_subsol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds a global scalar sub-solution to track the volume of the fluid phase (pores).</span>
+
+<span class="sd">		In a micro-poro-hyperelastic framework, the fluid volume :math:`v_f`</span>
+<span class="sd">		represents the current volume of the void space within the unit cell.</span>
+<span class="sd">		It is defined using the **Real (R)** element family, creating a single</span>
+<span class="sd">		global scalar degree of freedom.</span>
+
+
+
+<span class="sd">		In the context of displacement decomposition, the fluid volume is</span>
+<span class="sd">		geometrically constrained by the difference between the total cell</span>
+<span class="sd">		volume (governed by the macroscopic stretch) and the solid skeleton</span>
+<span class="sd">		volume:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    v_f = v_{tot} - v_s</span>
+
+<span class="sd">		The initial value is set to :math:`V_{f0}`, the difference between</span>
+<span class="sd">		the bounding box volume and the initial solid mesh volume.</span>
+
+<span class="sd">		:return: The added scalar sub-solution container.</span>
+<span class="sd">		:rtype: SubSolution</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">deformed_fluid_volume_subsol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_scalar_subsol</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;v_f&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Vf0</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_surface_area_subsol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_surface_area_subsol">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_surface_area_subsol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds a global scalar sub-solution to track the internal interfacial surface area.</span>
+
+<span class="sd">		This sub-solution represents the current total area :math:`s` of the</span>
+<span class="sd">		internal pores or interfaces (e.g., the alveolar surface area in lung</span>
+<span class="sd">		parenchyma). It is defined using the **Real (R)** element family,</span>
+<span class="sd">		creating a single global scalar degree of freedom for the entire</span>
+<span class="sd">		Representative Elementary Volume (REV).</span>
+
+
+
+<span class="sd">		Tracking the evolution of this surface area is critical for modeling</span>
+<span class="sd">		surface tension effects or surfactant activity in pulmonary mechanics,</span>
+<span class="sd">		where the energy contribution depends on the current area of the</span>
+<span class="sd">		fluid-solid interface.</span>
+
+<span class="sd">		:param degree: Polynomial degree for the Real element (defaults to 0).</span>
+<span class="sd">		:type degree: int</span>
+<span class="sd">		:param init_val: Initial value for the surface area. If None, it should</span>
+<span class="sd">		    be updated later by an operator or solver.</span>
+<span class="sd">		:type init_val: float, optional</span>
+<span class="sd">		:return: The added scalar sub-solution container.</span>
+<span class="sd">		:rtype: SubSolution</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">surface_area_subsol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_scalar_subsol</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;S_area&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="n">init_val</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.set_subsols">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.set_subsols">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_subsols</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">displacement_perturbation_degree</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">solid_pressure_degree</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Configures the solution hierarchy for the micro-poro-hyperelastic problem.</span>
+
+<span class="sd">		This method initializes the various sub-solutions required for the</span>
+<span class="sd">		displacement decomposition and homogenization framework. It defines</span>
+<span class="sd">		three main types of unknowns:</span>
+
+<span class="sd">		1. **Macroscopic Stretch** (:math:`\mathbf{U}_{bar}`): A global tensor</span>
+<span class="sd">		   representing the average deformation of the unit cell.</span>
+<span class="sd">		2. **Displacement Perturbation** (:math:`\mathbf{U}_{tilde}`): A periodic</span>
+<span class="sd">		   vector field representing local fluctuations within the microstructure.</span>
+<span class="sd">		3. **Auxiliary Global Variables**: Such as the internal interfacial</span>
+<span class="sd">		   surface area, used for surface tension/capillary energy.</span>
+
+
+
+<span class="sd">		If ``w_solid_incompressibility`` is enabled, a pressure field is added</span>
+<span class="sd">		for the solid phase, typically following the :math:`P_k / P_{k-1}`</span>
+<span class="sd">		stable element pair logic.</span>
+
+<span class="sd">		:param displacement_perturbation_degree: Polynomial degree for the</span>
+<span class="sd">		    local fluctuation field (CG vector).</span>
+<span class="sd">		:type displacement_perturbation_degree: int</span>
+<span class="sd">		:param solid_pressure_degree: Polynomial degree for the solid pressure</span>
+<span class="sd">		    (if incompressible). Defaults to ``displacement_perturbation_degree - 1``.</span>
+<span class="sd">		:type solid_pressure_degree: int, optional</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_macroscopic_stretch_subsol</span><span class="p">(</span>
+			<span class="n">symmetry</span><span class="o">=</span><span class="kc">None</span>
+		<span class="p">)</span>  <span class="c1"># MG20220425: True does not work, cf. https://fenicsproject.discourse.group/t/writing-symmetric-tensor-function-fails/1136/2 &amp; https://bitbucket.org/fenics-project/dolfin/issues/1065/cannot-store-symmetric-tensor-values</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_displacement_perturbation_subsol</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">displacement_perturbation_degree</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_solid_incompressibility</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">solid_pressure_degree</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+				<span class="n">solid_pressure_degree</span> <span class="o">=</span> <span class="n">displacement_perturbation_degree</span> <span class="o">-</span> <span class="mi">1</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_pressure_subsol</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">solid_pressure_degree</span><span class="p">)</span>
+
+		<span class="c1"># self.add_macroscopic_stress_lagrange_multiplier_subsol()</span>
+
+		<span class="c1"># self.add_deformed_total_volume_subsol()</span>
+		<span class="c1"># self.add_deformed_solid_volume_subsol()</span>
+		<span class="c1"># self.add_deformed_fluid_volume_subsol()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_surface_area_subsol</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.set_kinematics">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.set_kinematics">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_kinematics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Initializes finite strain kinematics for the total displacement field.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span> <span class="o">=</span> <span class="n">kinematics</span><span class="o">.</span><span class="n">Kinematics</span><span class="p">(</span><span class="n">U</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">U_tot</span><span class="p">,</span> <span class="n">U_old</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">U_tot_old</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;F_tot&quot;</span><span class="p">,</span> <span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;project&quot;</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;J_tot&quot;</span><span class="p">,</span> <span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;project&quot;</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;C_tot&quot;</span><span class="p">,</span> <span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;project&quot;</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;E_tot&quot;</span><span class="p">,</span> <span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;project&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_elasticity_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_elasticity_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_elasticity_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solid_behavior_model</span><span class="p">,</span> <span class="n">solid_behavior_parameters</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds a hyperelasticity operator for the solid phase in the micro-porous problem.</span>
+
+<span class="sd">		This method defines the internal virtual work contribution of the solid</span>
+<span class="sd">		skeleton. It utilizes the energy-based formulation (``formulation=&quot;ener&quot;``)</span>
+<span class="sd">		where the residual is the first variation of the strain energy density</span>
+<span class="sd">		potential :math:`\Psi`.</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \delta \Pi_{int} = \int_{\Omega_s} \frac{\partial \Psi}{\partial \mathbf{F}} : \delta \mathbf{F} \, d\Omega_0</span>
+
+<span class="sd">		In this multiscale context, the operator specifically uses the</span>
+<span class="sd">		**displacement perturbation** :math:`\mathbf{U}_{tilde}` as the primary</span>
+<span class="sd">		unknown for the local fluctuation, while the kinematics account for the</span>
+<span class="sd">		total displacement (macroscopic + perturbation).</span>
+
+
+
+<span class="sd">		Additionally, this method automatically registers two stress fields as</span>
+<span class="sd">		Fields of Interest (FOI):</span>
+
+<span class="sd">		    1. **Sigma**: The Second Piola-Kirchhoff stress tensor (:math:`\mathbf{S}`).</span>
+<span class="sd">		    2. **sigma**: The Cauchy stress tensor (:math:`\mathbf{\sigma}`).</span>
+
+
+<span class="sd">		:param solid_behavior_model: The name of the hyperelastic constitutive</span>
+<span class="sd">		    model (e.g., &quot;NeoHookean&quot;, &quot;HolzapfelOgden&quot;).</span>
+<span class="sd">		:type solid_behavior_model: str</span>
+<span class="sd">		:param solid_behavior_parameters: Dictionary of material constants</span>
+<span class="sd">		    required by the model.</span>
+<span class="sd">		:type solid_behavior_parameters: dict</span>
+<span class="sd">		:return: The instantiated hyperelasticity operator.</span>
+<span class="sd">		:rtype: dmech.HyperElasticityOperator</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">HyperElasticity</span><span class="p">(</span>
+			<span class="n">U</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span>
+			<span class="n">material_model</span><span class="o">=</span><span class="n">solid_behavior_model</span><span class="p">,</span>
+			<span class="n">material_parameters</span><span class="o">=</span><span class="n">solid_behavior_parameters</span><span class="p">,</span>
+			<span class="n">measure</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span>
+			<span class="n">formulation</span><span class="o">=</span><span class="s2">&quot;ener&quot;</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">Sigma</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sigma&quot;</span><span class="p">,</span> <span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;project&quot;</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma&quot;</span><span class="p">,</span> <span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;project&quot;</span><span class="p">)</span>
+
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_macroscopic_stretch_symmetry_penalty_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stretch_symmetry_penalty_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_macroscopic_stretch_symmetry_penalty_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds a penalty operator to enforce the symmetry of the macroscopic stretch tensor.</span>
+
+<span class="sd">		In the multiscale formulation, the macroscopic stretch :math:`\mathbf{U}_{bar}`</span>
+<span class="sd">		is often defined in a non-symmetric tensor space. To ensure it represents a</span>
+<span class="sd">		purely symmetric deformation gradient (consistent with the physics of</span>
+<span class="sd">		small or large strain stretching), this operator adds a penalty term to the</span>
+<span class="sd">		global energy functional.</span>
+
+<span class="sd">		The penalty contribution to the residual is:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \delta \Pi_{sym} = \int_{\Omega} \eta \, \text{skew}(\mathbf{U}_{bar}) : \text{skew}(\delta \mathbf{U}_{bar}) \, d\Omega</span>
+
+<span class="sd">		where:</span>
+<span class="sd">		    - :math:`\eta` is a large penalty parameter (typically ``pen_val=1e6``).</span>
+<span class="sd">		    - :math:`\text{skew}(\mathbf{A}) = \frac{1}{2}(\mathbf{A} - \mathbf{A}^T)`.</span>
+
+
+
+<span class="sd">		This effectively forces the off-diagonal components of :math:`\mathbf{U}_{bar}`</span>
+<span class="sd">		to satisfy :math:`U_{ij} = U_{ji}`, preventing spurious rigid body</span>
+<span class="sd">		rotations at the macroscopic level.</span>
+
+<span class="sd">		:param kwargs: Keyword arguments passed to the penalty operator,</span>
+<span class="sd">		    most notably ``pen_val`` (float) to define the penalty weight.</span>
+<span class="sd">		:return: The instantiated symmetry penalty operator.</span>
+<span class="sd">		:rtype: dmech.MacroscopicStretchSymmetryPenaltyOperator</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">penalty</span><span class="o">.</span><span class="n">MacroscopicStretchSymmetry</span><span class="p">(</span>
+			<span class="n">U_bar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">sol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_func</span><span class="p">,</span>
+			<span class="n">sol_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dsol_test</span><span class="p">,</span>
+			<span class="n">measure</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span>
+			<span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_macroscopic_stretch_component_penalty_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stretch_component_penalty_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_macroscopic_stretch_component_penalty_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds a penalty operator to prescribe specific components of the macroscopic stretch.</span>
+
+<span class="sd">		This method is used to control the macroscopic loading of the Representative</span>
+<span class="sd">		Elementary Volume (REV). It allows the user to &quot;fix&quot; one or more components</span>
+<span class="sd">		of the macroscopic stretch tensor :math:`\mathbf{U}_{bar}` to a target value.</span>
+
+<span class="sd">		The penalty contribution to the residual for a specific component :math:`(i,j)` is:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \delta \Pi_{comp} = \int_{\Omega} \eta (U_{ij} - \bar{U}_{ij}) \delta U_{ij} \, d\Omega</span>
+
+<span class="sd">		where:</span>
+<span class="sd">		    - :math:`\eta` is the penalty parameter (passed via ``pen_val``).</span>
+<span class="sd">		    - :math:`\bar{U}_{ij}` is the target prescribed stretch value.</span>
+
+
+
+<span class="sd">		This approach is often preferred over strong Dirichlet constraints for</span>
+<span class="sd">		global variables in mixed formulations to maintain better solver</span>
+<span class="sd">		conditioning.</span>
+
+<span class="sd">		:param k_step: The index of the load step to which this operator belongs.</span>
+<span class="sd">		:type k_step: int, optional</span>
+<span class="sd">		:param kwargs: Keyword arguments used to define the constraint:</span>
+<span class="sd">		    - ``component`` (tuple): Indices of the tensor component (e.g., (0,0)).</span>
+<span class="sd">		    - ``val`` (float/Constant): Target value for the component.</span>
+<span class="sd">		    - ``pen_val`` (float): Penalty stiffness (defaults to a high value).</span>
+<span class="sd">		:return: The instantiated component penalty operator.</span>
+<span class="sd">		:rtype: dmech.MacroscopicStretchComponentPenaltyOperator</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">penalty</span><span class="o">.</span><span class="n">MacroscopicStretchComponent</span><span class="p">(</span>
+			<span class="n">U_bar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">U_bar_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">measure</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span>
+			<span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_macroscopic_stress_component_constraint_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stress_component_constraint_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_macroscopic_stress_component_constraint_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds an operator to prescribe a specific component of the macroscopic stress.</span>
+
+<span class="sd">		In multi-scale modeling, this operator enables **stress-controlled loading**.</span>
+<span class="sd">		It enforces that the volume average of the microscopic stress (Cauchy or</span>
+<span class="sd">		First Piola-Kirchhoff) matches a target macroscopic stress value :math:`\bar{\Sigma}_{ij}`.</span>
+
+<span class="sd">		The constraint is typically added to the virtual work equation as:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \delta \Pi_{stress} = (\langle \sigma_{ij} \rangle - \bar{\Sigma}_{ij}) \cdot \delta U_{bar, ij}</span>
+
+<span class="sd">		where:</span>
+<span class="sd">		    - :math:`\langle \sigma_{ij} \rangle` is the volume average of the</span>
+<span class="sd">		      micro-stress over the unit cell.</span>
+<span class="sd">		    - :math:`\delta U_{bar, ij}` is the virtual macroscopic stretch.</span>
+
+
+
+<span class="sd">		This allows for the simulation of &quot;free&quot; boundary conditions in specific</span>
+<span class="sd">		directions (by setting the target stress to zero) or specific pressure</span>
+<span class="sd">		states.</span>
+
+<span class="sd">		.. warning::</span>
+<span class="sd">		    This method currently assumes the problem contains only a single</span>
+<span class="sd">		    elasticity operator from which the material constitutive law</span>
+<span class="sd">		    can be extracted.</span>
+
+<span class="sd">		:param k_step: The index of the load step to which this operator belongs.</span>
+<span class="sd">		:type k_step: int, optional</span>
+<span class="sd">		:param kwargs: Keyword arguments to define the constraint:</span>
+<span class="sd">		    - ``component`` (tuple): Indices of the stress tensor (e.g., (0,0)).</span>
+<span class="sd">		    - ``val`` (float/Constant): The target macroscopic stress value.</span>
+<span class="sd">		:return: The instantiated macroscopic stress constraint operator.</span>
+<span class="sd">		:rtype: dmech.MacroscopicStressComponentConstraintOperator</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">for</span> <span class="p">(</span>
+			<span class="n">operator</span>
+		<span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span><span class="p">:</span>  <span class="c1"># MG20221110: Warning! Only works if there is a single operator with a material law!!</span>
+			<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">):</span>
+				<span class="n">material</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">material</span>
+				<span class="k">break</span>
+
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">MacroscopicStressComponentConstraint</span><span class="p">(</span>
+			<span class="n">U_bar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">U_bar_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span>
+			<span class="n">material</span><span class="o">=</span><span class="n">material</span><span class="p">,</span>
+			<span class="n">V0</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">V0</span><span class="p">,</span>
+			<span class="n">Vs0</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Vs0</span><span class="p">,</span>
+			<span class="n">measure</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span>
+			<span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span>
+			<span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_surface_pressure_loading_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_surface_pressure_loading_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_surface_pressure_loading_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds a follower-force pressure loading operator to the internal pore surfaces.</span>
+
+<span class="sd">		This operator represents the external work done by a fluid pressure :math:`p_f`</span>
+<span class="sd">		acting on the boundaries of the solid phase. In a finite strain context,</span>
+<span class="sd">		this is a &quot;follower load,&quot; meaning the force vector evolves as the surface</span>
+<span class="sd">		deforms and rotates.</span>
+
+<span class="sd">		The contribution to the virtual work is:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \delta \Pi_{ext} = \int_{\partial \Omega} p_f \cdot J \mathbf{F}^{-T} \mathbf{N} \cdot \delta \mathbf{u} \, dA_0</span>
+
+<span class="sd">		where:</span>
+<span class="sd">		    - :math:`p_f` is the fluid pressure magnitude.</span>
+<span class="sd">		    - :math:`\mathbf{F}^{-T} \mathbf{N}` accounts for the deformation of the</span>
+<span class="sd">		      surface normal (Nanson&#39;s formula).</span>
+<span class="sd">		    - :math:`J` is the determinant of the deformation gradient.</span>
+
+
+
+<span class="sd">		This is particularly useful for modeling the inflation of lung alveoli or</span>
+<span class="sd">		pressurized porous scaffolds where the internal geometry changes</span>
+<span class="sd">		significantly during loading.</span>
+
+<span class="sd">		:param k_step: The index of the load step to which this operator belongs.</span>
+<span class="sd">		:type k_step: int, optional</span>
+<span class="sd">		:param kwargs: Keyword arguments passed to the operator:</span>
+<span class="sd">		    - ``P`` (float/Constant): The pressure value to apply.</span>
+<span class="sd">		    - ``subdomain_id`` (int): The boundary ID representing the pore interface.</span>
+<span class="sd">		:return: The instantiated surface pressure loading operator.</span>
+<span class="sd">		:rtype: dmech.SurfacePressureLoadingOperator</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">loading</span><span class="o">.</span><span class="n">SurfacePressure</span><span class="p">(</span>
+			<span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span>
+			<span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span>
+			<span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_surface_tension_loading_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_surface_tension_loading_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_surface_tension_loading_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds a surface tension loading operator to the interfacial boundaries.</span>
+
+<span class="sd">		This operator models the energy contribution of surface tension :math:`\gamma`</span>
+<span class="sd">		acting on the pore-solid interface. Mathematically, it represents the</span>
+<span class="sd">		first variation of the surface energy :math:`\Psi_s = \int \gamma \, da`.</span>
+
+<span class="sd">		The contribution to the virtual work is:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \delta \Pi_{st} = \int_{\partial \Omega} \gamma \left( J \mathbf{F}^{-T} \mathbf{N} \cdot \text{grad}(\delta \mathbf{u}) \cdot \mathbf{n} \right) dA_0</span>
+
+<span class="sd">		In a finite strain context, surface tension is a &quot;configuration-dependent&quot;</span>
+<span class="sd">		load. As the surface area :math:`a` changes, the total energy changes,</span>
+<span class="sd">		resulting in a force that is always tangent to the surface but normal</span>
+<span class="sd">		to the interface boundaries (Laplace pressure effect).</span>
+
+
+
+<span class="sd">		This is a critical component for modeling lung parenchyma, where the</span>
+<span class="sd">		alveolar surface tension provides a significant portion of the lung&#39;s</span>
+<span class="sd">		elastic recoil.</span>
+
+<span class="sd">		:param k_step: The index of the load step to which this operator belongs.</span>
+<span class="sd">		:type k_step: int, optional</span>
+<span class="sd">		:param kwargs: Keyword arguments passed to the operator:</span>
+<span class="sd">		    - ``gamma`` (float/Constant): The surface tension coefficient.</span>
+<span class="sd">		    - ``subdomain_id`` (int): The boundary ID of the interface.</span>
+<span class="sd">		:return: The instantiated surface tension loading operator.</span>
+<span class="sd">		:rtype: dmech.SurfaceTensionLoadingOperator</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">loading</span><span class="o">.</span><span class="n">SurfaceTension</span><span class="p">(</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span> <span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">U_tot_test</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_deformed_total_volume_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_total_volume_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_deformed_total_volume_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds an operator to enforce the constraint on the total deformed volume.</span>
+
+<span class="sd">		In multi-scale poro-hyperelasticity, the total volume of the unit cell</span>
+<span class="sd">		:math:`v` is determined by the macroscopic deformation. This operator</span>
+<span class="sd">		links the global scalar sub-solution :math:`v` to the macroscopic</span>
+<span class="sd">		stretch :math:`\mathbf{U}_{bar}`.</span>
+
+<span class="sd">		The constraint is enforced by ensuring that the current volume equals the</span>
+<span class="sd">		reference volume :math:`V_0` scaled by the determinant of the macroscopic</span>
+<span class="sd">		deformation gradient :math:`J_{bar} = \det(\mathbf{I} + \mathbf{U}_{bar})`.</span>
+
+<span class="sd">		The contribution to the virtual work (residual) is:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \delta \Pi_{v} = \int_{\Omega} (v - J_{bar} V_0) \delta v \, d\Omega</span>
+
+
+
+<span class="sd">		This operator is essential for problems where the pore fluid pressure or</span>
+<span class="sd">		total porosity is coupled to the overall expansion or contraction of</span>
+<span class="sd">		the unit cell.</span>
+
+<span class="sd">		:param k_step: The index of the load step to which this operator belongs.</span>
+<span class="sd">		:type k_step: int, optional</span>
+<span class="sd">		:return: None. The operator is registered within the problem&#39;s operator list.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">microporo</span><span class="o">.</span><span class="n">DeformedTotalVolume</span><span class="p">(</span>
+			<span class="n">v</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">deformed_total_volume_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">v_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">deformed_total_volume_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">U_bar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">V0</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">V0</span><span class="p">,</span>
+			<span class="n">measure</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_deformed_solid_volume_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_solid_volume_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_deformed_solid_volume_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds an operator to enforce the constraint on the deformed solid volume.</span>
+
+<span class="sd">		This operator links the global scalar sub-solution :math:`v_s` to the</span>
+<span class="sd">		local kinematics of the solid phase. It ensures that the tracked solid</span>
+<span class="sd">		volume is consistent with the spatial integration of the local</span>
+<span class="sd">		Jacobian (determinant of the deformation gradient) over the solid domain.</span>
+
+<span class="sd">		The constraint is enforced via the following variational contribution</span>
+<span class="sd">		to the residual:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \delta \Pi_{v_s} = \int_{\Omega_s} (v_s - J) \delta v_s \, d\Omega_0</span>
+
+<span class="sd">		where:</span>
+<span class="sd">		    - :math:`v_s` is the global scalar for the deformed solid volume.</span>
+<span class="sd">		    - :math:`J` is the local determinant of the deformation gradient</span>
+<span class="sd">		      (:math:`\det \mathbf{F}`).</span>
+<span class="sd">		    - :math:`\delta v_s` is the test function associated with the</span>
+<span class="sd">		      global solid volume.</span>
+
+
+
+<span class="sd">		This operator is critical for calculating the current solid volume fraction</span>
+<span class="sd">		(solidity) and, by extension, the porosity in micro-porous hyperelastic</span>
+<span class="sd">		simulations.</span>
+
+<span class="sd">		:param k_step: The index of the load step to which this operator belongs.</span>
+<span class="sd">		:type k_step: int, optional</span>
+<span class="sd">		:return: None. The operator is registered within the problem&#39;s operator list.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">microporo</span><span class="o">.</span><span class="n">DeformedSolidVolume</span><span class="p">(</span>
+			<span class="n">vs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">deformed_solid_volume_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">vs_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">deformed_solid_volume_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">J</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">,</span>
+			<span class="n">Vs0</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_V0</span><span class="p">,</span>
+			<span class="n">measure</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_deformed_fluid_volume_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_fluid_volume_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_deformed_fluid_volume_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds an operator to enforce the constraint on the deformed fluid (pore) volume.</span>
+
+<span class="sd">		This operator links the global scalar sub-solution :math:`v_f` to the</span>
+<span class="sd">		kinematics of the internal boundaries. Since the fluid phase is typically</span>
+<span class="sd">		not meshed, its volume is calculated using a boundary integral based on</span>
+<span class="sd">		the movement of the pore-solid interface.</span>
+
+
+
+<span class="sd">		The calculation often relies on the identity for the volume of a region</span>
+<span class="sd">		bounded by a surface :math:`\partial \Omega_f`:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    v_f = \frac{1}{dim} \int_{\partial \Omega_f} \mathbf{x} \cdot \mathbf{n} \, da</span>
+
+<span class="sd">		where :math:`\mathbf{x}` is the current position and :math:`\mathbf{n}` is</span>
+<span class="sd">		the outward spatial normal. The operator ensures that the global variable</span>
+<span class="sd">		:math:`v_f` satisfies this kinematic relationship as the pores expand</span>
+<span class="sd">		or contract.</span>
+
+<span class="sd">		:param k_step: The index of the load step to which this operator belongs.</span>
+<span class="sd">		:type k_step: int, optional</span>
+<span class="sd">		:return: None. The operator is registered within the problem&#39;s operator list.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">microporo</span><span class="o">.</span><span class="n">DeformedFluidVolume</span><span class="p">(</span>
+			<span class="n">vf</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">deformed_fluid_volume_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">vf_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">deformed_fluid_volume_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span>
+			<span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span>
+			<span class="n">dS</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dS</span><span class="p">,</span>
+			<span class="n">U_tot</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">U_tot</span><span class="p">,</span>
+			<span class="n">X</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span>
+			<span class="n">measure</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_surface_area_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_surface_area_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_surface_area_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds an operator to enforce the constraint on the deformed interfacial surface area.</span>
+
+<span class="sd">		This operator links the global scalar sub-solution :math:`s` to the</span>
+<span class="sd">		actual integrated area of the deformed mesh facets. It uses Nanson&#39;s</span>
+<span class="sd">		formula to map the reference surface area elements to the spatial</span>
+<span class="sd">		configuration.</span>
+
+<span class="sd">		The constraint is enforced via the following variational contribution:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \delta \Pi_{s} = \int_{\partial \Omega} (s - \| J \mathbf{F}^{-T} \mathbf{N} \|) \delta s \, dA_0</span>
+
+<span class="sd">		where:</span>
+<span class="sd">		    - :math:`s` is the global scalar for the deformed surface area.</span>
+<span class="sd">		    - :math:`J \mathbf{F}^{-T} \mathbf{N}` is the transformation of the</span>
+<span class="sd">		      area element (Nanson&#39;s formula).</span>
+<span class="sd">		    - :math:`\delta s` is the test function associated with the</span>
+<span class="sd">		      global surface area.</span>
+
+
+
+<span class="sd">		This operator allows the surface area to be treated as a primary</span>
+<span class="sd">		unknown, which is essential for coupling mechanical deformation with</span>
+<span class="sd">		surface-dependent physics like alveolar surface tension in lung models.</span>
+
+<span class="sd">		:param k_step: The index of the load step to which this operator belongs.</span>
+<span class="sd">		:type k_step: int, optional</span>
+<span class="sd">		:param kwargs: Keyword arguments passed to the operator, typically</span>
+<span class="sd">		    including ``subdomain_id`` to specify which boundary to integrate.</span>
+<span class="sd">		:return: The instantiated surface area operator.</span>
+<span class="sd">		:rtype: dmech.DeformedSurfaceAreaOperator</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">microporo</span><span class="o">.</span><span class="n">DeformedSurfaceArea</span><span class="p">(</span>
+			<span class="n">S_area</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_area_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">S_area_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_area_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span>
+			<span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span>
+			<span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_kubc">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_kubc">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_kubc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xmin_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xmax_id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ymin_id</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ymax_id</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">zmin_id</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">zmax_id</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Applies Kinematic Uniform Boundary Conditions (KUBC) to the unit cell.</span>
+
+<span class="sd">		KUBC is a standard homogenization boundary condition where the</span>
+<span class="sd">		displacement fluctuation :math:`\mathbf{U}_{tilde}` is set to zero</span>
+<span class="sd">		on all external faces of the Representative Elementary Volume (REV).</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \mathbf{U}_{tilde} = \mathbf{0} \quad \text{on } \partial \Omega_{ext}</span>
+
+
+
+<span class="sd">		By enforcing this, the total displacement on the boundary is purely</span>
+<span class="sd">		dictated by the macroscopic stretch :math:`\mathbf{U}_{bar}`, satisfying</span>
+<span class="sd">		the Hill-Mandel condition. This method specifically constrains the</span>
+<span class="sd">		normal components of the fluctuation field on each respective face to</span>
+<span class="sd">		ensure the cell remains compatible with a larger homogeneous medium.</span>
+
+<span class="sd">		:param xmin_id: Subdomain ID for the negative X-face.</span>
+<span class="sd">		:param xmax_id: Subdomain ID for the positive X-face.</span>
+<span class="sd">		:param ymin_id: Subdomain ID for the negative Y-face.</span>
+<span class="sd">		:param ymax_id: Subdomain ID for the positive Y-face.</span>
+<span class="sd">		:param zmin_id: Subdomain ID for the negative Z-face (3D only).</span>
+<span class="sd">		:param zmax_id: Subdomain ID for the positive Z-face (3D only).</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+			<span class="n">V</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+			<span class="n">sub_domains</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="p">,</span>
+			<span class="n">sub_domain_id</span><span class="o">=</span><span class="n">xmin_id</span><span class="p">,</span>
+			<span class="n">val</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+			<span class="n">V</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+			<span class="n">sub_domains</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="p">,</span>
+			<span class="n">sub_domain_id</span><span class="o">=</span><span class="n">xmax_id</span><span class="p">,</span>
+			<span class="n">val</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+			<span class="n">V</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+			<span class="n">sub_domains</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="p">,</span>
+			<span class="n">sub_domain_id</span><span class="o">=</span><span class="n">ymin_id</span><span class="p">,</span>
+			<span class="n">val</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+			<span class="n">V</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+			<span class="n">sub_domains</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="p">,</span>
+			<span class="n">sub_domain_id</span><span class="o">=</span><span class="n">ymax_id</span><span class="p">,</span>
+			<span class="n">val</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+				<span class="n">V</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+				<span class="n">sub_domains</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="p">,</span>
+				<span class="n">sub_domain_id</span><span class="o">=</span><span class="n">zmin_id</span><span class="p">,</span>
+				<span class="n">val</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+			<span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+				<span class="n">V</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_perturbation_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+				<span class="n">sub_domains</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="p">,</span>
+				<span class="n">sub_domain_id</span><span class="o">=</span><span class="n">zmax_id</span><span class="p">,</span>
+				<span class="n">val</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+			<span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_deformed_solid_volume_qoi">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_solid_volume_qoi">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_deformed_solid_volume_qoi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds a Quantity of Interest (QOI) for the total deformed solid volume.</span>
+
+<span class="sd">		This method registers an integral expression to track the evolution of</span>
+<span class="sd">		the solid phase volume :math:`v_s` throughout the simulation. It</span>
+<span class="sd">		integrates the local Jacobian :math:`J` (determinant of the deformation</span>
+<span class="sd">		gradient) over the reference solid domain :math:`\Omega_{s,0}`.</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    v_s = \int_{\Omega_{s,0}} J \, dV</span>
+
+
+
+<span class="sd">		The resulting value represents the current volume occupied by the</span>
+<span class="sd">		material skeleton (e.g., the tissue in a lung model). This is</span>
+<span class="sd">		distinguished from the total unit cell volume, which includes</span>
+<span class="sd">		the voids or pores.</span>
+
+<span class="sd">		:return: None. The QOI is added to the problem&#39;s internal QOI list.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;vs&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_deformed_fluid_volume_qoi">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_fluid_volume_qoi">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_deformed_fluid_volume_qoi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds a Quantity of Interest (QOI) for the total deformed fluid (pore) volume.</span>
+
+<span class="sd">		In the multiscale homogenization of porous media, the fluid volume :math:`v_f` </span>
+<span class="sd">		is calculated as the difference between the total deformed volume of the </span>
+<span class="sd">		unit cell :math:`v` and the integrated volume of the solid skeleton :math:`v_s`.</span>
+
+<span class="sd">        </span>
+
+<span class="sd">		The total volume :math:`v` is determined by the macroscopic deformation </span>
+<span class="sd">		gradient :math:`\mathbf{F}_{bar}`:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \mathbf{F}_{bar} = \mathbf{I} + \mathbf{U}_{bar} \</span>
+<span class="sd">		    v = \det(\mathbf{F}_{bar}) V_0</span>
+
+<span class="sd">		The QOI expression uses the fact that :math:`v_f = \int_{\Omega_{s,0}} (\phi_{f}/ \phi_{s,0} ) J dV` </span>
+<span class="sd">		is reformulated here as an integral over the solid mesh for numerical </span>
+<span class="sd">		consistency within the FEniCS integration framework.</span>
+
+<span class="sd">		:return: None. The QOI is registered for post-processing.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">U_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">subfunc</span>
+		<span class="n">I_bar</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Identity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+		<span class="n">F_bar</span> <span class="o">=</span> <span class="n">I_bar</span> <span class="o">+</span> <span class="n">U_bar</span>
+		<span class="n">J_bar</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">F_bar</span><span class="p">)</span>
+		<span class="n">v</span> <span class="o">=</span> <span class="n">J_bar</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">V0</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;vf&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">v</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vs0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_deformed_volume_qoi">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_volume_qoi">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_deformed_volume_qoi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds a Quantity of Interest (QOI) for the total deformed volume of the unit cell.</span>
+
+<span class="sd">		This method calculates the current volume :math:`v` of the entire Representative </span>
+<span class="sd">		Elementary Volume (REV), including both the solid skeleton and the pore space. </span>
+<span class="sd">		It is derived from the macroscopic deformation gradient :math:`\mathbf{F}_{bar}`.</span>
+
+<span class="sd">		The total deformed volume is given by:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \mathbf{F}_{bar} = \mathbf{I} + \mathbf{U}_{bar} \</span>
+<span class="sd">		    v = \det(\mathbf{F}_{bar}) V_0</span>
+
+<span class="sd">        </span>
+
+<span class="sd">		To integrate this global scalar value within the FEniCS framework (which </span>
+<span class="sd">		integrates over the meshed solid domain :math:`\Omega_s`), the expression </span>
+<span class="sd">		is normalized by the initial solid volume :math:`V_{s0}`:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    v = \int_{\Omega_s} \frac{v_{tot}}{V_{s0}} \, dV</span>
+
+<span class="sd">		:return: None. The QOI is registered for post-processing and output.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">U_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">subfunc</span>
+		<span class="n">I_bar</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Identity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+		<span class="n">F_bar</span> <span class="o">=</span> <span class="n">I_bar</span> <span class="o">+</span> <span class="n">U_bar</span>
+		<span class="n">J_bar</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">F_bar</span><span class="p">)</span>
+		<span class="n">v</span> <span class="o">=</span> <span class="n">J_bar</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">V0</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">v</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vs0</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_macroscopic_tensor_qois">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_tensor_qois">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_macroscopic_tensor_qois</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">subsol</span><span class="p">,</span> <span class="n">symmetric</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Helper method to add Quantities of Interest (QOI) for all components of a macroscopic tensor.</span>
+
+<span class="sd">		This method iterates through the components of a global tensor sub-solution</span>
+<span class="sd">		(defined in the **Real (R)** family) and registers each one as a separate</span>
+<span class="sd">		scalar QOI. Since these are global variables, the value is extracted</span>
+<span class="sd">		&quot;pointwise&quot; at a single mesh coordinate.</span>
+
+
+
+<span class="sd">		The naming convention follows the format ``basename_IJ`` (e.g., ``U_bar_XX``,</span>
+<span class="sd">		``U_bar_XY``).</span>
+
+<span class="sd">		:param basename: The prefix used for the QOI names.</span>
+<span class="sd">		:type basename: str</span>
+<span class="sd">		:param subsol: The global tensor sub-solution to extract components from.</span>
+<span class="sd">		:type subsol: SubSolution</span>
+<span class="sd">		:param symmetric: If True, skips redundant off-diagonal components</span>
+<span class="sd">		    (e.g., registers XY but skips YX).</span>
+<span class="sd">		:type symmetric: bool, optional</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+			<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_XX&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">point</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span>
+		<span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+				<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_YY&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">point</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span>
+			<span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+					<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_ZZ&quot;</span><span class="p">,</span>
+					<span class="n">expr</span><span class="o">=</span><span class="n">subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+					<span class="n">point</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+					<span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span><span class="p">,</span>
+				<span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+				<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_XY&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">point</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span>
+			<span class="p">)</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">symmetric</span><span class="p">):</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+					<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_YX&quot;</span><span class="p">,</span>
+					<span class="n">expr</span><span class="o">=</span><span class="n">subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+					<span class="n">point</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+					<span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span><span class="p">,</span>
+				<span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+					<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_YZ&quot;</span><span class="p">,</span>
+					<span class="n">expr</span><span class="o">=</span><span class="n">subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+					<span class="n">point</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+					<span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span><span class="p">,</span>
+				<span class="p">)</span>
+				<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">symmetric</span><span class="p">):</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+						<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_ZY&quot;</span><span class="p">,</span>
+						<span class="n">expr</span><span class="o">=</span><span class="n">subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+						<span class="n">point</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+						<span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span><span class="p">,</span>
+					<span class="p">)</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+					<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_ZX&quot;</span><span class="p">,</span>
+					<span class="n">expr</span><span class="o">=</span><span class="n">subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+					<span class="n">point</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+					<span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span><span class="p">,</span>
+				<span class="p">)</span>
+				<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">symmetric</span><span class="p">):</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+						<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_XZ&quot;</span><span class="p">,</span>
+						<span class="n">expr</span><span class="o">=</span><span class="n">subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+						<span class="n">point</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+						<span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span><span class="p">,</span>
+					<span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_macroscopic_stretch_qois">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stretch_qois">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_macroscopic_stretch_qois</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Registers all components of the macroscopic stretch tensor as Quantities of Interest.</span>
+
+<span class="sd">		This method uses :meth:`add_macroscopic_tensor_qois` to extract the individual</span>
+<span class="sd">		components of the global macroscopic stretch :math:`\mathbf{U}_{bar}`. In the</span>
+<span class="sd">		context of displacement decomposition, :math:`\mathbf{U}_{bar}` represents the</span>
+<span class="sd">		average displacement gradient across the Representative Elementary Volume (REV).</span>
+
+
+
+<span class="sd">		The registered QOIs will be named ``U_bar_XX``, ``U_bar_YY``, etc. These</span>
+<span class="sd">		values are essential for verifying the applied loading conditions and for</span>
+<span class="sd">		constructing macroscopic stress-strain relationships.</span>
+
+<span class="sd">		.. note::</span>
+<span class="sd">		    Since the macroscopic stretch is generally enforced to be symmetric via</span>
+<span class="sd">		    penalty operators, the off-diagonal terms (e.g., XY and YX) should</span>
+<span class="sd">		    ideally be identical.</span>
+
+<span class="sd">		:return: None. Component-wise QOIs are added to the problem.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_macroscopic_tensor_qois</span><span class="p">(</span><span class="n">basename</span><span class="o">=</span><span class="s2">&quot;U_bar&quot;</span><span class="p">,</span> <span class="n">subsol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_macroscopic_solid_stress_qois">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_solid_stress_qois">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_macroscopic_solid_stress_qois</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symmetric</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Registers Quantities of Interest (QOI) for the homogenized solid Cauchy stress components.</span>
+
+<span class="sd">		This method calculates the macroscopic contribution of the solid phase to the</span>
+<span class="sd">		overall stress state. It integrates the local Cauchy stress :math:`\sigma` of the</span>
+<span class="sd">		solid material, weighted by the local Jacobian :math:`J`, and averages it over</span>
+<span class="sd">		the current total volume :math:`v` of the unit cell.</span>
+
+<span class="sd">		The homogenization formula for the solid stress component :math:`ij` is:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \bar{\sigma}_{s, ij} = \frac{1}{v} \int_{\Omega_{s,0}} \sigma_{ij} J \, dV</span>
+
+
+
+<span class="sd">		This calculation is fundamental for determining the effective mechanical</span>
+<span class="sd">		properties of porous media, as it captures how the microscopic solid</span>
+<span class="sd">		skeleton carries loads at the macroscopic scale.</span>
+
+<span class="sd">		.. warning::</span>
+<span class="sd">		    This method assumes a single elasticity operator is present in the</span>
+<span class="sd">		    problem to retrieve the material constitutive law.</span>
+
+<span class="sd">		:param symmetric: If True, only the independent components (XX, YY, ZZ, XY,</span>
+<span class="sd">		    YZ, ZX) are registered to save output space.</span>
+<span class="sd">		:type symmetric: bool, optional</span>
+<span class="sd">		:return: None. Component-wise solid stress QOIs are added to the problem.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">for</span> <span class="p">(</span>
+			<span class="n">operator</span>
+		<span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span><span class="p">:</span>  <span class="c1"># MG20221110: Warning! Only works if there is a single operator with a material law!!</span>
+			<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">):</span>
+				<span class="n">material</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">material</span>
+				<span class="k">break</span>
+
+		<span class="n">U_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">subfunc</span>
+		<span class="n">I_bar</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Identity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+		<span class="n">F_bar</span> <span class="o">=</span> <span class="n">I_bar</span> <span class="o">+</span> <span class="n">U_bar</span>
+		<span class="n">J_bar</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">F_bar</span><span class="p">)</span>
+		<span class="n">v</span> <span class="o">=</span> <span class="n">J_bar</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">V0</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_s_bar_XX&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_s_bar_YY&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_s_bar_ZZ&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_s_bar_XY&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">symmetric</span><span class="p">):</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_s_bar_YX&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_s_bar_YZ&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+				<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">symmetric</span><span class="p">):</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_s_bar_ZY&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_s_bar_ZX&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+				<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">symmetric</span><span class="p">):</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_s_bar_XZ&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_macroscopic_solid_hydrostatic_pressure_qoi">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_solid_hydrostatic_pressure_qoi">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_macroscopic_solid_hydrostatic_pressure_qoi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Registers a Quantity of Interest (QOI) for the homogenized solid hydrostatic pressure.</span>
+
+<span class="sd">		This method calculates the macroscopic hydrostatic pressure :math:`\bar{p}_{hydro}`</span>
+<span class="sd">		by averaging the local hydrostatic pressure of the solid material over the</span>
+<span class="sd">		current total volume :math:`v` of the unit cell.</span>
+
+<span class="sd">		In continuum mechanics, the hydrostatic pressure is defined as the negative</span>
+<span class="sd">		one-third of the trace of the Cauchy stress tensor:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    p = -\frac{1}{3} \text{tr}(\sigma)</span>
+
+
+
+<span class="sd">		The homogenization is performed by integrating the local pressure :math:`p`</span>
+<span class="sd">		weighted by the local Jacobian :math:`J` over the reference solid domain:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \bar{p}_{hydro} = \frac{1}{v} \int_{\Omega_{s,0}} p_{hydro} J \, dV</span>
+
+<span class="sd">		This value is a key indicator of the volumetric loading state of the</span>
+<span class="sd">		homogenized material point.</span>
+
+<span class="sd">		.. warning::</span>
+<span class="sd">		    This method assumes a single elasticity operator is present in the</span>
+<span class="sd">		    problem to retrieve the hydrostatic pressure from the material behavior.</span>
+
+<span class="sd">		:return: None. The hydrostatic pressure QOI is added to the problem.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">for</span> <span class="p">(</span>
+			<span class="n">operator</span>
+		<span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span><span class="p">:</span>  <span class="c1"># MG20221110: Warning! Only works if there is a single operator with a material law!!</span>
+			<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">):</span>
+				<span class="n">material</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">material</span>
+				<span class="k">break</span>
+
+		<span class="n">U_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">subfunc</span>
+		<span class="n">I_bar</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Identity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+		<span class="n">F_bar</span> <span class="o">=</span> <span class="n">I_bar</span> <span class="o">+</span> <span class="n">U_bar</span>
+		<span class="n">J_bar</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">F_bar</span><span class="p">)</span>
+		<span class="n">v</span> <span class="o">=</span> <span class="n">J_bar</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">V0</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;p_hydro&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">p_hydro</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_fluid_pressure_qoi">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_fluid_pressure_qoi">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_fluid_pressure_qoi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Registers a Quantity of Interest (QOI) for the pore fluid pressure across all steps.</span>
+
+<span class="sd">		This method extracts the fluid pressure value :math:`p_f` from the operators</span>
+<span class="sd">		assigned to each simulation step. In micro-poro-hyperelasticity, :math:`p_f`</span>
+<span class="sd">		represents the pressure within the voids/pores of the microstructure.</span>
+
+
+
+<span class="sd">		The value is normalized by the initial solid volume :math:`V_{s0}` to</span>
+<span class="sd">		maintain consistency with the integration over the solid mesh:</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \bar{p}_f = \frac{1}{V_{s0}} \int_{\Omega_s} p_f \, dV</span>
+
+<span class="sd">		Since the fluid pressure may vary or be defined by different time-varying</span>
+<span class="sd">		functions in different steps, this method constructs a list of</span>
+<span class="sd">		expressions (``expr_lst``), one for each step in the simulation.</span>
+
+<span class="sd">		.. note::</span>
+<span class="sd">		    The method searches for an operator possessing the ``tv_pf``</span>
+<span class="sd">		    (time-varying pore fluid) attribute within each step.</span>
+
+<span class="sd">		:return: None. The fluid pressure QOI is added to the problem&#39;s QOI list.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">expr_lst</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">)):</span>
+			<span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">operators</span><span class="p">:</span>
+				<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;tv_pf&quot;</span><span class="p">):</span>
+					<span class="n">tv_pf</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">tv_pf</span>
+					<span class="k">break</span>
+			<span class="n">expr_lst</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">tv_pf</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vs0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;p_f&quot;</span><span class="p">,</span> <span class="n">expr_lst</span><span class="o">=</span><span class="n">expr_lst</span><span class="p">)</span></div>
+
+		<span class="c1"># expr=(tv_pf.val)/self.Vs0 * self.dV)</span>
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_macroscopic_stress_qois">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stress_qois">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_macroscopic_stress_qois</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symmetric</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds Quantities of Interest (QOI) for the homogenized macroscopic stress.</span>
+
+<span class="sd">		This computes the effective stress :math:`\bar{\sigma}` by averaging the</span>
+<span class="sd">		local solid stress and fluid pressure contributions over the deformed</span>
+<span class="sd">		volume :math:`v`.</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \bar{\sigma} = \frac{1}{v} \int_{\Omega} (\sigma_{s} J - \phi_{f} p_{f} J) d\Omega</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">for</span> <span class="p">(</span>
+			<span class="n">operator</span>
+		<span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span><span class="p">:</span>  <span class="c1"># MG20221110: Warning! Only works if there is a single operator with a material law!!</span>
+			<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">):</span>
+				<span class="n">material</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">material</span>
+				<span class="k">break</span>
+
+		<span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">operators</span><span class="p">:</span>  <span class="c1"># MG20231124: Warning! Only works if there is a single step!!</span>
+			<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;tv_pf&quot;</span><span class="p">):</span>
+				<span class="n">tv_pf</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">tv_pf</span>
+				<span class="k">break</span>
+
+		<span class="n">U_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">macroscopic_stretch_subsol</span><span class="o">.</span><span class="n">subfunc</span>
+		<span class="n">I_bar</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Identity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+		<span class="n">F_bar</span> <span class="o">=</span> <span class="n">I_bar</span> <span class="o">+</span> <span class="n">U_bar</span>
+		<span class="n">J_bar</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">F_bar</span><span class="p">)</span>
+		<span class="n">v</span> <span class="o">=</span> <span class="n">J_bar</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">V0</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+			<span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_bar_XX&quot;</span><span class="p">,</span>
+			<span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span> <span class="o">-</span> <span class="p">(</span><span class="n">v</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vs0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">*</span> <span class="n">tv_pf</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+			<span class="o">/</span> <span class="n">v</span>
+			<span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+				<span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_bar_YY&quot;</span><span class="p">,</span>
+				<span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span> <span class="o">-</span> <span class="p">(</span><span class="n">v</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vs0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">*</span> <span class="n">tv_pf</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+				<span class="o">/</span> <span class="n">v</span>
+				<span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span>
+			<span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+					<span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_bar_ZZ&quot;</span><span class="p">,</span>
+					<span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span> <span class="o">-</span> <span class="p">(</span><span class="n">v</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vs0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">*</span> <span class="n">tv_pf</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+					<span class="o">/</span> <span class="n">v</span>
+					<span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span>
+				<span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_bar_XY&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">symmetric</span><span class="p">):</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_bar_YX&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_bar_YZ&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+				<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">symmetric</span><span class="p">):</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_bar_ZY&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_bar_ZX&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+				<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">symmetric</span><span class="p">):</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma_bar_XZ&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MicroPoroHyperelasticity.add_interfacial_surface_qois">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_interfacial_surface_qois">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_interfacial_surface_qois</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds QOI for the deformed interfacial surface area.</span>
+
+<span class="sd">		Uses Nanson&#39;s formula to track how the internal pore surface area</span>
+<span class="sd">		evolves under large deformation.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">FmTN</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">F</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">)</span>
+		<span class="n">T</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">FmTN</span><span class="p">,</span> <span class="n">FmTN</span><span class="p">))</span>
+		<span class="n">expr</span> <span class="o">=</span> <span class="n">T</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;S_area&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">expr</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dS</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

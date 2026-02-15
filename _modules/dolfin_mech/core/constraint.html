@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.core.constraint &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5283314f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_toc.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dolfin_mech/index.html">Core Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/problems/index.html">Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.core.constraint</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dolfin_mech.core.constraint</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf8</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### Created by Martin Genet, 2018-2025                                       ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                   ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;Defines the Constraint class.</span>
+
+<span class="sd">Integrates FEniCS Dirichlet boundary</span>
+<span class="sd">conditions with time-varying magnitudes to enable dynamic prescription</span>
+<span class="sd">of displacements, pressures, or other field variables.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">dolfin</span>
+
+<span class="kn">from</span> <span class="nn">.timevaryingconstant</span> <span class="kn">import</span> <span class="n">TimeVaryingConstant</span>
+
+<span class="c1">################################################################################</span>
+
+
+<div class="viewcode-block" id="Constraint">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/constraint/index.html#dolfin_mech.core.constraint.Constraint">[docs]</a>
+<span class="k">class</span> <span class="nc">Constraint</span><span class="p">:</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Class to manage Dirichlet boundary conditions with time-varying values.</span>
+
+<span class="sd">	This class wraps the ``dolfin.DirichletBC`` object and associates it with a</span>
+<span class="sd">	:py:class:`dolfin_mech.TimeVaryingConstant`. This allows for easy updates</span>
+<span class="sd">	of the boundary condition values during time-stepping simulations.</span>
+
+<span class="sd">	Args:</span>
+<span class="sd">	        V (dolfin.FunctionSpace): The function space on which the BC is applied.</span>
+<span class="sd">	        sub_domain (dolfin.SubDomain, optional): A FEniCS SubDomain object</span>
+<span class="sd">	            defining the boundary. Defaults to None.</span>
+<span class="sd">	        sub_domains (dolfin.MeshFunction, optional): A mesh function</span>
+<span class="sd">	            defining sub-regions. Defaults to None.</span>
+<span class="sd">	        sub_domain_id (int, optional): The ID within ``sub_domains`` to</span>
+<span class="sd">	            apply the BC to. Defaults to None.</span>
+<span class="sd">	        val (float, optional): A constant value for the entire simulation.</span>
+<span class="sd">	        val_ini (float, optional): Initial value for time-varying BC.</span>
+<span class="sd">	        val_fin (float, optional): Final value for time-varying BC.</span>
+<span class="sd">	        method (str, optional): FEniCS BC method (e.g., &#39;topological&#39;,</span>
+<span class="sd">	            &#39;geometric&#39;, &#39;pointwise&#39;). Defaults to None.</span>
+
+<span class="sd">	Notes:</span>
+<span class="sd">	        You must provide either (``val``) OR (``val_ini`` and ``val_fin``).</span>
+<span class="sd">	        Similarly, you must provide either (``sub_domain``) OR</span>
+<span class="sd">	        (``sub_domains`` and ``sub_domain_id``).</span>
+
+<span class="sd">	Attributes:</span>
+<span class="sd">	    tv_val (dolfin_mech.TimeVaryingConstant): Manager for the constant value</span>
+<span class="sd">	        applied to the boundary.</span>
+<span class="sd">	    bc (dolfin.DirichletBC): The underlying FEniCS Dirichlet boundary</span>
+<span class="sd">	        condition object.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+		<span class="bp">self</span><span class="p">,</span>
+		<span class="n">V</span><span class="p">,</span>
+		<span class="n">sub_domain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">sub_domains</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">sub_domain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">val_ini</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">val_fin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+	<span class="p">):</span>  <span class="c1"># topological, geometric, pointwise</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Initialize the Constraint and create the underlying DirichletBC.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">val_ini</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">val_fin</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">tv_val</span> <span class="o">=</span> <span class="n">TimeVaryingConstant</span><span class="p">(</span><span class="n">val_ini</span><span class="o">=</span><span class="n">val</span><span class="p">,</span> <span class="n">val_fin</span><span class="o">=</span><span class="n">val</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="p">(</span><span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">val_ini</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">val_fin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">tv_val</span> <span class="o">=</span> <span class="n">TimeVaryingConstant</span><span class="p">(</span><span class="n">val_ini</span><span class="o">=</span><span class="n">val_ini</span><span class="p">,</span> <span class="n">val_fin</span><span class="o">=</span><span class="n">val_fin</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="n">sub_domain</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">sub_domains</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">sub_domain_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+			<span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">bc</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tv_val</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">sub_domain</span><span class="p">)</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">bc</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tv_val</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">sub_domain</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="p">(</span><span class="n">sub_domain</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">sub_domains</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">sub_domain_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+			<span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">bc</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tv_val</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">sub_domains</span><span class="p">,</span> <span class="n">sub_domain_id</span><span class="p">)</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">bc</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tv_val</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">sub_domains</span><span class="p">,</span> <span class="n">sub_domain_id</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Constraint.set_value_at_t_step">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/constraint/index.html#dolfin_mech.core.constraint.Constraint.set_value_at_t_step">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_value_at_t_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_step</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Update the boundary condition value for a specific time step.</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">		    t_step (float): The current time step/progress (typically between 0 and 1).</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">tv_val</span><span class="o">.</span><span class="n">set_dvalue_at_t_step</span><span class="p">(</span><span class="n">t_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Constraint.restore_old_value">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/constraint/index.html#dolfin_mech.core.constraint.Constraint.restore_old_value">[docs]</a>
+	<span class="k">def</span> <span class="nf">restore_old_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Restore the value of the constant to its previous state.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">tv_val</span><span class="o">.</span><span class="n">restore_old_value</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Constraint.homogenize">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/constraint/index.html#dolfin_mech.core.constraint.Constraint.homogenize">[docs]</a>
+	<span class="k">def</span> <span class="nf">homogenize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Set the boundary condition value to zero (homogeneous).&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">tv_val</span><span class="o">.</span><span class="n">homogenize</span><span class="p">()</span></div>
+</div>
+
+		<span class="c1"># self.bc.homogenize() # MG20180508: seems to be changing the constant…</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

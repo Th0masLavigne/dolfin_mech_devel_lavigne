@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.core.timeintegrator &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5283314f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_toc.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dolfin_mech/index.html">Core Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/problems/index.html">Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.core.timeintegrator</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dolfin_mech.core.timeintegrator</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf8</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### Created by Martin Genet, 2018-2025                                       ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                   ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;Main driver for time-dependent FEA simulations with adaptive time-stepping.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">import</span> <span class="nn">dolfin</span>
+<span class="kn">import</span> <span class="nn">myPythonLibrary</span> <span class="k">as</span> <span class="nn">mypy</span>
+
+<span class="kn">from</span> <span class="nn">.write_vtu_file</span> <span class="kn">import</span> <span class="n">write_VTU_file</span>
+<span class="kn">from</span> <span class="nn">.xdmffile</span> <span class="kn">import</span> <span class="n">XDMFFile</span>
+
+<span class="c1">################################################################################</span>
+
+
+<div class="viewcode-block" id="TimeIntegrator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/timeintegrator/index.html#dolfin_mech.core.timeintegrator.TimeIntegrator">[docs]</a>
+<span class="k">class</span> <span class="nc">TimeIntegrator</span><span class="p">:</span>
+<span class="w">	</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Main driver class for time-dependent finite element simulations.</span>
+
+<span class="sd">	The ``TimeIntegrator`` orchestrates the entire simulation workflow. It iterates</span>
+<span class="sd">	through the sequence of defined **Steps**, and within each step, it advances</span>
+<span class="sd">	time :math:`t` from :math:`t_{ini}` to :math:`t_{fin}`.</span>
+
+
+
+<span class="sd">	**Core Responsibilities:**</span>
+
+<span class="sd">	1.  **Adaptive Time Stepping**: Dynamically adjusts the time increment :math:`\Delta t`</span>
+<span class="sd">	    based on solver performance.</span>
+
+<span class="sd">	    - **Success**: Increases :math:`\Delta t` (acceleration) if convergence is fast.</span>
+<span class="sd">	    - **Failure**: Decreases :math:`\Delta t` (deceleration/cutting) if convergence fails, retrying the step.</span>
+
+<span class="sd">	2.  **State Management**: Updates time-dependent operators and constraints before each solve.</span>
+<span class="sd">	3.  **Output Management**: Writes results to disk (VTU/XDMF for fields, DAT for QOIs, log files for monitoring).</span>
+
+<span class="sd">	**Algorithm:**</span>
+
+<span class="sd">	.. code-block:: none</span>
+
+<span class="sd">	    For each Step:</span>
+<span class="sd">	        t = t_ini</span>
+<span class="sd">	        While t &lt; t_fin:</span>
+<span class="sd">	            Try solving for t + dt</span>
+<span class="sd">	            If Converged:</span>
+<span class="sd">	                Update solution and history variables</span>
+<span class="sd">	                Write output</span>
+<span class="sd">	                Increase dt (if iterations low)</span>
+<span class="sd">	                t = t + dt</span>
+<span class="sd">	            Else:</span>
+<span class="sd">	                Restore previous solution</span>
+<span class="sd">	                Decrease dt (cut time step)</span>
+<span class="sd">	                Retry</span>
+
+<span class="sd">	:param problem: The problem instance containing physics and mesh.</span>
+<span class="sd">	:type problem: Problem</span>
+<span class="sd">	:param solver: The nonlinear solver instance.</span>
+<span class="sd">	:type solver: NonlinearSolver</span>
+<span class="sd">	:param parameters: Dictionary controlling time stepping behavior:</span>
+<span class="sd">	    - ``n_iter_for_accel`` (int): Max iterations to trigger time step increase.</span>
+<span class="sd">	    - ``n_iter_for_decel`` (int): Min iterations to trigger time step decrease.</span>
+<span class="sd">	    - ``accel_coeff`` (float): Factor to increase ``dt`` by.</span>
+<span class="sd">	    - ``decel_coeff`` (float): Factor to decrease ``dt`` by.</span>
+<span class="sd">	:type parameters: dict</span>
+<span class="sd">	:param print_out: Enable/disable main log file output.</span>
+<span class="sd">	:param print_sta: Enable/disable statistics table output (.sta file).</span>
+<span class="sd">	:param write_qois: Enable/disable writing Quantity of Interest data (.dat file).</span>
+<span class="sd">	:param write_sol: Enable/disable writing full field solution (.xdmf file).</span>
+<span class="sd">	:param write_vtus: Enable/disable writing VTU files for ParaView.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+		<span class="bp">self</span><span class="p">,</span>
+		<span class="n">problem</span><span class="p">,</span>
+		<span class="n">solver</span><span class="p">,</span>
+		<span class="n">parameters</span><span class="p">,</span>
+		<span class="n">print_out</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+		<span class="n">print_sta</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+		<span class="n">write_qois</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+		<span class="n">write_qois_limited_precision</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+		<span class="n">write_sol</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+		<span class="n">write_vtus</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+		<span class="n">write_vtus_with_preserved_connectivity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+		<span class="n">write_xmls</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+	<span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Initializes the TimeIntegrator.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">problem</span> <span class="o">=</span> <span class="n">problem</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">solver</span> <span class="o">=</span> <span class="n">solver</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">n_iter_for_accel</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;n_iter_for_accel&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">n_iter_for_decel</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;n_iter_for_decel&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">accel_coeff</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;accel_coeff&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">decel_coeff</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;decel_coeff&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">print_out</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">print_out</span> <span class="o">==</span> <span class="s2">&quot;stdout&quot;</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer_filename</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="k">elif</span> <span class="n">print_out</span> <span class="o">==</span> <span class="s2">&quot;argv&quot;</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer_filename</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.out&quot;</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer_filename</span> <span class="o">=</span> <span class="n">print_out</span> <span class="o">+</span> <span class="s2">&quot;.out&quot;</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer_filename</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">printer</span> <span class="o">=</span> <span class="n">mypy</span><span class="o">.</span><span class="n">Printer</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">printer_filename</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="ow">not</span> <span class="p">(</span><span class="n">print_out</span><span class="p">))</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">printer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">printer</span>
+
+		<span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">print_sta</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">print_sta</span> <span class="o">==</span> <span class="s2">&quot;stdout&quot;</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">table_printer_filename</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="k">elif</span> <span class="n">print_sta</span> <span class="o">==</span> <span class="s2">&quot;argv&quot;</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">table_printer_filename</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.sta&quot;</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">table_printer_filename</span> <span class="o">=</span> <span class="n">print_sta</span> <span class="o">+</span> <span class="s2">&quot;.sta&quot;</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">table_printer_filename</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.sta&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">table_printer</span> <span class="o">=</span> <span class="n">mypy</span><span class="o">.</span><span class="n">TablePrinter</span><span class="p">(</span>
+			<span class="n">titles</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;k_step&quot;</span><span class="p">,</span> <span class="s2">&quot;k_t&quot;</span><span class="p">,</span> <span class="s2">&quot;dt&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;t_step&quot;</span><span class="p">,</span> <span class="s2">&quot;n_iter&quot;</span><span class="p">,</span> <span class="s2">&quot;success&quot;</span><span class="p">],</span>
+			<span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">table_printer_filename</span><span class="p">,</span>
+			<span class="n">silent</span><span class="o">=</span><span class="ow">not</span> <span class="p">(</span><span class="n">print_sta</span><span class="p">),</span>
+		<span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">write_qois</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">write_qois</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">qois</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_qois</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">write_qois_filebasename</span> <span class="o">=</span> <span class="n">write_qois</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">write_qois</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-qois&quot;</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">qoi_printer</span> <span class="o">=</span> <span class="n">mypy</span><span class="o">.</span><span class="n">DataPrinter</span><span class="p">(</span>
+				<span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">qoi</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">qoi</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">qois</span><span class="p">],</span>
+				<span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">write_qois_filebasename</span> <span class="o">+</span> <span class="s2">&quot;.dat&quot;</span><span class="p">,</span>
+				<span class="n">limited_precision</span><span class="o">=</span><span class="n">write_qois_limited_precision</span><span class="p">,</span>
+			<span class="p">)</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">update_qois</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">qoi_printer</span><span class="o">.</span><span class="n">write_line</span><span class="p">([</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">qoi</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">qoi</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">qois</span><span class="p">])</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">update_fois</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">write_sol</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">write_sol</span><span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_sol</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">write_sol_filebasename</span> <span class="o">=</span> <span class="n">write_sol</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">write_sol</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-sol&quot;</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">functions_to_write</span> <span class="o">=</span> <span class="p">[]</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">functions_to_write</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_subsols_func_lst</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">functions_to_write</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_subsols_func_old_lst</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">functions_to_write</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_fois_func_lst</span><span class="p">()</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">xdmf_file_sol</span> <span class="o">=</span> <span class="n">XDMFFile</span><span class="p">(</span>
+				<span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">write_sol_filebasename</span> <span class="o">+</span> <span class="s2">&quot;.xdmf&quot;</span><span class="p">,</span> <span class="n">functions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">functions_to_write</span>
+			<span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">xdmf_file_sol</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">write_vtus</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">write_vtus</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">write_vtus_with_preserved_connectivity</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">write_vtus_with_preserved_connectivity</span><span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_vtus</span><span class="p">:</span>
+				<span class="n">write_VTU_file</span><span class="p">(</span>
+					<span class="n">filebasename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">write_sol_filebasename</span><span class="p">,</span>
+					<span class="n">function</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+					<span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+					<span class="n">preserve_connectivity</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">write_vtus_with_preserved_connectivity</span><span class="p">,</span>
+				<span class="p">)</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">write_xmls</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">write_xmls</span><span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_xmls</span><span class="p">:</span>
+				<span class="p">(</span>
+					<span class="n">dolfin</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">write_sol_filebasename</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.xml&quot;</span><span class="p">)</span>
+					<span class="o">&lt;&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span>
+				<span class="p">)</span>
+
+<div class="viewcode-block" id="TimeIntegrator.close">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/timeintegrator/index.html#dolfin_mech.core.timeintegrator.TimeIntegrator.close">[docs]</a>
+	<span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Closes all open file handles (logs, tables, QOI data, XDMF).&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">table_printer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_qois</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">qoi_printer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_sol</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">xdmf_file_sol</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="TimeIntegrator.integrate">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/timeintegrator/index.html#dolfin_mech.core.timeintegrator.TimeIntegrator.integrate">[docs]</a>
+	<span class="k">def</span> <span class="nf">integrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Executes the time integration loop.</span>
+
+<span class="sd">		This is the main entry point to run the simulation after setup.</span>
+
+<span class="sd">		:return: True if the simulation completed successfully, False otherwise.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">k_t_tot</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="n">n_iter_tot</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">inc</span><span class="p">()</span>
+		<span class="k">for</span> <span class="n">k_step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">steps</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_var</span><span class="p">(</span><span class="s2">&quot;k_step&quot;</span><span class="p">,</span> <span class="n">k_step</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="n">k_step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+			<span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">t_ini</span>
+			<span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">dt_ini</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">set_variational_formulation</span><span class="p">(</span><span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">constraints</span> <span class="o">=</span> <span class="p">[]</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">constraints</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">constraints</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">constraints</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">constraints</span>
+
+			<span class="n">k_t</span> <span class="o">=</span> <span class="mi">0</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">inc</span><span class="p">()</span>
+			<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+				<span class="n">k_t</span> <span class="o">+=</span> <span class="mi">1</span>
+				<span class="n">k_t_tot</span> <span class="o">+=</span> <span class="mi">1</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_var</span><span class="p">(</span><span class="s2">&quot;k_t&quot;</span><span class="p">,</span> <span class="n">k_t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+				<span class="k">if</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">t_fin</span><span class="p">:</span>
+					<span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">t_fin</span> <span class="o">-</span> <span class="n">t</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_var</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+
+				<span class="c1"># self.problem.set_variational_formulation(</span>
+				<span class="c1">#     k_step=k_step-1,</span>
+				<span class="c1">#     dt=dt)</span>
+
+				<span class="n">t</span> <span class="o">+=</span> <span class="n">dt</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_var</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+				<span class="n">t_step</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">t_ini</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">t_fin</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">t_ini</span><span class="p">)</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_var</span><span class="p">(</span><span class="s2">&quot;t_step&quot;</span><span class="p">,</span> <span class="n">t_step</span><span class="p">)</span>
+
+				<span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">operators</span><span class="p">:</span>
+					<span class="n">operator</span><span class="o">.</span><span class="n">set_value_at_t_step</span><span class="p">(</span><span class="n">t_step</span><span class="p">)</span>
+					<span class="n">operator</span><span class="o">.</span><span class="n">set_dt</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+
+				<span class="k">for</span> <span class="n">constraint</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">constraints</span><span class="p">:</span>
+					<span class="n">constraint</span><span class="o">.</span><span class="n">set_value_at_t_step</span><span class="p">(</span><span class="n">t_step</span><span class="p">)</span>
+
+				<span class="k">for</span> <span class="n">inelastic_behavior</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">inelastic_behaviors_internal</span><span class="p">:</span>
+					<span class="n">inelastic_behavior</span><span class="o">.</span><span class="n">update_internal_variables_at_t</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+				<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_old_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()[:]</span>
+				<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+					<span class="n">dolfin</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_subsols_func_old_lst</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_old_func</span><span class="p">)</span>
+				<span class="n">solver_success</span><span class="p">,</span> <span class="n">n_iter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">k_step</span><span class="p">,</span> <span class="n">k_t</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+				<span class="bp">self</span><span class="o">.</span><span class="n">table_printer</span><span class="o">.</span><span class="n">write_line</span><span class="p">([</span><span class="n">k_step</span><span class="p">,</span> <span class="n">k_t</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t_step</span><span class="p">,</span> <span class="n">n_iter</span><span class="p">,</span> <span class="n">solver_success</span><span class="p">])</span>
+
+				<span class="k">if</span> <span class="n">solver_success</span><span class="p">:</span>
+					<span class="n">n_iter_tot</span> <span class="o">+=</span> <span class="n">n_iter</span>
+
+					<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">update_fois</span><span class="p">()</span>
+					<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_sol</span><span class="p">:</span>
+						<span class="bp">self</span><span class="o">.</span><span class="n">xdmf_file_sol</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+						<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_vtus</span><span class="p">:</span>
+							<span class="n">write_VTU_file</span><span class="p">(</span>
+								<span class="n">filebasename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">write_sol_filebasename</span><span class="p">,</span>
+								<span class="n">function</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+								<span class="n">time</span><span class="o">=</span><span class="n">k_t_tot</span><span class="p">,</span>
+								<span class="n">preserve_connectivity</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">write_vtus_with_preserved_connectivity</span><span class="p">,</span>
+							<span class="p">)</span>
+
+						<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_xmls</span><span class="p">:</span>
+							<span class="p">(</span>
+								<span class="n">dolfin</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">write_sol_filebasename</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k_t_tot</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.xml&quot;</span><span class="p">)</span>
+								<span class="o">&lt;&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span>
+							<span class="p">)</span>
+
+					<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_qois</span><span class="p">:</span>
+						<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">update_qois</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">k_step</span><span class="p">)</span>
+						<span class="bp">self</span><span class="o">.</span><span class="n">qoi_printer</span><span class="o">.</span><span class="n">write_line</span><span class="p">([</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">qoi</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">qoi</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">qois</span><span class="p">])</span>
+
+					<span class="k">if</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">near</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">t_fin</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">):</span>
+						<span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+						<span class="k">break</span>
+					<span class="k">else</span><span class="p">:</span>
+						<span class="k">if</span> <span class="n">n_iter</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_iter_for_accel</span><span class="p">:</span>
+							<span class="n">dt</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">accel_coeff</span>
+							<span class="k">if</span> <span class="n">dt</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">dt_max</span><span class="p">:</span>
+								<span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">dt_max</span>
+						<span class="k">elif</span> <span class="n">n_iter</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_iter_for_decel</span><span class="p">:</span>
+							<span class="n">dt</span> <span class="o">/=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decel_coeff</span>
+							<span class="k">if</span> <span class="n">dt</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">dt_min</span><span class="p">:</span>
+								<span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">dt_min</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_old_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()[:]</span>
+					<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+						<span class="n">dolfin</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_subsols_func_lst</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="p">)</span>
+
+					<span class="k">for</span> <span class="n">inelastic_behavior</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">inelastic_behaviors_internal</span><span class="p">:</span>
+						<span class="n">inelastic_behavior</span><span class="o">.</span><span class="n">restore_old_value</span><span class="p">()</span>
+
+					<span class="k">for</span> <span class="n">constraint</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">constraints</span><span class="p">:</span>
+						<span class="n">constraint</span><span class="o">.</span><span class="n">restore_old_value</span><span class="p">()</span>
+
+					<span class="n">k_t</span> <span class="o">-=</span> <span class="mi">1</span>
+					<span class="n">k_t_tot</span> <span class="o">-=</span> <span class="mi">1</span>
+					<span class="n">t</span> <span class="o">-=</span> <span class="n">dt</span>
+
+					<span class="n">dt</span> <span class="o">/=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decel_coeff</span>
+					<span class="k">if</span> <span class="n">dt</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">dt_min</span><span class="p">:</span>
+						<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Time integrator failed to move forward!&quot;</span><span class="p">)</span>
+						<span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+						<span class="k">break</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">dec</span><span class="p">()</span>
+
+			<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">success</span><span class="p">):</span>
+				<span class="k">break</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">dec</span><span class="p">()</span>
+
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">success</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

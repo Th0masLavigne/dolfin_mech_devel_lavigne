@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.problems.problem_hyperelasticity &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5283314f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_toc.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dolfin_mech/index.html">Core Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/problems/index.html">Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.problems.problem_hyperelasticity</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dolfin_mech.problems.problem_hyperelasticity</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf8</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### Created by Martin Genet, 2018-2025                                       ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                   ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;Defines the Hyperelasticity class.</span>
+
+<span class="sd">Comprehensive manager for nonlinear</span>
+<span class="sd">finite strain simulations. It automates the setup of large-deformation</span>
+<span class="sd">kinematics, complex hyperelastic constitutive laws, and mixed formulations</span>
+<span class="sd">required for incompressible and nearly-incompressible material behavior.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">kinematics</span><span class="p">,</span> <span class="n">operators</span>
+<span class="kn">from</span> <span class="nn">.problem</span> <span class="kn">import</span> <span class="n">Problem</span>
+
+<span class="c1">################################################################################</span>
+
+
+<div class="viewcode-block" id="Hyperelasticity">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity">[docs]</a>
+<span class="k">class</span> <span class="nc">Hyperelasticity</span><span class="p">(</span><span class="n">Problem</span><span class="p">):</span>
+<span class="w">	</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;A general problem class for finite strain hyperelasticity.</span>
+
+<span class="sd">	This class handles the setup and solution of nonlinear elasticity problems</span>
+<span class="sd">	where the material behavior is described by a strain energy density function</span>
+<span class="sd">	:math:`\Psi(\mathbf{C})`. It supports both compressible and incompressible</span>
+<span class="sd">	formulations.</span>
+
+
+
+<span class="sd">	**Formulation:**</span>
+<span class="sd">	The problem minimizes the total potential energy :math:`\Pi(\mathbf{u})`:</span>
+
+<span class="sd">	.. math::</span>
+<span class="sd">	    \Pi(\mathbf{u}) = \int_{\Omega_0} \Psi(\mathbf{F}) \, dV - W_{ext}</span>
+
+<span class="sd">	If ``w_incompressibility`` is True, a mixed :math:`\mathbf{u}-p` formulation</span>
+<span class="sd">	is used to enforce the constraint :math:`J = 1` (or near-incompressibility)</span>
+<span class="sd">	via a Lagrange multiplier :math:`p`:</span>
+
+<span class="sd">	.. math::</span>
+<span class="sd">	    \Pi(\mathbf{u}, p) = \int_{\Omega_0} \Psi_{dev}(\bar{\mathbf{F}}) \, dV + \int_{\Omega_0} p(J-1) \, dV - W_{ext}</span>
+
+<span class="sd">	:param w_incompressibility: If True, enables the mixed formulation adding a</span>
+<span class="sd">	    pressure sub-solution to handle volumetric locking.</span>
+<span class="sd">	:type w_incompressibility: bool</span>
+<span class="sd">	:param mesh: The computational mesh.</span>
+<span class="sd">	:param displacement_degree: Polynomial degree for the displacement field.</span>
+<span class="sd">	:param elastic_behavior: Dictionary defining a single material model.</span>
+<span class="sd">	:param elastic_behaviors: List of dictionaries for multi-material setups.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+		<span class="bp">self</span><span class="p">,</span>
+		<span class="n">w_incompressibility</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+		<span class="n">mesh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">define_facet_normals</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+		<span class="n">domains_mf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">boundaries_mf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">points_mf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">displacement_degree</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">pressure_degree</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">quadrature_degree</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">foi_degree</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+		<span class="n">elastic_behavior</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+		<span class="n">elastic_behaviors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+	<span class="p">):</span>
+
+		<span class="n">Problem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">w_incompressibility</span> <span class="o">=</span> <span class="n">w_incompressibility</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span> <span class="n">define_facet_normals</span><span class="o">=</span><span class="n">define_facet_normals</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_measures</span><span class="p">(</span><span class="n">domains</span><span class="o">=</span><span class="n">domains_mf</span><span class="p">,</span> <span class="n">boundaries</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="n">points_mf</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_subsols</span><span class="p">(</span><span class="n">displacement_degree</span><span class="o">=</span><span class="n">displacement_degree</span><span class="p">,</span> <span class="n">pressure_degree</span><span class="o">=</span><span class="n">pressure_degree</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_solution_finite_element</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_solution_function_space</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_solution_functions</span><span class="p">()</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_quadrature_degree</span><span class="p">(</span><span class="n">quadrature_degree</span><span class="o">=</span><span class="n">quadrature_degree</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_foi_finite_elements_DG</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">foi_degree</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_foi_function_spaces</span><span class="p">()</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_kinematics</span><span class="p">()</span>
+
+		<span class="k">assert</span> <span class="p">(</span><span class="n">elastic_behavior</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">elastic_behaviors</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+		<span class="k">assert</span> <span class="p">(</span><span class="n">elastic_behavior</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">elastic_behaviors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">elastic_behavior</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="n">elastic_behaviors</span> <span class="o">=</span> <span class="p">[</span><span class="n">elastic_behavior</span><span class="p">]</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_elasticity_operators</span><span class="p">(</span><span class="n">elastic_behaviors</span><span class="o">=</span><span class="n">elastic_behaviors</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Hyperelasticity.add_displacement_subsol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_displacement_subsol">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_displacement_subsol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds the displacement vector field sub-solution.</span>
+
+<span class="sd">		:param name: Name of the variable (defaults to &quot;U&quot; or &quot;u&quot;).</span>
+<span class="sd">		:param degree: Polynomial degree of the Finite Element (usually 1 or 2).</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">displacement_name</span> <span class="o">=</span> <span class="n">name</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">displacement_name</span> <span class="o">=</span> <span class="s2">&quot;u&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;Inverse&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span> <span class="k">else</span> <span class="s2">&quot;U&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">displacement_degree</span> <span class="o">=</span> <span class="n">degree</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_vector_subsol</span><span class="p">(</span>
+			<span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_name</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;CG&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_degree</span>
+		<span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.add_pressure_subsol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_pressure_subsol">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_pressure_subsol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds the pressure scalar field sub-solution (Lagrange multiplier).</span>
+
+<span class="sd">		This is used only when ``w_incompressibility`` is True. To satisfy the</span>
+<span class="sd">		LBB condition (inf-sup condition) and avoid volumetric locking, the</span>
+<span class="sd">		pressure degree is typically lower than the displacement degree (e.g., P2-P1).</span>
+
+
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">pressure_name</span> <span class="o">=</span> <span class="n">name</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">pressure_name</span> <span class="o">=</span> <span class="s2">&quot;p&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;Inverse&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span> <span class="k">else</span> <span class="s2">&quot;P&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">pressure_degree</span> <span class="o">=</span> <span class="n">degree</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pressure_degree</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">pressure_subsol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_scalar_subsol</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pressure_name</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;DG&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">pressure_subsol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_scalar_subsol</span><span class="p">(</span>
+				<span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pressure_name</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;CG&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pressure_degree</span>
+			<span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.set_subsols">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.set_subsols">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_subsols</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">displacement_degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pressure_degree</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Configures the unknown fields (displacement and optionally pressure).&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_displacement_subsol</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">displacement_degree</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_incompressibility</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">pressure_degree</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+				<span class="n">pressure_degree</span> <span class="o">=</span> <span class="n">displacement_degree</span> <span class="o">-</span> <span class="mi">1</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_pressure_subsol</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">pressure_degree</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.set_quadrature_degree">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.set_quadrature_degree">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_quadrature_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quadrature_degree</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Sets the integration order for the variational forms.</span>
+
+<span class="sd">		Can be an integer, &quot;full&quot; (exact), or &quot;default&quot; (optimized).</span>
+<span class="sd">		The &quot;default&quot; mode attempts to use a reduced quadrature rule that is</span>
+<span class="sd">		computationally efficient while maintaining accuracy for standard element types.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">quadrature_degree</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">quadrature_degree</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">):</span>
+			<span class="k">pass</span>
+		<span class="k">elif</span> <span class="n">quadrature_degree</span> <span class="o">==</span> <span class="s2">&quot;full&quot;</span><span class="p">:</span>
+			<span class="n">quadrature_degree</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="k">elif</span> <span class="n">quadrature_degree</span> <span class="o">==</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">()</span><span class="o">.</span><span class="n">cellname</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;triangle&quot;</span><span class="p">,</span> <span class="s2">&quot;tetrahedron&quot;</span><span class="p">):</span>
+				<span class="n">quadrature_degree</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+					<span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_degree</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+				<span class="p">)</span>  <span class="c1"># MG20211221: This does not allow to reproduce full integration results exactly, but it is quite close…</span>
+			<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">()</span><span class="o">.</span><span class="n">cellname</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;quadrilateral&quot;</span><span class="p">,</span> <span class="s2">&quot;hexahedron&quot;</span><span class="p">):</span>
+				<span class="n">quadrature_degree</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">displacement_degree</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Must provide an int, &quot;full&quot;, &quot;default&quot; or None. Aborting.&#39;</span>
+
+		<span class="n">Problem</span><span class="o">.</span><span class="n">set_quadrature_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quadrature_degree</span><span class="o">=</span><span class="n">quadrature_degree</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.set_kinematics">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.set_kinematics">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_kinematics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_fois</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Initializes the kinematic quantities derived from displacement.</span>
+
+<span class="sd">		Calculates:</span>
+<span class="sd">		    - **F**: Deformation Gradient (:math:`\mathbf{I} + \nabla \mathbf{u}`)</span>
+<span class="sd">		    - **J**: Jacobian determinant (:math:`\det \mathbf{F}`)</span>
+<span class="sd">		    - **C**: Right Cauchy-Green deformation tensor (:math:`\mathbf{F}^T \mathbf{F}`)</span>
+<span class="sd">		    - **E**: Green-Lagrange strain tensor (:math:`0.5 (\mathbf{C} - \mathbf{I})`)</span>
+
+<span class="sd">		:param add_fois: If True, registers these tensors as Fields of Interest for output.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span> <span class="o">=</span> <span class="n">kinematics</span><span class="o">.</span><span class="n">Kinematics</span><span class="p">(</span>
+			<span class="n">U</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span> <span class="n">U_old</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">func_old</span><span class="p">,</span> <span class="n">Q_expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Q_expr</span>
+		<span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">add_fois</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;J&quot;</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q_expr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">E_loc</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;E_loc&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.get_subdomain_measure">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.get_subdomain_measure">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_subdomain_measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subdomain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Returns the integration measure (dV) for a specific subdomain ID or the whole domain.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="n">subdomain_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">(</span><span class="n">subdomain_id</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.add_elasticity_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_elasticity_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_elasticity_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">material_model</span><span class="p">,</span> <span class="n">material_parameters</span><span class="p">,</span> <span class="n">subdomain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adds a standard hyperelasticity operator to the problem.</span>
+
+<span class="sd">		This adds the contribution :math:`\int \Psi(\mathbf{C}) dV` to the energy,</span>
+<span class="sd">		automatically handling the first variation to compute the residual.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">HyperElasticity</span><span class="p">(</span>
+			<span class="n">U</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span>
+			<span class="n">material_model</span><span class="o">=</span><span class="n">material_model</span><span class="p">,</span>
+			<span class="n">material_parameters</span><span class="o">=</span><span class="n">material_parameters</span><span class="p">,</span>
+			<span class="n">measure</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_subdomain_measure</span><span class="p">(</span><span class="n">subdomain_id</span><span class="p">),</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.add_hydrostatic_pressure_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_hydrostatic_pressure_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_hydrostatic_pressure_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subdomain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds the operator linking the pressure variable to the kinematics.&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">HyperHydrostaticPressure</span><span class="p">(</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span>
+			<span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">P</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pressure_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">measure</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_subdomain_measure</span><span class="p">(</span><span class="n">subdomain_id</span><span class="p">),</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.add_incompressibility_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_incompressibility_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_incompressibility_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subdomain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds the incompressibility constraint operator.</span>
+
+<span class="sd">		Enforces :math:`J-1 = 0` (or volumetric compatibility) using the test</span>
+<span class="sd">		function of the pressure field.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">HyperIncompressibility</span><span class="p">(</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span>
+			<span class="n">P_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pressure_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">measure</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_subdomain_measure</span><span class="p">(</span><span class="n">subdomain_id</span><span class="p">),</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.add_elasticity_operators">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_elasticity_operators">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_elasticity_operators</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elastic_behaviors</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Iterates through defined material behaviors and adds the necessary operators.</span>
+
+<span class="sd">		If ``w_incompressibility`` is active, it also adds the hydrostatic pressure</span>
+<span class="sd">		and incompressibility constraint operators.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">for</span> <span class="n">elastic_behavior</span> <span class="ow">in</span> <span class="n">elastic_behaviors</span><span class="p">:</span>
+			<span class="n">operator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_elasticity_operator</span><span class="p">(</span>
+				<span class="n">material_model</span><span class="o">=</span><span class="n">elastic_behavior</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">],</span>
+				<span class="n">material_parameters</span><span class="o">=</span><span class="n">elastic_behavior</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">],</span>
+				<span class="n">subdomain_id</span><span class="o">=</span><span class="n">elastic_behavior</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;subdomain_id&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+			<span class="p">)</span>
+			<span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">elastic_behavior</span><span class="p">[</span><span class="s2">&quot;suffix&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;suffix&quot;</span> <span class="ow">in</span> <span class="n">elastic_behavior</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">Sigma</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sigma&quot;</span> <span class="o">+</span> <span class="n">suffix</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_foi</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;sigma&quot;</span> <span class="o">+</span> <span class="n">suffix</span><span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_incompressibility</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_hydrostatic_pressure_operator</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_incompressibility_operator</span><span class="p">()</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q_expr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;ToDo. Aborting.&quot;</span></div>
+
+			<span class="c1"># operator.sigma_loc = dolfin.dot(dolfin.dot(self.Q_expr, operator.sigma), self.Q_expr.T)</span>
+			<span class="c1"># self.add_foi(expr=operator.sigma_loc, fs=self.mfoi_fs, name=&quot;sigma_loc&quot;)</span>
+
+<div class="viewcode-block" id="Hyperelasticity.add_point_displacement_qoi">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_point_displacement_qoi">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_point_displacement_qoi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">component</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a Quantity of Interest (QOI) tracking displacement at a specific point.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+			<span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">[</span><span class="n">component</span><span class="p">],</span> <span class="n">point</span><span class="o">=</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span>
+		<span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.add_point_position_qoi">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_point_position_qoi">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_point_position_qoi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">component</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a QOI tracking the current spatial position (X + u) of a point.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+			<span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+			<span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">[</span><span class="n">component</span><span class="p">],</span>
+			<span class="n">constant</span><span class="o">=</span><span class="n">coordinates</span><span class="p">[</span><span class="n">component</span><span class="p">],</span>
+			<span class="n">point</span><span class="o">=</span><span class="n">coordinates</span><span class="p">,</span>
+			<span class="n">update_type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span><span class="p">,</span>
+		<span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.add_deformed_volume_qoi">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_deformed_volume_qoi">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_deformed_volume_qoi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a QOI for the total volume of the deformed configuration.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">J</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.add_global_strain_qois">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_global_strain_qois">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_global_strain_qois</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds QOIs for the volume-integrated components of the Green-Lagrange strain tensor E.&quot;&quot;&quot;</span>
+		<span class="n">basename</span> <span class="o">=</span> <span class="s2">&quot;E_&quot;</span>
+		<span class="n">strain</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="o">.</span><span class="n">E</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;XX&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">strain</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;YY&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">strain</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;ZZ&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">strain</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;XY&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">strain</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;YZ&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">strain</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;ZX&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">strain</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.add_global_stress_qois">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_global_stress_qois">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_global_stress_qois</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stress_type</span><span class="o">=</span><span class="s2">&quot;cauchy&quot;</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds QOIs for the volume-integrated components of the stress tensor.</span>
+
+<span class="sd">		:param stress_type: The type of stress to output:</span>
+<span class="sd">		    - &quot;Cauchy&quot; (sigma): Spatial configuration stress.</span>
+<span class="sd">		    - &quot;PK2&quot; (Sigma): Material configuration stress.</span>
+<span class="sd">		    - &quot;PK1&quot; (P): Nominal stress.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="n">stress_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;Cauchy&quot;</span><span class="p">,</span> <span class="s2">&quot;cauchy&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma&quot;</span><span class="p">):</span>
+			<span class="n">basename</span> <span class="o">=</span> <span class="s2">&quot;s_&quot;</span>
+			<span class="n">stress</span> <span class="o">=</span> <span class="s2">&quot;sigma&quot;</span>
+		<span class="k">elif</span> <span class="n">stress_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;Piola&quot;</span><span class="p">,</span> <span class="s2">&quot;piola&quot;</span><span class="p">,</span> <span class="s2">&quot;PK2&quot;</span><span class="p">,</span> <span class="s2">&quot;Sigma&quot;</span><span class="p">):</span>
+			<span class="n">basename</span> <span class="o">=</span> <span class="s2">&quot;S_&quot;</span>
+			<span class="n">stress</span> <span class="o">=</span> <span class="s2">&quot;Sigma&quot;</span>
+		<span class="k">elif</span> <span class="n">stress_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;Boussinesq&quot;</span><span class="p">,</span> <span class="s2">&quot;boussinesq&quot;</span><span class="p">,</span> <span class="s2">&quot;PK1&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">):</span>
+			<span class="n">basename</span> <span class="o">=</span> <span class="s2">&quot;P_&quot;</span>
+			<span class="n">stress</span> <span class="o">=</span> <span class="s2">&quot;P&quot;</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+			<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;XX&quot;</span><span class="p">,</span>
+			<span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span>
+				<span class="p">[</span>
+					<span class="nb">getattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">operator</span><span class="o">.</span><span class="n">measure</span>
+					<span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span>
+					<span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">))</span>
+				<span class="p">]</span>
+			<span class="p">),</span>
+		<span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+				<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;YY&quot;</span><span class="p">,</span>
+				<span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span>
+					<span class="p">[</span>
+						<span class="nb">getattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">operator</span><span class="o">.</span><span class="n">measure</span>
+						<span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span>
+						<span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">))</span>
+					<span class="p">]</span>
+				<span class="p">),</span>
+			<span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+					<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;ZZ&quot;</span><span class="p">,</span>
+					<span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span>
+						<span class="p">[</span>
+							<span class="nb">getattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">)[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">operator</span><span class="o">.</span><span class="n">measure</span>
+							<span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span>
+							<span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">))</span>
+						<span class="p">]</span>
+					<span class="p">),</span>
+				<span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+				<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;XY&quot;</span><span class="p">,</span>
+				<span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span>
+					<span class="p">[</span>
+						<span class="nb">getattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">operator</span><span class="o">.</span><span class="n">measure</span>
+						<span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span>
+						<span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">))</span>
+					<span class="p">]</span>
+				<span class="p">),</span>
+			<span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+					<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;YZ&quot;</span><span class="p">,</span>
+					<span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span>
+						<span class="p">[</span>
+							<span class="nb">getattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">operator</span><span class="o">.</span><span class="n">measure</span>
+							<span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span>
+							<span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">))</span>
+						<span class="p">]</span>
+					<span class="p">),</span>
+				<span class="p">)</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+					<span class="n">name</span><span class="o">=</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;ZX&quot;</span><span class="p">,</span>
+					<span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span>
+						<span class="p">[</span>
+							<span class="nb">getattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">)[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">operator</span><span class="o">.</span><span class="n">measure</span>
+							<span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span>
+							<span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">))</span>
+						<span class="p">]</span>
+					<span class="p">),</span>
+				<span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.add_global_out_of_plane_stress_qois">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_global_out_of_plane_stress_qois">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_global_out_of_plane_stress_qois</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stress_type</span><span class="o">=</span><span class="s2">&quot;PK2&quot;</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds QOI for the out-of-plane stress component (ZZ) specifically.</span>
+<span class="sd">		Useful for plane strain/stress approximations or 2D models representing 3D objects.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="n">stress_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;Cauchy&quot;</span><span class="p">,</span> <span class="s2">&quot;cauchy&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma&quot;</span><span class="p">):</span>
+			<span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;To do. Aborting.&quot;</span>
+		<span class="k">elif</span> <span class="n">stress_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;Piola&quot;</span><span class="p">,</span> <span class="s2">&quot;piola&quot;</span><span class="p">,</span> <span class="s2">&quot;PK2&quot;</span><span class="p">,</span> <span class="s2">&quot;Sigma&quot;</span><span class="p">):</span>
+			<span class="n">basename</span> <span class="o">=</span> <span class="s2">&quot;S_ZZ&quot;</span>
+			<span class="n">stress</span> <span class="o">=</span> <span class="s2">&quot;Sigma_ZZ&quot;</span>
+		<span class="k">elif</span> <span class="n">stress_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;Boussinesq&quot;</span><span class="p">,</span> <span class="s2">&quot;boussinesq&quot;</span><span class="p">,</span> <span class="s2">&quot;PK1&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">):</span>
+			<span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;To do. Aborting.&quot;</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+			<span class="n">name</span><span class="o">=</span><span class="n">basename</span><span class="p">,</span>
+			<span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span>
+				<span class="p">[</span>
+					<span class="nb">getattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">)</span> <span class="o">*</span> <span class="n">operator</span><span class="o">.</span><span class="n">measure</span>
+					<span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span>
+					<span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">material</span><span class="p">,</span> <span class="n">stress</span><span class="p">))</span>
+				<span class="p">]</span>
+			<span class="p">),</span>
+		<span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hyperelasticity.add_global_pressure_qoi">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity.add_global_pressure_qoi">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_global_pressure_qoi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds QOI for the volume-integrated hydrostatic pressure P.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_qoi</span><span class="p">(</span>
+			<span class="n">name</span><span class="o">=</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">([</span><span class="n">operator</span><span class="o">.</span><span class="n">P</span> <span class="o">*</span> <span class="n">operator</span><span class="o">.</span><span class="n">measure</span> <span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">)])</span>
+		<span class="p">)</span></div>
+</div>
+
+		<span class="c1"># expr=sum([-dolfin.tr(operator.material.sigma)/3*operator.measure for operator in self.operators if (hasattr(operator, &quot;material&quot;) and hasattr(operator.material, &quot;sigma&quot;))])+sum([operator.P*operator.measure for operator in self.operators if hasattr(operator, &quot;P&quot;)]))</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

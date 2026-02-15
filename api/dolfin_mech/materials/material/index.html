@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dolfin_mech.materials.material &mdash; dolfin_mech</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
@@ -17,7 +17,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=da73159d"></script>
+      <script src="../../../../_static/documentation_options.js?v=5283314f"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -241,7 +241,7 @@ standardizing on the aliases above is recommended for readability.</p>
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.materials.material.Material">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.material.</span></span><span class="sig-name descname"><span class="pre">Material</span></span><a class="headerlink" href="#dolfin_mech.materials.material.Material" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.material.</span></span><span class="sig-name descname"><span class="pre">Material</span></span><a class="reference internal" href="../../../../_modules/dolfin_mech/materials/material.html#Material"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.material.Material" title="Link to this definition"></a></dt>
 <dd><p>Base class for material models providing utility methods for parameter conversion.</p>
 <p>This class handles the translation between common engineering constants
 (Young’s modulus <span class="math notranslate nohighlight">\(E\)</span>, Poisson’s ratio <span class="math notranslate nohighlight">\(\nu\)</span>) and the theoretical
@@ -249,7 +249,7 @@ parameters required by constitutive laws (Lamé constants <span class="math notr
 bulk modulus <span class="math notranslate nohighlight">\(K\)</span>, etc.).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.materials.material.Material.get_lambda_from_parameters">
-<span class="sig-name descname"><span class="pre">get_lambda_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_lambda_from_parameters" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_lambda_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/materials/material.html#Material.get_lambda_from_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_lambda_from_parameters" title="Link to this definition"></a></dt>
 <dd><p>Compute the first Lamé parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -268,7 +268,7 @@ Optional key: <code class="docutils literal notranslate"><span class="pre">&quot
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.materials.material.Material.get_mu_from_parameters">
-<span class="sig-name descname"><span class="pre">get_mu_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_mu_from_parameters" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_mu_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/materials/material.html#Material.get_mu_from_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_mu_from_parameters" title="Link to this definition"></a></dt>
 <dd><p>Compute the second Lamé parameter (shear modulus) <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -286,7 +286,7 @@ Expected keys: <code class="docutils literal notranslate"><span class="pre">&quo
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.materials.material.Material.get_lambda_and_mu_from_parameters">
-<span class="sig-name descname"><span class="pre">get_lambda_and_mu_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_lambda_and_mu_from_parameters" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_lambda_and_mu_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/materials/material.html#Material.get_lambda_and_mu_from_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_lambda_and_mu_from_parameters" title="Link to this definition"></a></dt>
 <dd><p>Compute both Lamé parameters simultaneously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -300,7 +300,7 @@ Expected keys: <code class="docutils literal notranslate"><span class="pre">&quo
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.materials.material.Material.get_K_from_parameters">
-<span class="sig-name descname"><span class="pre">get_K_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_K_from_parameters" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_K_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/materials/material.html#Material.get_K_from_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_K_from_parameters" title="Link to this definition"></a></dt>
 <dd><p>Compute the bulk modulus <span class="math notranslate nohighlight">\(K\)</span>.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">&quot;K&quot;</span></code> is not in parameters, it is derived from <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(\mu\)</span>
 as <span class="math notranslate nohighlight">\(K = (3\lambda + 2\mu)/3\)</span>.</p>
@@ -308,13 +308,13 @@ as <span class="math notranslate nohighlight">\(K = (3\lambda + 2\mu)/3\)</span>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.materials.material.Material.get_G_from_parameters">
-<span class="sig-name descname"><span class="pre">get_G_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_G_from_parameters" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_G_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/materials/material.html#Material.get_G_from_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_G_from_parameters" title="Link to this definition"></a></dt>
 <dd><p>Compute the shear modulus <span class="math notranslate nohighlight">\(G\)</span>. Equivalent to <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.materials.material.Material.get_C0_from_parameters">
-<span class="sig-name descname"><span class="pre">get_C0_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decoup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_C0_from_parameters" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_C0_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decoup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/materials/material.html#Material.get_C0_from_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_C0_from_parameters" title="Link to this definition"></a></dt>
 <dd><p>Compute the hyperelastic coefficient <span class="math notranslate nohighlight">\(C_0\)</span>.</p>
 <p>This parameter is typically associated with the volumetric or
 compressibility part of the strain energy density function.</p>
@@ -338,7 +338,7 @@ from <span class="math notranslate nohighlight">\(\lambda\)</span>: <span class=
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.materials.material.Material.get_C1_from_parameters">
-<span class="sig-name descname"><span class="pre">get_C1_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_C1_from_parameters" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_C1_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/materials/material.html#Material.get_C1_from_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_C1_from_parameters" title="Link to this definition"></a></dt>
 <dd><p>Compute the hyperelastic coefficient <span class="math notranslate nohighlight">\(C_1\)</span>.</p>
 <p>In many models, <span class="math notranslate nohighlight">\(C_1\)</span> is related to the shear response of the material.</p>
 <dl class="field-list simple">
@@ -359,7 +359,7 @@ Expected keys: <code class="docutils literal notranslate"><span class="pre">&quo
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.materials.material.Material.get_C2_from_parameters">
-<span class="sig-name descname"><span class="pre">get_C2_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_C2_from_parameters" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_C2_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/materials/material.html#Material.get_C2_from_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_C2_from_parameters" title="Link to this definition"></a></dt>
 <dd><p>Compute the hyperelastic coefficient <span class="math notranslate nohighlight">\(C_2\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -379,7 +379,7 @@ Expected keys: <code class="docutils literal notranslate"><span class="pre">&quo
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.materials.material.Material.get_C1_and_C2_from_parameters">
-<span class="sig-name descname"><span class="pre">get_C1_and_C2_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_C1_and_C2_from_parameters" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_C1_and_C2_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/materials/material.html#Material.get_C1_and_C2_from_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.material.Material.get_C1_and_C2_from_parameters" title="Link to this definition"></a></dt>
 <dd><p>Compute Mooney-Rivlin coefficients <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span>.</p>
 <p>If only <code class="docutils literal notranslate"><span class="pre">&quot;mu&quot;</span></code> is provided, it assumes <span class="math notranslate nohighlight">\(C_1 = C_2 = \mu/4\)</span>.</p>
 </dd></dl>
@@ -388,7 +388,7 @@ Expected keys: <code class="docutils literal notranslate"><span class="pre">&quo
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dolfin_mech.materials.material.material_factory">
-<span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.material.</span></span><span class="sig-name descname"><span class="pre">material_factory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.material.material_factory" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.material.</span></span><span class="sig-name descname"><span class="pre">material_factory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/materials/material.html#material_factory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.material.material_factory" title="Link to this definition"></a></dt>
 <dd><p>Factory function to instantiate the appropriate material model class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

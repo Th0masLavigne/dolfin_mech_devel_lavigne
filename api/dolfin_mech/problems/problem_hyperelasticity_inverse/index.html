@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dolfin_mech.problems.problem_hyperelasticity_inverse &mdash; dolfin_mech</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
@@ -17,7 +17,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=da73159d"></script>
+      <script src="../../../../_static/documentation_options.js?v=5283314f"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -171,7 +171,7 @@ known deformed geometry, frequently used for analyzing medical imaging data.</p>
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_inverse.InverseHyperelasticity">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.problems.problem_hyperelasticity_inverse.</span></span><span class="sig-name descname"><span class="pre">InverseHyperelasticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_inverse.InverseHyperelasticity" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.problems.problem_hyperelasticity_inverse.</span></span><span class="sig-name descname"><span class="pre">InverseHyperelasticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_inverse.html#InverseHyperelasticity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_inverse.InverseHyperelasticity" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity" title="dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity</span></code></a></p>
 <p>Problem class for solving inverse hyperelasticity problems.</p>
 <p>Inverse hyperelasticity is typically used to find the stress-free
@@ -188,7 +188,7 @@ not supported in this inverse implementation.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_inverse.InverseHyperelasticity.set_kinematics">
-<span class="sig-name descname"><span class="pre">set_kinematics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_inverse.InverseHyperelasticity.set_kinematics" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_kinematics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_inverse.html#InverseHyperelasticity.set_kinematics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_inverse.InverseHyperelasticity.set_kinematics" title="Link to this definition"></a></dt>
 <dd><p>Initializes the inverse kinematic framework.</p>
 <p>Instead of the standard deformation gradient <span class="math notranslate nohighlight">\(\mathbf{F}\)</span>, this
 method sets up <code class="xref py py-class docutils literal notranslate"><span class="pre">InverseKinematics</span></code> which treats the current
@@ -206,7 +206,7 @@ mesh coordinates as the spatial frame.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_inverse.InverseHyperelasticity.add_elasticity_operator">
-<span class="sig-name descname"><span class="pre">add_elasticity_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subdomain_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_inverse.InverseHyperelasticity.add_elasticity_operator" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_elasticity_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subdomain_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_inverse.html#InverseHyperelasticity.add_elasticity_operator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_inverse.InverseHyperelasticity.add_elasticity_operator" title="Link to this definition"></a></dt>
 <dd><p>Adds an elasticity operator tailored for the inverse formulation.</p>
 <p>Even though the problem is hyperelastic, the inverse formulation often
 utilizes a linearized operator structure relative to the spatial

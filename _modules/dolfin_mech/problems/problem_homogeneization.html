@@ -1,0 +1,536 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.problems.problem_homogeneization &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5283314f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_toc.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dolfin_mech/index.html">Core Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/problems/index.html">Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.problems.problem_homogeneization</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dolfin_mech.problems.problem_homogeneization</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf8</span>
+
+<span class="c1">##############################################################################</span>
+<span class="c1">###                                                                        ###</span>
+<span class="c1">### Created by Mahdi Manoocherhtayebi 2020-2024                            ###</span>
+<span class="c1">###                                                                        ###</span>
+<span class="c1">### Inspired by https://comet-fenics.readthedocs.io/en/latest/demo/        ###</span>
+<span class="c1">###                         periodic_homog_elas/periodic_homog_elas.html   ###</span>
+<span class="c1">###                                                                        ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                 ###</span>
+<span class="c1">###                                                                        ###</span>
+<span class="c1">##############################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;Defines the HomogenizationProblem class.</span>
+
+<span class="sd">Implements a periodic homogenization</span>
+<span class="sd">framework to compute the effective (homogenized) elastic properties of a</span>
+<span class="sd">microstructure (REV). It solves corrector problems under unit macroscopic strains</span>
+<span class="sd">to determine the full stiffness tensor and effective bulk moduli.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">dolfin</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="kn">from</span> <span class="nn">..core</span> <span class="kn">import</span> <span class="n">PeriodicSubDomain</span>
+
+<span class="c1">#############################################################################</span>
+
+
+<div class="viewcode-block" id="Homogenization">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html#dolfin_mech.problems.problem_homogeneization.Homogenization">[docs]</a>
+<span class="k">class</span> <span class="nc">Homogenization</span><span class="p">:</span>
+<span class="w">	</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Class for solving periodic homogenization problems in linear elasticity.</span>
+
+<span class="sd">	This class computes the effective elastic properties of a periodic unit cell</span>
+<span class="sd">	(microstructure) by solving corrector problems under various macroscopic</span>
+<span class="sd">	strain states. It supports both 2D and 3D geometries and enforces periodic</span>
+<span class="sd">	boundary conditions on the Representative Elementary Volume (REV).</span>
+
+
+
+<span class="sd">	The effective stiffness tensor :math:`\mathbb{C}^{hom}` is obtained by</span>
+<span class="sd">	averaging the micro-stresses over the unit cell volume :math:`V`:</span>
+
+<span class="sd">	.. math::</span>
+<span class="sd">	    \Sigma_{ij} = \mathbb{C}^{hom}_{ijkl} E_{kl} = \frac{1}{|V|} \int_{V} \sigma_{ij}(\mathbf{u}) \, dV</span>
+
+<span class="sd">	Attributes:</span>
+<span class="sd">	    dim (int): Spatial dimension (2 or 3).</span>
+<span class="sd">	    n_Voigt (int): Dimension of the Voigt notation vector (3 for 2D, 6 for 3D).</span>
+<span class="sd">	    mesh (dolfin.Mesh): The mesh of the microstructure.</span>
+<span class="sd">	    dV (dolfin.Measure): Integration measure over the domain.</span>
+<span class="sd">	    mesh_V0 (float): Total volume/area of the solid part of the mesh.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">mat_params</span><span class="p">,</span> <span class="n">vol</span><span class="p">,</span> <span class="n">bbox</span><span class="p">,</span> <span class="n">vertices</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Initializes the HomogenizationProblem.</span>
+
+<span class="sd">		:param dim: Spatial dimension (2 or 3).</span>
+<span class="sd">		:param mesh: Dolfin mesh of the unit cell.</span>
+<span class="sd">		:param mat_params: Dictionary containing &#39;E&#39; (Young&#39;s modulus) and &#39;nu&#39; (Poisson&#39;s ratio).</span>
+<span class="sd">		:param vol: Total volume of the unit cell (including pores).</span>
+<span class="sd">		:param bbox: Bounding box of the unit cell for periodicity.</span>
+<span class="sd">		:param vertices: Vertices defining the periodicity directions.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">n_Voigt</span> <span class="o">=</span> <span class="mi">3</span>
+		<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">n_Voigt</span> <span class="o">=</span> <span class="mi">6</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">mesh</span> <span class="o">=</span> <span class="n">mesh</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dV</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="s2">&quot;dx&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">mesh_V0</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">E_s</span> <span class="o">=</span> <span class="n">mat_params</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">nu_s</span> <span class="o">=</span> <span class="n">mat_params</span><span class="p">[</span><span class="s2">&quot;nu&quot;</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lmbda_s</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E_s</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nu_s</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nu_s</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nu_s</span><span class="p">))</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">mu_s</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E_s</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nu_s</span><span class="p">))</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">vertices</span> <span class="o">=</span> <span class="n">vertices</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">vol</span> <span class="o">=</span> <span class="n">vol</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">bbox</span> <span class="o">=</span> <span class="n">bbox</span>
+
+<div class="viewcode-block" id="Homogenization.eps">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html#dolfin_mech.problems.problem_homogeneization.Homogenization.eps">[docs]</a>
+	<span class="k">def</span> <span class="nf">eps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Computes the symmetric strain tensor (micro-strain).</span>
+
+<span class="sd">		:param v: Displacement field.</span>
+<span class="sd">		:return: Symmetric part of the gradient of v.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Homogenization.sigma">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html#dolfin_mech.problems.problem_homogeneization.Homogenization.sigma">[docs]</a>
+	<span class="k">def</span> <span class="nf">sigma</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the micro-stress tensor using the constitutive law.</span>
+
+<span class="sd">		The total strain is the sum of the macroscopic strain :math:`\mathbf{E}`</span>
+<span class="sd">		and the local fluctuation strain :math:`\epsilon(\mathbf{v})`.</span>
+
+<span class="sd">		:param v: Fluctuation displacement field.</span>
+<span class="sd">		:param eps: Macroscopic strain tensor.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lmbda_s</span> <span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="n">eps</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">*</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Identity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_s</span> <span class="o">*</span> <span class="p">(</span>
+			<span class="n">eps</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+		<span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Homogenization.Voigt2strain">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html#dolfin_mech.problems.problem_homogeneization.Homogenization.Voigt2strain">[docs]</a>
+	<span class="k">def</span> <span class="nf">Voigt2strain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Converts a Voigt notation vector to a second-order strain tensor.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]]])</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]]])</span></div>
+
+
+<div class="viewcode-block" id="Homogenization.stress2Voigt">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html#dolfin_mech.problems.problem_homogeneization.Homogenization.stress2Voigt">[docs]</a>
+	<span class="k">def</span> <span class="nf">stress2Voigt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Converts a second-order stress tensor to a Voigt notation vector.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="k">return</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">as_vector</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="k">return</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">as_vector</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span></div>
+
+
+<div class="viewcode-block" id="Homogenization.get_macro_strain">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html#dolfin_mech.problems.problem_homogeneization.Homogenization.get_macro_strain">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_macro_strain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Generates a unit macroscopic strain tensor for the i-th Voigt component.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="n">Eps_Voigt</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">Eps_Voigt</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+		<span class="n">Eps_Voigt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Voigt2strain</span><span class="p">(</span><span class="n">Eps_Voigt</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Homogenization.get_lambda_and_mu">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html#dolfin_mech.problems.problem_homogeneization.Homogenization.get_lambda_and_mu">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_lambda_and_mu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the homogenized Lamé coefficients by solving corrector problems.</span>
+
+<span class="sd">		This method solves :math:`n_{Voigt}` linear elastic problems on the REV with</span>
+<span class="sd">		periodic boundary conditions and recovers the full homogenized stiffness</span>
+<span class="sd">		matrix :math:`\mathbb{C}^{hom}`.</span>
+
+<span class="sd">		:return: Homogenized Lamé constants (lmbda_hom, mu_hom).</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">Ve</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">VectorElement</span><span class="p">(</span><span class="s2">&quot;CG&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span>
+		<span class="n">Re</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">VectorElement</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="n">W</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span>
+			<span class="n">dolfin</span><span class="o">.</span><span class="n">MixedElement</span><span class="p">([</span><span class="n">Ve</span><span class="p">,</span> <span class="n">Re</span><span class="p">]),</span>
+			<span class="n">constrained_domain</span><span class="o">=</span><span class="n">PeriodicSubDomain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bbox</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">),</span>
+		<span class="p">)</span>
+
+		<span class="n">v_test</span><span class="p">,</span> <span class="n">lmbda_test</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">TestFunctions</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+		<span class="n">v_tria</span><span class="p">,</span> <span class="n">lmbda_tria</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">TrialFunctions</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+
+		<span class="n">macro_strain</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)))</span>
+		<span class="n">F</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">(</span><span class="n">v_tria</span><span class="p">,</span> <span class="n">macro_strain</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">(</span><span class="n">v_test</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span>
+		<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">lhs</span><span class="p">(</span><span class="n">F</span><span class="p">),</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">rhs</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+		<span class="n">a</span> <span class="o">+=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">lmbda_test</span><span class="p">,</span> <span class="n">v_tria</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span>
+		<span class="n">a</span> <span class="o">+=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">lmbda_tria</span><span class="p">,</span> <span class="n">v_test</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span>
+
+		<span class="n">w</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+		<span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">lmbda</span><span class="p">)</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+
+		<span class="n">C_hom</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">n_Voigt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_Voigt</span><span class="p">))</span>
+
+		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_Voigt</span><span class="p">):</span>
+			<span class="n">macro_strain</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_macro_strain</span><span class="p">(</span><span class="n">j</span><span class="p">)))</span>
+			<span class="n">dolfin</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">solver_parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;linear_solver&quot;</span><span class="p">:</span> <span class="s2">&quot;mumps&quot;</span><span class="p">})</span>
+			<span class="c1"># if (self.dim == 3):</span>
+			<span class="c1">#     dolfin.solve(a == b, w, [], solver_parameters={&quot;linear_solver&quot;: &quot;cg&quot;})</span>
+			<span class="c1"># else:</span>
+			<span class="c1">#     dolfin.solve(a == b, w, [], solver_parameters={&quot;linear_solver&quot;: &quot;lu&quot;}) # MMT20230616: &quot;cg&quot; solver doesn&#39;t work when material Poisson ratio nu=0.499, and &quot;lu&quot; doesn&#39;t work for 3D geometries</span>
+			<span class="c1"># xdmf_file_per.write(w, float(j))</span>
+
+			<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_Voigt</span><span class="p">):</span>
+				<span class="n">C_hom</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stress2Voigt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">macro_strain</span><span class="p">))[</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+				<span class="n">C_hom</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">/=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vol</span>
+		<span class="c1"># print(&quot;C_hom:&quot; + str(C_hom))</span>
+
+		<span class="n">lmbda_hom</span> <span class="o">=</span> <span class="n">C_hom</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="n">mu_hom</span> <span class="o">=</span> <span class="n">C_hom</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">mu_hom</span> <span class="o">=</span> <span class="n">C_hom</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+		<span class="c1"># print(&quot;lmbda_hom: &quot; + str(lmbda_hom))</span>
+		<span class="c1"># print(&quot;mu_hom: &quot; + str(mu_hom))</span>
+		<span class="c1"># print(&quot;Isotropy = &quot; +str ((lmbda_hom + 2*mu_hom - abs(lmbda_hom + 2*mu_hom - C_hom[0,0]))/(lmbda_hom + 2*mu_hom) * 100) +&quot;%&quot;)</span>
+
+		<span class="c1"># E_hom = mu_hom*(3*lmbda_hom + 2*mu_hom)/(lmbda_hom + mu_hom)</span>
+		<span class="c1"># nu_hom = lmbda_hom/(lmbda_hom + mu_hom)/2</span>
+		<span class="c1"># print(&quot;E_hom: &quot; + str(E_hom))</span>
+		<span class="c1"># print(&quot;nu_hom: &quot; + str(nu_hom))</span>
+
+		<span class="k">return</span> <span class="n">lmbda_hom</span><span class="p">,</span> <span class="n">mu_hom</span></div>
+
+
+<div class="viewcode-block" id="Homogenization.get_kappa">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html#dolfin_mech.problems.problem_homogeneization.Homogenization.get_kappa">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_kappa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Computes the effective bulk modulus (kappa_tilde) of the microstructure.</span>
+
+<span class="sd">		This specific implementation calculates the effective bulk modulus</span>
+<span class="sd">		under a pressure loading, considering the solid volume fraction change.</span>
+
+<span class="sd">		:return: Effective bulk modulus kappa_tilde.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">coord</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()</span>
+		<span class="n">xmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+		<span class="n">xmin</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+		<span class="n">ymax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+		<span class="n">ymin</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">zmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
+			<span class="n">zmin</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="n">vol</span> <span class="o">=</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">vol</span> <span class="o">=</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">zmax</span> <span class="o">-</span> <span class="n">zmin</span><span class="p">)</span>
+		<span class="n">d</span> <span class="o">=</span> <span class="n">vol</span> <span class="o">**</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+		<span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-3</span> <span class="o">*</span> <span class="n">d</span>
+
+		<span class="n">vertices</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">],</span> <span class="p">[</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">],</span> <span class="p">[</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">],</span> <span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">]])</span>
+
+		<span class="n">vv</span> <span class="o">=</span> <span class="n">vertices</span>
+		<span class="n">a1</span> <span class="o">=</span> <span class="n">vv</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">vv</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># first vector generating periodicity</span>
+		<span class="n">a2</span> <span class="o">=</span> <span class="n">vv</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">vv</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># second vector generating periodicity</span>
+		<span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vv</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">vv</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">a1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">tol</span>  <span class="c1"># check if UC vertices form indeed a parallelogram</span>
+		<span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vv</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">vv</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">a2</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">tol</span>  <span class="c1"># check if UC vertices form indeed a parallelogram</span>
+
+		<span class="c1">################################################## Subdomains &amp; Measures ###</span>
+
+		<span class="k">class</span> <span class="nc">BoundaryX0</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">SubDomain</span><span class="p">):</span>
+			<span class="k">def</span> <span class="nf">inside</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+				<span class="k">return</span> <span class="n">on_boundary</span> <span class="ow">and</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">near</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vv</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">a2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">vv</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">tol</span><span class="p">)</span>
+
+		<span class="k">class</span> <span class="nc">BoundaryY0</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">SubDomain</span><span class="p">):</span>
+			<span class="k">def</span> <span class="nf">inside</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+				<span class="k">return</span> <span class="n">on_boundary</span> <span class="ow">and</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">near</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
+
+		<span class="k">class</span> <span class="nc">BoundaryX1</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">SubDomain</span><span class="p">):</span>
+			<span class="k">def</span> <span class="nf">inside</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+				<span class="k">return</span> <span class="n">on_boundary</span> <span class="ow">and</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">near</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vv</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">a2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">vv</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">tol</span><span class="p">)</span>
+
+		<span class="k">class</span> <span class="nc">BoundaryY1</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">SubDomain</span><span class="p">):</span>
+			<span class="k">def</span> <span class="nf">inside</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+				<span class="k">return</span> <span class="n">on_boundary</span> <span class="ow">and</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">near</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+
+			<span class="k">class</span> <span class="nc">BoundaryZ0</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">SubDomain</span><span class="p">):</span>
+				<span class="k">def</span> <span class="nf">inside</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+					<span class="k">return</span> <span class="n">on_boundary</span> <span class="ow">and</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">near</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">zmin</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
+
+			<span class="k">class</span> <span class="nc">BoundaryZ1</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">SubDomain</span><span class="p">):</span>
+				<span class="k">def</span> <span class="nf">inside</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+					<span class="k">return</span> <span class="n">on_boundary</span> <span class="ow">and</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">near</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">zmax</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
+
+		<span class="n">boundaries_mf</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MeshFunction</span><span class="p">(</span><span class="s2">&quot;size_t&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="p">()</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="n">boundaries_mf</span><span class="o">.</span><span class="n">set_all</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+		<span class="n">bX0</span> <span class="o">=</span> <span class="n">BoundaryX0</span><span class="p">()</span>
+		<span class="n">bY0</span> <span class="o">=</span> <span class="n">BoundaryY0</span><span class="p">()</span>
+		<span class="n">bX1</span> <span class="o">=</span> <span class="n">BoundaryX1</span><span class="p">()</span>
+		<span class="n">bY1</span> <span class="o">=</span> <span class="n">BoundaryY1</span><span class="p">()</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">bZ0</span> <span class="o">=</span> <span class="n">BoundaryZ0</span><span class="p">()</span>
+			<span class="n">bZ1</span> <span class="o">=</span> <span class="n">BoundaryZ1</span><span class="p">()</span>
+
+		<span class="n">bX0</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="n">bY0</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+		<span class="n">bX1</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+		<span class="n">bY1</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">bZ0</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+			<span class="n">bZ1</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+		<span class="n">dS</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="s2">&quot;exterior_facet&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="n">subdomain_data</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">)</span>
+
+		<span class="c1">############################################################# Functions #######</span>
+
+		<span class="n">Ve</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">VectorElement</span><span class="p">(</span><span class="s2">&quot;CG&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span>
+		<span class="n">Re</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">VectorElement</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="n">W</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span>
+			<span class="n">dolfin</span><span class="o">.</span><span class="n">MixedElement</span><span class="p">([</span><span class="n">Ve</span><span class="p">,</span> <span class="n">Re</span><span class="p">]),</span>
+			<span class="n">constrained_domain</span><span class="o">=</span><span class="n">PeriodicSubDomain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bbox</span><span class="p">,</span> <span class="n">vertices</span><span class="p">),</span>
+		<span class="p">)</span>
+
+		<span class="n">v_test</span><span class="p">,</span> <span class="n">lmbda_test</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">TestFunctions</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+		<span class="n">v_tria</span><span class="p">,</span> <span class="n">lmbda_tria</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">TrialFunctions</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+
+		<span class="n">w</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+		<span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">lmbda</span><span class="p">)</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+
+		<span class="c1">##################################################################################</span>
+
+		<span class="n">macro_strain</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)))</span>
+
+		<span class="n">X</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">SpatialCoordinate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span>
+		<span class="n">X_0</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+		<span class="k">for</span> <span class="n">k_dim</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">):</span>
+			<span class="n">X_0</span><span class="p">[</span><span class="n">k_dim</span><span class="p">]</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">k_dim</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+			<span class="n">X_0</span><span class="p">[</span><span class="n">k_dim</span><span class="p">]</span> <span class="o">/=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh_V0</span>
+		<span class="n">X_0</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">X_0</span><span class="p">)</span>
+
+		<span class="n">u_bar</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">macro_strain</span><span class="p">,</span> <span class="n">X</span> <span class="o">-</span> <span class="n">X_0</span><span class="p">)</span>
+		<span class="n">u_tot</span> <span class="o">=</span> <span class="n">u_bar</span> <span class="o">+</span> <span class="n">v</span>
+
+		<span class="c1">########################################################### Solver ###############</span>
+
+		<span class="n">p_f</span> <span class="o">=</span> <span class="mf">1.0</span>
+		<span class="n">pf</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">p_f</span><span class="p">)</span>
+		<span class="n">N</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FacetNormal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span>
+
+		<span class="n">F</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">(</span><span class="n">v_tria</span><span class="p">,</span> <span class="n">macro_strain</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">(</span><span class="n">v_test</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span>
+		<span class="n">F</span> <span class="o">-=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="o">-</span><span class="n">pf</span> <span class="o">*</span> <span class="n">N</span><span class="p">,</span> <span class="n">v_test</span><span class="p">)</span> <span class="o">*</span> <span class="n">dS</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+		<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">lhs</span><span class="p">(</span><span class="n">F</span><span class="p">),</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">rhs</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+		<span class="n">a</span> <span class="o">+=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">lmbda_test</span><span class="p">,</span> <span class="n">v_tria</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span>
+		<span class="n">a</span> <span class="o">+=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">lmbda_tria</span><span class="p">,</span> <span class="n">v_test</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span>
+
+		<span class="n">dolfin</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">solver_parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;linear_solver&quot;</span><span class="p">:</span> <span class="s2">&quot;mumps&quot;</span><span class="p">})</span>
+		<span class="c1"># if (self.dim==3):</span>
+		<span class="c1">#     dolfin.solve(a == L, w, [], solver_parameters={&quot;linear_solver&quot;: &quot;cg&quot;})</span>
+		<span class="c1"># else:</span>
+		<span class="c1">#     dolfin.solve(a == L, w, [], solver_parameters={&quot;linear_solver&quot;: &quot;lu&quot;}) # MMT20230616: &quot;cg&quot; solver doesn&#39;t work when material Poisson ratio nu=0.499, and &quot;lu&quot; doesn&#39;t work for 3D geometries</span>
+
+		<span class="n">V_0</span> <span class="o">=</span> <span class="n">vol</span>
+		<span class="n">V_s0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh_V0</span>
+		<span class="n">Phi_s0</span> <span class="o">=</span> <span class="n">V_s0</span> <span class="o">/</span> <span class="n">V_0</span>
+		<span class="n">v_s</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">assemble</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+		<span class="n">Phi_s</span> <span class="o">=</span> <span class="n">v_s</span> <span class="o">/</span> <span class="n">V_0</span>
+
+		<span class="n">kappa_tilde</span> <span class="o">=</span> <span class="n">Phi_s0</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">p_f</span> <span class="o">/</span> <span class="p">(</span><span class="n">Phi_s0</span> <span class="o">-</span> <span class="n">Phi_s</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+		<span class="k">return</span> <span class="n">kappa_tilde</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

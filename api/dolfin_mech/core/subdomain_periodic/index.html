@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dolfin_mech.core.subdomain_periodic &mdash; dolfin_mech</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
@@ -17,7 +17,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=da73159d"></script>
+      <script src="../../../../_static/documentation_options.js?v=5283314f"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -171,7 +171,7 @@ and non-orthogonal (parallelograms) geometries via master-slave node mapping.</p
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.core.subdomain_periodic.PeriodicSubDomain">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.core.subdomain_periodic.</span></span><span class="sig-name descname"><span class="pre">PeriodicSubDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.core.subdomain_periodic.</span></span><span class="sig-name descname"><span class="pre">PeriodicSubDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/subdomain_periodic.html#PeriodicSubDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin.SubDomain</span></code></p>
 <p>SubDomain subclass for enforcing Periodic Boundary Conditions (PBCs).</p>
 <p>This class identifies the “slave” boundaries of a domain (typically the
@@ -197,7 +197,7 @@ corresponding location <span class="math notranslate nohighlight">\(y\)</span> o
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.inside_2D">
-<span class="sig-name descname"><span class="pre">inside_2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_boundary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.inside_2D" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">inside_2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_boundary</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/subdomain_periodic.html#PeriodicSubDomain.inside_2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.inside_2D" title="Link to this definition"></a></dt>
 <dd><p>Defines the “Master” boundary in 2D.</p>
 <p>Typically returns True for the Left and Bottom boundaries.
 It explicitly excludes corners that map to other master corners to avoid conflicts.</p>
@@ -205,7 +205,7 @@ It explicitly excludes corners that map to other master corners to avoid conflic
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.inside_3D">
-<span class="sig-name descname"><span class="pre">inside_3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_boundary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.inside_3D" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">inside_3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_boundary</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/subdomain_periodic.html#PeriodicSubDomain.inside_3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.inside_3D" title="Link to this definition"></a></dt>
 <dd><p>Defines the “Master” boundary in 3D.</p>
 <p>Returns True if the point is on the Back (zmin), Bottom (ymin), or Left (xmin) faces,
 excluding the corresponding Slave faces (Front, Top, Right).</p>
@@ -213,7 +213,7 @@ excluding the corresponding Slave faces (Front, Top, Right).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.map_2D">
-<span class="sig-name descname"><span class="pre">map_2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.map_2D" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">map_2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/subdomain_periodic.html#PeriodicSubDomain.map_2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.map_2D" title="Link to this definition"></a></dt>
 <dd><p>Maps a point <cite>x</cite> on a Slave boundary to its image <cite>y</cite> on the Master boundary in 2D.</p>
 <p>Handles:
 - <strong>Corner</strong>: Top-Right -&gt; Bottom-Left.
@@ -223,7 +223,7 @@ excluding the corresponding Slave faces (Front, Top, Right).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.map_3D">
-<span class="sig-name descname"><span class="pre">map_3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.map_3D" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">map_3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/subdomain_periodic.html#PeriodicSubDomain.map_3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.subdomain_periodic.PeriodicSubDomain.map_3D" title="Link to this definition"></a></dt>
 <dd><p>Maps a point <cite>x</cite> on a Slave boundary to its image <cite>y</cite> on the Master boundary in 3D.</p>
 <p>Handles vertices, edges, and faces for a rectangular box domain.
 It systematically checks if <cite>x</cite> is on a max-boundary (Right, Top, Front)

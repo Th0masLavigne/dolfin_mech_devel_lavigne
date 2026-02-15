@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.runs.rivlincube_elasticity &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5283314f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_toc.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dolfin_mech/index.html">Core Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/problems/index.html">Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.runs.rivlincube_elasticity</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dolfin_mech.runs.rivlincube_elasticity</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf8</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### Created by Martin Genet, 2018-2025                                       ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                   ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;Defines the run_RivlinCube_Elasticity driver.</span>
+
+<span class="sd">Comprehensive benchmark for</span>
+<span class="sd">linearized and finite strain elasticity. It provides a modular environment to</span>
+<span class="sd">validate constitutive models under diverse loading conditions—including</span>
+<span class="sd">displacement, traction, and follower pressure—while supporting multi-material</span>
+<span class="sd">heterogeneity and stable mixed formulations for incompressibility.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">dolfin</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">problems</span>
+<span class="kn">from</span> <span class="nn">.rivlincube_mesh</span> <span class="kn">import</span> <span class="n">RivlinCube_Mesh</span>
+
+<span class="c1">################################################################################</span>
+
+
+<div class="viewcode-block" id="RivlinCube_Elasticity">
+<a class="viewcode-back" href="../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html#dolfin_mech.runs.rivlincube_elasticity.RivlinCube_Elasticity">[docs]</a>
+<span class="k">def</span> <span class="nf">RivlinCube_Elasticity</span><span class="p">(</span>
+	<span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+	<span class="n">incomp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+	<span class="n">multimaterial</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+	<span class="n">cube_params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span>
+	<span class="n">mat_params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span>
+	<span class="n">step_params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span>
+	<span class="n">const_params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span>
+	<span class="n">load_params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span>
+	<span class="n">res_basename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;run_RivlinCube_Elasticity&quot;</span><span class="p">,</span>
+	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Runs the Rivlin Cube benchmark for finite strain elasticity.</span>
+
+<span class="sd">	This benchmark simulates a unit cube (or square in 2D) undergoing large</span>
+<span class="sd">	deformations. It is a standard test for validating hyperelastic constitutive</span>
+<span class="sd">	models and solver robustness.</span>
+
+
+
+<span class="sd">	**Features:**</span>
+
+<span class="sd">	- **Dimensionality**: Supports 2D and 3D simulations.</span>
+<span class="sd">	- **Incompressibility**: Can switch between compressible (pure displacement) and incompressible (mixed :math:`u-p`) formulations.</span>
+<span class="sd">	- **Heterogeneity**: Supports multi-material setups (e.g., a bi-material bar split at :math:`x=0.5`).</span>
+<span class="sd">	- **Loading Modes**:</span>
+
+<span class="sd">	    - ``&quot;disp&quot;``: Prescribed displacement (stretch).</span>
+<span class="sd">	    - ``&quot;volu&quot;``: Body force (gravity-like).</span>
+<span class="sd">	    - ``&quot;surf&quot;``: Surface traction vector.</span>
+<span class="sd">	    - ``&quot;pres&quot;``: Follower pressure load.</span>
+<span class="sd">	    - ``&quot;pgra&quot;``: Pressure gradient load.</span>
+<span class="sd">	    - ``&quot;tens&quot;``: Surface tension.</span>
+
+<span class="sd">	:param dim: Spatial dimension (2 or 3).</span>
+<span class="sd">	:param incomp: If True, uses a mixed formulation for incompressible materials.</span>
+<span class="sd">	:param multimaterial: If True, splits the domain into two material regions.</span>
+<span class="sd">	:param cube_params: Dictionary for mesh generation (e.g., ``N`` for refinement).</span>
+<span class="sd">	:param mat_params: Dictionary for material properties (e.g., ``model``, ``parameters``).</span>
+<span class="sd">	:param step_params: Dictionary for time stepping (``Deltat``, ``dt_ini``).</span>
+<span class="sd">	:param const_params: Dictionary for boundary constraints (symmetry planes).</span>
+<span class="sd">	:param load_params: Dictionary defining the type and magnitude of loading.</span>
+<span class="sd">	:param res_basename: Output filename prefix.</span>
+<span class="sd">	:param verbose: Verbosity level.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="c1">################################################################### Mesh ###</span>
+
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="n">mesh</span><span class="p">,</span> <span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">xmin_id</span><span class="p">,</span> <span class="n">xmax_id</span><span class="p">,</span> <span class="n">ymin_id</span><span class="p">,</span> <span class="n">ymax_id</span> <span class="o">=</span> <span class="n">RivlinCube_Mesh</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">cube_params</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">mesh</span><span class="p">,</span> <span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">xmin_id</span><span class="p">,</span> <span class="n">xmax_id</span><span class="p">,</span> <span class="n">ymin_id</span><span class="p">,</span> <span class="n">ymax_id</span><span class="p">,</span> <span class="n">zmin_id</span><span class="p">,</span> <span class="n">zmax_id</span> <span class="o">=</span> <span class="n">RivlinCube_Mesh</span><span class="p">(</span>
+			<span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">cube_params</span>
+		<span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">multimaterial</span><span class="p">:</span>
+		<span class="n">mat1_sd</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">CompiledSubDomain</span><span class="p">(</span><span class="s2">&quot;x[0] &lt;= x0&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+		<span class="n">mat2_sd</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">CompiledSubDomain</span><span class="p">(</span><span class="s2">&quot;x[0] &gt;= x0&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+		<span class="n">mat1_id</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="n">mat2_id</span> <span class="o">=</span> <span class="mi">2</span>
+
+		<span class="n">domains_mf</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MeshFunction</span><span class="p">(</span>
+			<span class="s2">&quot;size_t&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="p">()</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span>
+		<span class="p">)</span>  <span class="c1"># MG20180418: size_t looks like unsigned int, but more robust wrt architecture and os</span>
+		<span class="n">domains_mf</span><span class="o">.</span><span class="n">set_all</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+		<span class="n">mat1_sd</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">domains_mf</span><span class="p">,</span> <span class="n">mat1_id</span><span class="p">)</span>
+		<span class="n">mat2_sd</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">domains_mf</span><span class="p">,</span> <span class="n">mat2_id</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">domains_mf</span> <span class="o">=</span> <span class="kc">None</span>
+
+	<span class="c1">################################################################ Problem ###</span>
+
+	<span class="k">if</span> <span class="n">incomp</span><span class="p">:</span>
+		<span class="n">displacement_degree</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># MG20211219: Incompressibility requires displacement_degree &gt;= 2 ?!</span>
+		<span class="n">w_incompressibility</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">displacement_degree</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="n">w_incompressibility</span> <span class="o">=</span> <span class="mi">0</span>
+
+	<span class="n">quadrature_degree</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+	<span class="c1"># quadrature_degree = &quot;full&quot;</span>
+
+	<span class="k">if</span> <span class="n">multimaterial</span><span class="p">:</span>
+		<span class="n">elastic_behavior</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="k">if</span> <span class="n">incomp</span><span class="p">:</span>
+			<span class="n">mat1_mod</span> <span class="o">=</span> <span class="s2">&quot;H_dev&quot;</span>
+			<span class="n">mat2_mod</span> <span class="o">=</span> <span class="s2">&quot;H_dev&quot;</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">mat1_mod</span> <span class="o">=</span> <span class="s2">&quot;H&quot;</span>
+			<span class="n">mat2_mod</span> <span class="o">=</span> <span class="s2">&quot;H&quot;</span>
+		<span class="n">mat1_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;E&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;nu&quot;</span><span class="p">:</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">incomp</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">incomp</span><span class="p">)}</span>
+
+		<span class="n">mat2_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;E&quot;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="s2">&quot;nu&quot;</span><span class="p">:</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">incomp</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">incomp</span><span class="p">)}</span>
+		<span class="n">elastic_behaviors</span> <span class="o">=</span> <span class="p">[</span>
+			<span class="p">{</span><span class="s2">&quot;subdomain_id&quot;</span><span class="p">:</span> <span class="n">mat1_id</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">mat1_mod</span><span class="p">,</span> <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="n">mat1_params</span><span class="p">,</span> <span class="s2">&quot;suffix&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">},</span>
+			<span class="p">{</span><span class="s2">&quot;subdomain_id&quot;</span><span class="p">:</span> <span class="n">mat2_id</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">mat2_mod</span><span class="p">,</span> <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="n">mat2_params</span><span class="p">,</span> <span class="s2">&quot;suffix&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">},</span>
+		<span class="p">]</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">elastic_behavior</span> <span class="o">=</span> <span class="n">mat_params</span>
+		<span class="n">elastic_behaviors</span> <span class="o">=</span> <span class="kc">None</span>
+
+	<span class="n">problem</span> <span class="o">=</span> <span class="n">problems</span><span class="o">.</span><span class="n">Elasticity</span><span class="p">(</span>
+		<span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span>
+		<span class="n">domains_mf</span><span class="o">=</span><span class="n">domains_mf</span><span class="p">,</span>
+		<span class="n">define_facet_normals</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+		<span class="n">boundaries_mf</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span>
+		<span class="n">displacement_degree</span><span class="o">=</span><span class="n">displacement_degree</span><span class="p">,</span>
+		<span class="n">quadrature_degree</span><span class="o">=</span><span class="n">quadrature_degree</span><span class="p">,</span>
+		<span class="n">w_incompressibility</span><span class="o">=</span><span class="n">w_incompressibility</span><span class="p">,</span>
+		<span class="n">elastic_behavior</span><span class="o">=</span><span class="n">elastic_behavior</span><span class="p">,</span>
+		<span class="n">elastic_behaviors</span><span class="o">=</span><span class="n">elastic_behaviors</span><span class="p">,</span>
+	<span class="p">)</span>
+
+	<span class="c1">########################################## Boundary conditions &amp; Loading ###</span>
+
+	<span class="n">const_type</span> <span class="o">=</span> <span class="n">const_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;sym&quot;</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">const_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;symx&quot;</span><span class="p">,</span> <span class="s2">&quot;sym&quot;</span><span class="p">):</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+			<span class="n">V</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">sub_domains</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">sub_domain_id</span><span class="o">=</span><span class="n">xmin_id</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">0.0</span>
+		<span class="p">)</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">const_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;symy&quot;</span><span class="p">,</span> <span class="s2">&quot;sym&quot;</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">):</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+			<span class="n">V</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">sub_domains</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">sub_domain_id</span><span class="o">=</span><span class="n">ymin_id</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">0.0</span>
+		<span class="p">)</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">const_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;symz&quot;</span><span class="p">,</span> <span class="s2">&quot;sym&quot;</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">):</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+			<span class="n">V</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">sub_domains</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">sub_domain_id</span><span class="o">=</span><span class="n">zmin_id</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">0.0</span>
+		<span class="p">)</span>
+	<span class="k">if</span> <span class="n">const_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;blox&quot;</span><span class="p">):</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+			<span class="n">V</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span> <span class="n">sub_domains</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">sub_domain_id</span><span class="o">=</span><span class="n">xmin_id</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim</span>
+		<span class="p">)</span>
+	<span class="k">if</span> <span class="n">const_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;bloy&quot;</span><span class="p">):</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+			<span class="n">V</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span> <span class="n">sub_domains</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">sub_domain_id</span><span class="o">=</span><span class="n">ymin_id</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim</span>
+		<span class="p">)</span>
+	<span class="k">if</span> <span class="n">const_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;bloz&quot;</span><span class="p">):</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+			<span class="n">V</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span> <span class="n">sub_domains</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">sub_domain_id</span><span class="o">=</span><span class="n">zmin_id</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim</span>
+		<span class="p">)</span>
+
+	<span class="n">load_type</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;disp&quot;</span><span class="p">)</span>
+
+	<span class="n">Deltat</span> <span class="o">=</span> <span class="n">step_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Deltat&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+	<span class="n">dt_ini</span> <span class="o">=</span> <span class="n">step_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt_ini&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+	<span class="n">dt_min</span> <span class="o">=</span> <span class="n">step_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt_min&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+	<span class="n">k_step</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">add_step</span><span class="p">(</span><span class="n">Deltat</span><span class="o">=</span><span class="n">Deltat</span><span class="p">,</span> <span class="n">dt_ini</span><span class="o">=</span><span class="n">dt_ini</span><span class="p">,</span> <span class="n">dt_min</span><span class="o">=</span><span class="n">dt_min</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">load_type</span> <span class="o">==</span> <span class="s2">&quot;disp&quot;</span><span class="p">:</span>
+		<span class="n">u</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span>
+			<span class="n">V</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+			<span class="n">sub_domains</span><span class="o">=</span><span class="n">boundaries_mf</span><span class="p">,</span>
+			<span class="n">sub_domain_id</span><span class="o">=</span><span class="n">xmax_id</span><span class="p">,</span>
+			<span class="n">val_ini</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+			<span class="n">val_fin</span><span class="o">=</span><span class="n">u</span><span class="p">,</span>
+			<span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">,</span>
+		<span class="p">)</span>
+	<span class="k">elif</span> <span class="n">load_type</span> <span class="o">==</span> <span class="s2">&quot;volu&quot;</span><span class="p">:</span>
+		<span class="n">f</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_volume_force0_loading_operator</span><span class="p">(</span>
+			<span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dV</span><span class="p">,</span> <span class="n">F_ini</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim</span><span class="p">,</span> <span class="n">F_fin</span><span class="o">=</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span>
+		<span class="p">)</span>
+	<span class="k">elif</span> <span class="n">load_type</span> <span class="o">==</span> <span class="s2">&quot;surf&quot;</span><span class="p">:</span>
+		<span class="n">f</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_surface_force0_loading_operator</span><span class="p">(</span>
+			<span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dS</span><span class="p">(</span><span class="n">xmax_id</span><span class="p">),</span> <span class="n">F_ini</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim</span><span class="p">,</span> <span class="n">F_fin</span><span class="o">=</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span>
+		<span class="p">)</span>
+	<span class="k">elif</span> <span class="n">load_type</span> <span class="o">==</span> <span class="s2">&quot;pres&quot;</span><span class="p">:</span>
+		<span class="n">p</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_surface_pressure0_loading_operator</span><span class="p">(</span><span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dS</span><span class="p">(</span><span class="n">xmax_id</span><span class="p">),</span> <span class="n">P_ini</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">P_fin</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">load_type</span> <span class="o">==</span> <span class="s2">&quot;pgra&quot;</span><span class="p">:</span>
+		<span class="n">X0</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;X0&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim</span><span class="p">)</span>
+		<span class="n">N0</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;N0&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+		<span class="n">P0</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;P0&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+		<span class="n">DP</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DP&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_surface_pressure_gradient0_loading_operator</span><span class="p">(</span>
+			<span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dS</span><span class="p">(),</span> <span class="n">X0_val</span><span class="o">=</span><span class="n">X0</span><span class="p">,</span> <span class="n">N0_val</span><span class="o">=</span><span class="n">N0</span><span class="p">,</span> <span class="n">P0_ini</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">P0_fin</span><span class="o">=</span><span class="n">P0</span><span class="p">,</span> <span class="n">DP_ini</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">DP_fin</span><span class="o">=</span><span class="n">DP</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span>
+		<span class="p">)</span>
+	<span class="k">elif</span> <span class="n">load_type</span> <span class="o">==</span> <span class="s2">&quot;tens&quot;</span><span class="p">:</span>
+		<span class="n">gamma</span> <span class="o">=</span> <span class="n">load_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;gamma&quot;</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_surface_tension0_loading_operator</span><span class="p">(</span><span class="n">measure</span><span class="o">=</span><span class="n">problem</span><span class="o">.</span><span class="n">dS</span><span class="p">,</span> <span class="n">gamma_ini</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">gamma_fin</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span>
+
+	<span class="c1">################################################# Quantities of Interest ###</span>
+
+	<span class="n">problem</span><span class="o">.</span><span class="n">add_global_strain_qois</span><span class="p">()</span>
+	<span class="n">problem</span><span class="o">.</span><span class="n">add_global_stress_qois</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">incomp</span><span class="p">:</span>
+		<span class="n">problem</span><span class="o">.</span><span class="n">add_global_pressure_qoi</span><span class="p">()</span>
+
+	<span class="c1">################################################################# Solver ###</span>
+
+	<span class="n">solver</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">NonlinearSolver</span><span class="p">(</span>
+		<span class="n">problem</span><span class="o">=</span><span class="n">problem</span><span class="p">,</span>
+		<span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sol_tol&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-6</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">),</span> <span class="s2">&quot;n_iter_max&quot;</span><span class="p">:</span> <span class="mi">32</span><span class="p">},</span>
+		<span class="n">relax_type</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+		<span class="n">write_iter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+	<span class="p">)</span>
+
+	<span class="n">integrator</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">TimeIntegrator</span><span class="p">(</span>
+		<span class="n">problem</span><span class="o">=</span><span class="n">problem</span><span class="p">,</span>
+		<span class="n">solver</span><span class="o">=</span><span class="n">solver</span><span class="p">,</span>
+		<span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;n_iter_for_accel&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;n_iter_for_decel&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">&quot;accel_coeff&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;decel_coeff&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+		<span class="n">print_out</span><span class="o">=</span><span class="n">res_basename</span> <span class="o">*</span> <span class="n">verbose</span><span class="p">,</span>
+		<span class="n">print_sta</span><span class="o">=</span><span class="n">res_basename</span> <span class="o">*</span> <span class="n">verbose</span><span class="p">,</span>
+		<span class="n">write_qois</span><span class="o">=</span><span class="n">res_basename</span> <span class="o">+</span> <span class="s2">&quot;-qois&quot;</span><span class="p">,</span>
+		<span class="n">write_qois_limited_precision</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+		<span class="n">write_sol</span><span class="o">=</span><span class="n">res_basename</span> <span class="o">*</span> <span class="n">verbose</span><span class="p">,</span>
+	<span class="p">)</span>
+
+	<span class="n">success</span> <span class="o">=</span> <span class="n">integrator</span><span class="o">.</span><span class="n">integrate</span><span class="p">()</span>
+	<span class="k">assert</span> <span class="n">success</span><span class="p">,</span> <span class="s2">&quot;Integration failed. Aborting.&quot;</span>
+
+	<span class="n">integrator</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

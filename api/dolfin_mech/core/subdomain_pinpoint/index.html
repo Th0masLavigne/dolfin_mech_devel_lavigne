@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dolfin_mech.core.subdomain_pinpoint &mdash; dolfin_mech</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
@@ -17,7 +17,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=da73159d"></script>
+      <script src="../../../../_static/documentation_options.js?v=5283314f"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -171,7 +171,7 @@ loads, or local tracking sensors.</p>
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.core.subdomain_pinpoint.</span></span><span class="sig-name descname"><span class="pre">PinpointSubDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.core.subdomain_pinpoint.</span></span><span class="sig-name descname"><span class="pre">PinpointSubDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/subdomain_pinpoint.html#PinpointSubDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin.SubDomain</span></code></p>
 <p>SubDomain subclass for identifying a specific point in the mesh.</p>
 <p>This class selects a node (or nodes) that fall within a specified tolerance
@@ -191,7 +191,7 @@ of a target coordinate. It is commonly used for:</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.move">
-<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.move" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/subdomain_pinpoint.html#PinpointSubDomain.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.move" title="Link to this definition"></a></dt>
 <dd><p>Updates the target coordinates.</p>
 <p>This allows the subdomain definition to move over time, which can be useful
 in dynamic simulations or when tracking a moving feature.</p>
@@ -204,7 +204,7 @@ in dynamic simulations or when tracking a moving feature.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.inside">
-<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_boundary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.inside" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_boundary</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/subdomain_pinpoint.html#PinpointSubDomain.inside"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.inside" title="Link to this definition"></a></dt>
 <dd><p>Checks if a point <code class="docutils literal notranslate"><span class="pre">x</span></code> is inside the subdomain.</p>
 <p>Returns True if the Euclidean distance between <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">self.coords</span></code>
 is less than <code class="docutils literal notranslate"><span class="pre">self.tol</span></code>.</p>
@@ -223,7 +223,7 @@ is less than <code class="docutils literal notranslate"><span class="pre">self.t
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.check_inside">
-<span class="sig-name descname"><span class="pre">check_inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.check_inside" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">check_inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/core/subdomain_pinpoint.html#PinpointSubDomain.check_inside"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.core.subdomain_pinpoint.PinpointSubDomain.check_inside" title="Link to this definition"></a></dt>
 <dd><p>Debugging utility to find which mesh nodes actually match the criteria.</p>
 <p>Iterates through all mesh coordinates and returns a list of those that
 satisfy the <code class="docutils literal notranslate"><span class="pre">inside</span></code> condition. This is useful for verifying that the

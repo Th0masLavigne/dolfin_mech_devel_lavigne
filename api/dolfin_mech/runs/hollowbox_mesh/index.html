@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dolfin_mech.runs.hollowbox_mesh &mdash; dolfin_mech</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
@@ -17,7 +17,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=da73159d"></script>
+      <script src="../../../../_static/documentation_options.js?v=5283314f"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -172,7 +172,7 @@ facilitate periodic homogenization in multiscale mechanics.</p>
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="dolfin_mech.runs.hollowbox_mesh.setPeriodic">
-<span class="sig-prename descclassname"><span class="pre">dolfin_mech.runs.hollowbox_mesh.</span></span><span class="sig-name descname"><span class="pre">setPeriodic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.runs.hollowbox_mesh.setPeriodic" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">dolfin_mech.runs.hollowbox_mesh.</span></span><span class="sig-name descname"><span class="pre">setPeriodic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/runs/hollowbox_mesh.html#setPeriodic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.runs.hollowbox_mesh.setPeriodic" title="Link to this definition"></a></dt>
 <dd><p>Applies periodic meshing constraints to matching entities on opposite faces of a bounding box.</p>
 <p>This function identifies geometric entities (curves in 2D, surfaces in 3D) on opposite
 sides of the domain and enforces a periodic mesh mapping between them in Gmsh.
@@ -193,7 +193,7 @@ nodes on the slave face <span class="math notranslate nohighlight">\(\Gamma_{sla
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dolfin_mech.runs.hollowbox_mesh.HollowBox_Mesh">
-<span class="sig-prename descclassname"><span class="pre">dolfin_mech.runs.hollowbox_mesh.</span></span><span class="sig-name descname"><span class="pre">HollowBox_Mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.runs.hollowbox_mesh.HollowBox_Mesh" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">dolfin_mech.runs.hollowbox_mesh.</span></span><span class="sig-name descname"><span class="pre">HollowBox_Mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/runs/hollowbox_mesh.html#HollowBox_Mesh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.runs.hollowbox_mesh.HollowBox_Mesh" title="Link to this definition"></a></dt>
 <dd><p>Generates a periodic mesh for a “Hollow Box” Representative Volume Element (RVE).</p>
 <p>This function creates a unit cell with a central void by boolean subtraction.
 To create a centered void in a periodic cell <span class="math notranslate nohighlight">\([0,1]^d\)</span>, it subtracts

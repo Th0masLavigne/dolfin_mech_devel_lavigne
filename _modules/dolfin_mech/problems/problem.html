@@ -1,0 +1,870 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.problems.problem &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5283314f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_toc.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dolfin_mech/index.html">Core Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/problems/index.html">Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.problems.problem</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dolfin_mech.problems.problem</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf8</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### Created by Martin Genet, 2018-2025                                       ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                   ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;Defines the Problem class.</span>
+
+<span class="sd">Centralized manager for dolfin_mech simulations that</span>
+<span class="sd">synchronizes mesh topology, mixed-element function spaces, physical operators,</span>
+<span class="sd">and time-stepping logic to automate the assembly of nonlinear variational forms.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">dolfin</span>
+
+<span class="kn">from</span> <span class="nn">..core</span> <span class="kn">import</span> <span class="n">FOI</span><span class="p">,</span> <span class="n">QOI</span><span class="p">,</span> <span class="n">Constraint</span><span class="p">,</span> <span class="n">Step</span><span class="p">,</span> <span class="n">SubSol</span>
+<span class="kn">from</span> <span class="nn">..operators</span> <span class="kn">import</span> <span class="n">Inertia</span><span class="p">,</span> <span class="n">loading</span><span class="p">,</span> <span class="n">penalty</span>
+
+<span class="c1">################################################################################</span>
+
+
+<div class="viewcode-block" id="Problem">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem">[docs]</a>
+<span class="k">class</span> <span class="nc">Problem</span><span class="p">:</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Base class for managing Finite Element Problems in FEniCS.</span>
+
+<span class="sd">	This class acts as a container and manager for the essential components of a</span>
+<span class="sd">	simulation: the mesh, the solution function spaces (unknowns), the operators</span>
+<span class="sd">	(physics contributions), boundary conditions, and time stepping.</span>
+
+<span class="sd">	It abstracts the boilerplate code required to set up mixed-element formulations,</span>
+<span class="sd">	manage input/output fields (FOIs/QOIs), and assemble the global residual</span>
+<span class="sd">	and Jacobian forms for the nonlinear solver.</span>
+
+
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Initializes an empty Problem instance.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">subsols</span> <span class="o">=</span> <span class="p">[]</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">operators</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">constraints</span> <span class="o">=</span> <span class="p">[]</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">inelastic_behaviors_mixed</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">inelastic_behaviors_internal</span> <span class="o">=</span> <span class="p">[]</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">steps</span> <span class="o">=</span> <span class="p">[]</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">fois</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">qois</span> <span class="o">=</span> <span class="p">[]</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">form_compiler_parameters</span> <span class="o">=</span> <span class="p">{}</span>
+
+	<span class="c1">####################################################################### mesh ###</span>
+
+<div class="viewcode-block" id="Problem.set_mesh">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.set_mesh">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_mesh</span><span class="p">(</span>
+		<span class="bp">self</span><span class="p">,</span>
+		<span class="n">mesh</span><span class="p">,</span>
+		<span class="n">define_spatial_coordinates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+		<span class="n">define_facet_normals</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+		<span class="n">compute_bbox</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+		<span class="n">compute_local_cylindrical_basis</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+	<span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sets the computational domain and associated geometric quantities.</span>
+
+<span class="sd">		This method registers the mesh and initializes standard FEniCS measures</span>
+<span class="sd">		(``dx`` for volume, ``ds`` for surface). It can also compute spatial</span>
+<span class="sd">		coordinates (reference ``X`` or spatial ``x``) and local bases.</span>
+
+<span class="sd">		:param mesh: The dolfin Mesh object.</span>
+<span class="sd">		:param define_spatial_coordinates: If True, defines ``self.X`` (reference)</span>
+<span class="sd">		    or ``self.x`` (spatial) depending on the problem type (Inverse vs Forward).</span>
+<span class="sd">		:param define_facet_normals: If True, initializes ``self.mesh_normals``.</span>
+<span class="sd">		:param compute_bbox: If True, computes the bounding box of the mesh.</span>
+<span class="sd">		:param compute_local_cylindrical_basis: If True, computes local radial</span>
+<span class="sd">		    (:math:`\mathbf{e}_R`) and tangential (:math:`\mathbf{e}_T`) vectors</span>
+<span class="sd">		    and a rotation matrix ``Q_expr``.</span>
+
+
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">ufl_domain</span><span class="p">()</span><span class="o">.</span><span class="n">geometric_dimension</span><span class="p">()</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">mesh</span> <span class="o">=</span> <span class="n">mesh</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dV</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="s2">&quot;dx&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">mesh_V0</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dV</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">define_spatial_coordinates</span><span class="p">:</span>
+			<span class="k">if</span> <span class="s2">&quot;Inverse&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">SpatialCoordinate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">SpatialCoordinate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">define_facet_normals</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FacetNormal</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">compute_bbox</span><span class="p">:</span>
+			<span class="n">coord</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">mesh_bbox</span> <span class="o">=</span> <span class="p">[]</span>
+			<span class="n">xmin</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MPI</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">mpi_comm</span><span class="p">(),</span> <span class="nb">min</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]))</span>
+			<span class="n">xmax</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MPI</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">mpi_comm</span><span class="p">(),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]))</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">mesh_bbox</span> <span class="o">+=</span> <span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">]</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+				<span class="n">ymin</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MPI</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">mpi_comm</span><span class="p">(),</span> <span class="nb">min</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))</span>
+				<span class="n">ymax</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MPI</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">mpi_comm</span><span class="p">(),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">mesh_bbox</span> <span class="o">+=</span> <span class="p">[</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">]</span>
+				<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+					<span class="n">zmin</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MPI</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">mpi_comm</span><span class="p">(),</span> <span class="nb">min</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]))</span>
+					<span class="n">zmax</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MPI</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">mpi_comm</span><span class="p">(),</span> <span class="nb">max</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]))</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">mesh_bbox</span> <span class="o">+=</span> <span class="p">[</span><span class="n">zmin</span><span class="p">,</span> <span class="n">zmax</span><span class="p">]</span>
+
+		<span class="k">if</span> <span class="n">compute_local_cylindrical_basis</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">local_basis_fe</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">VectorElement</span><span class="p">(</span>
+				<span class="n">family</span><span class="o">=</span><span class="s2">&quot;DG&quot;</span><span class="p">,</span>  <span class="c1"># MG20220424: Why not CG?</span>
+				<span class="n">cell</span><span class="o">=</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span>
+				<span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+			<span class="p">)</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">eR_expr</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Expression</span><span class="p">(</span>
+				<span class="p">(</span><span class="s2">&quot;+x[0]/sqrt(pow(x[0],2)+pow(x[1],2))&quot;</span><span class="p">,</span> <span class="s2">&quot;+x[1]/sqrt(pow(x[0],2)+pow(x[1],2))&quot;</span><span class="p">),</span>
+				<span class="n">element</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_basis_fe</span><span class="p">,</span>
+			<span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">eT_expr</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Expression</span><span class="p">(</span>
+				<span class="p">(</span><span class="s2">&quot;-x[1]/sqrt(pow(x[0],2)+pow(x[1],2))&quot;</span><span class="p">,</span> <span class="s2">&quot;+x[0]/sqrt(pow(x[0],2)+pow(x[1],2))&quot;</span><span class="p">),</span>
+				<span class="n">element</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_basis_fe</span><span class="p">,</span>
+			<span class="p">)</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">Q_expr</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">([[</span><span class="bp">self</span><span class="o">.</span><span class="n">eR_expr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">eR_expr</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">eT_expr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">eT_expr</span><span class="p">[</span><span class="mi">1</span><span class="p">]]])</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">local_basis_fs</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span>
+				<span class="n">mesh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_basis_fe</span>
+			<span class="p">)</span>  <span class="c1"># MG: element keyword don&#39;t work here…</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">eR_func</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">eR_expr</span><span class="p">,</span> <span class="n">V</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_basis_fs</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">eR_func</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;eR&quot;</span><span class="p">,</span> <span class="s2">&quot;eR&quot;</span><span class="p">)</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">eT_func</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">eT_expr</span><span class="p">,</span> <span class="n">V</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_basis_fs</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">eT_func</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;eT&quot;</span><span class="p">,</span> <span class="s2">&quot;eT&quot;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Q_expr</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="Problem.set_measures">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.set_measures">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_measures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domains</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">boundaries</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Defines the integration measures for subdomains and boundaries.</span>
+
+<span class="sd">		Registers ``self.dV`` (volume measure), ``self.dS`` (surface measure),</span>
+<span class="sd">		and ``self.dP`` (point measure), linking them to specific subdomain data</span>
+<span class="sd">		if provided.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">domains</span> <span class="o">=</span> <span class="n">domains</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dV</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="s2">&quot;cell&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="n">subdomain_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">domains</span><span class="p">)</span>
+		<span class="c1"># if (domains is not None):</span>
+		<span class="c1">#     self.dV = dolfin.Measure(</span>
+		<span class="c1">#         &quot;dx&quot;,</span>
+		<span class="c1">#         domain=self.mesh,</span>
+		<span class="c1">#         subdomain_data=self.domains)</span>
+		<span class="c1"># else:</span>
+		<span class="c1">#     self.dV = dolfin.Measure(</span>
+		<span class="c1">#         &quot;dx&quot;,</span>
+		<span class="c1">#         domain=self.mesh)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span> <span class="o">=</span> <span class="n">boundaries</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dS</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="s2">&quot;exterior_facet&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="n">subdomain_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">boundaries</span><span class="p">)</span>
+		<span class="c1"># if (boundaries is not None):</span>
+		<span class="c1">#     self.dS = dolfin.Measure(</span>
+		<span class="c1">#         &quot;ds&quot;,</span>
+		<span class="c1">#         domain=self.mesh,</span>
+		<span class="c1">#         subdomain_data=self.boundaries)</span>
+		<span class="c1"># else:</span>
+		<span class="c1">#     self.dS = dolfin.Measure(</span>
+		<span class="c1">#         &quot;ds&quot;,</span>
+		<span class="c1">#         domain=self.mesh)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">points</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dP</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="s2">&quot;vertex&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="n">subdomain_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span></div>
+
+		<span class="c1"># if (points is not None):</span>
+		<span class="c1">#     self.dP = dolfin.Measure(</span>
+		<span class="c1">#         &quot;dP&quot;,</span>
+		<span class="c1">#         domain=self.mesh,</span>
+		<span class="c1">#         subdomain_data=self.points)</span>
+		<span class="c1"># else:</span>
+		<span class="c1">#     self.dP = dolfin.Measure(</span>
+		<span class="c1">#         &quot;dP&quot;,</span>
+		<span class="c1">#         domain=self.mesh)</span>
+
+	<span class="c1">################################################################### solution ###</span>
+
+<div class="viewcode-block" id="Problem.add_subsol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_subsol">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_subsol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Generic method to add a sub-solution (unknown field) to the problem.&quot;&quot;&quot;</span>
+		<span class="n">subsol</span> <span class="o">=</span> <span class="n">SubSol</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">subsols</span> <span class="o">+=</span> <span class="p">[</span><span class="n">subsol</span><span class="p">]</span>
+		<span class="k">return</span> <span class="n">subsol</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_scalar_subsol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_scalar_subsol">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_scalar_subsol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;CG&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">init_fun</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a scalar unknown field (e.g., pressure, porosity).&quot;&quot;&quot;</span>
+		<span class="n">fe</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FiniteElement</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="n">family</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">)</span>
+
+		<span class="n">subsol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_subsol</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">fe</span><span class="o">=</span><span class="n">fe</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="n">init_val</span><span class="p">,</span> <span class="n">init_fun</span><span class="o">=</span><span class="n">init_fun</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">subsol</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_vector_subsol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_vector_subsol">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_vector_subsol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;CG&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a vector unknown field (e.g., displacement).&quot;&quot;&quot;</span>
+		<span class="n">fe</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">VectorElement</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="n">family</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">)</span>
+
+		<span class="n">subsol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_subsol</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">fe</span><span class="o">=</span><span class="n">fe</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="n">init_val</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">subsol</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_tensor_subsol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_tensor_subsol">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_tensor_subsol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;CG&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">symmetry</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a tensor unknown field (e.g., internal variables).&quot;&quot;&quot;</span>
+		<span class="n">fe</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">TensorElement</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="n">family</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">symmetry</span><span class="o">=</span><span class="n">symmetry</span><span class="p">)</span>
+
+		<span class="n">subsol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_subsol</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">fe</span><span class="o">=</span><span class="n">fe</span><span class="p">,</span> <span class="n">init_val</span><span class="o">=</span><span class="n">init_val</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">subsol</span></div>
+
+
+<div class="viewcode-block" id="Problem.set_solution_finite_element">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.set_solution_finite_element">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_solution_finite_element</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Constructs the (potentially mixed) finite element for the global solution.</span>
+
+<span class="sd">		If multiple sub-solutions are defined (e.g., displacement and pressure),</span>
+<span class="sd">		this creates a ``MixedElement``.</span>
+
+
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">sol_fe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fe</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">sol_fe</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MixedElement</span><span class="p">([</span><span class="n">subsol</span><span class="o">.</span><span class="n">fe</span> <span class="k">for</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">])</span></div>
+
+		<span class="c1"># print(self.sol_fe)</span>
+
+<div class="viewcode-block" id="Problem.set_solution_function_space">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.set_solution_function_space">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_solution_function_space</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">constrained_domain</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Creates the FunctionSpace on the mesh using the defined finite element.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">sol_fs</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_fe</span><span class="p">,</span> <span class="n">constrained_domain</span><span class="o">=</span><span class="n">constrained_domain</span>
+		<span class="p">)</span>  <span class="c1"># MG: element keyword don&#39;t work here…</span>
+
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_fs</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">for</span> <span class="n">k_subsol</span><span class="p">,</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">):</span>
+				<span class="n">subsol</span><span class="o">.</span><span class="n">fs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_fs</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">k_subsol</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.set_solution_functions">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.set_solution_functions">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_solution_functions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Instantiates the actual FEniCS Functions for the solution.</span>
+
+<span class="sd">		Creates:</span>
+<span class="sd">		    - ``sol_func``: The current solution vector :math:`\mathbf{u}_{n+1}`.</span>
+<span class="sd">		    - ``sol_old_func``: The solution at the previous step :math:`\mathbf{u}_n`.</span>
+<span class="sd">		    - ``dsol_func``: The increment (Newton update) :math:`\delta \mathbf{u}`.</span>
+<span class="sd">		    - ``dsol_test``: The test function :math:`\delta \mathbf{v}`.</span>
+<span class="sd">		    - ``dsol_tria``: The trial function :math:`\Delta \mathbf{u}` (for the Jacobian).</span>
+
+<span class="sd">		It also splits these functions back into their sub-solution components</span>
+<span class="sd">		for easy access by operators.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">sol_func</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_fs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">sol_old_func</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_fs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dsol_func</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_fs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dsol_test</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">TestFunction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_fs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dsol_tria</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">TrialFunction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_fs</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="n">subfuncs</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_func</span><span class="p">,)</span>
+			<span class="n">dsubtests</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dsol_test</span><span class="p">,)</span>
+			<span class="n">dsubtrias</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dsol_tria</span><span class="p">,)</span>
+			<span class="n">funcs</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_func</span><span class="p">,)</span>
+			<span class="n">funcs_old</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_old_func</span><span class="p">,)</span>
+			<span class="n">dfuncs</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dsol_func</span><span class="p">,)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">subfuncs</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_func</span><span class="p">)</span>
+			<span class="n">dsubtests</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dsol_test</span><span class="p">)</span>
+			<span class="n">dsubtrias</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dsol_tria</span><span class="p">)</span>
+			<span class="n">funcs</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_fs</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">deepcopy</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+			<span class="n">funcs_old</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_fs</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">deepcopy</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+			<span class="n">dfuncs</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_fs</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">deepcopy</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+		<span class="k">for</span> <span class="n">k_subsol</span><span class="p">,</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">):</span>
+			<span class="n">subsol</span><span class="o">.</span><span class="n">subfunc</span> <span class="o">=</span> <span class="n">subfuncs</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">]</span>
+			<span class="n">subsol</span><span class="o">.</span><span class="n">dsubtest</span> <span class="o">=</span> <span class="n">dsubtests</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">]</span>
+			<span class="n">subsol</span><span class="o">.</span><span class="n">dsubtria</span> <span class="o">=</span> <span class="n">dsubtrias</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">]</span>
+
+			<span class="n">subsol</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">funcs</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">]</span>
+			<span class="n">subsol</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">subsol</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">subsol</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+			<span class="n">subsol</span><span class="o">.</span><span class="n">func_old</span> <span class="o">=</span> <span class="n">funcs_old</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">]</span>
+			<span class="n">subsol</span><span class="o">.</span><span class="n">func_old</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">subsol</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_old&quot;</span><span class="p">,</span> <span class="n">subsol</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_old&quot;</span><span class="p">)</span>
+			<span class="n">subsol</span><span class="o">.</span><span class="n">dfunc</span> <span class="o">=</span> <span class="n">dfuncs</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">]</span>
+			<span class="n">subsol</span><span class="o">.</span><span class="n">dfunc</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;d&quot;</span> <span class="o">+</span> <span class="n">subsol</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span> <span class="o">+</span> <span class="n">subsol</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+		<span class="k">for</span> <span class="n">k_subsol</span><span class="p">,</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">):</span>
+			<span class="n">subsol</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="n">dolfin</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_func</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_subsols_func_lst</span><span class="p">())</span>
+			<span class="n">dolfin</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sol_old_func</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_subsols_func_old_lst</span><span class="p">())</span></div>
+
+
+	<span class="k">def</span> <span class="nf">get_subsols_func_lst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+		<span class="k">return</span> <span class="p">[</span><span class="n">subsol</span><span class="o">.</span><span class="n">func</span> <span class="k">for</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">]</span>
+
+	<span class="k">def</span> <span class="nf">get_subsols_func_old_lst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+		<span class="k">return</span> <span class="p">[</span><span class="n">subsol</span><span class="o">.</span><span class="n">func_old</span> <span class="k">for</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">]</span>
+
+	<span class="k">def</span> <span class="nf">get_subsols_dfunc_lst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+		<span class="k">return</span> <span class="p">[</span><span class="n">subsol</span><span class="o">.</span><span class="n">dfunc</span> <span class="k">for</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subsols</span><span class="p">]</span>
+
+	<span class="k">def</span> <span class="nf">set_quadrature_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quadrature_degree</span><span class="p">):</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">form_compiler_parameters</span><span class="p">[</span><span class="s2">&quot;quadrature_degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">quadrature_degree</span>
+
+	<span class="c1">######################################################################## FOI ###</span>
+
+<div class="viewcode-block" id="Problem.set_foi_finite_elements_DG">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.set_foi_finite_elements_DG">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_foi_finite_elements_DG</span><span class="p">(</span>
+		<span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">0</span>
+	<span class="p">):</span>  <span class="c1"># MG20180420: DG elements are simpler to manage than quadrature elements, since quadrature elements must be compatible with the expression&#39;s degree, which is not always trivial (e.g., for J…)</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Sets up Discontinuous Galerkin (DG) elements for Fields of Interest (FOI).</span>
+<span class="sd">		These are typically used for post-processing variables like stress or strain.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">sfoi_fe</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FiniteElement</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s2">&quot;DG&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">vfoi_fe</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">VectorElement</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s2">&quot;DG&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fe</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">TensorElement</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s2">&quot;DG&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.set_foi_finite_elements_Quad">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.set_foi_finite_elements_Quad">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_foi_finite_elements_Quad</span><span class="p">(</span>
+		<span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">0</span>
+	<span class="p">):</span>  <span class="c1"># MG20180420: DG elements are simpler to manage than quadrature elements, since quadrature elements must be compatible with the expression&#39;s degree, which is not always trivial (e.g., for J…)</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Sets up Quadrature elements for Fields of Interest (FOI).</span>
+<span class="sd">		These allow evaluating fields exactly at integration points.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">sfoi_fe</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FiniteElement</span><span class="p">(</span>
+			<span class="n">family</span><span class="o">=</span><span class="s2">&quot;Quadrature&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">quad_scheme</span><span class="o">=</span><span class="s2">&quot;default&quot;</span>
+		<span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">sfoi_fe</span><span class="o">.</span><span class="n">_quad_scheme</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>  <span class="c1"># MG20180406: is that even needed?</span>
+		<span class="k">for</span> <span class="n">sub_element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sfoi_fe</span><span class="o">.</span><span class="n">sub_elements</span><span class="p">():</span>  <span class="c1"># MG20180406: is that even needed?</span>
+			<span class="n">sub_element</span><span class="o">.</span><span class="n">_quad_scheme</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>  <span class="c1"># MG20180406: is that even needed?</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">vfoi_fe</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">VectorElement</span><span class="p">(</span>
+			<span class="n">family</span><span class="o">=</span><span class="s2">&quot;Quadrature&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">quad_scheme</span><span class="o">=</span><span class="s2">&quot;default&quot;</span>
+		<span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">vfoi_fe</span><span class="o">.</span><span class="n">_quad_scheme</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>  <span class="c1"># MG20180406: is that even needed?</span>
+		<span class="k">for</span> <span class="n">sub_element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vfoi_fe</span><span class="o">.</span><span class="n">sub_elements</span><span class="p">():</span>  <span class="c1"># MG20180406: is that even needed?</span>
+			<span class="n">sub_element</span><span class="o">.</span><span class="n">_quad_scheme</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>  <span class="c1"># MG20180406: is that even needed?</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fe</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">TensorElement</span><span class="p">(</span>
+			<span class="n">family</span><span class="o">=</span><span class="s2">&quot;Quadrature&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">quad_scheme</span><span class="o">=</span><span class="s2">&quot;default&quot;</span>
+		<span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fe</span><span class="o">.</span><span class="n">_quad_scheme</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>  <span class="c1"># MG20180406: is that still needed?</span>
+		<span class="k">for</span> <span class="n">sub_element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fe</span><span class="o">.</span><span class="n">sub_elements</span><span class="p">():</span>  <span class="c1"># MG20180406: is that still needed?</span>
+			<span class="n">sub_element</span><span class="o">.</span><span class="n">_quad_scheme</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>  <span class="c1"># MG20180406: is that still needed?</span></div>
+
+
+<div class="viewcode-block" id="Problem.set_foi_function_spaces">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.set_foi_function_spaces">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_foi_function_spaces</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Creates function spaces for Scalar, Vector, and Tensor Fields of Interest.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">sfoi_fs</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sfoi_fe</span><span class="p">)</span>  <span class="c1"># MG: element keyword don&#39;t work here…</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">vfoi_fs</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vfoi_fe</span><span class="p">)</span>  <span class="c1"># MG: element keyword don&#39;t work here…</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fs</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mfoi_fe</span><span class="p">)</span>  <span class="c1"># MG: element keyword don&#39;t work here…</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_foi">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_foi">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_foi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a Field of Interest (FOI) to the problem.</span>
+<span class="sd">		FOIs are updated at the end of every step for visualization/output.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">foi</span> <span class="o">=</span> <span class="n">FOI</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">form_compiler_parameters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">form_compiler_parameters</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">fois</span> <span class="o">+=</span> <span class="p">[</span><span class="n">foi</span><span class="p">]</span>
+		<span class="k">return</span> <span class="n">foi</span></div>
+
+
+	<span class="k">def</span> <span class="nf">get_foi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+
+		<span class="k">for</span> <span class="n">foi</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fois</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">foi</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+				<span class="k">return</span> <span class="n">foi</span>
+		<span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;No FOI named &quot;&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;&quot;. Aborting.&#39;</span>
+
+<div class="viewcode-block" id="Problem.update_fois">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.update_fois">[docs]</a>
+	<span class="k">def</span> <span class="nf">update_fois</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Triggers the projection/interpolation of all registered FOIs.&quot;&quot;&quot;</span>
+		<span class="k">for</span> <span class="n">foi</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fois</span><span class="p">:</span>
+			<span class="n">foi</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
+
+
+	<span class="k">def</span> <span class="nf">get_fois_func_lst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+		<span class="k">return</span> <span class="p">[</span><span class="n">foi</span><span class="o">.</span><span class="n">func</span> <span class="k">for</span> <span class="n">foi</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fois</span><span class="p">]</span>
+
+	<span class="c1">######################################################################## QOI ###</span>
+
+<div class="viewcode-block" id="Problem.add_qoi">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_qoi">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_qoi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a Quantity of Interest (QOI) to the problem.</span>
+<span class="sd">		QOIs are scalar values (e.g., total volume, average stress) calculated per step.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">qoi</span> <span class="o">=</span> <span class="n">QOI</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">form_compiler_parameters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">form_compiler_parameters</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">qois</span> <span class="o">+=</span> <span class="p">[</span><span class="n">qoi</span><span class="p">]</span>
+		<span class="k">return</span> <span class="n">qoi</span></div>
+
+
+<div class="viewcode-block" id="Problem.update_qois">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.update_qois">[docs]</a>
+	<span class="k">def</span> <span class="nf">update_qois</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Updates the values of all registered QOIs.&quot;&quot;&quot;</span>
+		<span class="k">for</span> <span class="n">qoi</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">qois</span><span class="p">:</span>
+			<span class="n">qoi</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">k_step</span><span class="p">)</span></div>
+
+
+	<span class="c1">################################################################## operators ###</span>
+
+<div class="viewcode-block" id="Problem.add_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a physical operator to the problem.</span>
+
+<span class="sd">		Operators define the terms in the variational formulation (e.g., internal</span>
+<span class="sd">		energy, external work). If ``k_step`` is provided, the operator is only</span>
+<span class="sd">		active for that specific load step.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="n">k_step</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">operators</span> <span class="o">+=</span> <span class="p">[</span><span class="n">operator</span><span class="p">]</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span><span class="o">.</span><span class="n">operators</span> <span class="o">+=</span> <span class="p">[</span><span class="n">operator</span><span class="p">]</span>
+		<span class="k">return</span> <span class="n">operator</span></div>
+
+
+	<span class="c1">################################################################## operators ###</span>
+
+	<span class="c1"># MG20230131: Loading operators should not be there,</span>
+	<span class="c1"># but they are shared between Elasticity &amp; HyperElasticity problems,</span>
+	<span class="c1"># so it is more convenient for the moment.</span>
+
+<div class="viewcode-block" id="Problem.add_volume_force0_loading_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_volume_force0_loading_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_volume_force0_loading_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a dead volume force (reference configuration).&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">loading</span><span class="o">.</span><span class="n">VolumeForce0</span><span class="p">(</span><span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_volume_force_loading_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_volume_force_loading_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_volume_force_loading_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a follower volume force (current configuration).&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">loading</span><span class="o">.</span><span class="n">VolumeForce</span><span class="p">(</span><span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span> <span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_surface_force0_loading_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_surface_force0_loading_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_surface_force0_loading_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a dead surface force vector (reference configuration).&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">loading</span><span class="o">.</span><span class="n">SurfaceForce0</span><span class="p">(</span><span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_surface_force_loading_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_surface_force_loading_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_surface_force_loading_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a follower surface force vector (current configuration).&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">loading</span><span class="o">.</span><span class="n">SurfaceForce</span><span class="p">(</span>
+			<span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span> <span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_surface_pressure0_loading_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_surface_pressure0_loading_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_surface_pressure0_loading_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a dead pressure load normal to the reference surface.&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">loading</span><span class="o">.</span><span class="n">SurfacePressure0</span><span class="p">(</span><span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_surface_pressure_loading_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_surface_pressure_loading_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_surface_pressure_loading_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a follower pressure load (normal to deformed surface).&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">loading</span><span class="o">.</span><span class="n">SurfacePressure</span><span class="p">(</span>
+			<span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span> <span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_surface_pressure_gradient0_loading_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_surface_pressure_gradient0_loading_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_surface_pressure_gradient0_loading_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a gradient-dependent pressure load on the reference surface.&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">loading</span><span class="o">.</span><span class="n">SurfacePressureGradient0</span><span class="p">(</span>
+			<span class="n">x</span><span class="o">=</span><span class="n">dolfin</span><span class="o">.</span><span class="n">SpatialCoordinate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">),</span>
+			<span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span>
+			<span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_surface_pressure_gradient_loading_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_surface_pressure_gradient_loading_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_surface_pressure_gradient_loading_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a gradient-dependent pressure load on the deformed surface.&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">loading</span><span class="o">.</span><span class="n">SurfacePressureGradient</span><span class="p">(</span>
+			<span class="n">X</span><span class="o">=</span><span class="n">dolfin</span><span class="o">.</span><span class="n">SpatialCoordinate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">),</span>
+			<span class="n">U</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span>
+			<span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span>
+			<span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_surface_tension0_loading_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_surface_tension0_loading_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_surface_tension0_loading_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds surface tension effects on the reference configuration.&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">loading</span><span class="o">.</span><span class="n">SurfaceTension0</span><span class="p">(</span>
+			<span class="n">u</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">u_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span>
+			<span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span>
+			<span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_surface_tension_loading_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_surface_tension_loading_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_surface_tension_loading_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds surface tension effects on the current configuration.&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">loading</span><span class="o">.</span><span class="n">SurfaceTension</span><span class="p">(</span>
+			<span class="c1"># U=self.displacement_subsol.subfunc,</span>
+			<span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kinematics</span><span class="p">,</span>
+			<span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span>
+			<span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_normal_displacement_penalty_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_normal_displacement_penalty_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_normal_displacement_penalty_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a penalty operator to constrain displacement in the normal direction.&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">penalty</span><span class="o">.</span><span class="n">NormalDisplacement</span><span class="p">(</span>
+			<span class="n">U</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span> <span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_normals</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_directional_displacement_penalty_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_directional_displacement_penalty_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_directional_displacement_penalty_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a penalty operator to constrain displacement in a specific global direction.&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">penalty</span><span class="o">.</span><span class="n">DirectionalDisplacement</span><span class="p">(</span>
+			<span class="n">U</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span> <span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Problem.add_inertia_operator">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_inertia_operator">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_inertia_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds inertial forces for dynamic simulations.&quot;&quot;&quot;</span>
+		<span class="n">operator</span> <span class="o">=</span> <span class="n">Inertia</span><span class="p">(</span>
+			<span class="n">U</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">subfunc</span><span class="p">,</span>
+			<span class="n">U_old</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">func_old</span><span class="p">,</span>
+			<span class="n">U_test</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement_subsol</span><span class="o">.</span><span class="n">dsubtest</span><span class="p">,</span>
+			<span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+		<span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">operator</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">)</span></div>
+
+
+	<span class="c1">################################################################ constraints ###</span>
+
+<div class="viewcode-block" id="Problem.add_constraint">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_constraint">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Adds a Dirichlet boundary condition (constraint) to the problem.&quot;&quot;&quot;</span>
+		<span class="n">constraint</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">k_step</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">constraints</span> <span class="o">+=</span> <span class="p">[</span><span class="n">constraint</span><span class="p">]</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span><span class="o">.</span><span class="n">constraints</span> <span class="o">+=</span> <span class="p">[</span><span class="n">constraint</span><span class="p">]</span>
+		<span class="k">return</span> <span class="n">constraint</span></div>
+
+
+	<span class="c1">###################################################################### steps ###</span>
+
+<div class="viewcode-block" id="Problem.add_step">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.add_step">[docs]</a>
+	<span class="k">def</span> <span class="nf">add_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Deltat</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Defines a new time step/load step for the simulation.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">t_ini</span> <span class="o">=</span> <span class="mf">0.0</span>
+			<span class="n">t_fin</span> <span class="o">=</span> <span class="n">Deltat</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">t_ini</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">t_fin</span>
+			<span class="n">t_fin</span> <span class="o">=</span> <span class="n">t_ini</span> <span class="o">+</span> <span class="n">Deltat</span>
+		<span class="n">step</span> <span class="o">=</span> <span class="n">Step</span><span class="p">(</span><span class="n">t_ini</span><span class="o">=</span><span class="n">t_ini</span><span class="p">,</span> <span class="n">t_fin</span><span class="o">=</span><span class="n">t_fin</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">steps</span> <span class="o">+=</span> <span class="p">[</span><span class="n">step</span><span class="p">]</span>
+		<span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span></div>
+
+
+	<span class="c1">###################################################################### forms ###</span>
+
+<div class="viewcode-block" id="Problem.set_variational_formulation">
+<a class="viewcode-back" href="../../../api/dolfin_mech/problems/problem/index.html#dolfin_mech.problems.problem.Problem.set_variational_formulation">[docs]</a>
+	<span class="k">def</span> <span class="nf">set_variational_formulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Assembles the global variational forms for the nonlinear solver.</span>
+
+<span class="sd">		This aggregates the residual forms from all active operators and computes </span>
+<span class="sd">		the tangent Jacobian matrix using automatic differentiation.</span>
+
+<span class="sd">		.. math::</span>
+<span class="sd">		    \mathbf{R}(\mathbf{u}) = \sum \mathbf{R}_{op}(\mathbf{u}) \</span>
+<span class="sd">		    \mathbf{J} = \frac{\partial \mathbf{R}}{\partial \mathbf{u}}</span>
+
+
+
+<span class="sd">		:param k_step: Optional step index to include step-specific operators.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">res_form</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+			<span class="p">[</span><span class="n">operator</span><span class="o">.</span><span class="n">res_form</span> <span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operators</span> <span class="k">if</span> <span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">integral_type</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;vertex&quot;</span><span class="p">)]</span>
+		<span class="p">)</span>  <span class="c1"># MG20190513: Cannot use point integral within assemble_system</span>
+		<span class="k">if</span> <span class="n">k_step</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">res_form</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span>
+				<span class="p">[</span>
+					<span class="n">operator</span><span class="o">.</span><span class="n">res_form</span>
+					<span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="n">k_step</span><span class="p">]</span><span class="o">.</span><span class="n">operators</span>
+					<span class="k">if</span> <span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">integral_type</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;vertex&quot;</span><span class="p">)</span>
+				<span class="p">]</span>
+			<span class="p">)</span>  <span class="c1"># MG20190513: Cannot use point integral within assemble_system</span>
+
+		<span class="c1"># print(self.res_form)</span>
+		<span class="c1"># for operator in self.operators:</span>
+		<span class="c1">#     if (operator.measure.integral_type() != &quot;vertex&quot;):</span>
+		<span class="c1">#         print(type(operator))</span>
+		<span class="c1">#         print(operator.res_form)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">jac_form</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res_form</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_func</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dsol_tria</span><span class="p">)</span></div>
+</div>
+
+
+		<span class="c1"># print(self.jac_form)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

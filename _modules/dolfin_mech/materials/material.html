@@ -1,0 +1,729 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.materials.material &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5283314f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_toc.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dolfin_mech/index.html">Core Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/problems/index.html">Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.materials.material</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dolfin_mech.materials.material</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf8</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### Created by Martin Genet, 2018-2025                                       ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                   ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">################################################################################</span>
+
+<span class="sa">r</span><span class="sd">&quot;&quot;&quot;Material Constitutive Laws Module.</span>
+
+<span class="sd">This module provides a unified framework for defining and instantiating material</span>
+<span class="sd">constitutive laws within the ``dolfin_mech`` ecosystem. It serves two primary roles:</span>
+
+<span class="sd">1. **Parameter Normalization**: A base ``Material`` class provides automated</span>
+<span class="sd">   conversion between engineering constants (e.g., :math:`E, \nu`) and theoretical</span>
+<span class="sd">   parameters (e.g., :math:`\lambda, \mu`).</span>
+<span class="sd">2. **The Material Factory**: A robust dispatcher function that maps string</span>
+<span class="sd">   identifiers to specific elastic material classes.</span>
+
+<span class="sd">Crucial Material Factory Identifiers</span>
+<span class="sd">------------------------------------</span>
+
+<span class="sd">The ``material_factory`` function supports an exhaustive list of aliases.</span>
+<span class="sd">These are categorized below by their underlying constitutive logic as depicted in the next table.</span>
+<span class="sd">Otherwise, you can use the Material name in lowercase.</span>
+
+<span class="sd">.. list-table:: Main Material Aliases</span>
+<span class="sd">   :widths: 30 35 35</span>
+<span class="sd">   :header-rows: 1</span>
+
+<span class="sd">   * - Physical Model</span>
+<span class="sd">     - Standard Aliases</span>
+<span class="sd">     - Deviatoric / Bulk / Decoupled</span>
+<span class="sd">   * - **Linear Elasticity**</span>
+<span class="sd">     - ``&quot;hooke&quot;``, ``&quot;Hooke&quot;``, ``&quot;H&quot;``</span>
+<span class="sd">     - ``&quot;_dev&quot;``, ``&quot;_bulk&quot;``</span>
+<span class="sd">   * - **Saint-Venant Kirchhoff**</span>
+<span class="sd">     - ``&quot;SVK&quot;``, ``&quot;kirchhoff&quot;``, ``&quot;saintvenantkirchhoff&quot;``</span>
+<span class="sd">     - ``&quot;_dev&quot;``, ``&quot;_bulk&quot;``</span>
+<span class="sd">   * - **Neo-Hookean**</span>
+<span class="sd">     - ``&quot;neohookean&quot;``, ``&quot;NH&quot;``</span>
+<span class="sd">     - ``&quot;_bar&quot;`` (Decoupled)</span>
+<span class="sd">   * - **Mooney-Rivlin**</span>
+<span class="sd">     - ``&quot;mooneyrivlin&quot;``, ``&quot;MR&quot;``</span>
+<span class="sd">     - ``&quot;_bar&quot;`` (Decoupled)</span>
+<span class="sd">   * - **Mixed NH-MR**</span>
+<span class="sd">     - ``&quot;NHMR&quot;``</span>
+<span class="sd">     - ``&quot;_bar&quot;`` (Decoupled)</span>
+<span class="sd">   * - **Ogden-Ciarlet-Geymonat**</span>
+<span class="sd">     - ``&quot;OCG&quot;``, ``&quot;CG&quot;``</span>
+<span class="sd">     - ``&quot;_bar&quot;`` (Decoupled)</span>
+
+<span class="sd">Key Features</span>
+<span class="sd">------------</span>
+
+<span class="sd">* **Lame Parameter Computation**: Automated handling of Plane Stress (``PS``)</span>
+<span class="sd">  vs. Plane Strain/3D conditions when calculating $\lambda$ from Young&#39;s</span>
+<span class="sd">  Modulus and Poisson&#39;s ratio.</span>
+<span class="sd">* **Hyperelastic Coefficients**: Built-in logic to derive hyperelastic constants</span>
+<span class="sd">  (:math:`C_{10}, C_{01}`) from shear moduli if they are not explicitly provided.</span>
+<span class="sd">* **Decoupled Formulations**: The ``_bar`` suffix in the factory triggers</span>
+<span class="sd">  the ``decoup=True`` flag, essential for nearly-incompressible materials</span>
+<span class="sd">  where volumetric and isochoric responses are separated.</span>
+
+<span class="sd">Note:</span>
+<span class="sd">    The factory uses case-insensitive matching for most identifiers, but</span>
+<span class="sd">    standardizing on the aliases above is recommended for readability.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">dolfin</span>
+
+<span class="c1">################################################################################</span>
+
+
+<div class="viewcode-block" id="Material">
+<a class="viewcode-back" href="../../../api/dolfin_mech/materials/material/index.html#dolfin_mech.materials.material.Material">[docs]</a>
+<span class="k">class</span> <span class="nc">Material</span><span class="p">:</span>
+<span class="w">	</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Base class for material models providing utility methods for parameter conversion.</span>
+
+<span class="sd">	This class handles the translation between common engineering constants</span>
+<span class="sd">	(Young&#39;s modulus :math:`E`, Poisson&#39;s ratio :math:`\nu`) and the theoretical</span>
+<span class="sd">	parameters required by constitutive laws (Lamé constants :math:`\lambda, \mu`,</span>
+<span class="sd">	bulk modulus :math:`K`, etc.).</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Material.get_lambda_from_parameters">
+<a class="viewcode-back" href="../../../api/dolfin_mech/materials/material/index.html#dolfin_mech.materials.material.Material.get_lambda_from_parameters">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_lambda_from_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the first Lamé parameter :math:`\lambda`.</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">		    parameters (dict): Dictionary containing material constants.</span>
+<span class="sd">		        Expected keys: ``&quot;lambda&quot;`` OR (``&quot;E&quot;`` AND ``&quot;nu&quot;``).</span>
+<span class="sd">		        Optional key: ``&quot;PS&quot;`` (bool) for Plane Stress formulation.</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">		    dolfin.Constant: The value of :math:`\lambda`.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="s2">&quot;lambda&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">lmbda</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;lambda&quot;</span><span class="p">]</span>
+		<span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;E&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;nu&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">):</span>
+			<span class="n">E</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">]</span>
+			<span class="n">nu</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;nu&quot;</span><span class="p">]</span>
+			<span class="k">if</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PS&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+				<span class="n">lmbda</span> <span class="o">=</span> <span class="n">E</span> <span class="o">*</span> <span class="n">nu</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nu</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">nu</span><span class="p">)</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="n">lmbda</span> <span class="o">=</span> <span class="n">E</span> <span class="o">*</span> <span class="n">nu</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nu</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">nu</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;No parameter found: &quot;+str(parameters)+&quot;. Must provide lambda or E &amp; nu. Aborting.&#39;</span>
+		<span class="k">return</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">lmbda</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Material.get_mu_from_parameters">
+<a class="viewcode-back" href="../../../api/dolfin_mech/materials/material/index.html#dolfin_mech.materials.material.Material.get_mu_from_parameters">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_mu_from_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the second Lamé parameter (shear modulus) :math:`\mu`.</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">		    parameters (dict): Dictionary containing material constants.</span>
+<span class="sd">		        Expected keys: ``&quot;mu&quot;`` OR (``&quot;E&quot;`` AND ``&quot;nu&quot;``).</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">		    dolfin.Constant: The value of :math:`\mu`.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="s2">&quot;mu&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">mu</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;mu&quot;</span><span class="p">]</span>
+		<span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;E&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;nu&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">):</span>
+			<span class="n">E</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">]</span>
+			<span class="n">nu</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;nu&quot;</span><span class="p">]</span>
+			<span class="n">mu</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nu</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;No parameter found: &quot;+str(parameters)+&quot;. Must provide mu or E &amp; nu. Aborting.&#39;</span>
+		<span class="k">return</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Material.get_lambda_and_mu_from_parameters">
+<a class="viewcode-back" href="../../../api/dolfin_mech/materials/material/index.html#dolfin_mech.materials.material.Material.get_lambda_and_mu_from_parameters">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_lambda_and_mu_from_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute both Lamé parameters simultaneously.</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">		    tuple: (dolfin.Constant, dolfin.Constant) representing (:math:`\lambda, \mu`).</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">lmbda</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lambda_from_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+		<span class="n">mu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_mu_from_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+
+		<span class="k">return</span> <span class="n">lmbda</span><span class="p">,</span> <span class="n">mu</span></div>
+
+
+<div class="viewcode-block" id="Material.get_K_from_parameters">
+<a class="viewcode-back" href="../../../api/dolfin_mech/materials/material/index.html#dolfin_mech.materials.material.Material.get_K_from_parameters">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_K_from_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the bulk modulus :math:`K`.</span>
+
+<span class="sd">		If ``&quot;K&quot;`` is not in parameters, it is derived from :math:`\lambda` and :math:`\mu`</span>
+<span class="sd">		as :math:`K = (3\lambda + 2\mu)/3`.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="s2">&quot;K&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">K</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;K&quot;</span><span class="p">]</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">lmbda</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lambda_and_mu_from_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+			<span class="n">K</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">lmbda</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span>
+		<span class="k">return</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">K</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Material.get_G_from_parameters">
+<a class="viewcode-back" href="../../../api/dolfin_mech/materials/material/index.html#dolfin_mech.materials.material.Material.get_G_from_parameters">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_G_from_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the shear modulus :math:`G`. Equivalent to :math:`\mu`.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="s2">&quot;G&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">G</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">]</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">mu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_mu_from_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+			<span class="n">G</span> <span class="o">=</span> <span class="n">mu</span>
+		<span class="k">return</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">G</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Material.get_C0_from_parameters">
+<a class="viewcode-back" href="../../../api/dolfin_mech/materials/material/index.html#dolfin_mech.materials.material.Material.get_C0_from_parameters">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_C0_from_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">decoup</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the hyperelastic coefficient :math:`C_0`.</span>
+
+<span class="sd">		This parameter is typically associated with the volumetric or</span>
+<span class="sd">		compressibility part of the strain energy density function.</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">		    parameters (dict): Dictionary of material parameters.</span>
+<span class="sd">		    decoup (bool, optional): If True, computes :math:`C_0` from the bulk</span>
+<span class="sd">		        modulus :math:`K`: :math:`C_0 = K/4`. If False, computes it</span>
+<span class="sd">		        from :math:`\lambda`: :math:`C_0 = \lambda/4`. Defaults to False.</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">		    dolfin.Constant: The computed :math:`C_0` value.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="s2">&quot;C0&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">C0</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;C0&quot;</span><span class="p">]</span>
+		<span class="k">elif</span> <span class="s2">&quot;c0&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">C0</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;c0&quot;</span><span class="p">]</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">decoup</span><span class="p">:</span>
+				<span class="n">K</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_K_from_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+				<span class="n">C0</span> <span class="o">=</span> <span class="n">K</span> <span class="o">/</span> <span class="mi">4</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="n">lmbda</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lambda_from_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+				<span class="n">C0</span> <span class="o">=</span> <span class="n">lmbda</span> <span class="o">/</span> <span class="mi">4</span>
+		<span class="k">return</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">C0</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Material.get_C1_from_parameters">
+<a class="viewcode-back" href="../../../api/dolfin_mech/materials/material/index.html#dolfin_mech.materials.material.Material.get_C1_from_parameters">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_C1_from_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the hyperelastic coefficient :math:`C_1`.</span>
+
+<span class="sd">		In many models, :math:`C_1` is related to the shear response of the material.</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">		    parameters (dict): Dictionary of material parameters.</span>
+<span class="sd">		        Expected keys: ``&quot;C1&quot;``, ``&quot;c1&quot;``, ``&quot;mu&quot;``, or (``&quot;E&quot;`` and ``&quot;nu&quot;``).</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">		    dolfin.Constant: The computed :math:`C_1` value.</span>
+
+<span class="sd">		Notes:</span>
+<span class="sd">		    If not explicitly provided, it is derived as :math:`C_1 = \mu/2`.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="s2">&quot;C1&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">C1</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;C1&quot;</span><span class="p">]</span>
+		<span class="k">elif</span> <span class="s2">&quot;c1&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">C1</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;c1&quot;</span><span class="p">]</span>
+		<span class="k">elif</span> <span class="s2">&quot;mu&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">mu</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;mu&quot;</span><span class="p">]</span>
+			<span class="n">C1</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">/</span> <span class="mi">2</span>
+		<span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;E&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;nu&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">):</span>
+			<span class="n">E</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">]</span>
+			<span class="n">nu</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;nu&quot;</span><span class="p">]</span>
+			<span class="n">mu</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nu</span><span class="p">)</span>
+			<span class="n">C1</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">/</span> <span class="mi">2</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;No parameter found (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;). Must provide C1 or c1 or mu or E &amp; nu. Aborting.&quot;</span>
+		<span class="k">return</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">C1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Material.get_C2_from_parameters">
+<a class="viewcode-back" href="../../../api/dolfin_mech/materials/material/index.html#dolfin_mech.materials.material.Material.get_C2_from_parameters">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_C2_from_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the hyperelastic coefficient :math:`C_2`.</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">		    parameters (dict): Dictionary of material parameters.</span>
+<span class="sd">		        Expected keys: ``&quot;C2&quot;``, ``&quot;c2&quot;``, ``&quot;mu&quot;``, or (``&quot;E&quot;`` and ``&quot;nu&quot;``).</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">		    dolfin.Constant: The computed :math:`C_2` value.</span>
+
+<span class="sd">		Notes:</span>
+<span class="sd">		    If not explicitly provided, it is derived as :math:`C_2 = \mu/2`.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="s2">&quot;C2&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">C2</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;C2&quot;</span><span class="p">]</span>
+		<span class="k">elif</span> <span class="s2">&quot;c2&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">C2</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;c2&quot;</span><span class="p">]</span>
+		<span class="k">elif</span> <span class="s2">&quot;mu&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">mu</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;mu&quot;</span><span class="p">]</span>
+			<span class="n">C2</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">/</span> <span class="mi">2</span>
+		<span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;E&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;nu&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">):</span>
+			<span class="n">E</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">]</span>
+			<span class="n">nu</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;nu&quot;</span><span class="p">]</span>
+			<span class="n">mu</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nu</span><span class="p">)</span>
+			<span class="n">C2</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">/</span> <span class="mi">2</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;No parameter found (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;). Must provide C2 or c2 or mu or E &amp; nu. Aborting.&quot;</span>
+		<span class="k">return</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">C2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Material.get_C1_and_C2_from_parameters">
+<a class="viewcode-back" href="../../../api/dolfin_mech/materials/material/index.html#dolfin_mech.materials.material.Material.get_C1_and_C2_from_parameters">[docs]</a>
+	<span class="k">def</span> <span class="nf">get_C1_and_C2_from_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute Mooney-Rivlin coefficients :math:`C_1` and :math:`C_2`.</span>
+
+<span class="sd">		If only ``&quot;mu&quot;`` is provided, it assumes :math:`C_1 = C_2 = \mu/4`.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="s2">&quot;C1&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;C2&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">):</span>
+			<span class="n">C1</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;C1&quot;</span><span class="p">]</span>
+			<span class="n">C2</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;C2&quot;</span><span class="p">]</span>
+		<span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;c1&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;c2&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">):</span>
+			<span class="n">C1</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;c1&quot;</span><span class="p">]</span>
+			<span class="n">C2</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;c2&quot;</span><span class="p">]</span>
+		<span class="k">elif</span> <span class="s2">&quot;mu&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+			<span class="n">mu</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;mu&quot;</span><span class="p">]</span>
+			<span class="n">C1</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">/</span> <span class="mi">4</span>
+			<span class="n">C2</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">/</span> <span class="mi">4</span>
+		<span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;E&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;nu&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">):</span>
+			<span class="n">E</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">]</span>
+			<span class="n">nu</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;nu&quot;</span><span class="p">]</span>
+			<span class="n">mu</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nu</span><span class="p">)</span>
+			<span class="n">C1</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">/</span> <span class="mi">4</span>
+			<span class="n">C2</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">/</span> <span class="mi">4</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span>
+				<span class="s2">&quot;No parameter found (&quot;</span>
+				<span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+				<span class="o">+</span> <span class="s2">&quot;). Must provide C1 &amp; C2 or c1 &amp; c2 or mu or E &amp; nu. Aborting.&quot;</span>
+			<span class="p">)</span>
+		<span class="k">return</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">C1</span><span class="p">),</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">C2</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="c1">################################################################################</span>
+
+
+<span class="c1"># def get_C_from_U_or_C(self,</span>
+<span class="c1">#         U=None,</span>
+<span class="c1">#         C=None):</span>
+
+<span class="c1">#     if (C is not None):</span>
+<span class="c1">#         assert (C.ufl_shape[0] == C.ufl_shape[1])</span>
+<span class="c1">#     elif (U is not None):</span>
+<span class="c1">#         dim = U.ufl_shape[0]</span>
+<span class="c1">#         I = dolfin.Identity(dim)</span>
+<span class="c1">#         F = I + dolfin.grad(U)</span>
+<span class="c1">#         # JF = dolfin.det(F) # MG20211220: Otherwise cannot derive Psi wrt C</span>
+<span class="c1">#         C = F.T * F</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         assert (0),\</span>
+<span class="c1">#             &quot;Must provide U or C. Aborting.&quot;</span>
+<span class="c1">#     return dolfin.variable(C)</span>
+
+
+<span class="c1"># def get_E_from_U_C_or_E(self,</span>
+<span class="c1">#         U=None,</span>
+<span class="c1">#         C=None,</span>
+<span class="c1">#         E=None):</span>
+
+<span class="c1">#     if (E is not None):</span>
+<span class="c1">#         assert (E.ufl_shape[0] == E.ufl_shape[1])</span>
+<span class="c1">#     elif (U is not None) or (C is not None):</span>
+<span class="c1">#         C = self.get_C_from_U_or_C(U, C)</span>
+<span class="c1">#         dim = C.ufl_shape[0]</span>
+<span class="c1">#         I = dolfin.Identity(dim)</span>
+<span class="c1">#         E = (C - I)/2</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         assert (0),\</span>
+<span class="c1">#             &quot;Must provide U, C or E. Aborting.&quot;</span>
+<span class="c1">#     return dolfin.variable(E)</span>
+
+
+<span class="c1"># def get_E_sph_from_U_C_E_or_E_sph(self,</span>
+<span class="c1">#         U=None,</span>
+<span class="c1">#         C=None,</span>
+<span class="c1">#         E=None,</span>
+<span class="c1">#         E_sph=None):</span>
+
+<span class="c1">#     if (E_sph is not None):</span>
+<span class="c1">#         assert (E_sph.ufl_shape[0] == E_sph.ufl_shape[1])</span>
+<span class="c1">#     elif (U is not None) or (C is not None) or (E is not None):</span>
+<span class="c1">#         E = self.get_E_from_U_C_or_E(U, C, E)</span>
+<span class="c1">#         dim = E.ufl_shape[0]</span>
+<span class="c1">#         I = dolfin.Identity(dim)</span>
+<span class="c1">#         E_sph = dolfin.tr(E)/dim * I</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         assert (0),\</span>
+<span class="c1">#             &quot;Must provide U, C, E or E_sph. Aborting.&quot;</span>
+<span class="c1">#     return dolfin.variable(E_sph)</span>
+
+
+<span class="c1"># def get_E_dev_from_U_C_E_or_E_dev(self,</span>
+<span class="c1">#         U=None,</span>
+<span class="c1">#         C=None,</span>
+<span class="c1">#         E=None,</span>
+<span class="c1">#         E_dev=None):</span>
+
+<span class="c1">#     if (E_dev is not None):</span>
+<span class="c1">#         assert (E_dev.ufl_shape[0] == E_dev.ufl_shape[1])</span>
+<span class="c1">#     elif (U is not None) or (C is not None) or (E is not None):</span>
+<span class="c1">#         E = self.get_E_from_U_C_or_E(U, C, E)</span>
+<span class="c1">#         E_sph = self.get_E_sph_from_U_C_E_or_E_sph(U, C, E)</span>
+<span class="c1">#         E_dev = E - E_sph</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         assert (0),\</span>
+<span class="c1">#             &quot;Must provide U, C, E or E_dev. Aborting.&quot;</span>
+<span class="c1">#     return dolfin.variable(E_dev)</span>
+
+
+<span class="c1"># def get_epsilon_from_U_or_epsilon(self,</span>
+<span class="c1">#         U=None,</span>
+<span class="c1">#         epsilon=None):</span>
+
+<span class="c1">#     if (epsilon is not None):</span>
+<span class="c1">#         assert (epsilon.ufl_shape[0] == epsilon.ufl_shape[1])</span>
+<span class="c1">#     elif (U is not None):</span>
+<span class="c1">#         epsilon = dolfin.sym(dolfin.grad(U))</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         assert (0),\</span>
+<span class="c1">#             &quot;Must provide U or epsilon. Aborting.&quot;</span>
+<span class="c1">#     return dolfin.variable(epsilon)</span>
+
+
+<span class="c1"># def get_epsilon_sph_from_U_epsilon_or_epsilon_sph(self,</span>
+<span class="c1">#         U=None,</span>
+<span class="c1">#         epsilon=None,</span>
+<span class="c1">#         epsilon_sph=None):</span>
+
+<span class="c1">#     if (epsilon_sph is not None):</span>
+<span class="c1">#         assert (epsilon_sph.ufl_shape[0] == epsilon_sph.ufl_shape[1])</span>
+<span class="c1">#     elif (U is not None) or (epsilon is not None):</span>
+<span class="c1">#         epsilon = self.get_epsilon_from_U_or_epsilon(U, epsilon)</span>
+<span class="c1">#         dim = epsilon.ufl_shape[0]</span>
+<span class="c1">#         I = dolfin.Identity(dim)</span>
+<span class="c1">#         epsilon_sph = dolfin.tr(epsilon)/dim * I</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         assert (0),\</span>
+<span class="c1">#             &quot;Must provide U, epsilon or epsilon_sph. Aborting.&quot;</span>
+<span class="c1">#     return dolfin.variable(epsilon_sph)</span>
+
+
+<span class="c1"># def get_epsilon_dev_from_U_epsilon_or_epsilon_dev(self,</span>
+<span class="c1">#         U=None,</span>
+<span class="c1">#         epsilon=None,</span>
+<span class="c1">#         epsilon_dev=None):</span>
+
+<span class="c1">#     if (epsilon_dev is not None):</span>
+<span class="c1">#         assert (epsilon_dev.ufl_shape[0] == epsilon_dev.ufl_shape[1])</span>
+<span class="c1">#     elif (U is not None) or (epsilon is not None):</span>
+<span class="c1">#         epsilon = self.get_epsilon_from_U_or_epsilon(U, epsilon)</span>
+<span class="c1">#         epsilon_sph = self.get_epsilon_sph_from_U_epsilon_or_epsilon_sph(U, epsilon)</span>
+<span class="c1">#         epsilon_dev = epsilon - epsilon_sph</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         assert (0),\</span>
+<span class="c1">#             &quot;Must provide U, epsilon or epsilon_dev. Aborting.&quot;</span>
+<span class="c1">#     return dolfin.variable(epsilon_dev)</span>
+
+
+<span class="c1">################################################################################</span>
+
+
+<div class="viewcode-block" id="material_factory">
+<a class="viewcode-back" href="../../../api/dolfin_mech/materials/material/index.html#dolfin_mech.materials.material.material_factory">[docs]</a>
+<span class="k">def</span> <span class="nf">material_factory</span><span class="p">(</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<span class="w">	</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Factory function to instantiate the appropriate material model class.</span>
+
+<span class="sd">	Args:</span>
+<span class="sd">	    kinematics (Kinematics): An instance of a Kinematics class.</span>
+<span class="sd">	    model (str): The name of the material model (e.g., ``&quot;Hooke&quot;``, ``&quot;NeoHookean&quot;``, ``&quot;SVK&quot;``).</span>
+<span class="sd">	    parameters (dict): Material parameters passed to the model constructor.</span>
+
+<span class="sd">	Returns:</span>
+<span class="sd">	    Material: An instance of the requested material model.</span>
+
+<span class="sd">	Example:</span>
+<span class="sd">	    &gt;&gt;&gt; mat = material_factory(kin, &quot;NH&quot;, {&quot;E&quot;: 10.0, &quot;nu&quot;: 0.3})</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">elastic</span>
+
+	<span class="k">if</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;hooke&quot;</span><span class="p">,</span> <span class="s2">&quot;Hooke&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">Hooke</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;hooke_dev&quot;</span><span class="p">,</span> <span class="s2">&quot;Hooke_dev&quot;</span><span class="p">,</span> <span class="s2">&quot;H_dev&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">HookeDev</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;hooke_bulk&quot;</span><span class="p">,</span> <span class="s2">&quot;Hooke_bulk&quot;</span><span class="p">,</span> <span class="s2">&quot;H_bulk&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">HookeBulk</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;saintvenantkirchhoff&quot;</span><span class="p">,</span> <span class="s2">&quot;SaintVenantKirchhoff&quot;</span><span class="p">,</span> <span class="s2">&quot;kirchhoff&quot;</span><span class="p">,</span> <span class="s2">&quot;Kirchhoff&quot;</span><span class="p">,</span> <span class="s2">&quot;SVK&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">Kirchhoff</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;saintvenantkirchhoff_dev&quot;</span><span class="p">,</span> <span class="s2">&quot;SaintVenantKirchhoff_dev&quot;</span><span class="p">,</span> <span class="s2">&quot;kirchhoff_dev&quot;</span><span class="p">,</span> <span class="s2">&quot;Kirchhoff_dev&quot;</span><span class="p">,</span> <span class="s2">&quot;SVK_dev&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">KirchhoffDev</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span>
+		<span class="s2">&quot;saintvenantkirchhoff_bulk&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;SaintVenantKirchhoff_bulk&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;kirchhoff_bulk&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;Kirchhoff_bulk&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;SVK_bulk&quot;</span><span class="p">,</span>
+	<span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">KirchhoffBulk</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;neohookean&quot;</span><span class="p">,</span> <span class="s2">&quot;NeoHookean&quot;</span><span class="p">,</span> <span class="s2">&quot;NH&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">NeoHookean</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;neohookean_bar&quot;</span><span class="p">,</span> <span class="s2">&quot;NeoHookean_bar&quot;</span><span class="p">,</span> <span class="s2">&quot;NH_bar&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">NeoHookean</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">decoup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;mooneyrivlin&quot;</span><span class="p">,</span> <span class="s2">&quot;MooneyRivlin&quot;</span><span class="p">,</span> <span class="s2">&quot;MR&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">MooneyRivlin</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;mooneyrivlin_bar&quot;</span><span class="p">,</span> <span class="s2">&quot;MooneyRivlin_bar&quot;</span><span class="p">,</span> <span class="s2">&quot;MR_bar&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">MooneyRivlin</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">decoup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;neohookeanmooneyrivlin&quot;</span><span class="p">,</span> <span class="s2">&quot;NeoHookeanMooneyRivlin&quot;</span><span class="p">,</span> <span class="s2">&quot;NHMR&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">NeoHookeanMooneyRivlin</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;neohookeanmooneyrivlin_bar&quot;</span><span class="p">,</span> <span class="s2">&quot;NeoHookeanMooneyRivlin_bar&quot;</span><span class="p">,</span> <span class="s2">&quot;NHMR_bar&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">NeoHookeanMooneyRivlin</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">decoup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;ogdenciarletgeymonat&quot;</span><span class="p">,</span> <span class="s2">&quot;OgdenCiarletGeymonat&quot;</span><span class="p">,</span> <span class="s2">&quot;OCG&quot;</span><span class="p">,</span> <span class="s2">&quot;ciarletgeymonat&quot;</span><span class="p">,</span> <span class="s2">&quot;CiarletGeymonat&quot;</span><span class="p">,</span> <span class="s2">&quot;CG&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">OgdenCiarletGeymonat</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span>
+		<span class="s2">&quot;ogdenciarletgeymonat_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;OgdenCiarletGeymonat_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;OCG_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;ciarletgeymonat_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;CiarletGeymonat_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;CG_bar&quot;</span><span class="p">,</span>
+	<span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">OgdenCiarletGeymonat</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">decoup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span>
+		<span class="s2">&quot;ogdenciarletgeymonatneohookean&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;OgdenCiarletGeymonatNeoHookean&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;OCGNH&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;ciarletgeymonatneohookean&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;CiarletGeymonatNeoHookean&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;CGNH&quot;</span><span class="p">,</span>
+	<span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">OgdenCiarletGeymonatNeoHookean</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span>
+		<span class="s2">&quot;ogdenciarletgeymonatneohookean_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;OgdenCiarletGeymonatNeoHookean_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;OCGNH_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;ciarletgeymonatneohookean_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;CiarletGeymonatNeoHookean_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;CGNH_bar&quot;</span><span class="p">,</span>
+	<span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">OgdenCiarletGeymonatNeoHookean</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">decoup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span>
+		<span class="s2">&quot;ogdenciarletgeymonatneohookeanmooneyrivlin&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;OgdenCiarletGeymonatNeoHookeanMooneyRivlin&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;OCGNHMR&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;ciarletgeymonatneohookeanmooneyrivlin&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;CiarletGeymonatNeoHookeanMooneyRivlin&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;CGNHMR&quot;</span><span class="p">,</span>
+	<span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">OgdenCiarletGeymonatNeoHookeanMooneyRivlin</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span>
+		<span class="s2">&quot;ogdenciarletgeymonatneohookeanmooneyrivlin_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;OgdenCiarletGeymonatNeoHookeanMooneyRivlin_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;OCGNHMR_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;ciarletgeymonatneohookeanmooneyrivlin_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;CiarletGeymonatNeoHookeanMooneyRivlin_bar&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;CGNHMR_bar&quot;</span><span class="p">,</span>
+	<span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">OgdenCiarletGeymonatNeoHookeanMooneyRivlin</span><span class="p">(</span>
+			<span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">decoup</span><span class="o">=</span><span class="kc">True</span>
+		<span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;exponentialneoHookean&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">ExponentialNeoHookean</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;exponentialogdenciarletgeymonat&quot;</span><span class="p">):</span>
+		<span class="n">material</span> <span class="o">=</span> <span class="n">elastic</span><span class="o">.</span><span class="n">ExponentialOgdenCiarletGeymonat</span><span class="p">(</span><span class="n">kinematics</span><span class="o">=</span><span class="n">kinematics</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Material model (&quot;&#39;</span> <span class="o">+</span> <span class="n">model</span> <span class="o">+</span> <span class="s1">&#39;&quot;) not recognized. Aborting.&#39;</span>
+	<span class="k">return</span> <span class="n">material</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

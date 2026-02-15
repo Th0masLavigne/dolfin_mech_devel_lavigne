@@ -1,0 +1,863 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.core.nonlinearsolver &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5283314f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_toc.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dolfin_mech/index.html">Core Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/problems/index.html">Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.core.nonlinearsolver</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dolfin_mech.core.nonlinearsolver</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf8</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### Created by Martin Genet, 2018-2025                                       ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                   ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;Defines the NonlinearSolver class.</span>
+
+<span class="sd">Provides an iterative Newton-Raphson</span>
+<span class="sd">framework for solving nonlinear problems with support for advanced</span>
+<span class="sd">linear backends (PETSc/MUMPS), adaptive relaxation techniques,</span>
+<span class="sd">and modal analysis via eigenvalue solving.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">decimal</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">dolfin</span>
+<span class="kn">import</span> <span class="nn">myPythonLibrary</span> <span class="k">as</span> <span class="nn">mypy</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">petsc4py</span>
+<span class="kn">import</span> <span class="nn">petsc4py.PETSc</span>
+
+<span class="kn">from</span> <span class="nn">.compute_error</span> <span class="kn">import</span> <span class="n">compute_error</span>
+<span class="kn">from</span> <span class="nn">.xdmffile</span> <span class="kn">import</span> <span class="n">XDMFFile</span>
+
+<span class="c1">################################################################################</span>
+
+
+<div class="viewcode-block" id="NonlinearSolver">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver">[docs]</a>
+<span class="k">class</span> <span class="nc">NonlinearSolver</span><span class="p">:</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Class for solving nonlinear systems of equations using iterative methods.</span>
+
+<span class="sd">	This solver implements a Newton-Raphson scheme with support for various</span>
+<span class="sd">	linear backends (PETSc/MUMPS) and relaxation (line-search) techniques</span>
+<span class="sd">	to improve convergence for highly nonlinear problems.</span>
+
+<span class="sd">	:param problem: The mechanical problem instance.</span>
+<span class="sd">	:type problem: dolfin_mech.problem.Problem</span>
+<span class="sd">	:param parameters: Solver parameters including &#39;linear_solver_type&#39;, &#39;sol_tol&#39;, and &#39;n_iter_max&#39;.</span>
+<span class="sd">	:type parameters: dict</span>
+<span class="sd">	:param relax_type: Type of relaxation/line-search, defaults to &quot;constant&quot;.</span>
+<span class="sd">	:type relax_type: str, optional</span>
+<span class="sd">	:param relax_parameters: Specific parameters for the chosen relaxation method.</span>
+<span class="sd">	:type relax_parameters: dict, optional</span>
+<span class="sd">	:param print_out: Output destination (&#39;stdout&#39;, &#39;argv&#39;, or a filename), defaults to True.</span>
+<span class="sd">	:type print_out: bool or str, optional</span>
+<span class="sd">	:param write_iter: If True, writes solution files for every Newton iteration, defaults to False.</span>
+<span class="sd">	:type write_iter: bool, optional</span>
+
+<span class="sd">	Attributes:</span>
+<span class="sd">	    problem (Problem): The nonlinear problem to be solved.</span>
+<span class="sd">	    linear_solver_type (str): The backend used for linear solves (&#39;petsc&#39; or &#39;dolfin&#39;).</span>
+<span class="sd">	    relax_type (str): The relaxation strategy (&#39;constant&#39;, &#39;aitken&#39;, &#39;gss&#39;, &#39;backtracking&#39;).</span>
+<span class="sd">	    sol_tol (list): Convergence tolerances for each sub-solution.</span>
+<span class="sd">	    n_iter_max (int): Maximum number of Newton iterations allowed.</span>
+<span class="sd">	    success (bool): Whether the solver converged in the last solve call.</span>
+<span class="sd">	    k_iter (int): Current Newton iteration counter.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+		<span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">relax_type</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">relax_parameters</span><span class="o">=</span><span class="p">{},</span> <span class="n">print_out</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_iter</span><span class="o">=</span><span class="kc">False</span>
+	<span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Initializes the NonlinearSolver.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">problem</span> <span class="o">=</span> <span class="n">problem</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">default_linear_solver_type</span> <span class="o">=</span> <span class="s2">&quot;petsc&quot;</span>
+		<span class="c1"># self.default_linear_solver_type = &quot;dolfin&quot;</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">linear_solver_type</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;linear_solver_type&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_linear_solver_type</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_solver_type</span> <span class="o">==</span> <span class="s2">&quot;petsc&quot;</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">PETScVector</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">jac_mat</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">PETScMatrix</span><span class="p">()</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">linear_solver</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">PETScKrylovSolver</span><span class="p">()</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">default_linear_solver_name</span> <span class="o">=</span> <span class="s2">&quot;mumps&quot;</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">linear_solver_name</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;linear_solver_name&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_linear_solver_name</span><span class="p">)</span>
+
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_solver_name</span> <span class="o">==</span> <span class="s2">&quot;mumps&quot;</span><span class="p">:</span>
+				<span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">__version__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">2018</span><span class="p">:</span>
+					<span class="n">options</span> <span class="o">=</span> <span class="n">petsc4py</span><span class="o">.</span><span class="n">PETSc</span><span class="o">.</span><span class="n">Options</span><span class="p">()</span>
+					<span class="n">options</span><span class="p">[</span><span class="s2">&quot;ksp_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;preonly&quot;</span>
+					<span class="n">options</span><span class="p">[</span><span class="s2">&quot;pc_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;lu&quot;</span>
+					<span class="n">options</span><span class="p">[</span><span class="s2">&quot;pc_factor_mat_solver_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;mumps&quot;</span>
+					<span class="n">options</span><span class="p">[</span><span class="s2">&quot;mat_mumps_icntl_33&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="n">options</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">PETScOptions</span><span class="p">()</span>
+					<span class="n">options</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;ksp_type&quot;</span><span class="p">,</span> <span class="s2">&quot;preonly&quot;</span><span class="p">)</span>
+					<span class="n">options</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;pc_type&quot;</span><span class="p">,</span> <span class="s2">&quot;lu&quot;</span><span class="p">)</span>
+					<span class="n">options</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;pc_factor_mat_solver_package&quot;</span><span class="p">,</span> <span class="s2">&quot;mumps&quot;</span><span class="p">)</span>
+					<span class="n">options</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;mat_mumps_icntl_33&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">linear_solver</span><span class="o">.</span><span class="n">ksp</span><span class="p">()</span><span class="o">.</span><span class="n">setFromOptions</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">linear_solver</span><span class="o">.</span><span class="n">ksp</span><span class="p">()</span><span class="o">.</span><span class="n">setOperators</span><span class="p">(</span><span class="n">A</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">jac_mat</span><span class="o">.</span><span class="n">mat</span><span class="p">())</span>
+
+		<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_solver_type</span> <span class="o">==</span> <span class="s2">&quot;dolfin&quot;</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Vector</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">jac_mat</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Matrix</span><span class="p">()</span>
+
+			<span class="c1"># self.default_linear_solver_name = &quot;default&quot;</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">default_linear_solver_name</span> <span class="o">=</span> <span class="s2">&quot;mumps&quot;</span>
+			<span class="c1"># self.default_linear_solver_name = &quot;petsc&quot;</span>
+			<span class="c1"># self.default_linear_solver_name = &quot;superlu&quot;</span>
+			<span class="c1"># self.default_linear_solver_name = &quot;umfpack&quot;</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">linear_solver_name</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;linear_solver_name&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_linear_solver_name</span><span class="p">)</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">linear_solver</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">LUSolver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">jac_mat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_solver_name</span><span class="p">)</span>
+			<span class="c1"># self.linear_solver.parameters[&#39;report&#39;]               = bool(0)</span>
+			<span class="c1"># self.linear_solver.parameters[&#39;reuse_factorization&#39;]  = bool(0)</span>
+			<span class="c1"># self.linear_solver.parameters[&#39;same_nonzero_pattern&#39;] = bool(1)</span>
+			<span class="c1"># self.linear_solver.parameters[&#39;symmetric&#39;]            = bool(1)</span>
+			<span class="c1"># self.linear_solver.parameters[&#39;verbose&#39;]              = bool(1)</span>
+
+		<span class="k">if</span> <span class="n">relax_type</span> <span class="o">==</span> <span class="s2">&quot;constant&quot;</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">compute_relax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_relax_constant</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">relax_val</span> <span class="o">=</span> <span class="n">relax_parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;relax&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="n">relax_type</span> <span class="o">==</span> <span class="s2">&quot;aitken&quot;</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">compute_relax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_relax_aitken</span>
+		<span class="k">elif</span> <span class="n">relax_type</span> <span class="o">==</span> <span class="s2">&quot;gss&quot;</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">compute_relax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_relax_gss</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">relax_n_iter_max</span> <span class="o">=</span> <span class="n">relax_parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;relax_n_iter_max&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="n">relax_type</span> <span class="o">==</span> <span class="s2">&quot;backtracking&quot;</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">compute_relax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_relax_backtracking</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">relax_backtracking_factor</span> <span class="o">=</span> <span class="p">(</span>
+				<span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;relax_backtracking_factor&quot;</span><span class="p">]</span>
+				<span class="k">if</span> <span class="p">(</span><span class="s2">&quot;relax_backtracking_factor&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;relax_backtracking_factor&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+				<span class="k">else</span> <span class="mf">2.0</span>
+			<span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">relax_n_iter_max</span> <span class="o">=</span> <span class="p">(</span>
+				<span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;relax_n_iter_max&quot;</span><span class="p">]</span>
+				<span class="k">if</span> <span class="p">(</span><span class="s2">&quot;relax_n_iter_max&quot;</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;relax_n_iter_max&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+				<span class="k">else</span> <span class="mi">8</span>
+			<span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">sol_tol</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sol_tol&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1e-6</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">))</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">n_iter_max</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;n_iter_max&quot;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">print_out</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">print_out</span> <span class="o">==</span> <span class="s2">&quot;stdout&quot;</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer_filename</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="k">elif</span> <span class="n">print_out</span> <span class="o">==</span> <span class="s2">&quot;argv&quot;</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer_filename</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.out&quot;</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer_filename</span> <span class="o">=</span> <span class="n">print_out</span> <span class="o">+</span> <span class="s2">&quot;.out&quot;</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer_filename</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">printer</span> <span class="o">=</span> <span class="n">mypy</span><span class="o">.</span><span class="n">Printer</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">printer_filename</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="ow">not</span> <span class="p">(</span><span class="n">print_out</span><span class="p">))</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">write_iter</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">write_iter</span><span class="p">)</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_iter</span><span class="p">:</span>
+			<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-sol-k_step=*-k_t=*.*&quot;</span><span class="p">):</span>
+				<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">functions_to_write</span> <span class="o">=</span> <span class="p">[]</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">functions_to_write</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_subsols_func_lst</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">functions_to_write</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_subsols_func_old_lst</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">functions_to_write</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_fois_func_lst</span><span class="p">()</span>
+
+<div class="viewcode-block" id="NonlinearSolver.solve">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.solve">[docs]</a>
+	<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k_t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Executes the nonlinear solve for a given time step.</span>
+
+<span class="sd">		Iteratively assembles the linear system, solves for the increment,</span>
+<span class="sd">		updates the solution, and tests for convergence.</span>
+
+<span class="sd">		:param k_step: Current load step index.</span>
+<span class="sd">		:param k_t: Current time step index.</span>
+<span class="sd">		:param dt: Time increment size.</span>
+<span class="sd">		:param t: Current total time.</span>
+<span class="sd">		:return: (success, k_iter)</span>
+<span class="sd">		:rtype: tuple(bool, int)</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="c1"># write</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_iter</span><span class="p">:</span>
+			<span class="n">xdmf_file_iter</span> <span class="o">=</span> <span class="n">XDMFFile</span><span class="p">(</span>
+				<span class="n">filename</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-sol-k_step=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k_step</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;-k_t=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k_t</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.xdmf&quot;</span><span class="p">,</span>
+				<span class="n">functions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">functions_to_write</span><span class="p">,</span>
+			<span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">update_fois</span><span class="p">()</span>
+			<span class="n">xdmf_file_iter</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">inc</span><span class="p">()</span>
+		<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span> <span class="o">+=</span> <span class="mi">1</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_var</span><span class="p">(</span><span class="s2">&quot;k_iter&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+			<span class="c1"># linear problem</span>
+			<span class="n">linear_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_solve</span><span class="p">(</span><span class="n">k_step</span><span class="o">=</span><span class="n">k_step</span><span class="p">,</span> <span class="n">k_t</span><span class="o">=</span><span class="n">k_t</span><span class="p">)</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">linear_success</span><span class="p">):</span>
+				<span class="k">break</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">compute_dsol_norm</span><span class="p">()</span>
+
+			<span class="c1"># constraints update</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+				<span class="k">for</span> <span class="n">constraint</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints</span><span class="p">:</span>
+					<span class="n">constraint</span><span class="o">.</span><span class="n">homogenize</span><span class="p">()</span>
+
+			<span class="c1"># solution update</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">compute_relax</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">update_sol</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">compute_sol_norm</span><span class="p">()</span>
+
+			<span class="c1"># internal variables update</span>
+			<span class="k">for</span> <span class="n">inelastic_behavior</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">inelastic_behaviors_internal</span><span class="p">:</span>
+				<span class="n">inelastic_behavior</span><span class="o">.</span><span class="n">update_internal_variables_after_solve</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+			<span class="c1"># write</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_iter</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">update_fois</span><span class="p">()</span>
+				<span class="n">xdmf_file_iter</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span><span class="p">)</span>
+
+			<span class="c1"># error</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">compute_sol_err</span><span class="p">()</span>
+
+			<span class="c1"># exit test</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">exit_test</span><span class="p">()</span>
+
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Nonlinear solver converged…&quot;</span><span class="p">)</span>
+				<span class="k">break</span>
+
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_iter_max</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Nonlinear solver failed to converge!&quot;</span><span class="p">)</span>
+				<span class="k">break</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">dec</span><span class="p">()</span>
+
+		<span class="c1"># write</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_iter</span><span class="p">:</span>
+			<span class="n">xdmf_file_iter</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">success</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span></div>
+
+
+<div class="viewcode-block" id="NonlinearSolver.linear_solve">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.linear_solve">[docs]</a>
+	<span class="k">def</span> <span class="nf">linear_solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k_t</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Assembles and solves the linear tangent problem :math:`\mathbf{K} \delta \mathbf{u} = -\mathbf{R}`.</span>
+
+<span class="sd">		:return: True if the linear solve was successful.</span>
+<span class="sd">		:rtype: bool</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">assemble_linear_system</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">assemble_linear_system</span><span class="p">()</span>
+
+		<span class="k">if</span> <span class="n">assemble_linear_system</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+			<span class="k">return</span> <span class="kc">False</span>
+
+		<span class="c1"># eigen problem</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">k_step</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k_t</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">0</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">eigen_solve</span><span class="p">()</span>
+
+		<span class="c1"># linear system: solve</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Solve…&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+			<span class="n">timer</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">linear_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">)</span>
+			<span class="n">timer</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">timer</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; s&quot;</span><span class="p">,</span> <span class="n">tab</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+			<span class="c1"># self.printer.print_var(&quot;dsol_func&quot;,self.problem.dsol_func.vector().get_local())</span>
+		<span class="k">except</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Linear solver failed!&quot;</span><span class="p">,</span> <span class="n">tab</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+			<span class="k">return</span> <span class="kc">False</span>
+
+		<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span><span class="o">.</span><span class="n">all</span><span class="p">()):</span>
+			<span class="c1"># self.problem.dsol_func.vector().zero()</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Solution increment is NaN!&quot;</span><span class="p">)</span>
+			<span class="k">return</span> <span class="kc">False</span>
+
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="n">dolfin</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_subsols_dfunc_lst</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="p">)</span>
+			<span class="c1"># for subsol in self.problem.subsols:</span>
+			<span class="c1">#     self.printer.print_var(&quot;d&quot;+subsol.name+&quot;_func&quot;,subsol.dfunc.vector().get_local())</span>
+
+		<span class="k">if</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">rinfo12</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_solver</span><span class="o">.</span><span class="n">ksp</span><span class="p">()</span><span class="o">.</span><span class="n">getPC</span><span class="p">()</span><span class="o">.</span><span class="n">getFactorMatrix</span><span class="p">()</span><span class="o">.</span><span class="n">getMumpsRinfog</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+			<span class="c1"># self.printer.print_sci(&quot;rinfo12&quot;,rinfo12)</span>
+			<span class="n">rinfo12</span> <span class="o">=</span> <span class="n">decimal</span><span class="o">.</span><span class="n">Decimal</span><span class="p">(</span><span class="n">rinfo12</span><span class="p">)</span>
+			<span class="c1"># self.printer.print_sci(&quot;rinfo12&quot;,rinfo12)</span>
+			<span class="n">infog34</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_solver</span><span class="o">.</span><span class="n">ksp</span><span class="p">()</span><span class="o">.</span><span class="n">getPC</span><span class="p">()</span><span class="o">.</span><span class="n">getFactorMatrix</span><span class="p">()</span><span class="o">.</span><span class="n">getMumpsInfog</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
+			<span class="c1"># self.printer.print_sci(&quot;infog34&quot;,infog34)</span>
+			<span class="n">infog34</span> <span class="o">=</span> <span class="n">decimal</span><span class="o">.</span><span class="n">Decimal</span><span class="p">(</span><span class="n">infog34</span><span class="p">)</span>
+			<span class="c1"># self.printer.print_sci(&quot;infog34&quot;,infog34)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">jac_det</span> <span class="o">=</span> <span class="n">rinfo12</span> <span class="o">*</span> <span class="p">(</span><span class="n">decimal</span><span class="o">.</span><span class="n">Decimal</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">**</span> <span class="n">infog34</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;jac_det&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">jac_det</span><span class="p">)</span>
+
+		<span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="NonlinearSolver.assemble_linear_system">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.assemble_linear_system">[docs]</a>
+	<span class="k">def</span> <span class="nf">assemble_linear_system</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Assembles the residual vector and Jacobian matrix.</span>
+
+<span class="sd">		This method handles standard integrals and special vertex-based integrals</span>
+<span class="sd">		separately to accommodate specific dolfin constraints.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="c1"># res_old</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;res_old_vec&quot;</span><span class="p">):</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">res_old_vec</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">[:]</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">res_old_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">res_old_norm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_norm</span>
+
+		<span class="c1"># linear system: Assembly</span>
+		<span class="k">if</span> <span class="nb">any</span><span class="p">(</span>
+			<span class="p">[(</span><span class="n">operator</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">integral_type</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;vertex&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">operators</span><span class="p">]</span>
+		<span class="p">):</span>  <span class="c1"># MG20190513: Cannot use point integral within assemble_system</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Assembly (without vertex integrals)…&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+			<span class="n">timer</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+			<span class="n">dolfin</span><span class="o">.</span><span class="n">assemble_system</span><span class="p">(</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">jac_form</span><span class="p">,</span>
+				<span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">res_form</span><span class="p">,</span>
+				<span class="n">bcs</span><span class="o">=</span><span class="p">[</span><span class="n">constraint</span><span class="o">.</span><span class="n">bc</span> <span class="k">for</span> <span class="n">constraint</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints</span><span class="p">],</span>
+				<span class="n">A_tensor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">jac_mat</span><span class="p">,</span>
+				<span class="n">b_tensor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">,</span>
+				<span class="n">add_values</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+				<span class="n">finalize_tensor</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+				<span class="n">form_compiler_parameters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">form_compiler_parameters</span><span class="p">,</span>
+			<span class="p">)</span>
+			<span class="n">timer</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">timer</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; s&quot;</span><span class="p">,</span> <span class="n">tab</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+			<span class="c1"># self.printer.print_var(&quot;res_vec&quot;,self.res_vec.get_local())</span>
+			<span class="c1"># self.printer.print_var(&quot;jac_mat&quot;,self.jac_mat.array())</span>
+
+			<span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">operators</span><span class="p">:</span>
+				<span class="k">if</span> <span class="n">operator</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">integral_type</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;vertex&quot;</span><span class="p">:</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Assembly (vertex integrals)…&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+					<span class="n">timer</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+					<span class="n">dolfin</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span>  <span class="c1"># MG20190513: However, vertex integrals only work if solution only has dofs on vertices…</span>
+						<span class="o">-</span><span class="n">operator</span><span class="o">.</span><span class="n">res_form</span><span class="p">,</span>
+						<span class="n">tensor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">,</span>
+						<span class="n">add_values</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+						<span class="n">finalize_tensor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+						<span class="n">form_compiler_parameters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">form_compiler_parameters</span><span class="p">,</span>
+					<span class="p">)</span>
+					<span class="n">operator</span><span class="o">.</span><span class="n">jac_form</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span>
+						<span class="n">operator</span><span class="o">.</span><span class="n">res_form</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_tria</span>
+					<span class="p">)</span>
+					<span class="n">dolfin</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span>
+						<span class="n">operator</span><span class="o">.</span><span class="n">jac_form</span><span class="p">,</span>
+						<span class="n">tensor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">jac_mat</span><span class="p">,</span>
+						<span class="n">add_values</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+						<span class="n">finalize_tensor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+						<span class="n">form_compiler_parameters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">form_compiler_parameters</span><span class="p">,</span>
+					<span class="p">)</span>
+					<span class="n">timer</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">timer</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; s&quot;</span><span class="p">,</span> <span class="n">tab</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+					<span class="c1"># self.printer.print_var(&quot;res_vec&quot;,self.res_vec.get_local())</span>
+					<span class="c1"># self.printer.print_var(&quot;jac_mat&quot;,self.jac_mat.array())</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Assembly…&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+			<span class="n">timer</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+			<span class="n">dolfin</span><span class="o">.</span><span class="n">assemble_system</span><span class="p">(</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">jac_form</span><span class="p">,</span>
+				<span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">res_form</span><span class="p">,</span>
+				<span class="n">bcs</span><span class="o">=</span><span class="p">[</span><span class="n">constraint</span><span class="o">.</span><span class="n">bc</span> <span class="k">for</span> <span class="n">constraint</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints</span><span class="p">],</span>
+				<span class="n">A_tensor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">jac_mat</span><span class="p">,</span>
+				<span class="n">b_tensor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">,</span>
+				<span class="n">add_values</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+				<span class="n">finalize_tensor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+				<span class="n">form_compiler_parameters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">form_compiler_parameters</span><span class="p">,</span>
+			<span class="p">)</span>
+			<span class="n">timer</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">timer</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; s&quot;</span><span class="p">,</span> <span class="n">tab</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+			<span class="c1"># self.printer.print_var(&quot;res_vec&quot;,self.res_vec.get_local())</span>
+			<span class="c1"># self.printer.print_var(&quot;jac_mat&quot;,self.jac_mat.array())</span>
+
+		<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Residual is NaN!&quot;</span><span class="p">)</span>
+			<span class="k">return</span> <span class="kc">False</span>
+
+		<span class="c1"># res_norm</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">res_norm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="s2">&quot;l2&quot;</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;res_norm&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_norm</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_norm</span> <span class="o">&gt;</span> <span class="mf">1e9</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Residual is too large!&quot;</span><span class="p">)</span>
+			<span class="k">return</span> <span class="kc">False</span>
+
+		<span class="c1"># res_err</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">res_norm0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_norm</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">res_err</span> <span class="o">=</span> <span class="n">compute_error</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">res_norm</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">res_norm0</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;res_err&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_err</span><span class="p">)</span>
+
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_err</span> <span class="o">&gt;</span> <span class="mf">1e3</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Residual is increasing too much!&quot;</span><span class="p">)</span>
+				<span class="k">return</span> <span class="kc">False</span>
+
+		<span class="c1"># dres</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;dres_vec&quot;</span><span class="p">):</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">dres_vec</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">[:]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_old_vec</span><span class="p">[:]</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">dres_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_old_vec</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">dres_norm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dres_vec</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="s2">&quot;l2&quot;</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;dres_norm&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dres_norm</span><span class="p">)</span>
+
+		<span class="c1"># res_err_rel</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">res_err_rel</span> <span class="o">=</span> <span class="n">compute_error</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dres_norm</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">res_old_norm</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;res_err_rel&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_err_rel</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NonlinearSolver.eigen_solve">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.eigen_solve">[docs]</a>
+	<span class="k">def</span> <span class="nf">eigen_solve</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Solves the eigenproblem for the Jacobian matrix to identify modal shapes.&quot;&quot;&quot;</span>
+		<span class="n">jac_eigensolver</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">SLEPcEigenSolver</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">as_backend_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">jac_mat</span><span class="p">))</span>
+
+		<span class="c1"># jac_eigensolver.parameters[&quot;problem_type&quot;] = &quot;non_hermitian&quot;</span>
+		<span class="n">jac_eigensolver</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;problem_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;hermitian&quot;</span>
+
+		<span class="n">jac_eigensolver</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;solver&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;krylov-schur&quot;</span>
+		<span class="c1"># jac_eigensolver.parameters[&quot;solver&quot;] = &quot;power&quot;</span>
+		<span class="c1"># jac_eigensolver.parameters[&quot;solver&quot;] = &quot;subspace&quot;</span>
+		<span class="c1"># jac_eigensolver.parameters[&quot;solver&quot;] = &quot;arnoldi&quot;</span>
+		<span class="c1"># jac_eigensolver.parameters[&quot;solver&quot;] = &quot;lanczos&quot;</span>
+
+		<span class="c1"># jac_eigensolver.parameters[&quot;tolerance&quot;] = 1e-1</span>
+		<span class="c1"># jac_eigensolver.parameters[&quot;maximum_iterations&quot;] = 100</span>
+
+		<span class="n">jac_eigensolver</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;verbose&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+		<span class="n">mode_func</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_fs</span><span class="p">)</span>
+
+		<span class="n">n_modes</span> <span class="o">=</span> <span class="mi">10</span>
+		<span class="n">spectrums</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="c1"># spectrums += [&quot;largest&quot;]</span>
+		<span class="n">spectrums</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;smallest&quot;</span><span class="p">]</span>
+
+		<span class="k">for</span> <span class="n">spectrum</span> <span class="ow">in</span> <span class="n">spectrums</span><span class="p">:</span>
+			<span class="n">jac_eigensolver</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;spectrum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spectrum</span> <span class="o">+</span> <span class="s2">&quot; magnitude&quot;</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Eigenproblem solve…&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+			<span class="n">timer</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+			<span class="n">jac_eigensolver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">n_modes</span><span class="p">)</span>
+			<span class="n">timer</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">timer</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; s&quot;</span><span class="p">,</span> <span class="n">tab</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+			<span class="n">n_converged</span> <span class="o">=</span> <span class="n">jac_eigensolver</span><span class="o">.</span><span class="n">get_number_converged</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot; (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_converged</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; converged modes)&quot;</span><span class="p">,</span> <span class="n">tab</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+			<span class="n">xdmf_file_modes</span> <span class="o">=</span> <span class="n">XDMFFile</span><span class="p">(</span>
+				<span class="n">filename</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-eigenmodes-&quot;</span> <span class="o">+</span> <span class="n">spectrum</span> <span class="o">+</span> <span class="s2">&quot;.xdmf&quot;</span><span class="p">,</span> <span class="n">functions</span><span class="o">=</span><span class="p">[</span><span class="n">mode_func</span><span class="p">]</span>
+			<span class="p">)</span>
+			<span class="k">for</span> <span class="n">k_mode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_converged</span><span class="p">):</span>
+				<span class="c1"># print(k_mode+1)</span>
+				<span class="n">val_r</span><span class="p">,</span> <span class="n">val_c</span><span class="p">,</span> <span class="n">vec_r</span><span class="p">,</span> <span class="n">vec_c</span> <span class="o">=</span> <span class="n">jac_eigensolver</span><span class="o">.</span><span class="n">get_eigenpair</span><span class="p">(</span><span class="n">k_mode</span><span class="p">)</span>
+				<span class="c1"># print(val_r)</span>
+				<span class="n">mode_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()[:]</span> <span class="o">=</span> <span class="n">vec_r</span><span class="p">[:]</span>
+				<span class="n">xdmf_file_modes</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">k_mode</span><span class="p">)</span>
+			<span class="n">xdmf_file_modes</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="NonlinearSolver.compute_dsol_norm">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_dsol_norm">[docs]</a>
+	<span class="k">def</span> <span class="nf">compute_dsol_norm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Computes and prints the L2 norm of the solution increment.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dsubsol_norm_lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">subsol</span><span class="o">.</span><span class="n">dfunc</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="s2">&quot;l2&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">]</span>
+		<span class="k">for</span> <span class="n">k_subsol</span><span class="p">,</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;d&quot;</span> <span class="o">+</span> <span class="n">subsol</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_norm&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dsubsol_norm_lst</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="NonlinearSolver.compute_relax_constant">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_constant">[docs]</a>
+	<span class="k">def</span> <span class="nf">compute_relax_constant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sets a constant relaxation factor :math:`\omega`.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">relax</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># MG20180505: Otherwise Dirichlet boundary conditions are not correctly enforced</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">relax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relax_val</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;relax&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">relax</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NonlinearSolver.compute_relax_aitken">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_aitken">[docs]</a>
+	<span class="k">def</span> <span class="nf">compute_relax_aitken</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Computes the relaxation factor using the Aitken dynamic method.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">relax</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># MG20180505: Otherwise Dirichlet boundary conditions are not correctly enforced</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">relax</span> <span class="o">*=</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_old_vec</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dres_vec</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dres_norm</span><span class="o">**</span><span class="mi">2</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;relax&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">relax</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NonlinearSolver.compute_relax_gss">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_gss">[docs]</a>
+	<span class="k">def</span> <span class="nf">compute_relax_gss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Computes the optimal relaxation using a Golden Section Search on the potential energy.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">k_iter</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">relax</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># MG20180505: Otherwise Dirichlet boundary conditions are not correctly enforced</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">phi</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+			<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">phi</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="n">phi</span><span class="p">)</span>
+			<span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="n">phi</span><span class="p">)</span>
+			<span class="n">need_update_c</span> <span class="o">=</span> <span class="kc">True</span>
+			<span class="n">need_update_d</span> <span class="o">=</span> <span class="kc">True</span>
+			<span class="n">cur</span> <span class="o">=</span> <span class="mf">0.0</span>
+			<span class="n">relax_list</span> <span class="o">=</span> <span class="p">[]</span>
+			<span class="n">relax_vals</span> <span class="o">=</span> <span class="p">[]</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">inc</span><span class="p">()</span>
+			<span class="n">relax_k</span> <span class="o">=</span> <span class="mi">0</span>
+			<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_var</span><span class="p">(</span><span class="s2">&quot;relax_k&quot;</span><span class="p">,</span> <span class="n">relax_k</span><span class="p">)</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+				<span class="k">if</span> <span class="n">need_update_c</span><span class="p">:</span>
+					<span class="n">c</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">phi</span>
+					<span class="n">relax_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">axpy</span><span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="n">cur</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span>
+					<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+						<span class="n">dolfin</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_subsols_func_lst</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="p">)</span>
+					<span class="n">cur</span> <span class="o">=</span> <span class="n">c</span>
+					<span class="n">relax_fc</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span>
+						<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Pi_expr</span><span class="p">,</span> <span class="n">form_compiler_parameters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">form_compiler_parameters</span>
+					<span class="p">)</span>
+					<span class="c1"># self.printer.print_sci(&quot;relax_fc&quot;,relax_fc)</span>
+					<span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">relax_fc</span><span class="p">):</span>
+						<span class="n">relax_fc</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;+inf&quot;</span><span class="p">)</span>
+						<span class="c1"># self.printer.print_sci(&quot;relax_fc&quot;,relax_fc)</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;relax_fc&quot;</span><span class="p">,</span> <span class="n">relax_fc</span><span class="p">)</span>
+					<span class="n">relax_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">relax_fc</span><span class="p">)</span>
+					<span class="c1"># self.printer.print_var(&quot;relax_list&quot;,relax_list)</span>
+					<span class="c1"># self.printer.print_var(&quot;relax_vals&quot;,relax_vals)</span>
+				<span class="k">if</span> <span class="n">need_update_d</span><span class="p">:</span>
+					<span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">phi</span>
+					<span class="n">relax_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">axpy</span><span class="p">(</span><span class="n">d</span> <span class="o">-</span> <span class="n">cur</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span>
+					<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+						<span class="n">dolfin</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_subsols_func_lst</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="p">)</span>
+					<span class="n">cur</span> <span class="o">=</span> <span class="n">d</span>
+					<span class="n">relax_fd</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span>
+						<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Pi_expr</span><span class="p">,</span> <span class="n">form_compiler_parameters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">form_compiler_parameters</span>
+					<span class="p">)</span>
+					<span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">relax_fd</span><span class="p">):</span>
+						<span class="n">relax_fd</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;+inf&quot;</span><span class="p">)</span>
+						<span class="c1"># self.printer.print_sci(&quot;relax_fd&quot;,relax_fd)</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;relax_fd&quot;</span><span class="p">,</span> <span class="n">relax_fd</span><span class="p">)</span>
+					<span class="n">relax_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">relax_fd</span><span class="p">)</span>
+					<span class="c1"># self.printer.print_var(&quot;relax_list&quot;,relax_list)</span>
+					<span class="c1"># self.printer.print_var(&quot;relax_vals&quot;,relax_vals)</span>
+				<span class="c1"># if ((relax_fc &lt; 1e-12) and (relax_fd &lt; 1e-12)):</span>
+				<span class="c1"># break</span>
+				<span class="k">if</span> <span class="n">relax_fc</span> <span class="o">&lt;</span> <span class="n">relax_fd</span><span class="p">:</span>
+					<span class="n">b</span> <span class="o">=</span> <span class="n">d</span>
+					<span class="n">d</span> <span class="o">=</span> <span class="n">c</span>
+					<span class="n">relax_fd</span> <span class="o">=</span> <span class="n">relax_fc</span>
+					<span class="n">need_update_c</span> <span class="o">=</span> <span class="kc">True</span>
+					<span class="n">need_update_d</span> <span class="o">=</span> <span class="kc">False</span>
+				<span class="k">elif</span> <span class="n">relax_fc</span> <span class="o">&gt;=</span> <span class="n">relax_fd</span><span class="p">:</span>
+					<span class="n">a</span> <span class="o">=</span> <span class="n">c</span>
+					<span class="n">c</span> <span class="o">=</span> <span class="n">d</span>
+					<span class="n">relax_fc</span> <span class="o">=</span> <span class="n">relax_fd</span>
+					<span class="n">need_update_c</span> <span class="o">=</span> <span class="kc">False</span>
+					<span class="n">need_update_d</span> <span class="o">=</span> <span class="kc">True</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="k">assert</span> <span class="mi">0</span>
+				<span class="k">if</span> <span class="n">relax_k</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relax_n_iter_max</span><span class="p">:</span>
+					<span class="c1"># if (relax_k &gt;= 9) and (numpy.argmin(relax_vals) &gt; 0):</span>
+					<span class="k">break</span>
+				<span class="n">relax_k</span> <span class="o">+=</span> <span class="mi">1</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">dec</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">axpy</span><span class="p">(</span><span class="o">-</span><span class="n">cur</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span>
+			<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+				<span class="n">dolfin</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_subsols_func_lst</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="p">)</span>
+			<span class="c1"># self.printer.print_var(&quot;relax_vals&quot;,relax_vals)</span>
+
+			<span class="bp">self</span><span class="o">.</span><span class="n">relax</span> <span class="o">=</span> <span class="n">relax_list</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">relax_vals</span><span class="p">)]</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="s2">&quot;relax&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">relax</span><span class="p">)</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">relax</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Optimal relaxation is null…&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NonlinearSolver.compute_relax_backtracking">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_relax_backtracking">[docs]</a>
+	<span class="k">def</span> <span class="nf">compute_relax_backtracking</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Computes relaxation using a backtracking line-search until residual is finite.&quot;&quot;&quot;</span>
+		<span class="n">k_relax</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">inc</span><span class="p">()</span>
+		<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+			<span class="n">relax</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">relax_backtracking_factor</span> <span class="o">**</span> <span class="p">(</span><span class="n">k_relax</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">axpy</span><span class="p">(</span><span class="n">relax</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">assemble_linear_system</span><span class="p">()</span>
+			<span class="n">res_is_finite</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+			<span class="c1"># print(&quot;numpy.isfinite(self.res_vec).all()&quot;, res_is_finite)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">axpy</span><span class="p">(</span><span class="o">-</span><span class="n">relax</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span>
+			<span class="k">if</span> <span class="n">res_is_finite</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">relax</span> <span class="o">=</span> <span class="n">relax</span>
+				<span class="k">break</span>
+			<span class="k">if</span> <span class="n">k_relax</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">relax_n_iter_max</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">relax</span> <span class="o">=</span> <span class="mf">0.0</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Optimal relaxation is null…&quot;</span><span class="p">)</span>
+				<span class="k">break</span>
+			<span class="n">k_relax</span> <span class="o">+=</span> <span class="mi">1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">dec</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="NonlinearSolver.update_sol">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.update_sol">[docs]</a>
+	<span class="k">def</span> <span class="nf">update_sol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Updates the solution vector by adding the relaxed increment.&quot;&quot;&quot;</span>
+		<span class="c1"># for constraint in self.problem.constraints+self.problem.steps[k_step-1].constraints:</span>
+		<span class="c1">#     print(constraint.bc.get_boundary_values())</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">axpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">relax</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span>
+		<span class="c1"># for constraint in self.problem.constraints+self.problem.steps[k_step-1].constraints:</span>
+		<span class="c1">#     print(constraint.bc.get_boundary_values())</span>
+		<span class="c1"># self.printer.print_var(&quot;sol_func&quot;,self.problem.sol_func.vector().get_local())</span>
+
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="n">dolfin</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_subsols_func_lst</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="p">)</span></div>
+
+			<span class="c1"># for subsol in self.problem.subsols):</span>
+			<span class="c1">#     self.printer.print_var(subsol.name+&quot;_func&quot;,subsol.func.vector().get_local())</span>
+
+<div class="viewcode-block" id="NonlinearSolver.compute_sol_norm">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_sol_norm">[docs]</a>
+	<span class="k">def</span> <span class="nf">compute_sol_norm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Computes and prints L2 norms for the current and previous solutions.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">subsol_norm_lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">subsol</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="s2">&quot;l2&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">subsol_norm_old_lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">subsol</span><span class="o">.</span><span class="n">func_old</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="s2">&quot;l2&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">]</span>
+		<span class="k">for</span> <span class="n">k_subsol</span><span class="p">,</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="n">subsol</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_norm&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">subsol_norm_lst</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">])</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="n">subsol</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_norm_old&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">subsol_norm_old_lst</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="NonlinearSolver.compute_sol_err">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.compute_sol_err">[docs]</a>
+	<span class="k">def</span> <span class="nf">compute_sol_err</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Computes the relative error between current and old solution norms.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">subsol_err_lst</span> <span class="o">=</span> <span class="p">[</span>
+			<span class="n">compute_error</span><span class="p">(</span>
+				<span class="n">val</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dsubsol_norm_lst</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">],</span>
+				<span class="n">ref</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subsol_norm_lst</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">subsol_norm_old_lst</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">]),</span>
+			<span class="p">)</span>
+			<span class="k">for</span> <span class="n">k_subsol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">))</span>
+		<span class="p">]</span>
+		<span class="k">for</span> <span class="n">k_subsol</span><span class="p">,</span> <span class="n">subsol</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_sci</span><span class="p">(</span><span class="n">subsol</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_err&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">subsol_err_lst</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="NonlinearSolver.exit_test">
+<a class="viewcode-back" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html#dolfin_mech.core.nonlinearsolver.NonlinearSolver.exit_test">[docs]</a>
+	<span class="k">def</span> <span class="nf">exit_test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;Checks if the solution error is below the tolerance for all sub-solutions.</span>
+<span class="sd">		Sets ``self.success`` accordingly.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span>
+			<span class="p">[</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">subsol_err_lst</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_tol</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">]</span>
+				<span class="k">for</span> <span class="n">k_subsol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">))</span>
+				<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sol_tol</span><span class="p">[</span><span class="n">k_subsol</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+			<span class="p">]</span>
+		<span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

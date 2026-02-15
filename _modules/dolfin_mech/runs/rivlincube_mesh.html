@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.runs.rivlincube_mesh &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5283314f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_toc.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dolfin_mech/index.html">Core Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/problems/index.html">Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/problems/problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dolfin_mech/runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/dolfin_mech/runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.runs.rivlincube_mesh</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dolfin_mech.runs.rivlincube_mesh</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf8</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### Created by Martin Genet, 2018-2025                                       ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">### École Polytechnique, Palaiseau, France                                   ###</span>
+<span class="c1">###                                                                          ###</span>
+<span class="c1">################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;Defines the RivlinCube_Mesh utility.</span>
+
+<span class="sd">Generates structured rectangular</span>
+<span class="sd">or box meshes in FEniCS. It automates the discretization process based on</span>
+<span class="sd">user-defined characteristic lengths and produces pre-tagged MeshFunctions</span>
+<span class="sd">for all planar faces to facilitate easy application of boundary conditions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">dolfin</span>
+
+<span class="c1">################################################################################</span>
+
+
+<div class="viewcode-block" id="RivlinCube_Mesh">
+<a class="viewcode-back" href="../../../api/dolfin_mech/runs/rivlincube_mesh/index.html#dolfin_mech.runs.rivlincube_mesh.RivlinCube_Mesh">[docs]</a>
+<span class="k">def</span> <span class="nf">RivlinCube_Mesh</span><span class="p">(</span><span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Generates a structured rectangular (2D) or box (3D) mesh using FEniCS.</span>
+
+<span class="sd">	This function creates the geometry for the Rivlin Cube benchmark. It supports</span>
+<span class="sd">	arbitrary bounding box dimensions and mesh refinement levels.</span>
+<span class="sd">	Crucially, it identifies and marks all 4 (2D) or 6 (3D) planar boundaries,</span>
+<span class="sd">	enabling precise application of boundary conditions like symmetry planes</span>
+<span class="sd">	or surface tractions.</span>
+
+
+
+<span class="sd">	**Boundaries:**</span>
+<span class="sd">	- **xmin** (ID 1): Left face (:math:`x = X_0`).</span>
+<span class="sd">	- **xmax** (ID 2): Right face (:math:`x = X_1`).</span>
+<span class="sd">	- **ymin** (ID 3): Bottom face (:math:`y = Y_0`).</span>
+<span class="sd">	- **ymax** (ID 4): Top face (:math:`y = Y_1`).</span>
+<span class="sd">	- **zmin** (ID 5): Back face (:math:`z = Z_0`) *[3D only]*.</span>
+<span class="sd">	- **zmax** (ID 6): Front face (:math:`z = Z_1`) *[3D only]*.</span>
+
+<span class="sd">	:param dim: Mesh dimension (2 or 3).</span>
+<span class="sd">	:type dim: int</span>
+<span class="sd">	:param params: Dictionary of mesh parameters:</span>
+<span class="sd">	    - ``X0``, ``X1``, ``Y0``, ``Y1``, ``Z0``, ``Z1`` (float): Bounding box coordinates.</span>
+<span class="sd">	    - ``l`` (float): Characteristic element size (determines number of divisions).</span>
+<span class="sd">	    - ``refine`` (bool): If True, performs one uniform refinement step.</span>
+<span class="sd">	    - ``mesh_filebasename`` (str): Output filename prefix (default: &quot;mesh&quot;).</span>
+<span class="sd">	:type params: dict</span>
+<span class="sd">	:return: A tuple containing:</span>
+<span class="sd">	    - ``mesh`` (dolfin.Mesh): The generated mesh.</span>
+<span class="sd">	    - ``boundaries_mf`` (dolfin.MeshFunction): Surface markers.</span>
+<span class="sd">	    - ``xmin_id`` ... ``zmax_id`` (int): The integer IDs for each face.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">X0</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;X0&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+	<span class="n">X1</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+	<span class="n">Y0</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Y0&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+	<span class="n">Y1</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Y1&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">Z0</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Z0&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">Z1</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Z1&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+	<span class="n">l</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+	<span class="n">mesh_filebasename</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mesh_filebasename&quot;</span><span class="p">,</span> <span class="s2">&quot;mesh&quot;</span><span class="p">)</span>
+
+	<span class="n">LX</span> <span class="o">=</span> <span class="n">X1</span> <span class="o">-</span> <span class="n">X0</span>
+	<span class="n">LY</span> <span class="o">=</span> <span class="n">Y1</span> <span class="o">-</span> <span class="n">Y0</span>
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">LZ</span> <span class="o">=</span> <span class="n">Z1</span> <span class="o">-</span> <span class="n">Z0</span>
+
+	<span class="n">NX</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">LX</span> <span class="o">/</span> <span class="n">l</span><span class="p">)</span>
+	<span class="n">NY</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">LY</span> <span class="o">/</span> <span class="n">l</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">NZ</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">LZ</span> <span class="o">/</span> <span class="n">l</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="n">mesh</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">RectangleMesh</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">NX</span><span class="p">,</span> <span class="n">NY</span><span class="p">,</span> <span class="s2">&quot;crossed&quot;</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">mesh</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">BoxMesh</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">Z0</span><span class="p">),</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="n">Z1</span><span class="p">),</span> <span class="n">NX</span><span class="p">,</span> <span class="n">NY</span><span class="p">,</span> <span class="n">NZ</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;refine&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+		<span class="n">mesh</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">refine</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+
+	<span class="n">xdmf_file_mesh</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">XDMFFile</span><span class="p">(</span><span class="n">mesh_filebasename</span> <span class="o">+</span> <span class="s2">&quot;.xdmf&quot;</span><span class="p">)</span>
+	<span class="n">xdmf_file_mesh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+	<span class="n">xdmf_file_mesh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+	<span class="n">dolfin</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">mesh_filebasename</span> <span class="o">+</span> <span class="s2">&quot;.xml&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">mesh</span>
+
+	<span class="c1">################################################## Subdomains &amp; Measures ###</span>
+
+	<span class="n">xmin_sd</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">CompiledSubDomain</span><span class="p">(</span><span class="s2">&quot;near(x[0], x0) &amp;&amp; on_boundary&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">X0</span><span class="p">)</span>
+	<span class="n">xmax_sd</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">CompiledSubDomain</span><span class="p">(</span><span class="s2">&quot;near(x[0], x0) &amp;&amp; on_boundary&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">X1</span><span class="p">)</span>
+	<span class="n">ymin_sd</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">CompiledSubDomain</span><span class="p">(</span><span class="s2">&quot;near(x[1], x0) &amp;&amp; on_boundary&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">Y0</span><span class="p">)</span>
+	<span class="n">ymax_sd</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">CompiledSubDomain</span><span class="p">(</span><span class="s2">&quot;near(x[1], x0) &amp;&amp; on_boundary&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">Y1</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">zmin_sd</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">CompiledSubDomain</span><span class="p">(</span><span class="s2">&quot;near(x[2], x0) &amp;&amp; on_boundary&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">Z0</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">zmax_sd</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">CompiledSubDomain</span><span class="p">(</span><span class="s2">&quot;near(x[2], x0) &amp;&amp; on_boundary&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">Z1</span><span class="p">)</span>
+
+	<span class="n">xmin_id</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="n">xmax_id</span> <span class="o">=</span> <span class="mi">2</span>
+	<span class="n">ymin_id</span> <span class="o">=</span> <span class="mi">3</span>
+	<span class="n">ymax_id</span> <span class="o">=</span> <span class="mi">4</span>
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">zmin_id</span> <span class="o">=</span> <span class="mi">5</span>
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">zmax_id</span> <span class="o">=</span> <span class="mi">6</span>
+
+	<span class="n">boundaries_mf</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">MeshFunction</span><span class="p">(</span>
+		<span class="s2">&quot;size_t&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="p">()</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+	<span class="p">)</span>  <span class="c1"># MG20180418: size_t looks like unsigned int, but more robust wrt architecture and os</span>
+	<span class="n">boundaries_mf</span><span class="o">.</span><span class="n">set_all</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+	<span class="n">xmin_sd</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">xmin_id</span><span class="p">)</span>
+	<span class="n">xmax_sd</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">xmax_id</span><span class="p">)</span>
+	<span class="n">ymin_sd</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">ymin_id</span><span class="p">)</span>
+	<span class="n">ymax_sd</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">ymax_id</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">zmin_sd</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">zmin_id</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">zmax_sd</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">zmax_id</span><span class="p">)</span>
+
+	<span class="c1"># xdmf_file_boundaries = dolfin.XDMFFile(&quot;boundaries.xdmf&quot;)</span>
+	<span class="c1"># xdmf_file_boundaries.write(boundaries_mf)</span>
+	<span class="c1"># xdmf_file_boundaries.close()</span>
+
+	<span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">xmin_id</span><span class="p">,</span> <span class="n">xmax_id</span><span class="p">,</span> <span class="n">ymin_id</span><span class="p">,</span> <span class="n">ymax_id</span>
+	<span class="k">elif</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">boundaries_mf</span><span class="p">,</span> <span class="n">xmin_id</span><span class="p">,</span> <span class="n">xmax_id</span><span class="p">,</span> <span class="n">ymin_id</span><span class="p">,</span> <span class="n">ymax_id</span><span class="p">,</span> <span class="n">zmin_id</span><span class="p">,</span> <span class="n">zmax_id</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

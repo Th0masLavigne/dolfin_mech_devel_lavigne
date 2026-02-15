@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dolfin_mech.problems.problem_hyperelasticity_poro_inverse &mdash; dolfin_mech</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
@@ -17,7 +17,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=da73159d"></script>
+      <script src="../../../../_static/documentation_options.js?v=5283314f"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -173,7 +173,7 @@ reference geometry estimation.</p>
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.problems.problem_hyperelasticity_poro_inverse.</span></span><span class="sig-name descname"><span class="pre">InversePoroHyperelasticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.problems.problem_hyperelasticity_poro_inverse.</span></span><span class="sig-name descname"><span class="pre">InversePoroHyperelasticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_poro_inverse.html#InversePoroHyperelasticity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../problem_hyperelasticity_poro/index.html#dolfin_mech.problems.problem_hyperelasticity_poro.PoroHyperelasticity" title="dolfin_mech.problems.problem_hyperelasticity_poro.PoroHyperelasticity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin_mech.problems.problem_hyperelasticity_poro.PoroHyperelasticity</span></code></a></p>
 <p>Problem class for solving inverse poro-hyperelasticity problems.</p>
 <p>Unlike the forward problem which predicts deformation from loads, the
@@ -195,7 +195,7 @@ fraction is assumed known, and the spatial porosity is derived.</p></li>
 </ol>
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.set_known_and_unknown_porosity">
-<span class="sig-name descname"><span class="pre">set_known_and_unknown_porosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">porosity_known</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.set_known_and_unknown_porosity" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_known_and_unknown_porosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">porosity_known</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_poro_inverse.html#InversePoroHyperelasticity.set_known_and_unknown_porosity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.set_known_and_unknown_porosity" title="Link to this definition"></a></dt>
 <dd><p>Configures which porosity field is treated as known data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -213,7 +213,7 @@ density) is known. The spatial porosity <code class="docutils literal notranslat
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.get_deformed_center_of_mass">
-<span class="sig-name descname"><span class="pre">get_deformed_center_of_mass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.get_deformed_center_of_mass" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_deformed_center_of_mass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_poro_inverse.html#InversePoroHyperelasticity.get_deformed_center_of_mass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.get_deformed_center_of_mass" title="Link to this definition"></a></dt>
 <dd><p>Calculates the center of mass of the body in the current (deformed) configuration.</p>
 <p>This is often required for setting up gravity loading or for pinning
 rigid body motions in the inverse problem.</p>
@@ -226,7 +226,7 @@ rigid body motions in the inverse problem.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.set_kinematics">
-<span class="sig-name descname"><span class="pre">set_kinematics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.set_kinematics" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_kinematics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_poro_inverse.html#InversePoroHyperelasticity.set_kinematics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.set_kinematics" title="Link to this definition"></a></dt>
 <dd><p>Initializes the inverse kinematic framework.</p>
 <p>Defines the deformation gradient <span class="math notranslate nohighlight">\(\mathbf{F} = (\nabla_{\mathbf{x}} \mathbf{X})^{-1}\)</span>
 where the mesh represents the spatial domain <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and the
@@ -236,7 +236,7 @@ unknown is the reference coordinate mapping <span class="math notranslate nohigh
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.set_porosity_fields">
-<span class="sig-name descname"><span class="pre">set_porosity_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.set_porosity_fields" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_porosity_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_poro_inverse.html#InversePoroHyperelasticity.set_porosity_fields"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.set_porosity_fields" title="Link to this definition"></a></dt>
 <dd><p>Derives the dependent porosity field based on the mass conservation constraint.</p>
 <p>The relationship between reference solid volume fraction <span class="math notranslate nohighlight">\(\phi_{s0}\)</span>
 and current solid volume fraction <span class="math notranslate nohighlight">\(\phi_s\)</span> is governed by the Jacobian:</p>
@@ -247,7 +247,7 @@ and current solid volume fraction <span class="math notranslate nohighlight">\(\
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_local_porosity_fois">
-<span class="sig-name descname"><span class="pre">add_local_porosity_fois</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_local_porosity_fois" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_local_porosity_fois</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_poro_inverse.html#InversePoroHyperelasticity.add_local_porosity_fois"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_local_porosity_fois" title="Link to this definition"></a></dt>
 <dd><p>Registers Fields of Interest (FOI) for visualization of porosity distributions.</p>
 <dl class="simple">
 <dt>Adds the following fields:</dt><dd><ul class="simple">
@@ -262,7 +262,7 @@ and current solid volume fraction <span class="math notranslate nohighlight">\(\
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_Wskel_operator">
-<span class="sig-name descname"><span class="pre">add_Wskel_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_scaling</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subdomain_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_Wskel_operator" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_Wskel_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_scaling</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subdomain_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_poro_inverse.html#InversePoroHyperelasticity.add_Wskel_operator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_Wskel_operator" title="Link to this definition"></a></dt>
 <dd><p>Adds the inverse strain energy operator for the solid skeleton.</p>
 <p>Calculates the virtual work contributions from the hyperelastic skeleton
 in the inverse configuration.</p>
@@ -270,7 +270,7 @@ in the inverse configuration.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_Wbulk_operator">
-<span class="sig-name descname"><span class="pre">add_Wbulk_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_scaling</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subdomain_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_Wbulk_operator" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_Wbulk_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_scaling</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subdomain_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_poro_inverse.html#InversePoroHyperelasticity.add_Wbulk_operator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_Wbulk_operator" title="Link to this definition"></a></dt>
 <dd><p>Adds the operator for the bulk compressibility of the mixture.</p>
 <p>This penalizes volume changes that deviate from the constitutive
 behavior of the constituents.</p>
@@ -278,7 +278,7 @@ behavior of the constituents.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_Wpore_operator">
-<span class="sig-name descname"><span class="pre">add_Wpore_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_scaling</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subdomain_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_Wpore_operator" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_Wpore_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_scaling</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subdomain_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_poro_inverse.html#InversePoroHyperelasticity.add_Wpore_operator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_Wpore_operator" title="Link to this definition"></a></dt>
 <dd><p>Adds the operator handling the pore pressure contribution.</p>
 <p>This links the porosity changes to the fluid pressure in the
 inverse formulation.</p>
@@ -286,7 +286,7 @@ inverse formulation.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_pressure_balancing_gravity0_loading_operator">
-<span class="sig-name descname"><span class="pre">add_pressure_balancing_gravity0_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_pressure_balancing_gravity0_loading_operator" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_pressure_balancing_gravity0_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_poro_inverse.html#InversePoroHyperelasticity.add_pressure_balancing_gravity0_loading_operator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_pressure_balancing_gravity0_loading_operator" title="Link to this definition"></a></dt>
 <dd><p>Adds a specialized operator to balance internal pressure with gravity in the reference state.</p>
 <p>In many inverse problems (like finding the reference shape of a lung),
 the reference state is defined by an equilibrium between an internal
@@ -297,7 +297,7 @@ specific equilibrium.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_global_porosity_qois">
-<span class="sig-name descname"><span class="pre">add_global_porosity_qois</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_global_porosity_qois" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_global_porosity_qois</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dolfin_mech/problems/problem_hyperelasticity_poro_inverse.html#InversePoroHyperelasticity.add_global_porosity_qois"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_poro_inverse.InversePoroHyperelasticity.add_global_porosity_qois" title="Link to this definition"></a></dt>
 <dd><p>Adds Quantities of Interest (QOI) for global porosity metrics.</p>
 <p>Integrates the porosity fields over the domain to obtain total solid
 and fluid volumes in both reference and spatial configurations.</p>

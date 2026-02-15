@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dolfin_mech.materials.elastic.kirchhoff &mdash; dolfin_mech</title>
-      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
@@ -17,7 +17,7 @@
   
       <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../../_static/documentation_options.js?v=da73159d"></script>
+      <script src="../../../../../_static/documentation_options.js?v=5283314f"></script>
       <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -171,7 +171,7 @@ including split formulations for bulk and deviatoric components.</p>
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.materials.elastic.kirchhoff.Kirchhoff">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.kirchhoff.</span></span><span class="sig-name descname"><span class="pre">Kirchhoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.elastic.kirchhoff.Kirchhoff" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.kirchhoff.</span></span><span class="sig-name descname"><span class="pre">Kirchhoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/dolfin_mech/materials/elastic/kirchhoff.html#Kirchhoff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.elastic.kirchhoff.Kirchhoff" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../elastic/index.html#dolfin_mech.materials.elastic.elastic.ElasticMaterial" title="dolfin_mech.materials.elastic.elastic.ElasticMaterial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin_mech.materials.elastic.elastic.ElasticMaterial</span></code></a></p>
 <p>Class representing a standard St. Venant-Kirchhoff elastic material.</p>
 <p>This model extends linear elasticity to large deformations by using the Green-Lagrange
@@ -196,7 +196,7 @@ strain tensor <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> i
 
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.materials.elastic.kirchhoff.KirchhoffBulk">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.kirchhoff.</span></span><span class="sig-name descname"><span class="pre">KirchhoffBulk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.elastic.kirchhoff.KirchhoffBulk" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.kirchhoff.</span></span><span class="sig-name descname"><span class="pre">KirchhoffBulk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/dolfin_mech/materials/elastic/kirchhoff.html#KirchhoffBulk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.elastic.kirchhoff.KirchhoffBulk" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../elastic/index.html#dolfin_mech.materials.elastic.elastic.ElasticMaterial" title="dolfin_mech.materials.elastic.elastic.ElasticMaterial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin_mech.materials.elastic.elastic.ElasticMaterial</span></code></a></p>
 <p>Class representing the volumetric (bulk) component of a Kirchhoff elastic material.</p>
 <p>This model focuses on the spherical part of the strain tensor, typically used in
@@ -217,7 +217,7 @@ penalty methods or split formulations.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="dolfin_mech.materials.elastic.kirchhoff.KirchhoffDev">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.kirchhoff.</span></span><span class="sig-name descname"><span class="pre">KirchhoffDev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.materials.elastic.kirchhoff.KirchhoffDev" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.materials.elastic.kirchhoff.</span></span><span class="sig-name descname"><span class="pre">KirchhoffDev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinematics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/dolfin_mech/materials/elastic/kirchhoff.html#KirchhoffDev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dolfin_mech.materials.elastic.kirchhoff.KirchhoffDev" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../elastic/index.html#dolfin_mech.materials.elastic.elastic.ElasticMaterial" title="dolfin_mech.materials.elastic.elastic.ElasticMaterial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin_mech.materials.elastic.elastic.ElasticMaterial</span></code></a></p>
 <p>Class representing the deviatoric (shear) component of a Kirchhoff elastic material.</p>
 <p>Used to model the shape-changing part of the deformation, independent of volume change.</p>
