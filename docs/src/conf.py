@@ -152,7 +152,7 @@ def generate_simple_toc(app):
 
 	pillars = [
 		("dolfin_mech", "Core Package"),
-		("Tests", "Tests"),
+		# ("Tests", "Tests"),
 	]
 
 	def ensure_index_exists(folder_path, title):

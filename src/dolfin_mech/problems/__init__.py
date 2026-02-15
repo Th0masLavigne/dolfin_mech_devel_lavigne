@@ -7,6 +7,7 @@ from .problem_hyperelasticity import Hyperelasticity
 from .problem_hyperelasticity_inverse import InverseHyperelasticity
 from .problem_hyperelasticity_microporo import MicroPoroHyperelasticity
 from .problem_hyperelasticity_poro import PoroHyperelasticity
+from .problem_hyperelasticity_poro_inverse import InversePoroHyperelasticity
 
 __all__ = [
 	"Problem",
@@ -16,4 +17,5 @@ __all__ = [
 	"InverseHyperelasticity",
 	"MicroPoroHyperelasticity",
 	"PoroHyperelasticity",
+	"InversePoroHyperelasticity",
 ]
