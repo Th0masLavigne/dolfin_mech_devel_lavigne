@@ -1,7 +1,7 @@
 """Operator elements of module `dolfin_mech`."""
 
 from .operator import Operator  # isort: skip
-from . import loading
+from . import loading, mircoporo, penalty, poro
 from .constraint_macroscopicstresscomponent import MacroscopicStressComponentConstraint
 from .hyperelasticity import HyperElasticity
 from .hyperhydrostaticpressure import HyperHydrostaticPressure
@@ -20,4 +20,7 @@ __all__ = [
 	"LinearizedHydrostaticPressure",
 	"LinearizedIncompressibility",
 	"loading",
+	"poro",
+	"penalty",
+	"mircoporo",
 ]
