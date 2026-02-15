@@ -18,6 +18,7 @@ frameworks.
 
 import dolfin
 
+from ... import materials
 from ..operator import Operator
 
 ################################################################################
@@ -61,8 +62,8 @@ class Wbulk(Operator):
 		:param measure: Dolfin measure for integration.
 		"""
 		self.kinematics = kinematics
-		self.solid_material = dmech.WbulkLungElasticMaterial(Phis=Phis, Phis0=Phis0, parameters=material_parameters)
-		self.material = dmech.PorousElasticMaterial(
+		self.solid_material = materials.elastic.WbulkLung(Phis=Phis, Phis0=Phis0, parameters=material_parameters)
+		self.material = materials.elastic.Porous(
 			solid_material=self.solid_material, scaling=material_scaling, Phis0=Phis0
 		)
 		self.measure = measure
@@ -106,10 +107,10 @@ class InverseWbulk(Operator):
 		:param unknown_porosity_test: Test function for the porosity field.
 		"""
 		self.kinematics = kinematics
-		self.solid_material = dmech.WbulkLungElasticMaterial(
+		self.solid_material = materials.elastic.WbulkLung(
 			Phis=self.kinematics.J * phis, Phis0=self.kinematics.J * phis0, parameters=material_parameters
 		)
-		self.material = dmech.PorousElasticMaterial(
+		self.material = materials.elastic.Porous(
 			solid_material=self.solid_material, scaling=material_scaling, Phis0=self.kinematics.J * phis0
 		)
 		self.measure = measure

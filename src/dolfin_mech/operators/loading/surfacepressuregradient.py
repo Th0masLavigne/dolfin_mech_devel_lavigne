@@ -17,6 +17,7 @@ for both finite strain follower-load and small strain frameworks.
 
 import dolfin
 
+from ...core import TimeVaryingConstant
 from ..operator import Operator
 
 ################################################################################
@@ -87,13 +88,13 @@ class SurfacePressureGradient(Operator):
 		"""
 		self.measure = measure
 
-		self.tv_X0 = dmech.TimeVaryingConstant(val=X0_val, val_ini=X0_ini, val_fin=X0_fin)
+		self.tv_X0 = TimeVaryingConstant(val=X0_val, val_ini=X0_ini, val_fin=X0_fin)
 		X0 = self.tv_X0.val
-		self.tv_N0 = dmech.TimeVaryingConstant(val=N0_val, val_ini=N0_ini, val_fin=N0_fin)
+		self.tv_N0 = TimeVaryingConstant(val=N0_val, val_ini=N0_ini, val_fin=N0_fin)
 		N0 = self.tv_N0.val
-		self.tv_P0 = dmech.TimeVaryingConstant(val=P0_val, val_ini=P0_ini, val_fin=P0_fin)
+		self.tv_P0 = TimeVaryingConstant(val=P0_val, val_ini=P0_ini, val_fin=P0_fin)
 		P0 = self.tv_P0.val
-		self.tv_DP = dmech.TimeVaryingConstant(val=DP_val, val_ini=DP_ini, val_fin=DP_fin)
+		self.tv_DP = TimeVaryingConstant(val=DP_val, val_ini=DP_ini, val_fin=DP_fin)
 		DP = self.tv_DP.val
 
 		x = X + U
@@ -157,13 +158,13 @@ class SurfacePressureGradient0(Operator):
 		"""
 		self.measure = measure
 
-		self.tv_X0 = dmech.TimeVaryingConstant(val=X0_val, val_ini=X0_ini, val_fin=X0_fin)
+		self.tv_X0 = TimeVaryingConstant(val=X0_val, val_ini=X0_ini, val_fin=X0_fin)
 		X0 = self.tv_X0.val
-		self.tv_N0 = dmech.TimeVaryingConstant(val=N0_val, val_ini=N0_ini, val_fin=N0_fin)
+		self.tv_N0 = TimeVaryingConstant(val=N0_val, val_ini=N0_ini, val_fin=N0_fin)
 		N0 = self.tv_N0.val
-		self.tv_P0 = dmech.TimeVaryingConstant(val=P0_val, val_ini=P0_ini, val_fin=P0_fin)
+		self.tv_P0 = TimeVaryingConstant(val=P0_val, val_ini=P0_ini, val_fin=P0_fin)
 		P0 = self.tv_P0.val
-		self.tv_DP = dmech.TimeVaryingConstant(val=DP_val, val_ini=DP_ini, val_fin=DP_fin)
+		self.tv_DP = TimeVaryingConstant(val=DP_val, val_ini=DP_ini, val_fin=DP_fin)
 		DP = self.tv_DP.val
 
 		P = P0 + DP * dolfin.inner(x - X0, N0)

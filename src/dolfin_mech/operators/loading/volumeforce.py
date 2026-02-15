@@ -17,6 +17,7 @@ body forces (such as gravity or electromagnetism) for both finite strain
 
 import dolfin
 
+from ...core import TimeVaryingConstant
 from ..operator import Operator
 
 ################################################################################
@@ -65,7 +66,7 @@ class VolumeForce(Operator):
 		"""
 		self.measure = measure
 
-		self.tv_F = dmech.TimeVaryingConstant(val=F_val, val_ini=F_ini, val_fin=F_fin)
+		self.tv_F = TimeVaryingConstant(val=F_val, val_ini=F_ini, val_fin=F_fin)
 		F = self.tv_F.val
 
 		self.res_form = -dolfin.inner(F, U_test) * kinematics.J * self.measure
@@ -112,7 +113,7 @@ class VolumeForce0(Operator):
 		"""
 		self.measure = measure
 
-		self.tv_F = dmech.TimeVaryingConstant(val=F_val, val_ini=F_ini, val_fin=F_fin)
+		self.tv_F = TimeVaryingConstant(val=F_val, val_ini=F_ini, val_fin=F_fin)
 		F = self.tv_F.val
 
 		self.res_form = -dolfin.inner(F, U_test) * self.measure

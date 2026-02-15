@@ -2,7 +2,7 @@ name: Documentation
 
 on:
   push:
-    branches: [ master, main, devel_restructure ]
+    branches: [ master, main]
 
 permissions:
   contents: write

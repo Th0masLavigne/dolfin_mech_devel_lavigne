@@ -45,5 +45,5 @@ jobs:
       - name: Run tests
         run: |
           conda activate dolfin_mech
-          cd Tests
+          cd tests
           make

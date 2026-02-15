@@ -16,6 +16,7 @@ evaluation.
 """
 
 import dolfin
+import numpy
 
 ################################################################################
 
@@ -122,7 +123,9 @@ class QOI:
 		"""
 		# MPI safe version
 		try:
-			local_value = self.expr(self.point)
+			# local_value = self.expr(self.point)
+			# Ensure point is a tuple so UFL comparison logic doesn't treat it as an array
+			local_value = self.expr(tuple(self.point) if isinstance(self.point, (list, numpy.ndarray)) else self.point)
 			found = 1.0
 		except RuntimeError:
 			local_value = 0.0
