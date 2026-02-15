@@ -24,7 +24,7 @@ jobs:
       - name: Install system dependencies for Gmsh and Docs
         run: |
           apt-get update
-          apt-get install -y libglu1-mesa libgl1-mesa-dri libglx-mesa0 xvfb mesa-utils
+          apt-get install -y libglu1-mesa libgl1-mesa-dri libglx-mesa0 xvfb mesa-utils lsb-release rsync
 
       - name: Install dependencies
         run: |
