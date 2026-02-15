@@ -74,6 +74,9 @@ try:
 except importlib.metadata.PackageNotFoundError:
 	__version__ = "0.0.0"
 
+import gmsh  # cf. https://gitlab.onelab.info/gmsh/gmsh/-/issues/2722
+import vtk
+
 # Expose sub-packages
 from . import core, kinematics, materials, operators, problems, runs
 
