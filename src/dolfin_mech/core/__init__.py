@@ -5,6 +5,7 @@ from .constraint import Constraint
 from .expression_meshfunction_cpp import get_ExprMeshFunction_cpp_pybind
 from .foi import FOI
 from .mesh2ugrid import add_function_to_ugrid, add_functions_to_ugrid, mesh2ugrid
+from .nonlinearsolver import NonlinearSolver
 from .qoi import QOI
 from .timeintegrator import TimeIntegrator
 from .timevaryingconstant import TimeVaryingConstant
@@ -24,4 +25,5 @@ __all__ = [
 	"TimeIntegrator",
 	"write_VTU_file",
 	"get_ExprMeshFunction_cpp_pybind",
+	"NonlinearSolver",
 ]
