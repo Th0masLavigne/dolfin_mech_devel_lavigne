@@ -1,0 +1,165 @@
+dolfin_mech.problems.problem_hyperelasticity_poro_inverse
+=========================================================
+
+.. py:module:: dolfin_mech.problems.problem_hyperelasticity_poro_inverse
+
+.. autoapi-nested-parse::
+
+   Defines the InversePoroHyperelasticity class.
+
+   Specialized manager for
+   reconstructing the stress-free reference configuration of porous media from
+   deformed spatial data. It adapts the biphasic poro-hyperelastic framework to
+   an inverse kinematic setting, coupling spatial porosity measurements with
+   reference geometry estimation.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: InversePoroHyperelasticity(*args, **kwargs)
+
+   Bases: :py:obj:`dolfin_mech.problems.problem_hyperelasticity_poro.PoroHyperelasticity`
+
+
+   Problem class for solving inverse poro-hyperelasticity problems.
+
+   Unlike the forward problem which predicts deformation from loads, the
+   **inverse problem** seeks to determine the reference (stress-free)
+   configuration :math:`\Omega_0` given a known deformed configuration
+   :math:`\Omega` and a set of loads (e.g., blood pressure, gravity).
+
+
+
+   This is particularly critical in biomechanics (e.g., estimating the
+   zero-pressure geometry of the heart or lungs from in-vivo imaging).
+
+   **Porosity Handling:**
+   Since the reference configuration is unknown, the reference porosity
+   :math:`\phi_{s0}` is also typically unknown. This class supports two
+   formulations:
+
+   1.  **Known Spatial Porosity (`phis` known)**: The current solid volume fraction
+       is measured (e.g., from CT Hounsfield units), and the reference
+       porosity is solved for.
+   2.  **Known Material Porosity (`Phis0` known)**: The Lagrangian solid volume
+       fraction is assumed known, and the spatial porosity is derived.
+
+
+   .. py:method:: set_known_and_unknown_porosity(porosity_known)
+
+      Configures which porosity field is treated as known data.
+
+      :param porosity_known: A string indicating the known variable:
+
+          - ``"phis"``: The spatial solid volume fraction (current configuration)
+            is known. The reference porosity ``phis0`` becomes an unknown.
+          - ``"Phis0"``: The Lagrangian solid volume fraction (reference mass
+            density) is known. The spatial porosity ``phis`` becomes the unknown.
+
+
+
+   .. py:method:: get_deformed_center_of_mass()
+
+      Calculates the center of mass of the body in the current (deformed) configuration.
+
+      This is often required for setting up gravity loading or for pinning
+      rigid body motions in the inverse problem.
+
+      :return: A numpy array of the center of mass coordinates :math:`[x_c, y_c, z_c]`.
+
+
+
+   .. py:method:: set_kinematics()
+
+      Initializes the inverse kinematic framework.
+
+      Defines the deformation gradient :math:`\mathbf{F} = (\nabla_{\mathbf{x}} \mathbf{X})^{-1}`
+      where the mesh represents the spatial domain :math:`\mathbf{x}` and the
+      unknown is the reference coordinate mapping :math:`\mathbf{X}(\mathbf{x})`.
+
+      Registers standard inverse kinematic fields (F, J, C, E) as Fields of Interest.
+
+
+
+   .. py:method:: set_porosity_fields()
+
+      Derives the dependent porosity field based on the mass conservation constraint.
+
+      The relationship between reference solid volume fraction :math:`\phi_{s0}`
+      and current solid volume fraction :math:`\phi_s` is governed by the Jacobian:
+
+      .. math::
+          \phi_s = J^{-1} \Phi_{s0}
+
+      where :math:`\Phi_{s0}` is the Lagrangian porosity.
+
+
+
+
+
+   .. py:method:: add_local_porosity_fois()
+
+      Registers Fields of Interest (FOI) for visualization of porosity distributions.
+
+      Adds the following fields:
+          - **phis**: Current solid volume fraction.
+          - **phif**: Current fluid volume fraction (:math:`1 - \phi_s`).
+          - **phis0**: Reference solid volume fraction.
+          - **phif0**: Reference fluid volume fraction.
+
+
+
+   .. py:method:: add_Wskel_operator(material_parameters, material_scaling, subdomain_id=None)
+
+      Adds the inverse strain energy operator for the solid skeleton.
+
+      Calculates the virtual work contributions from the hyperelastic skeleton
+      in the inverse configuration.
+
+
+
+   .. py:method:: add_Wbulk_operator(material_parameters, material_scaling, subdomain_id=None)
+
+      Adds the operator for the bulk compressibility of the mixture.
+
+      This penalizes volume changes that deviate from the constitutive
+      behavior of the constituents.
+
+
+
+   .. py:method:: add_Wpore_operator(material_parameters, material_scaling, subdomain_id=None)
+
+      Adds the operator handling the pore pressure contribution.
+
+      This links the porosity changes to the fluid pressure in the
+      inverse formulation.
+
+
+
+   .. py:method:: add_pressure_balancing_gravity0_loading_operator(k_step=None, **kwargs)
+
+      Adds a specialized operator to balance internal pressure with gravity in the reference state.
+
+      In many inverse problems (like finding the reference shape of a lung),
+      the reference state is defined by an equilibrium between an internal
+      pressure and gravity. This operator simultaneously solves for the
+      geometry and the Lagrange multipliers required to satisfy this
+      specific equilibrium.
+
+
+
+
+
+   .. py:method:: add_global_porosity_qois()
+
+      Adds Quantities of Interest (QOI) for global porosity metrics.
+
+      Integrates the porosity fields over the domain to obtain total solid
+      and fluid volumes in both reference and spatial configurations.
+
+
+

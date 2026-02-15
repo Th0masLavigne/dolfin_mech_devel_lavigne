@@ -1,0 +1,113 @@
+dolfin_mech.problems.problem_homogeneization
+============================================
+
+.. py:module:: dolfin_mech.problems.problem_homogeneization
+
+.. autoapi-nested-parse::
+
+   Defines the HomogenizationProblem class.
+
+   Implements a periodic homogenization
+   framework to compute the effective (homogenized) elastic properties of a
+   microstructure (REV). It solves corrector problems under unit macroscopic strains
+   to determine the full stiffness tensor and effective bulk moduli.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: Homogenization(dim, mesh, mat_params, vol, bbox, vertices=None)
+
+   Class for solving periodic homogenization problems in linear elasticity.
+
+   This class computes the effective elastic properties of a periodic unit cell
+   (microstructure) by solving corrector problems under various macroscopic
+   strain states. It supports both 2D and 3D geometries and enforces periodic
+   boundary conditions on the Representative Elementary Volume (REV).
+
+
+
+   The effective stiffness tensor :math:`\mathbb{C}^{hom}` is obtained by
+   averaging the micro-stresses over the unit cell volume :math:`V`:
+
+   .. math::
+       \Sigma_{ij} = \mathbb{C}^{hom}_{ijkl} E_{kl} = \frac{1}{|V|} \int_{V} \sigma_{ij}(\mathbf{u}) \, dV
+
+   :ivar dim: Spatial dimension (2 or 3).
+   :vartype dim: :py:class:`int`
+   :ivar n_Voigt: Dimension of the Voigt notation vector (3 for 2D, 6 for 3D).
+   :vartype n_Voigt: :py:class:`int`
+   :ivar mesh: The mesh of the microstructure.
+   :vartype mesh: :py:class:`dolfin.Mesh`
+   :ivar dV: Integration measure over the domain.
+   :vartype dV: :py:class:`dolfin.Measure`
+   :ivar mesh_V0: Total volume/area of the solid part of the mesh.
+
+   :vartype mesh_V0: :py:class:`float`
+
+
+   .. py:method:: eps(v)
+
+      Computes the symmetric strain tensor (micro-strain).
+
+      :param v: Displacement field.
+      :return: Symmetric part of the gradient of v.
+
+
+
+   .. py:method:: sigma(v, eps)
+
+      Computes the micro-stress tensor using the constitutive law.
+
+      The total strain is the sum of the macroscopic strain :math:`\mathbf{E}`
+      and the local fluctuation strain :math:`\epsilon(\mathbf{v})`.
+
+      :param v: Fluctuation displacement field.
+      :param eps: Macroscopic strain tensor.
+
+
+
+   .. py:method:: Voigt2strain(s)
+
+      Converts a Voigt notation vector to a second-order strain tensor.
+
+
+
+   .. py:method:: stress2Voigt(s)
+
+      Converts a second-order stress tensor to a Voigt notation vector.
+
+
+
+   .. py:method:: get_macro_strain(i)
+
+      Generates a unit macroscopic strain tensor for the i-th Voigt component.
+
+
+
+   .. py:method:: get_lambda_and_mu()
+
+      Computes the homogenized Lamé coefficients by solving corrector problems.
+
+      This method solves :math:`n_{Voigt}` linear elastic problems on the REV with
+      periodic boundary conditions and recovers the full homogenized stiffness
+      matrix :math:`\mathbb{C}^{hom}`.
+
+      :return: Homogenized Lamé constants (lmbda_hom, mu_hom).
+
+
+
+   .. py:method:: get_kappa()
+
+      Computes the effective bulk modulus (kappa_tilde) of the microstructure.
+
+      This specific implementation calculates the effective bulk modulus
+      under a pressure loading, considering the solid volume fraction change.
+
+      :return: Effective bulk modulus kappa_tilde.
+
+
+

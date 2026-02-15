@@ -1,0 +1,17 @@
+dolfin_mech.runs.rivlincube_hyperelasticity
+===========================================
+
+.. py:module:: dolfin_mech.runs.rivlincube_hyperelasticity
+
+.. autoapi-nested-parse::
+
+   Defines the RivlinCube_Hyperelasticity driver.
+
+   High-level simulation suite for
+   finite-strain nonlinear mechanics. It provides a modular interface to solve
+   forward and inverse hyperelastic problems on 2D or 3D domains, supporting multi-
+   material heterogeneity, incompressible mixed formulations, and complex loading
+   paths including follower pressure and surface tension.
+
+
+

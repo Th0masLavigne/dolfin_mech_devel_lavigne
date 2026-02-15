@@ -1,0 +1,67 @@
+dolfin_mech.runs.hollowbox_homogenization
+=========================================
+
+.. py:module:: dolfin_mech.runs.hollowbox_homogenization
+
+.. autoapi-nested-parse::
+
+   Defines the run_HollowBox_Homogenization driver.
+
+   Calculates the effective
+   (homogenized) elastic properties of a periodic unit cell. It automates the
+   setup of the Representative Volume Element (RVE), solves the necessary
+   corrector problems, and extracts macroscopic Young's modulus, Poisson's ratio,
+   and bulk modulus.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:function:: HollowBox_Homogenization(dim, mesh=None, mesh_params=None, mat_params={}, res_basename='run_HollowBox_Homogenization', write_results_to_file=1, verbose=0)
+
+   Computes the effective elastic properties of a "Hollow Box" unit cell via homogenization.
+
+   This function serves as a driver for the computational homogenization of a
+   Representative Volume Element (RVE). The RVE consists of a solid matrix
+   with a central void (the "Hollow Box").
+
+
+
+   **Workflow:**
+   1.  **Mesh Setup**: Generates or accepts a mesh defining the solid domain :math:`\Omega_s`.
+   2.  **Volume Analysis**: Calculates the total RVE volume :math:`V_0` and the initial solid volume fraction :math:`\Phi_{s0} = V_{s0}/V_0`.
+   3.  **Homogenization**: Instantiates a :class:`HomogenizationProblem` to solve the boundary value problems required to identify the effective stiffness tensor.
+   4.  **Post-Processing**: Extracts effective Lamé parameters (:math:`\lambda_{hom}, \mu_{hom}`) and converts them to engineering constants.
+
+   **Calculated Properties:**
+   The function returns the homogenized isotropic constants:
+
+   .. math::
+       E_{hom} = \frac{\mu_{hom}(3\lambda_{hom} + 2\mu_{hom})}{\lambda_{hom} + \mu_{hom}}, \quad
+       \nu_{hom} = \frac{\lambda_{hom}}{2(\lambda_{hom} + \mu_{hom})}
+
+   :param dim: Spatial dimension (2 or 3).
+   :type dim: int
+   :param mesh: Pre-generated FEniCS mesh object (optional).
+   :type mesh: dolfin.Mesh
+   :param mesh_params: Dictionary of parameters to generate the mesh if ``mesh`` is None.
+   :type mesh_params: dict
+   :param mat_params: Material parameters for the solid phase (e.g., ``{"E": 100, "nu": 0.3}``).
+   :type mat_params: dict
+   :param res_basename: Base name for output files (data and logs).
+   :type res_basename: str
+   :param write_results_to_file: If True, writes computed properties to a ``.dat`` file.
+   :type write_results_to_file: bool
+   :param verbose: Verbosity level.
+   :type verbose: int
+   :return: A tuple containing:
+       - ``E_s``: Young's modulus of the solid phase.
+       - ``nu_s``: Poisson's ratio of the solid phase.
+       - ``E_hom``: Homogenized Young's modulus.
+       - ``nu_hom``: Homogenized Poisson's ratio.
+       - ``kappa_hom``: Homogenized Bulk modulus.
+
+

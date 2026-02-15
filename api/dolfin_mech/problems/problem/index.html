@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.problems.problem &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=a51259a8"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="dolfin_mech.problems.problem_elasticity" href="../problem_elasticity/index.html" />
+    <link rel="prev" title="Problems" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../api_toc.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Core Package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Problems</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_hyperelasticity_microporo/index.html">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../api_toc.html">API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Core Package</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Problems</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.problems.problem</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/api/dolfin_mech/problems/problem/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-dolfin_mech.problems.problem">
+<span id="dolfin-mech-problems-problem"></span><h1>dolfin_mech.problems.problem<a class="headerlink" href="#module-dolfin_mech.problems.problem" title="Link to this heading"></a></h1>
+<p>Defines the Problem class.</p>
+<p>Centralized manager for dolfin_mech simulations that
+synchronizes mesh topology, mixed-element function spaces, physical operators,
+and time-stepping logic to automate the assembly of nonlinear variational forms.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.problems.problem.</span></span><span class="sig-name descname"><span class="pre">Problem</span></span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem" title="Link to this definition"></a></dt>
+<dd><p>Base class for managing Finite Element Problems in FEniCS.</p>
+<p>This class acts as a container and manager for the essential components of a
+simulation: the mesh, the solution function spaces (unknowns), the operators
+(physics contributions), boundary conditions, and time stepping.</p>
+<p>It abstracts the boilerplate code required to set up mixed-element formulations,
+manage input/output fields (FOIs/QOIs), and assemble the global residual
+and Jacobian forms for the nonlinear solver.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.set_mesh">
+<span class="sig-name descname"><span class="pre">set_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">define_spatial_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">define_facet_normals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_local_cylindrical_basis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.set_mesh" title="Link to this definition"></a></dt>
+<dd><p>Sets the computational domain and associated geometric quantities.</p>
+<p>This method registers the mesh and initializes standard FEniCS measures
+(<code class="docutils literal notranslate"><span class="pre">dx</span></code> for volume, <code class="docutils literal notranslate"><span class="pre">ds</span></code> for surface). It can also compute spatial
+coordinates (reference <code class="docutils literal notranslate"><span class="pre">X</span></code> or spatial <code class="docutils literal notranslate"><span class="pre">x</span></code>) and local bases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> – The dolfin Mesh object.</p></li>
+<li><p><strong>define_spatial_coordinates</strong> – If True, defines <code class="docutils literal notranslate"><span class="pre">self.X</span></code> (reference)
+or <code class="docutils literal notranslate"><span class="pre">self.x</span></code> (spatial) depending on the problem type (Inverse vs Forward).</p></li>
+<li><p><strong>define_facet_normals</strong> – If True, initializes <code class="docutils literal notranslate"><span class="pre">self.mesh_normals</span></code>.</p></li>
+<li><p><strong>compute_bbox</strong> – If True, computes the bounding box of the mesh.</p></li>
+<li><p><strong>compute_local_cylindrical_basis</strong> – If True, computes local radial
+(<span class="math notranslate nohighlight">\(\mathbf{e}_R\)</span>) and tangential (<span class="math notranslate nohighlight">\(\mathbf{e}_T\)</span>) vectors
+and a rotation matrix <code class="docutils literal notranslate"><span class="pre">Q_expr</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.set_measures">
+<span class="sig-name descname"><span class="pre">set_measures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundaries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.set_measures" title="Link to this definition"></a></dt>
+<dd><p>Defines the integration measures for subdomains and boundaries.</p>
+<p>Registers <code class="docutils literal notranslate"><span class="pre">self.dV</span></code> (volume measure), <code class="docutils literal notranslate"><span class="pre">self.dS</span></code> (surface measure),
+and <code class="docutils literal notranslate"><span class="pre">self.dP</span></code> (point measure), linking them to specific subdomain data
+if provided.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_subsol">
+<span class="sig-name descname"><span class="pre">add_subsol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_subsol" title="Link to this definition"></a></dt>
+<dd><p>Generic method to add a sub-solution (unknown field) to the problem.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_scalar_subsol">
+<span class="sig-name descname"><span class="pre">add_scalar_subsol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">family</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CG'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_fun</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_scalar_subsol" title="Link to this definition"></a></dt>
+<dd><p>Adds a scalar unknown field (e.g., pressure, porosity).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_vector_subsol">
+<span class="sig-name descname"><span class="pre">add_vector_subsol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">family</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CG'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_vector_subsol" title="Link to this definition"></a></dt>
+<dd><p>Adds a vector unknown field (e.g., displacement).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_tensor_subsol">
+<span class="sig-name descname"><span class="pre">add_tensor_subsol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">family</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CG'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_tensor_subsol" title="Link to this definition"></a></dt>
+<dd><p>Adds a tensor unknown field (e.g., internal variables).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.set_solution_finite_element">
+<span class="sig-name descname"><span class="pre">set_solution_finite_element</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.set_solution_finite_element" title="Link to this definition"></a></dt>
+<dd><p>Constructs the (potentially mixed) finite element for the global solution.</p>
+<p>If multiple sub-solutions are defined (e.g., displacement and pressure),
+this creates a <code class="docutils literal notranslate"><span class="pre">MixedElement</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.set_solution_function_space">
+<span class="sig-name descname"><span class="pre">set_solution_function_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constrained_domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.set_solution_function_space" title="Link to this definition"></a></dt>
+<dd><p>Creates the FunctionSpace on the mesh using the defined finite element.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.set_solution_functions">
+<span class="sig-name descname"><span class="pre">set_solution_functions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.set_solution_functions" title="Link to this definition"></a></dt>
+<dd><p>Instantiates the actual FEniCS Functions for the solution.</p>
+<dl class="simple">
+<dt>Creates:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sol_func</span></code>: The current solution vector <span class="math notranslate nohighlight">\(\mathbf{u}_{n+1}\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sol_old_func</span></code>: The solution at the previous step <span class="math notranslate nohighlight">\(\mathbf{u}_n\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dsol_func</span></code>: The increment (Newton update) <span class="math notranslate nohighlight">\(\delta \mathbf{u}\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dsol_test</span></code>: The test function <span class="math notranslate nohighlight">\(\delta \mathbf{v}\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dsol_tria</span></code>: The trial function <span class="math notranslate nohighlight">\(\Delta \mathbf{u}\)</span> (for the Jacobian).</p></li>
+</ul>
+</dd>
+</dl>
+<p>It also splits these functions back into their sub-solution components
+for easy access by operators.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.set_foi_finite_elements_DG">
+<span class="sig-name descname"><span class="pre">set_foi_finite_elements_DG</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.set_foi_finite_elements_DG" title="Link to this definition"></a></dt>
+<dd><p>Sets up Discontinuous Galerkin (DG) elements for Fields of Interest (FOI).
+These are typically used for post-processing variables like stress or strain.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.set_foi_finite_elements_Quad">
+<span class="sig-name descname"><span class="pre">set_foi_finite_elements_Quad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.set_foi_finite_elements_Quad" title="Link to this definition"></a></dt>
+<dd><p>Sets up Quadrature elements for Fields of Interest (FOI).
+These allow evaluating fields exactly at integration points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.set_foi_function_spaces">
+<span class="sig-name descname"><span class="pre">set_foi_function_spaces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.set_foi_function_spaces" title="Link to this definition"></a></dt>
+<dd><p>Creates function spaces for Scalar, Vector, and Tensor Fields of Interest.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_foi">
+<span class="sig-name descname"><span class="pre">add_foi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_foi" title="Link to this definition"></a></dt>
+<dd><p>Adds a Field of Interest (FOI) to the problem.
+FOIs are updated at the end of every step for visualization/output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.update_fois">
+<span class="sig-name descname"><span class="pre">update_fois</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.update_fois" title="Link to this definition"></a></dt>
+<dd><p>Triggers the projection/interpolation of all registered FOIs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_qoi">
+<span class="sig-name descname"><span class="pre">add_qoi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_qoi" title="Link to this definition"></a></dt>
+<dd><p>Adds a Quantity of Interest (QOI) to the problem.
+QOIs are scalar values (e.g., total volume, average stress) calculated per step.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.update_qois">
+<span class="sig-name descname"><span class="pre">update_qois</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.update_qois" title="Link to this definition"></a></dt>
+<dd><p>Updates the values of all registered QOIs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_operator">
+<span class="sig-name descname"><span class="pre">add_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a physical operator to the problem.</p>
+<p>Operators define the terms in the variational formulation (e.g., internal
+energy, external work). If <code class="docutils literal notranslate"><span class="pre">k_step</span></code> is provided, the operator is only
+active for that specific load step.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_volume_force0_loading_operator">
+<span class="sig-name descname"><span class="pre">add_volume_force0_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_volume_force0_loading_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a dead volume force (reference configuration).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_volume_force_loading_operator">
+<span class="sig-name descname"><span class="pre">add_volume_force_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_volume_force_loading_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a follower volume force (current configuration).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_surface_force0_loading_operator">
+<span class="sig-name descname"><span class="pre">add_surface_force0_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_surface_force0_loading_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a dead surface force vector (reference configuration).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_surface_force_loading_operator">
+<span class="sig-name descname"><span class="pre">add_surface_force_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_surface_force_loading_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a follower surface force vector (current configuration).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_surface_pressure0_loading_operator">
+<span class="sig-name descname"><span class="pre">add_surface_pressure0_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_surface_pressure0_loading_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a dead pressure load normal to the reference surface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_surface_pressure_loading_operator">
+<span class="sig-name descname"><span class="pre">add_surface_pressure_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_surface_pressure_loading_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a follower pressure load (normal to deformed surface).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_surface_pressure_gradient0_loading_operator">
+<span class="sig-name descname"><span class="pre">add_surface_pressure_gradient0_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_surface_pressure_gradient0_loading_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a gradient-dependent pressure load on the reference surface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_surface_pressure_gradient_loading_operator">
+<span class="sig-name descname"><span class="pre">add_surface_pressure_gradient_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_surface_pressure_gradient_loading_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a gradient-dependent pressure load on the deformed surface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_surface_tension0_loading_operator">
+<span class="sig-name descname"><span class="pre">add_surface_tension0_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_surface_tension0_loading_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds surface tension effects on the reference configuration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_surface_tension_loading_operator">
+<span class="sig-name descname"><span class="pre">add_surface_tension_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_surface_tension_loading_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds surface tension effects on the current configuration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_normal_displacement_penalty_operator">
+<span class="sig-name descname"><span class="pre">add_normal_displacement_penalty_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_normal_displacement_penalty_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a penalty operator to constrain displacement in the normal direction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_directional_displacement_penalty_operator">
+<span class="sig-name descname"><span class="pre">add_directional_displacement_penalty_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_directional_displacement_penalty_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a penalty operator to constrain displacement in a specific global direction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_inertia_operator">
+<span class="sig-name descname"><span class="pre">add_inertia_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_inertia_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds inertial forces for dynamic simulations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_constraint">
+<span class="sig-name descname"><span class="pre">add_constraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_constraint" title="Link to this definition"></a></dt>
+<dd><p>Adds a Dirichlet boundary condition (constraint) to the problem.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.add_step">
+<span class="sig-name descname"><span class="pre">add_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Deltat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.add_step" title="Link to this definition"></a></dt>
+<dd><p>Defines a new time step/load step for the simulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem.Problem.set_variational_formulation">
+<span class="sig-name descname"><span class="pre">set_variational_formulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem.Problem.set_variational_formulation" title="Link to this definition"></a></dt>
+<dd><p>Assembles the global variational forms for the nonlinear solver.</p>
+<p>This aggregates the residual forms from all active operators and computes
+the tangent Jacobian matrix using automatic differentiation.</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{R}(\mathbf{u}) = \sum \mathbf{R}_{op}(\mathbf{u}) \
+\mathbf{J} = \frac{\partial \mathbf{R}}{\partial \mathbf{u}}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>k_step</strong> – Optional step index to include step-specific operators.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Problems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../problem_elasticity/index.html" class="btn btn-neutral float-right" title="dolfin_mech.problems.problem_elasticity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

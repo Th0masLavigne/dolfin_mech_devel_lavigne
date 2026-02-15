@@ -1,0 +1,58 @@
+dolfin_mech.runs.rivlincube_elasticity
+======================================
+
+.. py:module:: dolfin_mech.runs.rivlincube_elasticity
+
+.. autoapi-nested-parse::
+
+   Defines the run_RivlinCube_Elasticity driver.
+
+   Comprehensive benchmark for
+   linearized and finite strain elasticity. It provides a modular environment to
+   validate constitutive models under diverse loading conditions—including
+   displacement, traction, and follower pressure—while supporting multi-material
+   heterogeneity and stable mixed formulations for incompressibility.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:function:: RivlinCube_Elasticity(dim: int = 3, incomp: bool = 0, multimaterial: bool = 0, cube_params: dict = {}, mat_params: dict = {}, step_params: dict = {}, const_params: dict = {}, load_params: dict = {}, res_basename: str = 'run_RivlinCube_Elasticity', verbose: bool = 0)
+
+   Runs the Rivlin Cube benchmark for finite strain elasticity.
+
+   This benchmark simulates a unit cube (or square in 2D) undergoing large
+   deformations. It is a standard test for validating hyperelastic constitutive
+   models and solver robustness.
+
+
+
+   **Features:**
+
+   - **Dimensionality**: Supports 2D and 3D simulations.
+   - **Incompressibility**: Can switch between compressible (pure displacement) and incompressible (mixed :math:`u-p`) formulations.
+   - **Heterogeneity**: Supports multi-material setups (e.g., a bi-material bar split at :math:`x=0.5`).
+   - **Loading Modes**:
+
+       - ``"disp"``: Prescribed displacement (stretch).
+       - ``"volu"``: Body force (gravity-like).
+       - ``"surf"``: Surface traction vector.
+       - ``"pres"``: Follower pressure load.
+       - ``"pgra"``: Pressure gradient load.
+       - ``"tens"``: Surface tension.
+
+   :param dim: Spatial dimension (2 or 3).
+   :param incomp: If True, uses a mixed formulation for incompressible materials.
+   :param multimaterial: If True, splits the domain into two material regions.
+   :param cube_params: Dictionary for mesh generation (e.g., ``N`` for refinement).
+   :param mat_params: Dictionary for material properties (e.g., ``model``, ``parameters``).
+   :param step_params: Dictionary for time stepping (``Deltat``, ``dt_ini``).
+   :param const_params: Dictionary for boundary constraints (symmetry planes).
+   :param load_params: Dictionary defining the type and magnitude of loading.
+   :param res_basename: Output filename prefix.
+   :param verbose: Verbosity level.
+
+

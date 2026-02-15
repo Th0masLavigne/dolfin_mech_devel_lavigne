@@ -1,0 +1,286 @@
+dolfin_mech.problems.problem
+============================
+
+.. py:module:: dolfin_mech.problems.problem
+
+.. autoapi-nested-parse::
+
+   Defines the Problem class.
+
+   Centralized manager for dolfin_mech simulations that
+   synchronizes mesh topology, mixed-element function spaces, physical operators,
+   and time-stepping logic to automate the assembly of nonlinear variational forms.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: Problem
+
+   Base class for managing Finite Element Problems in FEniCS.
+
+   This class acts as a container and manager for the essential components of a
+   simulation: the mesh, the solution function spaces (unknowns), the operators
+   (physics contributions), boundary conditions, and time stepping.
+
+   It abstracts the boilerplate code required to set up mixed-element formulations,
+   manage input/output fields (FOIs/QOIs), and assemble the global residual
+   and Jacobian forms for the nonlinear solver.
+
+
+
+
+   .. py:method:: set_mesh(mesh, define_spatial_coordinates=True, define_facet_normals=False, compute_bbox=False, compute_local_cylindrical_basis=False)
+
+      Sets the computational domain and associated geometric quantities.
+
+      This method registers the mesh and initializes standard FEniCS measures
+      (``dx`` for volume, ``ds`` for surface). It can also compute spatial
+      coordinates (reference ``X`` or spatial ``x``) and local bases.
+
+      :param mesh: The dolfin Mesh object.
+      :param define_spatial_coordinates: If True, defines ``self.X`` (reference)
+          or ``self.x`` (spatial) depending on the problem type (Inverse vs Forward).
+      :param define_facet_normals: If True, initializes ``self.mesh_normals``.
+      :param compute_bbox: If True, computes the bounding box of the mesh.
+      :param compute_local_cylindrical_basis: If True, computes local radial
+          (:math:`\mathbf{e}_R`) and tangential (:math:`\mathbf{e}_T`) vectors
+          and a rotation matrix ``Q_expr``.
+
+
+
+
+
+   .. py:method:: set_measures(domains=None, boundaries=None, points=None)
+
+      Defines the integration measures for subdomains and boundaries.
+
+      Registers ``self.dV`` (volume measure), ``self.dS`` (surface measure),
+      and ``self.dP`` (point measure), linking them to specific subdomain data
+      if provided.
+
+
+
+   .. py:method:: add_subsol(name, *args, **kwargs)
+
+      Generic method to add a sub-solution (unknown field) to the problem.
+
+
+
+   .. py:method:: add_scalar_subsol(name, family='CG', degree=1, init_val=None, init_fun=None)
+
+      Adds a scalar unknown field (e.g., pressure, porosity).
+
+
+
+   .. py:method:: add_vector_subsol(name, family='CG', degree=1, init_val=None)
+
+      Adds a vector unknown field (e.g., displacement).
+
+
+
+   .. py:method:: add_tensor_subsol(name, family='CG', degree=1, symmetry=None, init_val=None)
+
+      Adds a tensor unknown field (e.g., internal variables).
+
+
+
+   .. py:method:: set_solution_finite_element()
+
+      Constructs the (potentially mixed) finite element for the global solution.
+
+      If multiple sub-solutions are defined (e.g., displacement and pressure),
+      this creates a ``MixedElement``.
+
+
+
+
+
+   .. py:method:: set_solution_function_space(constrained_domain=None)
+
+      Creates the FunctionSpace on the mesh using the defined finite element.
+
+
+
+   .. py:method:: set_solution_functions()
+
+      Instantiates the actual FEniCS Functions for the solution.
+
+      Creates:
+          - ``sol_func``: The current solution vector :math:`\mathbf{u}_{n+1}`.
+          - ``sol_old_func``: The solution at the previous step :math:`\mathbf{u}_n`.
+          - ``dsol_func``: The increment (Newton update) :math:`\delta \mathbf{u}`.
+          - ``dsol_test``: The test function :math:`\delta \mathbf{v}`.
+          - ``dsol_tria``: The trial function :math:`\Delta \mathbf{u}` (for the Jacobian).
+
+      It also splits these functions back into their sub-solution components
+      for easy access by operators.
+
+
+
+   .. py:method:: set_foi_finite_elements_DG(degree=0)
+
+      Sets up Discontinuous Galerkin (DG) elements for Fields of Interest (FOI).
+      These are typically used for post-processing variables like stress or strain.
+
+
+
+   .. py:method:: set_foi_finite_elements_Quad(degree=0)
+
+      Sets up Quadrature elements for Fields of Interest (FOI).
+      These allow evaluating fields exactly at integration points.
+
+
+
+   .. py:method:: set_foi_function_spaces()
+
+      Creates function spaces for Scalar, Vector, and Tensor Fields of Interest.
+
+
+
+   .. py:method:: add_foi(*args, **kwargs)
+
+      Adds a Field of Interest (FOI) to the problem.
+      FOIs are updated at the end of every step for visualization/output.
+
+
+
+   .. py:method:: update_fois()
+
+      Triggers the projection/interpolation of all registered FOIs.
+
+
+
+   .. py:method:: add_qoi(*args, **kwargs)
+
+      Adds a Quantity of Interest (QOI) to the problem.
+      QOIs are scalar values (e.g., total volume, average stress) calculated per step.
+
+
+
+   .. py:method:: update_qois(dt=None, k_step=None)
+
+      Updates the values of all registered QOIs.
+
+
+
+   .. py:method:: add_operator(operator, k_step=None)
+
+      Adds a physical operator to the problem.
+
+      Operators define the terms in the variational formulation (e.g., internal
+      energy, external work). If ``k_step`` is provided, the operator is only
+      active for that specific load step.
+
+
+
+   .. py:method:: add_volume_force0_loading_operator(k_step=None, **kwargs)
+
+      Adds a dead volume force (reference configuration).
+
+
+
+   .. py:method:: add_volume_force_loading_operator(k_step=None, **kwargs)
+
+      Adds a follower volume force (current configuration).
+
+
+
+   .. py:method:: add_surface_force0_loading_operator(k_step=None, **kwargs)
+
+      Adds a dead surface force vector (reference configuration).
+
+
+
+   .. py:method:: add_surface_force_loading_operator(k_step=None, **kwargs)
+
+      Adds a follower surface force vector (current configuration).
+
+
+
+   .. py:method:: add_surface_pressure0_loading_operator(k_step=None, **kwargs)
+
+      Adds a dead pressure load normal to the reference surface.
+
+
+
+   .. py:method:: add_surface_pressure_loading_operator(k_step=None, **kwargs)
+
+      Adds a follower pressure load (normal to deformed surface).
+
+
+
+   .. py:method:: add_surface_pressure_gradient0_loading_operator(k_step=None, **kwargs)
+
+      Adds a gradient-dependent pressure load on the reference surface.
+
+
+
+   .. py:method:: add_surface_pressure_gradient_loading_operator(k_step=None, **kwargs)
+
+      Adds a gradient-dependent pressure load on the deformed surface.
+
+
+
+   .. py:method:: add_surface_tension0_loading_operator(k_step=None, **kwargs)
+
+      Adds surface tension effects on the reference configuration.
+
+
+
+   .. py:method:: add_surface_tension_loading_operator(k_step=None, **kwargs)
+
+      Adds surface tension effects on the current configuration.
+
+
+
+   .. py:method:: add_normal_displacement_penalty_operator(k_step=None, **kwargs)
+
+      Adds a penalty operator to constrain displacement in the normal direction.
+
+
+
+   .. py:method:: add_directional_displacement_penalty_operator(k_step=None, **kwargs)
+
+      Adds a penalty operator to constrain displacement in a specific global direction.
+
+
+
+   .. py:method:: add_inertia_operator(k_step=None, **kwargs)
+
+      Adds inertial forces for dynamic simulations.
+
+
+
+   .. py:method:: add_constraint(*args, k_step=None, **kwargs)
+
+      Adds a Dirichlet boundary condition (constraint) to the problem.
+
+
+
+   .. py:method:: add_step(Deltat=1.0, **kwargs)
+
+      Defines a new time step/load step for the simulation.
+
+
+
+   .. py:method:: set_variational_formulation(k_step=None)
+
+      Assembles the global variational forms for the nonlinear solver.
+
+      This aggregates the residual forms from all active operators and computes
+      the tangent Jacobian matrix using automatic differentiation.
+
+      .. math::
+          \mathbf{R}(\mathbf{u}) = \sum \mathbf{R}_{op}(\mathbf{u}) \
+          \mathbf{J} = \frac{\partial \mathbf{R}}{\partial \mathbf{u}}
+
+
+
+      :param k_step: Optional step index to include step-specific operators.
+
+
+

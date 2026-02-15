@@ -1,0 +1,57 @@
+dolfin_mech.runs.ball_hyperelasticity
+=====================================
+
+.. py:module:: dolfin_mech.runs.ball_hyperelasticity
+
+.. autoapi-nested-parse::
+
+   Defines the Ball_Hyperelasticity driver.
+
+   Benchmark simulation function that
+   orchestrates the automated generation of a spherical mesh and the solution of
+   a finite strain hyperelastic problem under radial expansion, supporting both
+   compressible and mixed incompressible formulations.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:function:: Ball_Hyperelasticity(incomp=0, mesh_params={}, mat_params={}, step_params={}, load_params={}, res_basename='run_Ball_Hyperelasticity', write_vtus_with_preserved_connectivity=False, verbose=0)
+
+   Runs a benchmark simulation of a hyperelastic ball under deformation.
+
+   This function sets up and solves a finite strain elasticity problem on a
+   spherical domain. It is typically used to validate the solver's capability
+   to handle:
+   1.  **Curved Geometries**: Generating and solving on a mesh of a sphere.
+   2.  **Large Deformations**: Finite strain kinematics (inflation/expansion).
+   3.  **Incompressibility**: Testing mixed :math:`u-p` formulations if ``incomp=1``.
+
+
+
+   **Workflow:**
+   1.  **Mesh Generation**: Calls ``dmech.run_Ball_Mesh`` to generate a spherical mesh.
+   2.  **Problem Setup**: Instantiates ``HyperelasticityProblem`` with specified material properties.
+   3.  **Loading**: Applies displacement-controlled boundary conditions (radial expansion).
+   4.  **Solving**: Uses an adaptive time-stepping scheme to reach the final state.
+
+   :param incomp: Flag for incompressibility (0 = Compressible, 1 = Incompressible).
+   :type incomp: int
+   :param mesh_params: Dictionary controlling the sphere geometry (e.g., center ``X0, Y0, Z0``, radius ``R``).
+   :type mesh_params: dict
+   :param mat_params: Dictionary defining the material model (e.g., ``model="neohookean"``, ``parameters={"E":..., "nu":...}``).
+   :type mat_params: dict
+   :param step_params: Dictionary for time-stepping (``Deltat``, ``dt_ini``).
+   :type step_params: dict
+   :param load_params: Dictionary defining the load (``dR`` for radial displacement).
+   :type load_params: dict
+   :param res_basename: Prefix for output files (VTU, QOI).
+   :type res_basename: str
+   :param verbose: Verbosity level (0 = silent, 1 = output files).
+   :type verbose: int
+   :return: None.
+
+

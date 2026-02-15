@@ -1,0 +1,993 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dolfin_mech.problems.problem_hyperelasticity_microporo &mdash; dolfin_mech</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3d137114" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=a51259a8"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=ccdb6887"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="dolfin_mech.problems.problem_hyperelasticity_poro" href="../problem_hyperelasticity_poro/index.html" />
+    <link rel="prev" title="dolfin_mech.problems.problem_hyperelasticity_inverse" href="../problem_hyperelasticity_inverse/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            dolfin_mech
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../api_toc.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Core Package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../core/index.html">Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../core/compute_error/index.html">Compute Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/constraint/index.html">Constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/expression_meshfunction_cpp/index.html">Expression Meshfunction Cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/foi/index.html">Foi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/mesh2ugrid/index.html">Mesh2Ugrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/nonlinearsolver/index.html">Nonlinearsolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/qoi/index.html">Qoi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/step/index.html">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/subdomain_periodic/index.html">Subdomain Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/subdomain_pinpoint/index.html">Subdomain Pinpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/subsol/index.html">Subsol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/timeintegrator/index.html">Timeintegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/timevaryingconstant/index.html">Timevaryingconstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/write_vtu_file/index.html">Write Vtu File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/xdmffile/index.html">Xdmffile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../kinematics/index.html">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/inversekinematics/index.html">Inversekinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/kinematics/index.html">Kinematics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kinematics/linearizedkinematics/index.html">Linearizedkinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../materials/index.html">Materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/elastic/index.html">Elastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/inelastic/index.html">Inelastic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../materials/material/index.html">Material</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../operators/index.html">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/constraint_macroscopicstresscomponent/index.html">Constraint Macroscopicstresscomponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/hyperelasticity/index.html">Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/hyperhydrostaticpressure/index.html">Hyperhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/hyperincompressibility/index.html">Hyperincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/inertia/index.html">Inertia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/linearizedelasticity/index.html">Linearizedelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/linearizedhydrostaticpressure/index.html">Linearizedhydrostaticpressure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/linearizedincompressibility/index.html">Linearizedincompressibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/loading/index.html">Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/microporo/index.html">Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/operator/index.html">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/penalty/index.html">Penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operators/poro/index.html">Poro</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Problems</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../problem/index.html">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_elasticity/index.html">Problem Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_homogeneization/index.html">Problem Homogeneization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_hyperelasticity/index.html">Problem Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_hyperelasticity_inverse/index.html">Problem Hyperelasticity Inverse</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Problem Hyperelasticity Microporo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_hyperelasticity_poro/index.html">Problem Hyperelasticity Poro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../problem_hyperelasticity_poro_inverse/index.html">Problem Hyperelasticity Poro Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../runs/index.html">Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/ball_hyperelasticity/index.html">Ball Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/ball_mesh/index.html">Ball Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/disc_hyperelasticity/index.html">Disc Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/disc_mesh/index.html">Disc Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/heartslice_hyperelasticity/index.html">Heartslice Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/heartslice_mesh/index.html">Heartslice Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/hollowbox_homogenization/index.html">Hollowbox Homogenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/hollowbox_mesh/index.html">Hollowbox Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/hollowbox_microporohyperelasticity/index.html">Hollowbox Microporohyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/rivlincube_elasticity/index.html">Rivlincube Elasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/rivlincube_hyperelasticity/index.html">Rivlincube Hyperelasticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/rivlincube_mesh/index.html">Rivlincube Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../runs/rivlincube_porohyperelasticity/index.html">Rivlincube Porohyperelasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">dolfin_mech</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../api_toc.html">API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Core Package</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Problems</a></li>
+      <li class="breadcrumb-item active">dolfin_mech.problems.problem_hyperelasticity_microporo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/api/dolfin_mech/problems/problem_hyperelasticity_microporo/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-dolfin_mech.problems.problem_hyperelasticity_microporo">
+<span id="dolfin-mech-problems-problem-hyperelasticity-microporo"></span><h1>dolfin_mech.problems.problem_hyperelasticity_microporo<a class="headerlink" href="#module-dolfin_mech.problems.problem_hyperelasticity_microporo" title="Link to this heading"></a></h1>
+<p>Defines the MicroPoroHyperelasticity class.</p>
+<p>Multiscale solver for
+poro-hyperelastic microstructures. It implements a displacement decomposition
+framework that couples global macroscopic stretching with local periodic
+fluctuations to model the nonlinear response of pressurized porous skeletons.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dolfin_mech.problems.problem_hyperelasticity_microporo.</span></span><span class="sig-name descname"><span class="pre">MicroPoroHyperelasticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w_solid_incompressibility</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domains_mf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundaries_mf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points_mf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">displacement_perturbation_degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solid_pressure_degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quadrature_degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">foi_degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solid_behavior</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'kubc'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../problem_hyperelasticity/index.html#dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity" title="dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dolfin_mech.problems.problem_hyperelasticity.Hyperelasticity</span></code></a></p>
+<p>Problem class for multi-scale micro-poro-hyperelasticity.</p>
+<p>This class models the mechanical response of a porous microstructure (the
+micro-scale) subjected to macroscopic deformations. It uses a
+<strong>displacement decomposition</strong> approach:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{U}_{tot}(\mathbf{X}) = \mathbf{U}_{bar}(\mathbf{X}) + \mathbf{U}_{tilde}(\mathbf{X})\]</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{U}_{bar}\)</span> is the macroscopic displacement (linear mapping).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{U}_{tilde}\)</span> is the periodic or local fluctuation (perturbation).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>V0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – Initial total volume of the unit cell (bounding box volume).</p></li>
+<li><p><strong>Vs0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – Initial solid volume (volume of the mesh).</p></li>
+<li><p><strong>Vf0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – Initial fluid/pore volume.</p></li>
+<li><p><strong>kinematics</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Kinematics</span></code>) – Finite strain kinematics based on total displacement.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stretch_subsol">
+<span class="sig-name descname"><span class="pre">add_macroscopic_stretch_subsol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stretch_subsol" title="Link to this definition"></a></dt>
+<dd><p>Adds the macroscopic stretch (gradient) as a global Real (R) sub-solution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_displacement_perturbation_subsol">
+<span class="sig-name descname"><span class="pre">add_displacement_perturbation_subsol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_displacement_perturbation_subsol" title="Link to this definition"></a></dt>
+<dd><p>Adds the local displacement perturbation field <span class="math notranslate nohighlight">\(\mathbf{U}_{tilde}\)</span>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_total_volume_subsol">
+<span class="sig-name descname"><span class="pre">add_deformed_total_volume_subsol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_total_volume_subsol" title="Link to this definition"></a></dt>
+<dd><p>Adds a global scalar sub-solution to track the total volume of the unit cell.</p>
+<p>The total volume <span class="math notranslate nohighlight">\(v\)</span> is defined using the <strong>Real (R)</strong> element family,
+meaning it is a single global scalar unknown across the entire domain.
+This variable is typically used in homogenization problems to couple
+the macroscopic stretch with the volume change of the unit cell.</p>
+<p>The initial value is set to <span class="math notranslate nohighlight">\(V_0\)</span>, which represents the volume
+of the bounding box defining the unit cell in the reference configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The added scalar sub-solution container.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>SubSolution</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_solid_volume_subsol">
+<span class="sig-name descname"><span class="pre">add_deformed_solid_volume_subsol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_solid_volume_subsol" title="Link to this definition"></a></dt>
+<dd><p>Adds a global scalar sub-solution to track the volume of the solid phase.</p>
+<p>In the context of poro-hyperelasticity, this sub-solution tracks the
+current volume <span class="math notranslate nohighlight">\(v_s\)</span> of the solid skeleton as it deforms. It is
+defined using a <strong>Real (R)</strong> element family, representing a single
+global degree of freedom for the unit cell.</p>
+<p>The value <span class="math notranslate nohighlight">\(v_s\)</span> is typically computed by integrating the local
+Jacobian <span class="math notranslate nohighlight">\(J\)</span> over the solid domain <span class="math notranslate nohighlight">\(\Omega_s\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[v_s = \int_{\Omega_s} J \, d\Omega_0\]</div>
+<p>The initial value is set to <span class="math notranslate nohighlight">\(V_{s0}\)</span> (the volume of the reference
+mesh), ensuring the problem starts from a state of zero deformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The added scalar sub-solution container.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>SubSolution</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_fluid_volume_subsol">
+<span class="sig-name descname"><span class="pre">add_deformed_fluid_volume_subsol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_fluid_volume_subsol" title="Link to this definition"></a></dt>
+<dd><p>Adds a global scalar sub-solution to track the volume of the fluid phase (pores).</p>
+<p>In a micro-poro-hyperelastic framework, the fluid volume <span class="math notranslate nohighlight">\(v_f\)</span>
+represents the current volume of the void space within the unit cell.
+It is defined using the <strong>Real (R)</strong> element family, creating a single
+global scalar degree of freedom.</p>
+<p>In the context of displacement decomposition, the fluid volume is
+geometrically constrained by the difference between the total cell
+volume (governed by the macroscopic stretch) and the solid skeleton
+volume:</p>
+<div class="math notranslate nohighlight">
+\[v_f = v_{tot} - v_s\]</div>
+<p>The initial value is set to <span class="math notranslate nohighlight">\(V_{f0}\)</span>, the difference between
+the bounding box volume and the initial solid mesh volume.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The added scalar sub-solution container.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>SubSolution</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_surface_area_subsol">
+<span class="sig-name descname"><span class="pre">add_surface_area_subsol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_surface_area_subsol" title="Link to this definition"></a></dt>
+<dd><p>Adds a global scalar sub-solution to track the internal interfacial surface area.</p>
+<p>This sub-solution represents the current total area <span class="math notranslate nohighlight">\(s\)</span> of the
+internal pores or interfaces (e.g., the alveolar surface area in lung
+parenchyma). It is defined using the <strong>Real (R)</strong> element family,
+creating a single global scalar degree of freedom for the entire
+Representative Elementary Volume (REV).</p>
+<p>Tracking the evolution of this surface area is critical for modeling
+surface tension effects or surfactant activity in pulmonary mechanics,
+where the energy contribution depends on the current area of the
+fluid-solid interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>degree</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Polynomial degree for the Real element (defaults to 0).</p></li>
+<li><p><strong>init_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>, </em><em>optional</em>) – Initial value for the surface area. If None, it should
+be updated later by an operator or solver.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The added scalar sub-solution container.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SubSolution</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.set_subsols">
+<span class="sig-name descname"><span class="pre">set_subsols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">displacement_perturbation_degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solid_pressure_degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.set_subsols" title="Link to this definition"></a></dt>
+<dd><p>Configures the solution hierarchy for the micro-poro-hyperelastic problem.</p>
+<p>This method initializes the various sub-solutions required for the
+displacement decomposition and homogenization framework. It defines
+three main types of unknowns:</p>
+<ol class="arabic simple">
+<li><p><strong>Macroscopic Stretch</strong> (<span class="math notranslate nohighlight">\(\mathbf{U}_{bar}\)</span>): A global tensor
+representing the average deformation of the unit cell.</p></li>
+<li><p><strong>Displacement Perturbation</strong> (<span class="math notranslate nohighlight">\(\mathbf{U}_{tilde}\)</span>): A periodic
+vector field representing local fluctuations within the microstructure.</p></li>
+<li><p><strong>Auxiliary Global Variables</strong>: Such as the internal interfacial
+surface area, used for surface tension/capillary energy.</p></li>
+</ol>
+<p>If <code class="docutils literal notranslate"><span class="pre">w_solid_incompressibility</span></code> is enabled, a pressure field is added
+for the solid phase, typically following the <span class="math notranslate nohighlight">\(P_k / P_{k-1}\)</span>
+stable element pair logic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>displacement_perturbation_degree</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Polynomial degree for the
+local fluctuation field (CG vector).</p></li>
+<li><p><strong>solid_pressure_degree</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – Polynomial degree for the solid pressure
+(if incompressible). Defaults to <code class="docutils literal notranslate"><span class="pre">displacement_perturbation_degree</span> <span class="pre">-</span> <span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.set_kinematics">
+<span class="sig-name descname"><span class="pre">set_kinematics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.set_kinematics" title="Link to this definition"></a></dt>
+<dd><p>Initializes finite strain kinematics for the total displacement field.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_elasticity_operator">
+<span class="sig-name descname"><span class="pre">add_elasticity_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solid_behavior_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solid_behavior_parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_elasticity_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a hyperelasticity operator for the solid phase in the micro-porous problem.</p>
+<p>This method defines the internal virtual work contribution of the solid
+skeleton. It utilizes the energy-based formulation (<code class="docutils literal notranslate"><span class="pre">formulation=&quot;ener&quot;</span></code>)
+where the residual is the first variation of the strain energy density
+potential <span class="math notranslate nohighlight">\(\Psi\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\delta \Pi_{int} = \int_{\Omega_s} \frac{\partial \Psi}{\partial \mathbf{F}} : \delta \mathbf{F} \, d\Omega_0\]</div>
+<p>In this multiscale context, the operator specifically uses the
+<strong>displacement perturbation</strong> <span class="math notranslate nohighlight">\(\mathbf{U}_{tilde}\)</span> as the primary
+unknown for the local fluctuation, while the kinematics account for the
+total displacement (macroscopic + perturbation).</p>
+<p>Additionally, this method automatically registers two stress fields as
+Fields of Interest (FOI):</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>Sigma</strong>: The Second Piola-Kirchhoff stress tensor (<span class="math notranslate nohighlight">\(\mathbf{S}\)</span>).</p></li>
+<li><p><strong>sigma</strong>: The Cauchy stress tensor (<span class="math notranslate nohighlight">\(\mathbf{\sigma}\)</span>).</p></li>
+</ol>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>solid_behavior_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The name of the hyperelastic constitutive
+model (e.g., “NeoHookean”, “HolzapfelOgden”).</p></li>
+<li><p><strong>solid_behavior_parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) – Dictionary of material constants
+required by the model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The instantiated hyperelasticity operator.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dmech.HyperElasticityOperator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stretch_symmetry_penalty_operator">
+<span class="sig-name descname"><span class="pre">add_macroscopic_stretch_symmetry_penalty_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stretch_symmetry_penalty_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a penalty operator to enforce the symmetry of the macroscopic stretch tensor.</p>
+<p>In the multiscale formulation, the macroscopic stretch <span class="math notranslate nohighlight">\(\mathbf{U}_{bar}\)</span>
+is often defined in a non-symmetric tensor space. To ensure it represents a
+purely symmetric deformation gradient (consistent with the physics of
+small or large strain stretching), this operator adds a penalty term to the
+global energy functional.</p>
+<p>The penalty contribution to the residual is:</p>
+<div class="math notranslate nohighlight">
+\[\delta \Pi_{sym} = \int_{\Omega} \eta \, \text{skew}(\mathbf{U}_{bar}) : \text{skew}(\delta \mathbf{U}_{bar}) \, d\Omega\]</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\eta\)</span> is a large penalty parameter (typically <code class="docutils literal notranslate"><span class="pre">pen_val=1e6</span></code>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{skew}(\mathbf{A}) = \frac{1}{2}(\mathbf{A} - \mathbf{A}^T)\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This effectively forces the off-diagonal components of <span class="math notranslate nohighlight">\(\mathbf{U}_{bar}\)</span>
+to satisfy <span class="math notranslate nohighlight">\(U_{ij} = U_{ji}\)</span>, preventing spurious rigid body
+rotations at the macroscopic level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – Keyword arguments passed to the penalty operator,
+most notably <code class="docutils literal notranslate"><span class="pre">pen_val</span></code> (float) to define the penalty weight.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The instantiated symmetry penalty operator.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dmech.MacroscopicStretchSymmetryPenaltyOperator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stretch_component_penalty_operator">
+<span class="sig-name descname"><span class="pre">add_macroscopic_stretch_component_penalty_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stretch_component_penalty_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a penalty operator to prescribe specific components of the macroscopic stretch.</p>
+<p>This method is used to control the macroscopic loading of the Representative
+Elementary Volume (REV). It allows the user to “fix” one or more components
+of the macroscopic stretch tensor <span class="math notranslate nohighlight">\(\mathbf{U}_{bar}\)</span> to a target value.</p>
+<p>The penalty contribution to the residual for a specific component <span class="math notranslate nohighlight">\((i,j)\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\delta \Pi_{comp} = \int_{\Omega} \eta (U_{ij} - \bar{U}_{ij}) \delta U_{ij} \, d\Omega\]</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\eta\)</span> is the penalty parameter (passed via <code class="docutils literal notranslate"><span class="pre">pen_val</span></code>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{U}_{ij}\)</span> is the target prescribed stretch value.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This approach is often preferred over strong Dirichlet constraints for
+global variables in mixed formulations to maintain better solver
+conditioning.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – The index of the load step to which this operator belongs.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments used to define the constraint:
+- <code class="docutils literal notranslate"><span class="pre">component</span></code> (tuple): Indices of the tensor component (e.g., (0,0)).
+- <code class="docutils literal notranslate"><span class="pre">val</span></code> (float/Constant): Target value for the component.
+- <code class="docutils literal notranslate"><span class="pre">pen_val</span></code> (float): Penalty stiffness (defaults to a high value).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The instantiated component penalty operator.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dmech.MacroscopicStretchComponentPenaltyOperator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stress_component_constraint_operator">
+<span class="sig-name descname"><span class="pre">add_macroscopic_stress_component_constraint_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stress_component_constraint_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds an operator to prescribe a specific component of the macroscopic stress.</p>
+<p>In multi-scale modeling, this operator enables <strong>stress-controlled loading</strong>.
+It enforces that the volume average of the microscopic stress (Cauchy or
+First Piola-Kirchhoff) matches a target macroscopic stress value <span class="math notranslate nohighlight">\(\bar{\Sigma}_{ij}\)</span>.</p>
+<p>The constraint is typically added to the virtual work equation as:</p>
+<div class="math notranslate nohighlight">
+\[\delta \Pi_{stress} = (\langle \sigma_{ij} \rangle - \bar{\Sigma}_{ij}) \cdot \delta U_{bar, ij}\]</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\langle \sigma_{ij} \rangle\)</span> is the volume average of the
+micro-stress over the unit cell.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta U_{bar, ij}\)</span> is the virtual macroscopic stretch.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This allows for the simulation of “free” boundary conditions in specific
+directions (by setting the target stress to zero) or specific pressure
+states.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This method currently assumes the problem contains only a single
+elasticity operator from which the material constitutive law
+can be extracted.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – The index of the load step to which this operator belongs.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments to define the constraint:
+- <code class="docutils literal notranslate"><span class="pre">component</span></code> (tuple): Indices of the stress tensor (e.g., (0,0)).
+- <code class="docutils literal notranslate"><span class="pre">val</span></code> (float/Constant): The target macroscopic stress value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The instantiated macroscopic stress constraint operator.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dmech.MacroscopicStressComponentConstraintOperator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_surface_pressure_loading_operator">
+<span class="sig-name descname"><span class="pre">add_surface_pressure_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_surface_pressure_loading_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a follower-force pressure loading operator to the internal pore surfaces.</p>
+<p>This operator represents the external work done by a fluid pressure <span class="math notranslate nohighlight">\(p_f\)</span>
+acting on the boundaries of the solid phase. In a finite strain context,
+this is a “follower load,” meaning the force vector evolves as the surface
+deforms and rotates.</p>
+<p>The contribution to the virtual work is:</p>
+<div class="math notranslate nohighlight">
+\[\delta \Pi_{ext} = \int_{\partial \Omega} p_f \cdot J \mathbf{F}^{-T} \mathbf{N} \cdot \delta \mathbf{u} \, dA_0\]</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p_f\)</span> is the fluid pressure magnitude.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{F}^{-T} \mathbf{N}\)</span> accounts for the deformation of the
+surface normal (Nanson’s formula).</p></li>
+<li><p><span class="math notranslate nohighlight">\(J\)</span> is the determinant of the deformation gradient.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This is particularly useful for modeling the inflation of lung alveoli or
+pressurized porous scaffolds where the internal geometry changes
+significantly during loading.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – The index of the load step to which this operator belongs.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments passed to the operator:
+- <code class="docutils literal notranslate"><span class="pre">P</span></code> (float/Constant): The pressure value to apply.
+- <code class="docutils literal notranslate"><span class="pre">subdomain_id</span></code> (int): The boundary ID representing the pore interface.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The instantiated surface pressure loading operator.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dmech.SurfacePressureLoadingOperator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_surface_tension_loading_operator">
+<span class="sig-name descname"><span class="pre">add_surface_tension_loading_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_surface_tension_loading_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds a surface tension loading operator to the interfacial boundaries.</p>
+<p>This operator models the energy contribution of surface tension <span class="math notranslate nohighlight">\(\gamma\)</span>
+acting on the pore-solid interface. Mathematically, it represents the
+first variation of the surface energy <span class="math notranslate nohighlight">\(\Psi_s = \int \gamma \, da\)</span>.</p>
+<p>The contribution to the virtual work is:</p>
+<div class="math notranslate nohighlight">
+\[\delta \Pi_{st} = \int_{\partial \Omega} \gamma \left( J \mathbf{F}^{-T} \mathbf{N} \cdot \text{grad}(\delta \mathbf{u}) \cdot \mathbf{n} \right) dA_0\]</div>
+<p>In a finite strain context, surface tension is a “configuration-dependent”
+load. As the surface area <span class="math notranslate nohighlight">\(a\)</span> changes, the total energy changes,
+resulting in a force that is always tangent to the surface but normal
+to the interface boundaries (Laplace pressure effect).</p>
+<p>This is a critical component for modeling lung parenchyma, where the
+alveolar surface tension provides a significant portion of the lung’s
+elastic recoil.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – The index of the load step to which this operator belongs.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments passed to the operator:
+- <code class="docutils literal notranslate"><span class="pre">gamma</span></code> (float/Constant): The surface tension coefficient.
+- <code class="docutils literal notranslate"><span class="pre">subdomain_id</span></code> (int): The boundary ID of the interface.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The instantiated surface tension loading operator.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dmech.SurfaceTensionLoadingOperator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_total_volume_operator">
+<span class="sig-name descname"><span class="pre">add_deformed_total_volume_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_total_volume_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds an operator to enforce the constraint on the total deformed volume.</p>
+<p>In multi-scale poro-hyperelasticity, the total volume of the unit cell
+<span class="math notranslate nohighlight">\(v\)</span> is determined by the macroscopic deformation. This operator
+links the global scalar sub-solution <span class="math notranslate nohighlight">\(v\)</span> to the macroscopic
+stretch <span class="math notranslate nohighlight">\(\mathbf{U}_{bar}\)</span>.</p>
+<p>The constraint is enforced by ensuring that the current volume equals the
+reference volume <span class="math notranslate nohighlight">\(V_0\)</span> scaled by the determinant of the macroscopic
+deformation gradient <span class="math notranslate nohighlight">\(J_{bar} = \det(\mathbf{I} + \mathbf{U}_{bar})\)</span>.</p>
+<p>The contribution to the virtual work (residual) is:</p>
+<div class="math notranslate nohighlight">
+\[\delta \Pi_{v} = \int_{\Omega} (v - J_{bar} V_0) \delta v \, d\Omega\]</div>
+<p>This operator is essential for problems where the pore fluid pressure or
+total porosity is coupled to the overall expansion or contraction of
+the unit cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>k_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – The index of the load step to which this operator belongs.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None. The operator is registered within the problem’s operator list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_solid_volume_operator">
+<span class="sig-name descname"><span class="pre">add_deformed_solid_volume_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_solid_volume_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds an operator to enforce the constraint on the deformed solid volume.</p>
+<p>This operator links the global scalar sub-solution <span class="math notranslate nohighlight">\(v_s\)</span> to the
+local kinematics of the solid phase. It ensures that the tracked solid
+volume is consistent with the spatial integration of the local
+Jacobian (determinant of the deformation gradient) over the solid domain.</p>
+<p>The constraint is enforced via the following variational contribution
+to the residual:</p>
+<div class="math notranslate nohighlight">
+\[\delta \Pi_{v_s} = \int_{\Omega_s} (v_s - J) \delta v_s \, d\Omega_0\]</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(v_s\)</span> is the global scalar for the deformed solid volume.</p></li>
+<li><p><span class="math notranslate nohighlight">\(J\)</span> is the local determinant of the deformation gradient
+(<span class="math notranslate nohighlight">\(\det \mathbf{F}\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta v_s\)</span> is the test function associated with the
+global solid volume.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This operator is critical for calculating the current solid volume fraction
+(solidity) and, by extension, the porosity in micro-porous hyperelastic
+simulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>k_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – The index of the load step to which this operator belongs.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None. The operator is registered within the problem’s operator list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_fluid_volume_operator">
+<span class="sig-name descname"><span class="pre">add_deformed_fluid_volume_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_fluid_volume_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds an operator to enforce the constraint on the deformed fluid (pore) volume.</p>
+<p>This operator links the global scalar sub-solution <span class="math notranslate nohighlight">\(v_f\)</span> to the
+kinematics of the internal boundaries. Since the fluid phase is typically
+not meshed, its volume is calculated using a boundary integral based on
+the movement of the pore-solid interface.</p>
+<p>The calculation often relies on the identity for the volume of a region
+bounded by a surface <span class="math notranslate nohighlight">\(\partial \Omega_f\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[v_f = \frac{1}{dim} \int_{\partial \Omega_f} \mathbf{x} \cdot \mathbf{n} \, da\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the current position and <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is
+the outward spatial normal. The operator ensures that the global variable
+<span class="math notranslate nohighlight">\(v_f\)</span> satisfies this kinematic relationship as the pores expand
+or contract.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>k_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – The index of the load step to which this operator belongs.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None. The operator is registered within the problem’s operator list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_surface_area_operator">
+<span class="sig-name descname"><span class="pre">add_surface_area_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_surface_area_operator" title="Link to this definition"></a></dt>
+<dd><p>Adds an operator to enforce the constraint on the deformed interfacial surface area.</p>
+<p>This operator links the global scalar sub-solution <span class="math notranslate nohighlight">\(s\)</span> to the
+actual integrated area of the deformed mesh facets. It uses Nanson’s
+formula to map the reference surface area elements to the spatial
+configuration.</p>
+<p>The constraint is enforced via the following variational contribution:</p>
+<div class="math notranslate nohighlight">
+\[\delta \Pi_{s} = \int_{\partial \Omega} (s - \| J \mathbf{F}^{-T} \mathbf{N} \|) \delta s \, dA_0\]</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(s\)</span> is the global scalar for the deformed surface area.</p></li>
+<li><p><span class="math notranslate nohighlight">\(J \mathbf{F}^{-T} \mathbf{N}\)</span> is the transformation of the
+area element (Nanson’s formula).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta s\)</span> is the test function associated with the
+global surface area.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This operator allows the surface area to be treated as a primary
+unknown, which is essential for coupling mechanical deformation with
+surface-dependent physics like alveolar surface tension in lung models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – The index of the load step to which this operator belongs.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments passed to the operator, typically
+including <code class="docutils literal notranslate"><span class="pre">subdomain_id</span></code> to specify which boundary to integrate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The instantiated surface area operator.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dmech.DeformedSurfaceAreaOperator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_kubc">
+<span class="sig-name descname"><span class="pre">add_kubc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmin_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmin_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_kubc" title="Link to this definition"></a></dt>
+<dd><p>Applies Kinematic Uniform Boundary Conditions (KUBC) to the unit cell.</p>
+<p>KUBC is a standard homogenization boundary condition where the
+displacement fluctuation <span class="math notranslate nohighlight">\(\mathbf{U}_{tilde}\)</span> is set to zero
+on all external faces of the Representative Elementary Volume (REV).</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{U}_{tilde} = \mathbf{0} \quad \text{on } \partial \Omega_{ext}\]</div>
+<p>By enforcing this, the total displacement on the boundary is purely
+dictated by the macroscopic stretch <span class="math notranslate nohighlight">\(\mathbf{U}_{bar}\)</span>, satisfying
+the Hill-Mandel condition. This method specifically constrains the
+normal components of the fluctuation field on each respective face to
+ensure the cell remains compatible with a larger homogeneous medium.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin_id</strong> – Subdomain ID for the negative X-face.</p></li>
+<li><p><strong>xmax_id</strong> – Subdomain ID for the positive X-face.</p></li>
+<li><p><strong>ymin_id</strong> – Subdomain ID for the negative Y-face.</p></li>
+<li><p><strong>ymax_id</strong> – Subdomain ID for the positive Y-face.</p></li>
+<li><p><strong>zmin_id</strong> – Subdomain ID for the negative Z-face (3D only).</p></li>
+<li><p><strong>zmax_id</strong> – Subdomain ID for the positive Z-face (3D only).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_solid_volume_qoi">
+<span class="sig-name descname"><span class="pre">add_deformed_solid_volume_qoi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_solid_volume_qoi" title="Link to this definition"></a></dt>
+<dd><p>Adds a Quantity of Interest (QOI) for the total deformed solid volume.</p>
+<p>This method registers an integral expression to track the evolution of
+the solid phase volume <span class="math notranslate nohighlight">\(v_s\)</span> throughout the simulation. It
+integrates the local Jacobian <span class="math notranslate nohighlight">\(J\)</span> (determinant of the deformation
+gradient) over the reference solid domain <span class="math notranslate nohighlight">\(\Omega_{s,0}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[v_s = \int_{\Omega_{s,0}} J \, dV\]</div>
+<p>The resulting value represents the current volume occupied by the
+material skeleton (e.g., the tissue in a lung model). This is
+distinguished from the total unit cell volume, which includes
+the voids or pores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None. The QOI is added to the problem’s internal QOI list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_fluid_volume_qoi">
+<span class="sig-name descname"><span class="pre">add_deformed_fluid_volume_qoi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_fluid_volume_qoi" title="Link to this definition"></a></dt>
+<dd><p>Adds a Quantity of Interest (QOI) for the total deformed fluid (pore) volume.</p>
+<p>In the multiscale homogenization of porous media, the fluid volume <span class="math notranslate nohighlight">\(v_f\)</span>
+is calculated as the difference between the total deformed volume of the
+unit cell <span class="math notranslate nohighlight">\(v\)</span> and the integrated volume of the solid skeleton <span class="math notranslate nohighlight">\(v_s\)</span>.</p>
+<p>The total volume <span class="math notranslate nohighlight">\(v\)</span> is determined by the macroscopic deformation
+gradient <span class="math notranslate nohighlight">\(\mathbf{F}_{bar}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{F}_{bar} = \mathbf{I} + \mathbf{U}_{bar} \
+v = \det(\mathbf{F}_{bar}) V_0\]</div>
+<p>The QOI expression uses the fact that <span class="math notranslate nohighlight">\(v_f = \int_{\Omega_{s,0}} (\phi_{f}/ \phi_{s,0} ) J dV\)</span>
+is reformulated here as an integral over the solid mesh for numerical
+consistency within the FEniCS integration framework.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None. The QOI is registered for post-processing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_volume_qoi">
+<span class="sig-name descname"><span class="pre">add_deformed_volume_qoi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_deformed_volume_qoi" title="Link to this definition"></a></dt>
+<dd><p>Adds a Quantity of Interest (QOI) for the total deformed volume of the unit cell.</p>
+<p>This method calculates the current volume <span class="math notranslate nohighlight">\(v\)</span> of the entire Representative
+Elementary Volume (REV), including both the solid skeleton and the pore space.
+It is derived from the macroscopic deformation gradient <span class="math notranslate nohighlight">\(\mathbf{F}_{bar}\)</span>.</p>
+<p>The total deformed volume is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{F}_{bar} = \mathbf{I} + \mathbf{U}_{bar} \
+v = \det(\mathbf{F}_{bar}) V_0\]</div>
+<p>To integrate this global scalar value within the FEniCS framework (which
+integrates over the meshed solid domain <span class="math notranslate nohighlight">\(\Omega_s\)</span>), the expression
+is normalized by the initial solid volume <span class="math notranslate nohighlight">\(V_{s0}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[v = \int_{\Omega_s} \frac{v_{tot}}{V_{s0}} \, dV\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None. The QOI is registered for post-processing and output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_tensor_qois">
+<span class="sig-name descname"><span class="pre">add_macroscopic_tensor_qois</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">basename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_tensor_qois" title="Link to this definition"></a></dt>
+<dd><p>Helper method to add Quantities of Interest (QOI) for all components of a macroscopic tensor.</p>
+<p>This method iterates through the components of a global tensor sub-solution
+(defined in the <strong>Real (R)</strong> family) and registers each one as a separate
+scalar QOI. Since these are global variables, the value is extracted
+“pointwise” at a single mesh coordinate.</p>
+<p>The naming convention follows the format <code class="docutils literal notranslate"><span class="pre">basename_IJ</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">U_bar_XX</span></code>,
+<code class="docutils literal notranslate"><span class="pre">U_bar_XY</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>basename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The prefix used for the QOI names.</p></li>
+<li><p><strong>subsol</strong> (<em>SubSolution</em>) – The global tensor sub-solution to extract components from.</p></li>
+<li><p><strong>symmetric</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, skips redundant off-diagonal components
+(e.g., registers XY but skips YX).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stretch_qois">
+<span class="sig-name descname"><span class="pre">add_macroscopic_stretch_qois</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stretch_qois" title="Link to this definition"></a></dt>
+<dd><p>Registers all components of the macroscopic stretch tensor as Quantities of Interest.</p>
+<p>This method uses <a class="reference internal" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_tensor_qois" title="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_tensor_qois"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_macroscopic_tensor_qois()</span></code></a> to extract the individual
+components of the global macroscopic stretch <span class="math notranslate nohighlight">\(\mathbf{U}_{bar}\)</span>. In the
+context of displacement decomposition, <span class="math notranslate nohighlight">\(\mathbf{U}_{bar}\)</span> represents the
+average displacement gradient across the Representative Elementary Volume (REV).</p>
+<p>The registered QOIs will be named <code class="docutils literal notranslate"><span class="pre">U_bar_XX</span></code>, <code class="docutils literal notranslate"><span class="pre">U_bar_YY</span></code>, etc. These
+values are essential for verifying the applied loading conditions and for
+constructing macroscopic stress-strain relationships.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since the macroscopic stretch is generally enforced to be symmetric via
+penalty operators, the off-diagonal terms (e.g., XY and YX) should
+ideally be identical.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None. Component-wise QOIs are added to the problem.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_solid_stress_qois">
+<span class="sig-name descname"><span class="pre">add_macroscopic_solid_stress_qois</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symmetric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_solid_stress_qois" title="Link to this definition"></a></dt>
+<dd><p>Registers Quantities of Interest (QOI) for the homogenized solid Cauchy stress components.</p>
+<p>This method calculates the macroscopic contribution of the solid phase to the
+overall stress state. It integrates the local Cauchy stress <span class="math notranslate nohighlight">\(\sigma\)</span> of the
+solid material, weighted by the local Jacobian <span class="math notranslate nohighlight">\(J\)</span>, and averages it over
+the current total volume <span class="math notranslate nohighlight">\(v\)</span> of the unit cell.</p>
+<p>The homogenization formula for the solid stress component <span class="math notranslate nohighlight">\(ij\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\bar{\sigma}_{s, ij} = \frac{1}{v} \int_{\Omega_{s,0}} \sigma_{ij} J \, dV\]</div>
+<p>This calculation is fundamental for determining the effective mechanical
+properties of porous media, as it captures how the microscopic solid
+skeleton carries loads at the macroscopic scale.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This method assumes a single elasticity operator is present in the
+problem to retrieve the material constitutive law.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symmetric</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, only the independent components (XX, YY, ZZ, XY,
+YZ, ZX) are registered to save output space.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None. Component-wise solid stress QOIs are added to the problem.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_solid_hydrostatic_pressure_qoi">
+<span class="sig-name descname"><span class="pre">add_macroscopic_solid_hydrostatic_pressure_qoi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_solid_hydrostatic_pressure_qoi" title="Link to this definition"></a></dt>
+<dd><p>Registers a Quantity of Interest (QOI) for the homogenized solid hydrostatic pressure.</p>
+<p>This method calculates the macroscopic hydrostatic pressure <span class="math notranslate nohighlight">\(\bar{p}_{hydro}\)</span>
+by averaging the local hydrostatic pressure of the solid material over the
+current total volume <span class="math notranslate nohighlight">\(v\)</span> of the unit cell.</p>
+<p>In continuum mechanics, the hydrostatic pressure is defined as the negative
+one-third of the trace of the Cauchy stress tensor:</p>
+<div class="math notranslate nohighlight">
+\[p = -\frac{1}{3} \text{tr}(\sigma)\]</div>
+<p>The homogenization is performed by integrating the local pressure <span class="math notranslate nohighlight">\(p\)</span>
+weighted by the local Jacobian <span class="math notranslate nohighlight">\(J\)</span> over the reference solid domain:</p>
+<div class="math notranslate nohighlight">
+\[\bar{p}_{hydro} = \frac{1}{v} \int_{\Omega_{s,0}} p_{hydro} J \, dV\]</div>
+<p>This value is a key indicator of the volumetric loading state of the
+homogenized material point.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This method assumes a single elasticity operator is present in the
+problem to retrieve the hydrostatic pressure from the material behavior.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None. The hydrostatic pressure QOI is added to the problem.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_fluid_pressure_qoi">
+<span class="sig-name descname"><span class="pre">add_fluid_pressure_qoi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_fluid_pressure_qoi" title="Link to this definition"></a></dt>
+<dd><p>Registers a Quantity of Interest (QOI) for the pore fluid pressure across all steps.</p>
+<p>This method extracts the fluid pressure value <span class="math notranslate nohighlight">\(p_f\)</span> from the operators
+assigned to each simulation step. In micro-poro-hyperelasticity, <span class="math notranslate nohighlight">\(p_f\)</span>
+represents the pressure within the voids/pores of the microstructure.</p>
+<p>The value is normalized by the initial solid volume <span class="math notranslate nohighlight">\(V_{s0}\)</span> to
+maintain consistency with the integration over the solid mesh:</p>
+<div class="math notranslate nohighlight">
+\[\bar{p}_f = \frac{1}{V_{s0}} \int_{\Omega_s} p_f \, dV\]</div>
+<p>Since the fluid pressure may vary or be defined by different time-varying
+functions in different steps, this method constructs a list of
+expressions (<code class="docutils literal notranslate"><span class="pre">expr_lst</span></code>), one for each step in the simulation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The method searches for an operator possessing the <code class="docutils literal notranslate"><span class="pre">tv_pf</span></code>
+(time-varying pore fluid) attribute within each step.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None. The fluid pressure QOI is added to the problem’s QOI list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stress_qois">
+<span class="sig-name descname"><span class="pre">add_macroscopic_stress_qois</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symmetric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_macroscopic_stress_qois" title="Link to this definition"></a></dt>
+<dd><p>Adds Quantities of Interest (QOI) for the homogenized macroscopic stress.</p>
+<p>This computes the effective stress <span class="math notranslate nohighlight">\(\bar{\sigma}\)</span> by averaging the
+local solid stress and fluid pressure contributions over the deformed
+volume <span class="math notranslate nohighlight">\(v\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\bar{\sigma} = \frac{1}{v} \int_{\Omega} (\sigma_{s} J - \phi_{f} p_{f} J) d\Omega\]</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_interfacial_surface_qois">
+<span class="sig-name descname"><span class="pre">add_interfacial_surface_qois</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dolfin_mech.problems.problem_hyperelasticity_microporo.MicroPoroHyperelasticity.add_interfacial_surface_qois" title="Link to this definition"></a></dt>
+<dd><p>Adds QOI for the deformed interfacial surface area.</p>
+<p>Uses Nanson’s formula to track how the internal pore surface area
+evolves under large deformation.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../problem_hyperelasticity_inverse/index.html" class="btn btn-neutral float-left" title="dolfin_mech.problems.problem_hyperelasticity_inverse" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../problem_hyperelasticity_poro/index.html" class="btn btn-neutral float-right" title="dolfin_mech.problems.problem_hyperelasticity_poro" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Martin Genet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

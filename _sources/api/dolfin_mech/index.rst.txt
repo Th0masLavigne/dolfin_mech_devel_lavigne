@@ -12,3 +12,5 @@ Core Package
    Kinematics <kinematics/index>
    Materials <materials/index>
    Operators <operators/index>
+   Problems <problems/index>
+   Runs <runs/index>

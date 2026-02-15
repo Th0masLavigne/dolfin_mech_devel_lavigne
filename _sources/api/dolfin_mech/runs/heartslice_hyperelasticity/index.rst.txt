@@ -1,0 +1,64 @@
+dolfin_mech.runs.heartslice_hyperelasticity
+===========================================
+
+.. py:module:: dolfin_mech.runs.heartslice_hyperelasticity
+
+.. autoapi-nested-parse::
+
+   Defines the HeartSlice_Hyperelasticity driver.
+
+   Specialized biomechanical
+   benchmark that simulates the nonlinear deformation of a ventricular
+   cross-section. It supports kinematic "twisting" through prescribed radial and
+   tangential displacements, as well as physiological inflation via endocardial
+   pressure loading on an annular domain.
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:function:: HeartSlice_Hyperelasticity(incomp=0, mesh_params={}, mat_params={}, step_params={}, load_params={}, res_basename='run_HeartSlice_Hyperelasticity', write_vtus_with_preserved_connectivity=False, verbose=0)
+
+   Runs a 2D benchmark simulation of a heart slice (annulus) under deformation.
+
+   This function sets up and solves a finite strain problem on an annular domain,
+   representing a 2D slice of a cardiac ventricle.
+
+
+
+   **Loading Scenarios:**
+
+   1.  **Displacement Control (`type="disp"`)**: Simulates a "twisting" or contraction
+       movement. The inner radius :math:`R_i` is displaced by :math:`dR_i` and rotated
+       by :math:`dT_i`. The outer radius :math:`R_e` is similarly deformed. This is useful
+       for testing shear and complex kinematic boundary conditions.
+   2.  **Pressure Control (`type="pres"`)**: Simulates ventricular inflation. An internal
+       pressure :math:`p` is applied to the inner boundary :math:`S_i`. To ensure stability,
+       four cardinal points on the outer boundary are pinned to prevent rigid body motion.
+
+   :param incomp: Flag for incompressibility (0 = Compressible, 1 = Incompressible).
+   :type incomp: int
+   :param mesh_params: Dictionary defining the annulus geometry:
+       - ``X0``, ``Y0``: Center coordinates.
+       - ``Ri``: Inner radius (endocardium).
+       - ``Re``: Outer radius (epicardium).
+   :type mesh_params: dict
+   :param mat_params: Dictionary defining the hyperelastic material model.
+   :type mat_params: dict
+   :param step_params: Time-stepping parameters (``Deltat``, ``dt_ini``).
+   :type step_params: dict
+   :param load_params: Loading configuration:
+       - ``type``: "disp" or "pres".
+       - ``dRi``, ``dTi``: Radial/Tangential displacement for inner surface.
+       - ``dRe``, ``dTe``: Radial/Tangential displacement for outer surface.
+       - ``p``: Internal pressure magnitude.
+   :type load_params: dict
+   :param res_basename: Output filename prefix.
+   :type res_basename: str
+   :param verbose: Verbosity level.
+   :type verbose: int
+
+
