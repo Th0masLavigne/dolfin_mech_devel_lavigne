@@ -7,6 +7,7 @@ from .hyperhydrostaticpressure import HyperHydrostaticPressure
 from .hyperincompressibility import HyperIncompressibility
 from .linearizedelasticity import LinearizedElasticity
 from .linearizedhydrostaticpressure import LinearizedHydrostaticPressure
+from .linearizedincompressibility import LinearizedIncompressibility
 
 __all__ = [
 	"Operator",
@@ -16,4 +17,5 @@ __all__ = [
 	"HyperIncompressibility",
 	"LinearizedElasticity",
 	"LinearizedHydrostaticPressure",
+	"LinearizedIncompressibility",
 ]
