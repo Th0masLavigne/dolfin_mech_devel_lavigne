@@ -13,7 +13,13 @@
 ###                                                                          ###
 ################################################################################
 
-"""summary"""
+"""Defines the PressureBalancingGravity operators.
+
+Simulate the mechanical
+equilibrium of organs (like the lungs) by balancing internal gravitational
+forces with surface pleural pressures through Lagrange multipliers in both
+finite and small strain regimes.
+"""
 
 import dolfin
 
