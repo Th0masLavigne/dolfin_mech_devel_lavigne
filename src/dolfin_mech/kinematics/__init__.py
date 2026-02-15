@@ -1,7 +1,7 @@
 """Kinematics module of `dolfin_mech`."""
 
-from .InverseKinematics import InverseKinematics
-from .Kinematics import Kinematics
-from .LinearizedKinematics import LinearizedKinematics
+from .inversekinematics import InverseKinematics
+from .kinematics import Kinematics
+from .linearizedkinematics import LinearizedKinematics
 
 __all__ = ["Kinematics", "InverseKinematics", "LinearizedKinematics"]

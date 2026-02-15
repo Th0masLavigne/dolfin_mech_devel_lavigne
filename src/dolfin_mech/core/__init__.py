@@ -1,14 +1,14 @@
 """Core elements of module `dolfin_mech`."""
 
 from .compute_error import compute_error
-from .Constraint import Constraint
-from .FOI import FOI
-from .mesh2ugrid import mesh2ugrid
-from .QOI import QOI
-from .TimeIntegrator import TimeIntegrator
-from .TimeVaryingConstant import TimeVaryingConstant
-from .write_VTU_file import write_VTU_file
-from .XDMFFile import XDMFFile
+from .constraint import Constraint
+from .foi import FOI
+from .mesh2ugrid import add_function_to_ugrid, add_functions_to_ugrid, mesh2ugrid
+from .qoi import QOI
+from .timeintegrator import TimeIntegrator
+from .timevaryingconstant import TimeVaryingConstant
+from .write_vtu_file import write_VTU_file
+from .xdmffile import XDMFFile
 
 __all__ = [
 	"FOI",
@@ -17,6 +17,8 @@ __all__ = [
 	"TimeVaryingConstant",
 	"XDMFFile",
 	"mesh2ugrid",
+	"add_function_to_ugrid",
+	"add_functions_to_ugrid",
 	"Constraint",
 	"TimeIntegrator",
 	"write_VTU_file",

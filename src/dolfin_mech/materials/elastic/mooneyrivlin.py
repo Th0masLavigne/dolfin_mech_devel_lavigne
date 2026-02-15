@@ -16,7 +16,7 @@ and isochoric-volumetric decoupled formulations in 2D and 3D.
 
 import dolfin
 
-from .Elastic import ElasticMaterial
+from dolfin_mech.materials.elastic import ElasticMaterial
 
 ################################################################################
 
@@ -59,7 +59,7 @@ class MooneyRivlin(ElasticMaterial):
 		"""Initializes the MooneyRivlinElasticMaterial.
 
 		:param kinematics: Kinematics object containing deformation tensors and invariants.
-		:type kinematics: dmech.Kinematics
+		:type kinematics: dolfin_mech.kinematics.Kinematics
 		:param parameters: Dictionary containing 'C2' (or parameters to derive it).
 		:type parameters: dict
 		:param decoup: If True, uses the isochoric-volumetric decoupled formulation.

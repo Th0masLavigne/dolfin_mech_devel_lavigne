@@ -16,7 +16,7 @@ volume changes and prevent numerical inversion in hyperelastic formulations.
 
 import dolfin
 
-from .Elastic import ElasticMaterial
+from dolfin_mech.materials.elastic import ElasticMaterial
 
 ################################################################################
 
@@ -56,7 +56,7 @@ class OgdenCiarletGeymonat(ElasticMaterial):
 		"""Initializes the OgdenCiarletGeymonatElasticMaterial.
 
 		:param kinematics: Kinematics object containing deformation tensors and Jacobian.
-		:type kinematics: dmech.Kinematics
+		:type kinematics: dolfin_mech.kinematics.Kinematics
 		:param parameters: Dictionary containing 'C0'. Can also include 'checkJ' (bool).
 		:type parameters: dict
 		:param decoup: If True, indicates a decoupled formulation (passed to C0 getter).

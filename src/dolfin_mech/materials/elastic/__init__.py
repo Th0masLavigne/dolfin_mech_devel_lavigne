@@ -1,20 +1,20 @@
 """Elastic Materials."""
 
-from .Elastic import ElasticMaterial
-from .ExponentialNeoHookean import ExponentialNeoHookean
-from .ExponentialOgdenCiarletGeymonat import ExponentialOgdenCiarletGeymonat
-from .Hooke import Hooke, HookeBulk, HookeDev
-from .Kirchhoff import Kirchhoff, KirchhoffBulk, KirchhoffDev
-from .Lung_Wbulk import WbulkLung
-from .Lung_Wpore import WporeLung
-from .Lung_Wskel import WskelLung
-from .MooneyRivlin import MooneyRivlin
-from .NeoHookean import NeoHookean
-from .NeoHookeanMooneyRivlin import NeoHookeanMooneyRivlin
-from .OgdenCiarletGeymonat import OgdenCiarletGeymonat
-from .OgdenCiarletGeymonatNeoHookean import OgdenCiarletGeymonatNeoHookean
-from .OgdenCiarletGeymonatNeoHookeanMooneyRivlin import OgdenCiarletGeymonatNeoHookeanMooneyRivlin
-from .Porous import Porous
+from .elastic import ElasticMaterial
+from .exponentialneohookean import ExponentialNeoHookean
+from .exponentialogdenciarletgeymonat import ExponentialOgdenCiarletGeymonat
+from .hooke import Hooke, HookeBulk, HookeDev
+from .kirchhoff import Kirchhoff, KirchhoffBulk, KirchhoffDev
+from .lung_wbulk import WbulkLung
+from .lung_wpore import WporeLung
+from .lung_wskel import WskelLung
+from .mooneyrivlin import MooneyRivlin
+from .neohookean import NeoHookean
+from .neohookeanmooneyrivlin import NeoHookeanMooneyRivlin
+from .ogdenciarletgeymonat import OgdenCiarletGeymonat
+from .ogdenciarletgeymonatneohookean import OgdenCiarletGeymonatNeoHookean
+from .ogdenciarletgeymonatneohookeanmooneyrivlin import OgdenCiarletGeymonatNeoHookeanMooneyRivlin
+from .porous import Porous
 
 __all__ = [
 	"ExponentialNeoHookean",

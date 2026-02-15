@@ -14,9 +14,7 @@ This module provides a combined material model that sums the strain energy
 densities of the Neo-Hookean and Mooney-Rivlin models.
 """
 
-import dolfin_mech.materials as materials
-
-from .Elastic import ElasticMaterial
+from dolfin_mech.materials.elastic import ElasticMaterial, MooneyRivlin, NeoHookean
 
 ################################################################################
 
@@ -52,7 +50,7 @@ class NeoHookeanMooneyRivlin(ElasticMaterial):
 		"""Initializes the NeoHookeanMooneyRivlinElasticMaterial.
 
 		:param kinematics: Kinematics object containing deformation tensors.
-		:type kinematics: dmech.Kinematics
+		:type kinematics: dolfin_mech.kinematics.Kinematics
 		:param parameters: Dictionary containing parameters to derive :math:`C_1` and :math:`C_2`.
 		:type parameters: dict
 		:param decoup: If True, uses the isochoric-volumetric decoupled formulation for both sub-models.
@@ -66,8 +64,8 @@ class NeoHookeanMooneyRivlin(ElasticMaterial):
 		parameters["C1"] = C1
 		parameters["C2"] = C2
 
-		self.nh = materials.elastic.NeoHookean(kinematics, parameters, decoup)
-		self.mr = materials.elastic.MooneyRivlin(kinematics, parameters, decoup)
+		self.nh = NeoHookean(kinematics, parameters, decoup)
+		self.mr = MooneyRivlin(kinematics, parameters, decoup)
 
 		self.Psi = self.nh.Psi + self.mr.Psi
 		self.Sigma = self.nh.Sigma + self.mr.Sigma

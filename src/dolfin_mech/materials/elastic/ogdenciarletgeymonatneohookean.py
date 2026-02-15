@@ -21,16 +21,13 @@ the strain energy density into volumetric (bulk) and shear (deviatoric) parts.
 
 import dolfin
 
-import dolfin_mech as dmech
-
-from .Elastic import ElasticMaterial
+from dolfin_mech.materials.elastic import ElasticMaterial, NeoHookean, OgdenCiarletGeymonat
 
 ################################################################################
 
 
 class OgdenCiarletGeymonatNeoHookean(ElasticMaterial):
-	r"""Class representing a composite hyperelastic material combining the
-	Ciarlet-Geymonat and Neo-Hookean models.
+	r"""Class representing a composite hyperelastic material combining the Ciarlet-Geymonat and Neo-Hookean models.
 
 	This model provides a robust description of compressible hyperelasticity by
 	additive decomposition of the strain energy density:
@@ -60,7 +57,7 @@ class OgdenCiarletGeymonatNeoHookean(ElasticMaterial):
 		"""Initializes the OgdenCiarletGeymonatNeoHookeanElasticMaterial.
 
 		:param kinematics: Kinematics object containing deformation tensors.
-		:type kinematics: dmech.Kinematics
+		:type kinematics: dolfin_mech.kinematics.Kinematics
 		:param parameters: Dictionary of material parameters (must satisfy both sub-models).
 		:type parameters: dict
 		:param decoup: If True, uses the isochoric-volumetric decoupled formulation.
@@ -68,8 +65,8 @@ class OgdenCiarletGeymonatNeoHookean(ElasticMaterial):
 		"""
 		self.kinematics = kinematics
 
-		self.bulk = dmech.OgdenCiarletGeymonat(kinematics, parameters, decoup)
-		self.dev = dmech.NeoHookean(kinematics, parameters, decoup)
+		self.bulk = OgdenCiarletGeymonat(kinematics, parameters, decoup)
+		self.dev = NeoHookean(kinematics, parameters, decoup)
 
 		self.Psi = self.bulk.Psi + self.dev.Psi
 		self.Sigma = self.bulk.Sigma + self.dev.Sigma

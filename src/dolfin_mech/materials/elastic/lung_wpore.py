@@ -26,7 +26,7 @@ extreme compression (collapse) and extension (distension).
 
 import dolfin
 
-from .Elastic import ElasticMaterial
+from dolfin_mech.materials.elastic import ElasticMaterial
 
 ################################################################################
 

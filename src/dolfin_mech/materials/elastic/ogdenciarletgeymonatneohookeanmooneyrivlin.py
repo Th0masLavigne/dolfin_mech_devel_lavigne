@@ -22,9 +22,7 @@ and second invariants.
 
 import dolfin
 
-import dolfin_mech.materials as materials
-
-from .Elastic import ElasticMaterial
+from dolfin_mech.materials.elastic import ElasticMaterial, NeoHookeanMooneyRivlin, OgdenCiarletGeymonat
 
 ################################################################################
 
@@ -67,7 +65,7 @@ class OgdenCiarletGeymonatNeoHookeanMooneyRivlin(ElasticMaterial):
 		"""Initializes the OgdenCiarletGeymonatNeoHookeanMooneyRivlinElasticMaterial.
 
 		:param kinematics: Kinematics object containing deformation tensors.
-		:type kinematics: dmech.Kinematics
+		:type kinematics: dolfin_mech.kinematics.Kinematics
 		:param parameters: Dictionary containing material constants (C0, C1, C2, etc.).
 		:type parameters: dict
 		:param decoup: If True, uses the isochoric-volumetric decoupled formulation.
@@ -75,8 +73,8 @@ class OgdenCiarletGeymonatNeoHookeanMooneyRivlin(ElasticMaterial):
 		"""
 		self.kinematics = kinematics
 
-		self.bulk = materials.OgdenCiarletGeymonat(kinematics, parameters, decoup)
-		self.dev = materials.NeoHookeanMooneyRivlin(kinematics, parameters, decoup)
+		self.bulk = OgdenCiarletGeymonat(kinematics, parameters, decoup)
+		self.dev = NeoHookeanMooneyRivlin(kinematics, parameters, decoup)
 
 		self.Psi = self.bulk.Psi + self.dev.Psi
 		self.Sigma = self.bulk.Sigma + self.dev.Sigma

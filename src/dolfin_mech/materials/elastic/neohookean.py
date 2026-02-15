@@ -15,7 +15,8 @@ compressible and isochoric-volumetric decoupled formulations.
 """
 
 import dolfin
-from Elastic import ElasticMaterial
+
+from dolfin_mech.materials.elastic import ElasticMaterial
 
 ################################################################################
 
@@ -60,7 +61,7 @@ class NeoHookean(ElasticMaterial):
 		"""Initializes the NeoHookeanElasticMaterial.
 
 		:param kinematics: Kinematics object containing deformation tensors.
-		:type kinematics: dmech.Kinematics
+		:type kinematics: dolfin_mech.kinematics.Kinematics
 		:param parameters: Dictionary containing 'C1' (shear-related parameter).
 		:type parameters: dict
 		:param decoup: If True, uses the isochoric-volumetric decoupled formulation.

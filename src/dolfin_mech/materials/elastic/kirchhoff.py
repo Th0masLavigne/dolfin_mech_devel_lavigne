@@ -16,7 +16,7 @@ including split formulations for bulk and deviatoric components.
 
 import dolfin
 
-from .Elastic import ElasticMaterial
+from dolfin_mech.materials.elastic import ElasticMaterial
 
 ################################################################################
 

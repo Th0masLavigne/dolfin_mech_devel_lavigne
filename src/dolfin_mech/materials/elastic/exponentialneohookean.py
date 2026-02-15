@@ -17,7 +17,7 @@ characterized by its non-linear stiffening under finite strains.
 
 import dolfin
 
-from .Elastic import ElasticMaterial
+from dolfin_mech.materials.elastic import ElasticMaterial
 
 ################################################################################
 

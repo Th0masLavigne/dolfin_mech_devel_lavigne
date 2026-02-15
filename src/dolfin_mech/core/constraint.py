@@ -10,7 +10,7 @@
 
 import dolfin
 
-from .TimeVaryingConstant import TimeVaryingConstant
+from dolfin_mech.core import TimeVaryingConstant
 
 ################################################################################
 

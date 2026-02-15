@@ -17,7 +17,7 @@ These models are designed for use with linearized kinematics.
 
 import dolfin
 
-from .Elastic import ElasticMaterial
+from dolfin_mech.materials.elastic import ElasticMaterial
 
 ################################################################################
 

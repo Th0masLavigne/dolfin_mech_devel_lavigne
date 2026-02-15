@@ -1,6 +1,6 @@
 """Inelastic Material."""
 
-from .Inelastic import InelasticMaterial
+from .inelastic import InelasticMaterial
 
 __all__ = [
 	"InelasticMaterial",

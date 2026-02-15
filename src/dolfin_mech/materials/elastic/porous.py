@@ -22,7 +22,7 @@ media mechanics.
 
 import dolfin
 
-from .Elastic import ElasticMaterial
+from dolfin_mech.materials.elastic import ElasticMaterial
 
 ################################################################################
 
@@ -64,7 +64,7 @@ class Porous(ElasticMaterial):
 		"""Initializes the PorousElasticMaterial.
 
 		:param solid_material: An instance of an ElasticMaterial class.
-		:type solid_material: dmech.ElasticMaterial
+		:type solid_material: dolfin_mech.materials.elastic.ElasticMaterial
 		:param scaling: Scaling strategy, either "no" or "linear". Defaults to "no".
 		:type scaling: str, optional
 		:param Phis0: Initial solid volume fraction. Required if scaling is "linear".
