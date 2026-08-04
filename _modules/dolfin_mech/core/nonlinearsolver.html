@@ -16,7 +16,7 @@
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=e3b5c9f1"></script>
+      <script src="../../../_static/documentation_options.js?v=4a438f24"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -185,6 +185,7 @@
 <span class="kn">import</span> <span class="nn">petsc4py</span>
 <span class="kn">import</span> <span class="nn">petsc4py.PETSc</span>
 
+<span class="kn">from</span> <span class="nn">mpi4py</span> <span class="kn">import</span> <span class="n">MPI</span>
 <span class="kn">from</span> <span class="nn">.compute_error</span> <span class="kn">import</span> <span class="n">compute_error</span>
 <span class="kn">from</span> <span class="nn">.xdmffile</span> <span class="kn">import</span> <span class="n">XDMFFile</span>
 
@@ -433,9 +434,14 @@
 			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Linear solver failed!&quot;</span><span class="p">,</span> <span class="n">tab</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 			<span class="k">return</span> <span class="kc">False</span>
 
-		<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span><span class="o">.</span><span class="n">all</span><span class="p">()):</span>
-			<span class="c1"># self.problem.dsol_func.vector().zero()</span>
+		<span class="c1"># if not (numpy.isfinite(self.problem.dsol_func.vector()).all()):</span>
+		<span class="c1"># 	# self.problem.dsol_func.vector().zero()</span>
 
+		<span class="c1"># 	self.printer.print_str(&quot;Warning! Solution increment is NaN!&quot;)</span>
+		<span class="c1"># 	return False</span>
+		<span class="n">local_dsol_finite</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+		<span class="n">global_dsol_finite</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">local_dsol_finite</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">MIN</span><span class="p">)</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="n">global_dsol_finite</span><span class="p">:</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Solution increment is NaN!&quot;</span><span class="p">)</span>
 			<span class="k">return</span> <span class="kc">False</span>
 
@@ -539,7 +545,16 @@
 			<span class="c1"># self.printer.print_var(&quot;res_vec&quot;,self.res_vec.get_local())</span>
 			<span class="c1"># self.printer.print_var(&quot;jac_mat&quot;,self.jac_mat.array())</span>
 
-		<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()):</span>
+		<span class="c1"># if not (numpy.isfinite(self.res_vec).all()):</span>
+		<span class="c1"># 	self.printer.print_str(&quot;Warning! Residual is NaN!&quot;)</span>
+		<span class="c1"># 	return False</span>
+		<span class="n">local_is_finite</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+		<span class="n">global_is_finite</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">local_is_finite</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">MIN</span><span class="p">)</span>
+		<span class="n">rank</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">Get_rank</span><span class="p">()</span>
+		<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[rank </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">] before allreduce, local_is_finite=</span><span class="si">{</span><span class="n">local_is_finite</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+		<span class="n">global_is_finite</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">local_is_finite</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">MIN</span><span class="p">)</span>
+		<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[rank </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">] after allreduce, global_is_finite=</span><span class="si">{</span><span class="n">global_is_finite</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="n">global_is_finite</span><span class="p">:</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Residual is NaN!&quot;</span><span class="p">)</span>
 			<span class="k">return</span> <span class="kc">False</span>
 
@@ -759,7 +774,9 @@
 			<span class="n">relax</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">relax_backtracking_factor</span> <span class="o">**</span> <span class="p">(</span><span class="n">k_relax</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">axpy</span><span class="p">(</span><span class="n">relax</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">assemble_linear_system</span><span class="p">()</span>
-			<span class="n">res_is_finite</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+			<span class="c1"># res_is_finite = numpy.isfinite(self.res_vec).all()</span>
+			<span class="n">res_is_finite_local</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+			<span class="n">res_is_finite</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">res_is_finite_local</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">MIN</span><span class="p">))</span>
 			<span class="c1"># print(&quot;numpy.isfinite(self.res_vec).all()&quot;, res_is_finite)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">axpy</span><span class="p">(</span><span class="o">-</span><span class="n">relax</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">dsol_func</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span>
 			<span class="k">if</span> <span class="n">res_is_finite</span><span class="p">:</span>
