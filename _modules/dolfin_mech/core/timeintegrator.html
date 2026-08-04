@@ -16,7 +16,7 @@
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=64fe02a5"></script>
+      <script src="../../../_static/documentation_options.js?v=e3b5c9f1"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -171,6 +171,7 @@
 <span class="kn">import</span> <span class="nn">dolfin</span>
 <span class="kn">import</span> <span class="nn">myPythonLibrary</span> <span class="k">as</span> <span class="nn">mypy</span>
 
+<span class="kn">from</span> <span class="nn">mpi4py</span> <span class="kn">import</span> <span class="n">MPI</span>
 <span class="kn">from</span> <span class="nn">.write_vtu_file</span> <span class="kn">import</span> <span class="n">write_VTU_file</span>
 <span class="kn">from</span> <span class="nn">.xdmffile</span> <span class="kn">import</span> <span class="n">XDMFFile</span>
 
@@ -405,6 +406,10 @@
 				<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">subsols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
 					<span class="n">dolfin</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_subsols_func_old_lst</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">sol_old_func</span><span class="p">)</span>
 				<span class="n">solver_success</span><span class="p">,</span> <span class="n">n_iter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">k_step</span><span class="p">,</span> <span class="n">k_t</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+				<span class="n">local_success</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">solver_success</span> <span class="k">else</span> <span class="mi">0</span>
+				<span class="n">global_success</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">local_success</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">MIN</span><span class="p">)</span>
+				<span class="n">solver_success</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">global_success</span><span class="p">)</span>
 
 				<span class="bp">self</span><span class="o">.</span><span class="n">table_printer</span><span class="o">.</span><span class="n">write_line</span><span class="p">([</span><span class="n">k_step</span><span class="p">,</span> <span class="n">k_t</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t_step</span><span class="p">,</span> <span class="n">n_iter</span><span class="p">,</span> <span class="n">solver_success</span><span class="p">])</span>
 
