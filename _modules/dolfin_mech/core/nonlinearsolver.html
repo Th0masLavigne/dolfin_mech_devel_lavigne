@@ -16,7 +16,7 @@
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=4a438f24"></script>
+      <script src="../../../_static/documentation_options.js?v=a662069b"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -550,10 +550,11 @@
 		<span class="c1"># 	return False</span>
 		<span class="n">local_is_finite</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res_vec</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 		<span class="n">global_is_finite</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">local_is_finite</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">MIN</span><span class="p">)</span>
-		<span class="n">rank</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">Get_rank</span><span class="p">()</span>
-		<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[rank </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">] before allreduce, local_is_finite=</span><span class="si">{</span><span class="n">local_is_finite</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-		<span class="n">global_is_finite</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">local_is_finite</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">MIN</span><span class="p">)</span>
-		<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[rank </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">] after allreduce, global_is_finite=</span><span class="si">{</span><span class="n">global_is_finite</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+		<span class="c1"># debug</span>
+		<span class="c1"># rank = MPI.COMM_WORLD.Get_rank()</span>
+		<span class="c1"># print(f&quot;[rank {rank}] before allreduce, local_is_finite={local_is_finite}&quot;, flush=True)</span>
+		<span class="c1"># global_is_finite = MPI.COMM_WORLD.allreduce(local_is_finite, op=MPI.MIN)</span>
+		<span class="c1"># print(f&quot;[rank {rank}] after allreduce, global_is_finite={global_is_finite}&quot;, flush=True)</span>
 		<span class="k">if</span> <span class="ow">not</span> <span class="n">global_is_finite</span><span class="p">:</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Residual is NaN!&quot;</span><span class="p">)</span>
 			<span class="k">return</span> <span class="kc">False</span>
