@@ -16,7 +16,7 @@
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=63ce3334"></script>
+      <script src="../../../_static/documentation_options.js?v=9a5e0b87"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -441,7 +441,9 @@
 						<span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">update_qois</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">k_step</span><span class="p">)</span>
 						<span class="bp">self</span><span class="o">.</span><span class="n">qoi_printer</span><span class="o">.</span><span class="n">write_line</span><span class="p">([</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">qoi</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">qoi</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">qois</span><span class="p">])</span>
 
-					<span class="k">if</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">near</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">t_fin</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">):</span>
+					<span class="n">local_end</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">near</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">t_fin</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+					<span class="n">global_end</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">local_end</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">MAX</span><span class="p">)</span>
+					<span class="k">if</span> <span class="n">global_end</span><span class="p">:</span>
 						<span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
 						<span class="k">break</span>
 					<span class="k">else</span><span class="p">:</span>
@@ -467,9 +469,12 @@
 					<span class="n">k_t</span> <span class="o">-=</span> <span class="mi">1</span>
 					<span class="n">k_t_tot</span> <span class="o">-=</span> <span class="mi">1</span>
 					<span class="n">t</span> <span class="o">-=</span> <span class="n">dt</span>
-
 					<span class="n">dt</span> <span class="o">/=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decel_coeff</span>
-					<span class="k">if</span> <span class="n">dt</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">dt_min</span><span class="p">:</span>
+
+					<span class="n">local_fail</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="p">(</span><span class="n">dt</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">dt_min</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+					<span class="n">global_fail</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">local_fail</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">MAX</span><span class="p">)</span>
+
+					<span class="k">if</span> <span class="n">global_fail</span><span class="p">:</span>
 						<span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">print_str</span><span class="p">(</span><span class="s2">&quot;Warning! Time integrator failed to move forward!&quot;</span><span class="p">)</span>
 						<span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
 						<span class="k">break</span>
